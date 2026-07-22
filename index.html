@@ -3,23 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mathematics User Study - Select Test Version</title>
+  <title>User Study - Select Test</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #2563eb;
-      --primary-hover: #1d4ed8;
       --accent-a: #0284c7;
+      --accent-a-hover: #0369a1;
       --accent-b: #7c3aed;
+      --accent-b-hover: #6b21a8;
       --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-      --card-bg: #ffffff;
       --text-main: #1e293b;
-      --text-muted: #64748b;
-      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      --radius: 16px;
     }
 
     * {
@@ -42,13 +37,13 @@
 
     .container {
       width: 100%;
-      max-width: 900px;
+      max-width: 600px;
       margin: 0 auto;
       text-align: center;
-    }
-
-    .logo-container {
-      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
     }
 
     .logo-container img {
@@ -57,167 +52,55 @@
       height: auto;
     }
 
-    .header-section {
-      margin-bottom: 3rem;
-    }
-
-    .header-section h1 {
-      font-size: 2.25rem;
-      font-weight: 700;
-      color: #0f172a;
-      margin-bottom: 0.75rem;
-      letter-spacing: -0.025em;
-    }
-
-    .header-section p {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    .selection-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-
-    .test-card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 2.5rem 2rem;
-      box-shadow: var(--shadow-sm);
-      border: 2px solid #e2e8f0;
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    .button-group {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      overflow: hidden;
-      text-decoration: none;
-      color: inherit;
+      sm-flex-direction: row;
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 480px;
     }
 
-    .test-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 6px;
-      transition: background-color 0.25s ease;
+    @media (min-width: 480px) {
+      .button-group {
+        flex-direction: row;
+      }
     }
 
-    .card-a::before {
-      background: var(--accent-a);
-    }
-
-    .card-b::before {
-      background: var(--accent-b);
-    }
-
-    .test-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-lg);
-      border-color: #cbd5e1;
-    }
-
-    .card-badge {
-      display: inline-block;
-      padding: 0.35rem 0.85rem;
-      border-radius: 9999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 1.25rem;
-      align-self: flex-start;
-    }
-
-    .card-a .card-badge {
-      background-color: #e0f2fe;
-      color: #0369a1;
-    }
-
-    .card-b .card-badge {
-      background-color: #f3e8ff;
-      color: #6b21a8;
-    }
-
-    .test-card h2 {
-      font-size: 1.75rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      color: #0f172a;
-      text-align: left;
-    }
-
-    .test-card p {
-      font-size: 0.975rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      text-align: left;
-      margin-bottom: 2rem;
-      flex-grow: 1;
-    }
-
-    .topics-list {
-      text-align: left;
-      margin-bottom: 2rem;
-      list-style-type: none;
-    }
-
-    .topics-list li {
-      font-size: 0.9rem;
-      color: #475569;
-      margin-bottom: 0.4rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .topics-list li::before {
-      content: "✓";
-      color: #10b981;
-      font-weight: bold;
-    }
-
-    .select-btn {
+    .btn {
+      flex: 1;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 100%;
-      padding: 0.875rem 1.5rem;
-      font-size: 1rem;
-      font-weight: 600;
-      border-radius: 10px;
-      transition: all 0.2s ease;
-      cursor: pointer;
+      padding: 1.25rem 2rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .card-a .select-btn {
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-a {
       background-color: var(--accent-a);
-      color: #ffffff;
     }
 
-    .card-a:hover .select-btn {
-      background-color: #0369a1;
+    .btn-a:hover {
+      background-color: var(--accent-a-hover);
     }
 
-    .card-b .select-btn {
+    .btn-b {
       background-color: var(--accent-b);
-      color: #ffffff;
     }
 
-    .card-b:hover .select-btn {
-      background-color: #6b21a8;
-    }
-
-    .footer-note {
-      font-size: 0.875rem;
-      color: #94a3b8;
+    .btn-b:hover {
+      background-color: var(--accent-b-hover);
     }
   </style>
 </head>
@@ -228,45 +111,9 @@
       <img src="./Test A/static/Logo.png" alt="Study Logo" />
     </div>
 
-    <div class="header-section">
-      <h1>Mathematics User Study</h1>
-      <p>Welcome! Please select the test version assigned to you by the study administrator to begin.</p>
-    </div>
-
-    <div class="selection-grid">
-      <!-- Test A Card -->
-      <a href="./Test A/index.html" class="test-card card-a">
-        <div>
-          <span class="card-badge">Version A</span>
-          <h2>Test A</h2>
-          <p>Complete the mathematical exercises for Version A, covering core fundamental topics.</p>
-          <ul class="topics-list">
-            <li>Arithmetic Operations</li>
-            <li>Algebraic Expressions</li>
-            <li>Differential Calculus</li>
-          </ul>
-        </div>
-        <div class="select-btn">Start Test A &rarr;</div>
-      </a>
-
-      <!-- Test B Card -->
-      <a href="./Test B/index.html" class="test-card card-b">
-        <div>
-          <span class="card-badge">Version B</span>
-          <h2>Test B</h2>
-          <p>Complete the mathematical exercises for Version B, covering core fundamental topics.</p>
-          <ul class="topics-list">
-            <li>Arithmetic Operations</li>
-            <li>Algebraic Expressions</li>
-            <li>Differential Calculus</li>
-          </ul>
-        </div>
-        <div class="select-btn">Start Test B &rarr;</div>
-      </a>
-    </div>
-
-    <div class="footer-note">
-      <p>User Study Evaluation Portal &bull; Mathematics & Music Project</p>
+    <div class="button-group">
+      <a href="./Test A/index.html" class="btn btn-a">Test A</a>
+      <a href="./Test B/index.html" class="btn btn-b">Test B</a>
     </div>
   </div>
 
