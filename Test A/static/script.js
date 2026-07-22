@@ -91,12 +91,24 @@ function checkAnswers(lastPage) {
     submitButton3.disabled = true;
     submitButton.disabled = true;
 
-  if (lastPage == true)
-  {  
-  resultMessage.innerHTML += "<br>All exercises are sucessfully completed.";
-  nextButton.disabled = false;
-  submitButton3.disabled = true;
-  submitButton.disabled = true;}
+    if (lastPage == true) {  
+      let endTime = sessionStorage.getItem('testEndTime');
+      if (!endTime) {
+        endTime = Date.now();
+        sessionStorage.setItem('testEndTime', endTime);
+      }
+      const elapsedTime = parseInt(endTime, 10) - startTime;
+      const hours = Math.floor(elapsedTime / 3600000);
+      const minutes = Math.floor((elapsedTime % 3600000) / 60000);
+      const seconds = Math.floor((elapsedTime % 60000) / 1000);
+      const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+      resultMessage.innerHTML += "<br><br><strong>All exercises are successfully completed!</strong>";
+      resultMessage.innerHTML += `<br><br><span style="font-size: 1.1em; color: #0284c7;">⏱️ <strong>Total Time Taken: ${formattedTime}</strong></span>`;
+      nextButton.disabled = false;
+      submitButton3.disabled = true;
+      submitButton.disabled = true;
+    }
   } 
   else {
     resultMessage.innerHTML += "<br>Check Examples and Reattempt Test.";
@@ -128,27 +140,33 @@ function showNextQuestionDiv(nextDivId, currentDivId) {
 function openPage(pagePath) {
   window.location.href = pagePath;
 }
-// Display time
-let startTime = Date.now();
+// Display time from start of test
+let startTime = parseInt(sessionStorage.getItem('testStartTime'), 10);
+if (!startTime || isNaN(startTime)) {
+  startTime = Date.now();
+  sessionStorage.setItem('testStartTime', startTime);
+}
 
-    function updateTimer() {
-      const timerElement = document.getElementById('timer');
-      const currentTime = Date.now();
-      const elapsedTime = currentTime - startTime;
+function updateTimer() {
+  const timerElement = document.getElementById('timer');
+  if (!timerElement) return;
 
-      const hours = Math.floor(elapsedTime / 3600000);
-      const minutes = Math.floor((elapsedTime % 3600000) / 60000);
-      const seconds = Math.floor((elapsedTime % 60000) / 1000);
+  const savedEndTime = sessionStorage.getItem('testEndTime');
+  const currentTime = savedEndTime ? parseInt(savedEndTime, 10) : Date.now();
+  const elapsedTime = currentTime - startTime;
 
-      const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-      timerElement.textContent = formattedTime;
-      timerElement.style.fontSize = '16px'; 
-    }
-     // Update the timer every second
-    setInterval(updateTimer, 1000);
+  const hours = Math.floor(elapsedTime / 3600000);
+  const minutes = Math.floor((elapsedTime % 3600000) / 60000);
+  const seconds = Math.floor((elapsedTime % 60000) / 1000);
 
-    // Initial update
-    updateTimer();
+  const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  timerElement.textContent = formattedTime;
+  timerElement.style.fontSize = '16px'; 
+}
+
+// Update the timer every second
+setInterval(updateTimer, 1000);
+updateTimer();
 
     // button style 
     // https://designmodo.com/create-css3-buttons/
