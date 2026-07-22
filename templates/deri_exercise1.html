@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" src="path/to/mathjax-config.js"></script>
+<script type="text/javascript" src="path/to/MathJax.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <meta charset="UTF-8">
+  <title>Derivative Exercise</title>
+  </head>
+<div style="position: fixed; top: 0; width: 100%;">
+  <div style="text-align: center; margin-top: 2%; margin-bottom: 2%;" > 
+    <img src="../static/Logo.png" width="50%" />
+    </div>
+    
+  <div class="centered">  
+    <div style= "max-width: 100%; max-height: 20%;">
+       <h2 class="headingtop_margen">Exercises for Derivative</h2>
+      </div>
+      <div class="exercise-box">
+      <div class="timer" id="timer" >
+        <p >00:00:00</p>
+      </div>
+      <h4>Power and Add/ Sub Rules</h4>
+
+      <form id="exerciseForm">
+        <div id = "Q1">
+          <p class="line-spcaing"> Q1: \(y = 3x^2 + 2x + 1\)  </p>
+          <input type="radio" id="der1" name="q1" value="3x + 2">
+          <label for="der1">\(3x + 2\)</label><br>
+          <input type="radio" id="der2" name="q1" value="6x + 2">
+          <label for="der2">\(6x + 2\)</label><br>
+          <input type="radio" id="der3" name="q1" value="6x + 2x">
+          <label for="der3">\(6x + 2x\)</label><br>
+          <p style="font-size: 14px;" id="resultMessage_q1"></p>
+          <button class="button gray" onclick="checkAnswer('q1', '6x + 2')">Check & Submit</button>
+          <!--<button type="submit" id="submitButton11" onclick="checkAnswer()">Submit</button>-->
+          <button class="button gray" type="button" id="submitButton1" onclick="showNextQuestionDiv('Q2', 'Q1')">Next Question</button>
+          
+        </div>
+
+        <div id="Q2" style="display: none;">
+          <p class="line-spacing">Q2: \(y = -x^3 + 7x^{-2} + 7x\)</p>
+          <input type="radio" id="der" name="q2" value="-14x^{-3}-3x^2 + 7">
+          <label for="der1">\(-14x^{-3}-3x^2 + 7\)</label><br>
+          <input type="radio" id="der5" name="q2" value="14x^{3}-3x^2 + 7">
+          <label for="der5">\(14x^{3}-3x^2 + 7\)</label><br>
+          <input type="radio" id="der6" name="q2" value="-3x^2 + 14x^2 + 7">
+          <label for="der6">\(-3x^2 + 14x^2 + 7\)</label><br>
+          <p style="font-size: 14px;" id="resultMessage_q2"></p>
+          <button class="button gray" onclick="checkAnswer('q2', '-14x^{-3}-3x^2 + 7')">Check & Submit</button>
+          <!--<button type="submit" id="submitButton22" onclick="checkAnswer()">Submit</button>-->
+          <button class="button gray" type="button" id="submitButton2" onclick="showNextQuestionDiv('Q3', 'Q2')">Next Question</button>
+          
+        </div>
+        
+
+        <div id = "Q3" style="display: none;">
+          <p class="line-spcaing">Q3: \(y = 4x^3 + 5x^{2}\)  </p>
+          <input type="radio" id="der7" name="q3" value="12x^2 + 10">
+          <label for="der7">\(12x^2 + 10\)</label><br>
+          <input type="radio" id="der8" name="q3" value="8x^2 + 10x">
+          <label for="der8">\(8x^2 + 10x\)</label><br>
+          <input type="radio" id="der9" name="q3" value="12x^2 + 10x">
+          <label for="der9">\(12x^2 + 10x\)</label><br>
+          <p style="font-size: 14px;" id="resultMessage_q3"></p>
+          <button id="submitButton3" onclick="checkAnswer('q3', '12x^2 + 10x')" class="button gray">Check & Submit</button>
+          <button type="submit" id="submitButton" onclick="checkAnswers(false)" class="button gray">Result</button>
+          <br>
+          <button type="button" id="exampleButton" disabled onclick="openPage('deri_example1.html')" class="button gray">Example</button>
+          <button class="button gray" type="button" id="nextButton" onclick="openPage('home.html')" disabled>Home Page</button>
+
+          
+      </div>
+      </form>
+       </div>
+       <div style="text-align: center;"> <p style="font-size:0.8em;">Note: You will get the final results based on your first attempt</p>
+       </div>
+  </div>
+</div>
+  <dialog id="resultDialog">
+    <p id="resultMessage"></p>
+    <button id="closeButton">Close</button>
+  </dialog>
+  <script>
+    var evTypep = window.performance.getEntriesByType("navigation")[0].type;
+  
+    if (evTypep == 'reload') {
+      // Display a confirmation dialog
+      var confirmationMessage = 'Refreshing this page will take you to the example page. Do you want to proceed?';
+      var userConfirmed = window.confirm(confirmationMessage);
+  
+      if (!userConfirmed) {
+        // If "Cancel," stay on the current page
+        window.addEventListener('beforeunload', function (e) {
+          e.preventDefault();
+        });
+      } else {
+        // If "OK," proceed with the refresh and redirect
+        window.location.replace('deri_example1.html');
+      }
+    }
+  </script>
+ 
+  <script src="../static/script.js"></script>
+</body>
+</html>

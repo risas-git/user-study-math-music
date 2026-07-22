@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" src="path/to/mathjax-config.js"></script>
+<script type="text/javascript" src="path/to/MathJax.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <meta charset="UTF-8">
+  <title>Quadratic Algebra Exercise</title>
+  </head>
+<div style="position: fixed; top: 0; width: 100%;">
+  <div style="text-align: center; margin-top: 2%; margin-bottom: 2%;" > 
+    <img src="../static/Logo.png" width="50%" />
+    </div>
+    
+  <div class="centered">  
+    <div style= "max-width: 100%; max-height: 20%;">
+      <h2 class="headingtop_margen">Exercises for Algebra</h2>
+      </div>
+      <div class="exercise-box">
+      <div class="timer" id="timer" >
+        <p >00:00:00</p>
+      </div>
+      <h4>Quadratic Equation</h3>
+
+      <form id="exerciseForm">
+        <div id = "Q1">
+          <p class="line-spcaing">Q1: \((x-2)^2 = 4\)  </p>
+          <input type="radio" id="qua1" name="q1" value="4, 0">
+          <label for="qua1">4, 0</label><br>
+          <input type="radio" id="qua2" name="q1" value="4">
+          <label for="qua2">4</label><br>
+          <input type="radio" id="qua3" name="q1" value="4, -2">
+          <label for="qua3">4, -2</label><br>
+          <p style="font-size: 14px;" id="resultMessage_q1"></p>
+          <button class="button gray" onclick="checkAnswer('q1', '4, 0')">Check & Submit</button>
+          <!--<button type="submit" id="submitButton11" onclick="checkAnswer()">Submit</button>-->
+          
+          <button class="button gray" type="button" id="submitButton1" onclick="showNextQuestionDiv('Q2', 'Q1')">Next Question</button>
+          
+        </div>
+
+        <div id = "Q2" style="display: none;">
+            <p class="line-spcaing">Q2: \(x^2 - 2x - 3 = 0\)  </p>
+          <input type="radio" id="qua4" name="q2" value="3, 1">
+          <label for="qua4">3, 1</label><br>
+          <input type="radio" id="qua5" name="q2" value="-3, 1">
+          <label for="qua5">-3, 1</label><br>
+          <input type="radio" id="qua6" name="q2" value="3, -1">
+          <label for="qua6">3, -1</label><br>
+          <p style="font-size: 14px;" id="resultMessage_q2"></p>
+          <button class="button gray" onclick="checkAnswer('q2', '3, -1')">Check & Submit</button>
+          <!--<button type="submit" id="submitButton22" onclick="checkAnswer()">Submit</button>-->
+          <button class="button gray" type="button" id="submitButton2" onclick="showNextQuestionDiv('Q3', 'Q2')">Next Question</button>
+         
+        </div>
+
+        <div id = "Q3" style="display: none;">
+          <p class="line-spcaing">Q3: \(x^2 = 3x\)  </p>
+          <input type="radio" id="qua7" name="q3" value="keine Lösung">
+          <label for="qua7">keine Lösung</label><br>
+          <input type="radio" id="qua8" name="q3" value="-3, 0">
+          <label for="qua8">-3, 0</label><br>
+          <input type="radio" id="qua9" name="q3" value="3, 0">
+          <label for="qua9">3, 0</label><br>
+          <p style="font-size: 14px;" id="resultMessage_q3"></p>
+          <button id="submitButton3" onclick="checkAnswer('q3', '3, 0')" class="button gray">Check & Submit</button>
+          <button type="submit" id="submitButton" onclick="checkAnswers(false)" class="button gray">Result</button>
+          <br>
+          <button type="button" id="exampleButton" disabled onclick="openPage('qua_example.html')" class="button gray">Example</button>
+          <button class="button gray" type="button" id="nextButton" onclick="openPage('derivatives.html')" disabled>Next Chapter</button>         
+      </div>
+      </form>
+       </div>
+       <div align="center"> <p style="font-size:0.8em;">Note: You will get the final results based on your first attempt</p>
+       </div>
+  </div>
+</div>
+  <dialog id="resultDialog">
+    <p id="resultMessage"></p>
+    <button id="closeButton">Close</button>
+  </dialog>
+  <script>
+    var evTypep = window.performance.getEntriesByType("navigation")[0].type;
+  
+    if (evTypep == 'reload') {
+      // Display a confirmation dialog
+      var confirmationMessage = 'Refreshing this page will take you to the example page. Do you want to proceed?';
+      var userConfirmed = window.confirm(confirmationMessage);
+  
+      if (!userConfirmed) {
+        // If "Cancel," stay on the current page
+        window.addEventListener('beforeunload', function (e) {
+          e.preventDefault();
+        });
+      } else {
+        // If "OK," proceed with the refresh and redirect
+        window.location.replace('qua_example.html');
+      }
+    }
+  </script>
+ 
+  <script src="../static/script.js"></script>
+</body>
+</html>

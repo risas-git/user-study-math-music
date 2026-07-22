@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+   <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" src="path/to/mathjax-config.js"></script>
+<script type="text/javascript" src="path/to/MathJax.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <title>Derivatives</title>
+</head>
+<div style="text-align: center; margin-top: 2%; margin-bottom: 2%;" > 
+  <img src="../static/Logo.png" width="50%" />
+  </div>
+  
+      <div style= "max-width: 85%; 
+      text-align: justify;">
+      <div style="margin-left:15%;">
+         <h3>Mathematics</h3>
+         <ul>
+          <h3>Derivatives</h3>
+          <p class="math-equation">
+              The derivative is the instantaneous rate of change at which output of a function changes as its input value changes. 
+              The rate of change of a function \(f(x)\), often denoted as \(\dfrac{d}{x}\left(f(x)\right)\), \(\dfrac{df}{dx}\), \({D}{f}\left(x\right)\), or \({f'}\left(x\right) = 0\). 
+              Derivative is used to optimize a function also it find the intervals where the function is increasing or decreasing. 
+              <br>Given below are the basic rules of derivatives:
+          </p>
+              <h4>Constant Rule</h4>
+          <p class="math-equation">
+              According to the derivatives constant rule, the derivatives of a constant is always be 0. If \(y = c\), where \(c\) is a constant, then \(\dfrac{dy}{dx} = \dfrac{dc}{dx} = 0\).
+              <br> Example: \(y = 20\)
+              <br>\(\dfrac{dy}{dx} = \dfrac{d}{dx}\left(20\right) = 0\).
+          </p>
+              <h4>Constant Multiplication Rule</h4>
+          <p class="math-equation">
+              It states that if you have a function that is a constant multiplied by another function, the derivative of this expression is the constant multiplied by the derivative of the other function. If \(y = cx\), where \(c\) is a constant, then \(\dfrac{dy}{dx}\left(cx\right) = c \cdot \dfrac{d}{dx}\left(x\right)\).
+              <br>Example:  \(y = 7x\)
+              <br>\(\dfrac{dy}{dx} = \dfrac{d}{dx}\left(7\right)\)
+              <p>\(\dfrac{dy}{dx} = 7 \cdot \dfrac{d}{dx}\left(x\right)\) &nbsp&nbsp&nbsp  &nbsp&nbsp&nbsp (i.e &nbsp&nbsp \(\dfrac{d}{dx}\left(x\right) = 1\))</p>
+              <p>\(\dfrac{dy}{dx} = 7\) </p>
+          </p>
+    
+              <h4>Power Rule</h4>
+              <p class="math-equation">
+              According to power rule, if we have \(y = x^n\), then \(\dfrac{dy}{dx} = n \cdot x^{(n-1)}\).
+              <br>Example:  \(y = x^3\)
+              <br>\(\dfrac{dy}{dx} = \dfrac{d}{dx}\left(x^3\right)\)
+              <p>\(\dfrac{dy}{dx} = 3 \cdot x^{3-1}\) </p>
+              <p>\(\dfrac{dy}{dx} = 3 \cdot x^{2}\) </p>
+              <p>Example: \(y = u^2(x)\) </p>
+              <p>\(\dfrac{dy}{dx} = 2u(x) \cdot \dfrac{du}{dx}\) </p>
+              </p>
+              <h4>Sum/Difference Rule</h4>
+              <p class="math-equation">
+              According to sum and difference rule, the derivative process distributed over addition as subtraction as: \(\dfrac{dy}{dx} [a \pm b] \) = \(\dfrac{da}{dx} \pm \dfrac{db}{dx}\).
+              <br>Example: \(y  =  2x \pm 7\)
+              <p>\(\dfrac{dy}{dx} = \dfrac{d}{dx}\left(2x \pm 7\right)\) </p>
+              <p>\(\dfrac{dy}{dx} = \dfrac{d}{dx}\left(2x\right) \pm \dfrac{d}{dx}\left(7\right) \) </p>
+              <p>\(\dfrac{dy}{dx} = 2 \pm 0 \) </p>
+              <p>\(\dfrac{dy}{dx} = 2 \) </p>
+              </p>
+              <h4>Product Rule</h4>
+              <p class="math-equation">
+              The rule for finding the derivative of a product of two functions states that, “the derivative of the second function multiplied by the first function added to the derivative of the first function multiplied by the second function.”
+              Such as \(\dfrac{dy}{dx}\left(a \times b \right)  = a \cdot \dfrac{db}{dx} + b \cdot \dfrac{da}{dx} \) &nbsp&nbsp&nbsp("." is alternatively used for multiplication). 
+              <br>Example: \(y =  3x^3 \times 5x\)
+              <p>\(\dfrac{dy}{dx} = \dfrac{d}{dx}(3x^3 \times 5x)\)</p>
+              <p>\(\dfrac{dy}{dx} = 3x^3 \cdot \dfrac{d}{dx}(5x) + 5x \cdot 3\dfrac{d}{dx}(x^3)\) </p>
+              <p>\(\dfrac{dy}{dx} = 3x^3 \cdot 5 + 5x \cdot 3 \times 3 x^2\) </p>
+              <p>\(\dfrac{dy}{dx} = 3x^3 \cdot 5  + 9 x^2 \cdot 5x \) </p>
+              </p>
+              <h4>Trigonometric Functions</h4>
+              <p class="math-equation">
+              These derivative formulas are essential for finding the rates of change of trigonometric functions and their inverses in calculus and physics problems.
+              <p>\(\dfrac{dy}{dx}(sin(x)) = cos(x)\)</p>
+              <p>\(\dfrac{dy}{dx}(cos(x)) = -sin(x)\)</p>
+              <p>\(\dfrac{dy}{dx}(tan(x)) = sec^2(x)\)</p>
+              <p>\(\dfrac{dy}{dx}(sin^{-1}(x)) = \frac{1}{\sqrt{1 - x^2}}\)</p>
+              <p>\(\dfrac{dy}{dx}(cos^{-1}(x)) = -\frac{1}{\sqrt{1 - x^2}}\)</p>
+              <p>\(\dfrac{dy}{dx}(tan^{-1}(x)) = \frac{1}{{1 + x^2}}\)</p>
+              
+              
+              </p>
+             
+          <div style = "text-align: right; font-size: 18px; padding-right: 10%;">      
+            <a href="deri_exercise1.html">Exercise</a>
+            </div>
+            <h4>Reference</h4>
+            <ul>
+            <li style="margin-top: -0.5%;"><a href="https://www.cuemath.com/numbers/arithmetic-operations/#">Methamatics: CUEMATH</a></li>
+           <li style="margin-top: 1.5%;"><a href="https://www.math-only-math.com/.html">Math-Only-Math</a></li>
+           <!--<li style="margin-top: -2%;"><a href="https://www.geeksforgeeks.org/solving-cubic-equations/"> GeeksforGeeks</a></li>
+           -->
+        </ul>
+        </div>
+      </ul>
+  </div>
+</div>
+<script src="../static/script.js"></script>
+</body>
+</html>
