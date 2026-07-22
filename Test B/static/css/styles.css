@@ -1,0 +1,177 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  header {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .content {
+    width: 100%; 
+    overflow-x: auto;
+    white-space: nowrap; 
+    overflow-x: auto;
+    max-width: 85%; 
+    text-align: justify;
+  }
+  .timer {
+    font-size: 12px;
+    text-align: center;
+  }
+.static-image {
+    width:"10" ;
+height: "10";
+  }
+ 
+  .centered {
+    position: fixed;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 25px 10px 25px;
+  width: 450px; /* Adjust this width as needed */
+  max-width: 55%;
+  }
+
+  .math-equation-container {
+    max-width: 85%;
+    text-align: justify;
+  }
+
+  .example-box {
+    border: 1px solid black;
+    background-color:rgb(228, 206, 128);
+    padding: 1px 15px 2px 15px; /*TRBl*/
+    margin: 0 auto;
+    width: 39%;
+    height: 10%;
+    font-family: MathJax Fonts;
+    font-size: large;
+    overflow-x: auto;
+    white-space: nowrap; 
+  }
+  .example-boxAlgebra {
+    border: 1px solid black;
+    background-color: rgb(228, 206, 128);
+    padding: 2px 10px 10px 25px; /*TRBl*/
+    margin: 0 auto;
+    width: 52%;
+    font-family: MathJax Fonts;
+    font-size: large;
+    overflow-x: auto;
+    white-space: nowrap; 
+    text-align: justify;
+    max-height: 100%;
+  }
+  .exercise-box {   
+    border: 1px solid black;
+    background-color: rgb(228, 206, 128);
+    padding: 5px 25px 10px 25px;
+    margin: 0 auto;
+    width: 70%;
+    font-family: MathJax Fonts;
+    font-size: large;
+    overflow-x: auto;
+    white-space: nowrap; 
+  }
+  .math-equation {
+    font-family: MathJax Fonts;
+    font-size:large;
+    margin-top: -0.5%; 
+    margin-bottom: -0.5% ;
+    line-height: 1.7;
+  }
+    /* End Example Style*/
+.line-spcaing {
+    font-size:large;
+    line-height: 1.7
+}
+  .body {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  /* Style the iframe */
+  .iframe {
+      border: none;
+      outline: none;
+      width: 100%;
+      max-width: 100%; 
+      height: 400px; 
+  }
+  .heading_margen{
+    margin-top: -2.5%;
+    margin-bottom: 0.5%;
+  }
+  .headingtop_margen{
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+
+  input[type="radio"]{
+    margin: 10px 10px 10px 10px;
+  }
+
+
+.button {
+  display: inline-block;
+  position: relative;
+  margin: 10px;
+  width: 125px;
+  height: 25px;
+  text-align: center;
+  text-decoration: none;
+  font: 14px Arial, sans-serif;
+  line-height: 25px;
+  color: black;
+  background: #d3d3d3;
+  -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0), inset 1px 1px 1px rgba(255,255,255, .44);
+  -moz-box-shadow: 1px 1px 1px rgba(0,0,0,0), inset 1px 1px 1px rgba(255,255,255, .44);
+  box-shadow: 1px 1px 1px rgba(0,0,0,0), inset 1px 1px 1px rgba(255,255,255, .44);
+  -webkit-transition: all 0.15s ease;
+  -moz-transition: all 0.15s ease;
+  -o-transition: all 0.15s ease;
+  -ms-transition: all 0.15s ease;
+  transition: all 0.15s ease;
+  border: none;
+}
+
+/* Style for disabled buttons */
+.button:disabled {
+  color: #999; /* Grayed out text color for disabled buttons */
+  background: #ccc; /* Light gray background for disabled buttons */
+  cursor: not-allowed; /* Change cursor to indicate it's not clickable */
+  box-shadow: none; /* Remove box shadow for disabled buttons */
+}
+
+
+.gray {
+    background: #adabab;
+}
+
+
+#resultDialog p {
+  font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
+  font-size: 16px;
+  color: #333; /* text color*/
+  height: auto;
+  width: auto;
+}
