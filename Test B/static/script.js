@@ -97,14 +97,9 @@ function checkAnswers(lastPage) {
         endTime = Date.now();
         sessionStorage.setItem('testEndTime', endTime);
       }
-      const elapsedTime = parseInt(endTime, 10) - startTime;
-      const hours = Math.floor(elapsedTime / 3600000);
-      const minutes = Math.floor((elapsedTime % 3600000) / 60000);
-      const seconds = Math.floor((elapsedTime % 60000) / 1000);
-      const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 
       resultMessage.innerHTML += "<br><br><strong>All exercises are successfully completed!</strong>";
-      resultMessage.innerHTML += `<br><br><span style="font-size: 1.1em; color: #0284c7;">⏱️ <strong>Total Time Taken: ${formattedTime}</strong></span>`;
+      resultMessage.innerHTML += "<br>Click <strong>End</strong> to view your total time.";
       nextButton.disabled = false;
       submitButton3.disabled = true;
       submitButton.disabled = true;

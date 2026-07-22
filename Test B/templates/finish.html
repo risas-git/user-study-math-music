@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+  <title>Test Completed</title>
+</head>
+<body>
+  <div style="text-align: center; margin-top: 3%; margin-bottom: 2%;"> 
+    <img src="../static/Logo.png" width="40%" alt="Logo" />
+  </div>
+
+  <div class="centered" style="top: 50%;">  
+    <div class="exercise-box" style="text-align: center; padding: 30px; width: 80%;">
+      <h2 style="margin-bottom: 15px; color: #1e293b;">🎉 Test Completed!</h2>
+      <p style="font-size: 1.1em; line-height: 1.6; margin-bottom: 20px; color: #334155;">
+        Thank you for completing all the exercises in this study.
+      </p>
+
+      <div style="background: #ffffff; border: 2px solid #7c3aed; border-radius: 12px; padding: 20px; margin: 20px 0;">
+        <p style="font-size: 1em; color: #64748b; margin-bottom: 8px;">Total Time Taken:</p>
+        <h1 id="finalTime" style="font-size: 2.8em; color: #7c3aed; font-family: monospace;">00:00:00</h1>
+      </div>
+
+      <div style="margin-top: 25px;">
+        <a href="../../index.html" class="button gray" style="text-decoration: none; display: inline-block; width: 180px; height: 35px; line-height: 35px; font-weight: bold; border-radius: 6px;">Return to Main Page</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../static/script.js"></script>
+  <script>
+    (function() {
+      const startTime = parseInt(sessionStorage.getItem('testStartTime'), 10);
+      let endTime = parseInt(sessionStorage.getItem('testEndTime'), 10);
+      
+      if (!endTime || isNaN(endTime)) {
+        endTime = Date.now();
+        sessionStorage.setItem('testEndTime', endTime);
+      }
+
+      if (startTime && !isNaN(startTime)) {
+        const elapsedTime = endTime - startTime;
+        const hours = Math.floor(elapsedTime / 3600000);
+        const minutes = Math.floor((elapsedTime % 3600000) / 60000);
+        const seconds = Math.floor((elapsedTime % 60000) / 1000);
+
+        const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        const finalTimeElement = document.getElementById('finalTime');
+        if (finalTimeElement) {
+          finalTimeElement.textContent = formattedTime;
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
