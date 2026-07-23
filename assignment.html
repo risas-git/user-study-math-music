@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Study - Participant Assignment</title>
+  <title>User Study - Test Instructions</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -50,102 +50,33 @@
     .card {
       background: var(--card-bg);
       border-radius: 16px;
-      padding: 2.25rem 2rem;
+      padding: 2.5rem 2rem;
       border: 1px solid var(--border-color);
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1.75rem;
       align-items: center;
-    }
-
-    .id-badge-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      background: #f1f5f9;
-      border-radius: 12px;
-      padding: 1.25rem 1.5rem;
-      width: 100%;
-      border: 1px solid #e2e8f0;
-    }
-
-    .id-label {
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .id-display {
-      font-size: 2.25rem;
-      font-weight: 800;
-      color: #0284c7;
-      font-family: monospace;
-    }
-
-    .id-input-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 0.25rem;
-    }
-
-    .id-input-wrapper label {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .id-input-wrapper input {
-      width: 80px;
-      padding: 0.3rem 0.5rem;
-      font-size: 0.95rem;
-      font-weight: 700;
-      text-align: center;
-      border: 1px solid #cbd5e1;
-      border-radius: 6px;
-    }
-
-    .group-badge {
-      display: inline-block;
-      padding: 0.4rem 1rem;
-      border-radius: 9999px;
-      font-size: 0.9rem;
-      font-weight: 700;
-    }
-
-    .group-1-badge {
-      background: #e0f2fe;
-      color: #0369a1;
-      border: 1px solid #7dd3fc;
-    }
-
-    .group-2-badge {
-      background: #f3e8ff;
-      color: #6b21a8;
-      border: 1px solid #d8b4fe;
     }
 
     .instruction-box {
       background: #f8fafc;
       border-radius: 12px;
-      padding: 1.5rem;
+      padding: 1.75rem;
       border-left: 5px solid #0284c7;
       text-align: left;
       width: 100%;
     }
 
     .instruction-box h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.75rem;
+      font-size: 1.15rem;
+      margin-bottom: 0.85rem;
       color: #0f172a;
     }
 
     .instruction-box p {
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       line-height: 1.6;
       color: #334155;
     }
@@ -180,21 +111,8 @@
 
   <div class="container">
     <div class="card">
-      <h2>Participant Study Assignment</h2>
-      
-      <div class="id-badge-container">
-        <span class="id-label">Assigned Participant ID</span>
-        <span class="id-display" id="idDisplay">#1</span>
-        <span id="groupBadge" class="group-badge group-1-badge">Group 1 (Odd ID)</span>
-
-        <div class="id-input-wrapper">
-          <label for="idInput">ID override:</label>
-          <input type="number" id="idInput" min="1" oninput="handleIdChange(this.value)" />
-        </div>
-      </div>
-
       <div class="instruction-box">
-        <h3>First Test Instructions (Test A)</h3>
+        <h3>First Test Instructions</h3>
         <p id="instructionMessage">Loading instructions...</p>
       </div>
 
@@ -206,7 +124,7 @@
     let currentId = 1;
 
     window.addEventListener('DOMContentLoaded', () => {
-      // Auto-assign or retrieve ID
+      // Auto-assign or retrieve ID silently in background for randomization
       let savedId = sessionStorage.getItem('participantId');
       if (!savedId) {
         let lastId = parseInt(localStorage.getItem('lastParticipantId') || '0', 10);
@@ -218,33 +136,16 @@
       }
 
       currentId = savedId;
-      document.getElementById('idInput').value = currentId;
       updateDisplay();
     });
 
-    function handleIdChange(newVal) {
-      const parsed = parseInt(newVal, 10);
-      if (!isNaN(parsed) && parsed > 0) {
-        currentId = parsed;
-        sessionStorage.setItem('participantId', currentId);
-        updateDisplay();
-      }
-    }
-
     function updateDisplay() {
-      document.getElementById('idDisplay').textContent = `#${currentId}`;
-      const groupBadge = document.getElementById('groupBadge');
       const msgElement = document.getElementById('instructionMessage');
-
       const isGroup1 = (currentId % 2 !== 0); // Odd ID = Group 1, Even ID = Group 2
 
       if (isGroup1) {
-        groupBadge.textContent = 'Group 1 (Odd ID)';
-        groupBadge.className = 'group-badge group-1-badge';
         msgElement.innerHTML = 'Now you take the first test <strong>WITH MUSIC</strong>. If you are ready to play the specified music with your headphone, press start to start the test.';
       } else {
-        groupBadge.textContent = 'Group 2 (Even ID)';
-        groupBadge.className = 'group-badge group-2-badge';
         msgElement.innerHTML = 'Now you take the first test <strong>WITHOUT MUSIC</strong>. Press start to start the test.';
       }
     }

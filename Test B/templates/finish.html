@@ -87,10 +87,8 @@
 
       <!-- Participant & Experiment Data Summary -->
       <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 18px; margin: 15px 0; text-align: left;">
-        <h3 style="font-size: 1.05em; color: #1e293b; margin-bottom: 12px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;">📋 Summary of Participant Data</h3>
+        <h3 style="font-size: 1.05em; color: #1e293b; margin-bottom: 12px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;">📋 Summary of Study Data</h3>
         
-        <p style="font-size: 0.95em; margin-bottom: 6px; color: #334155;"><strong>Participant ID:</strong> <span id="summaryId">#1</span></p>
-        <p style="font-size: 0.95em; margin-bottom: 6px; color: #334155;"><strong>Assigned Group:</strong> <span id="summaryGroup">Group 1 (Odd ID)</span></p>
         <p style="font-size: 0.95em; margin-bottom: 6px; color: #334155;"><strong>Test 1 (Test A):</strong> <span id="summaryTest1Cond">-</span> | Time: <span id="summaryTest1Time">00:00:00</span> | Paas Mental Effort: <span id="summaryPaas1">5/9</span></p>
         <p style="font-size: 0.95em; margin-bottom: 12px; color: #334155;"><strong>Test 2 (Test B):</strong> <span id="summaryTest2Cond">-</span> | Time: <span id="summaryTest2Time">00:00:00</span> | Paas Mental Effort: <span id="summaryPaas2">5/9</span></p>
         
@@ -141,9 +139,6 @@
       const pId = sessionStorage.getItem('participantId') || '1';
       const isGroup1 = (parseInt(pId, 10) % 2 !== 0);
 
-      document.getElementById('summaryId').textContent = `#${pId}`;
-      document.getElementById('summaryGroup').textContent = isGroup1 ? 'Group 1 (Odd ID)' : 'Group 2 (Even ID)';
-      
       document.getElementById('summaryTest1Cond').textContent = sessionStorage.getItem('test1Condition') || (isGroup1 ? 'With Music' : 'Without Music');
       document.getElementById('summaryTest2Cond').textContent = sessionStorage.getItem('test2Condition') || (isGroup1 ? 'Without Music' : 'With Music');
       
