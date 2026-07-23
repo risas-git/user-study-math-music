@@ -221,8 +221,8 @@
   </div>
 
   <script>
-    // OPTIONAL: Set your Google Apps Script Webhook URL here to automatically log submissions to a Google Sheet
-    const GOOGLE_SHEET_WEBHOOK_URL = ""; 
+    // Google Apps Script Webhook URL for real-time Google Sheet logging
+    const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyOeOycCIHvjTfB9QzCeYWqtgWnrS9PkdbDNZTQSQQhO1xoFdM8CfVnsmJtdxdK1L8bKg/exec"; 
 
     let studyData = {};
 
@@ -292,18 +292,18 @@
 
     function sendToGoogleSheet(data) {
       const statusEl = document.getElementById('storageStatus');
-      if (statusEl) statusEl.textContent = 'Syncing responses...';
+      if (statusEl) statusEl.textContent = 'Syncing responses to Google Sheet...';
 
       fetch(GOOGLE_SHEET_WEBHOOK_URL, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(data)
       }).then(() => {
-        if (statusEl) statusEl.textContent = '✓ Data successfully recorded to Google Sheet';
+        if (statusEl) statusEl.textContent = '✓ Data recorded to Google Sheet';
       }).catch(err => {
         console.error(err);
-        if (statusEl) statusEl.textContent = 'Note: Local CSV export available below';
+        if (statusEl) statusEl.textContent = 'Note: Local CSV export available';
       });
     }
   </script>
