@@ -53,14 +53,24 @@ function doPost(e) {
 
 ---
 
-## Step 3: Deploy as Web App
+## Step 3: Deploy as Web App & Authorize
+
 1. Click **Deploy** → **New deployment**.
 2. Click the gear icon (⚙️) next to *Select type* and choose **Web app**.
 3. Fill in:
+   - **Description**: `User Study Webhook`
    - **Execute as**: `Me`
    - **Who has access**: `Anyone` *(Crucial so participants can submit without logging into Google)*
 4. Click **Deploy**.
-5. Copy the generated **Web App URL** (e.g. `https://script.google.com/macros/s/.../exec`).
+5. Click **Authorize access** when prompted.
+
+### ⚠️ How to bypass the "Google hasn't verified this app" screen:
+This warning appears because it is your personal Google Apps Script. Follow these 3 simple clicks:
+1. On the *"Google hasn't verified this app"* popup screen, click **"Advanced"** (or *"Erweitert"* at the bottom-left).
+2. Click the link at the bottom that says **"Go to Untitled project (unsafe)"** (or *"Weiter zu Untitled project (unsicher)"*).
+3. Click **"Allow"** (or *"Zulassen"*).
+
+6. Copy the generated **Web App URL** (ends in `/exec`).
 
 ---
 
