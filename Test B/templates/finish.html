@@ -6,42 +6,60 @@
   <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
   <title>Study Completed</title>
   <style>
-    .paas-scale {
-      display: flex;
-      justify-content: space-between;
-      gap: 4px;
-      margin: 12px 0;
-      flex-wrap: wrap;
+    .paas-card {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 20px 0;
+      text-align: left;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     }
-    .paas-option {
-      flex: 1;
-      min-width: 32px;
+    .paas-card h3 {
+      font-size: 1.15em;
+      color: #0f172a;
+      margin-bottom: 6px;
       text-align: center;
     }
-    .paas-option input {
-      display: none;
-    }
-    .paas-option label {
-      display: block;
-      padding: 8px 0;
-      background: #f1f5f9;
-      border: 1px solid #cbd5e1;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
+    .paas-prompt {
+      font-size: 1em;
+      font-style: italic;
       color: #334155;
-      transition: all 0.2s;
+      margin-bottom: 16px;
+      text-align: center;
     }
-    .paas-option input:checked + label {
-      background: #7c3aed;
-      color: white;
+    .paas-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .paas-item {
+      display: flex;
+      align-items: center;
+      padding: 10px 14px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .paas-item:hover {
+      background: #f1f5f9;
       border-color: #7c3aed;
     }
-    .paas-labels {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.8em;
-      color: #64748b;
+    .paas-item input[type="radio"] {
+      margin-right: 12px;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: #7c3aed;
+    }
+    .paas-item label {
+      font-size: 0.95em;
+      color: #1e293b;
+      font-weight: 500;
+      cursor: pointer;
+      width: 100%;
     }
   </style>
 </head>
@@ -58,25 +76,20 @@
       </p>
 
       <!-- Paas Scale Measurement for Test 2 -->
-      <div id="paasSection" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 18px; margin: 15px 0; text-align: left;">
-        <h3 style="font-size: 1em; color: #1e293b; margin-bottom: 8px;">📊 Paas Scale: Mental Effort Rating (Test 2)</h3>
-        <p style="font-size: 0.9em; color: #475569; margin-bottom: 10px;">Please rate the mental effort you invested in performing the math exercises in Test 2:</p>
+      <div class="paas-card">
+        <h3>Paas Subjective Mental Effort Scale (Test 2)</h3>
+        <p class="paas-prompt">In solving or studying the preceding problem I invested:</p>
         
-        <div class="paas-scale">
-          <div class="paas-option"><input type="radio" name="paas2" id="paas2_1" value="1" onchange="savePaas2(1)"><label for="paas2_1">1</label></div>
-          <div class="paas-option"><input type="radio" name="paas2" id="paas2_2" value="2" onchange="savePaas2(2)"><label for="paas2_2">2</label></div>
-          <div class="paas-option"><input type="radio" name="paas2" id="paas2_3" value="3" onchange="savePaas2(3)"><label for="paas2_3">3</label></div>
-          <div class="paas-option"><input type="radio" name="paas2" id="paas2_4" value="4" onchange="savePaas2(4)"><label for="paas2_4">4</label></div>
-          <div class="paas-option"><input type="radio" name="paas2" id="paas2_5" value="5" checked onchange="savePaas2(5)"><label for="paas2_5">5</label></div>
-          <div class="paas-option"><input type="radio" name="paas2" id="paas2_6" value="6" onchange="savePaas2(6)"><label for="paas2_6">6</label></div>
-          <div class="paas-option"><input type="radio" name="paas2" id="paas2_7" value="7" onchange="savePaas2(7)"><label for="paas2_7">7</label></div>
-          <div class="paas-option"><input type="radio" name="paas2" id="paas2_8" value="8" onchange="savePaas2(8)"><label for="paas2_8">8</label></div>
-          <div class="paas-option"><input type="radio" name="paas2" id="paas2_9" value="9" onchange="savePaas2(9)"><label for="paas2_9">9</label></div>
-        </div>
-        <div class="paas-labels">
-          <span>1 = Very, very low effort</span>
-          <span>5 = Medium effort</span>
-          <span>9 = Very, very high effort</span>
+        <div class="paas-list">
+          <div class="paas-item"><input type="radio" name="paas2" id="p2_1" value="1. very, very low mental effort" onchange="savePaas2(this.value)"><label for="p2_1">1. very, very low mental effort</label></div>
+          <div class="paas-item"><input type="radio" name="paas2" id="p2_2" value="2. very low mental effort" onchange="savePaas2(this.value)"><label for="p2_2">2. very low mental effort</label></div>
+          <div class="paas-item"><input type="radio" name="paas2" id="p2_3" value="3. low mental effort" onchange="savePaas2(this.value)"><label for="p2_3">3. low mental effort</label></div>
+          <div class="paas-item"><input type="radio" name="paas2" id="p2_4" value="4. rather low mental effort" onchange="savePaas2(this.value)"><label for="p2_4">4. rather low mental effort</label></div>
+          <div class="paas-item"><input type="radio" name="paas2" id="p2_5" value="5. neither low nor high mental effort" checked onchange="savePaas2(this.value)"><label for="p2_5">5. neither low nor high mental effort</label></div>
+          <div class="paas-item"><input type="radio" name="paas2" id="p2_6" value="6. rather high mental effort" onchange="savePaas2(this.value)"><label for="p2_6">6. rather high mental effort</label></div>
+          <div class="paas-item"><input type="radio" name="paas2" id="p2_7" value="7. high mental effort" onchange="savePaas2(this.value)"><label for="p2_7">7. high mental effort</label></div>
+          <div class="paas-item"><input type="radio" name="paas2" id="p2_8" value="8. very high mental effort" onchange="savePaas2(this.value)"><label for="p2_8">8. very high mental effort</label></div>
+          <div class="paas-item"><input type="radio" name="paas2" id="p2_9" value="9. very, very high mental effort" onchange="savePaas2(this.value)"><label for="p2_9">9. very, very high mental effort</label></div>
         </div>
       </div>
 
@@ -89,9 +102,12 @@
       <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 18px; margin: 15px 0; text-align: left;">
         <h3 style="font-size: 1.05em; color: #1e293b; margin-bottom: 12px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;">📋 Summary of Study Data</h3>
         
-        <p style="font-size: 0.95em; margin-bottom: 6px; color: #334155;"><strong>Test 1 (Test A):</strong> <span id="summaryTest1Cond">-</span> | Time: <span id="summaryTest1Time">00:00:00</span> | Paas Mental Effort: <span id="summaryPaas1">5/9</span></p>
-        <p style="font-size: 0.95em; margin-bottom: 12px; color: #334155;"><strong>Test 2 (Test B):</strong> <span id="summaryTest2Cond">-</span> | Time: <span id="summaryTest2Time">00:00:00</span> | Paas Mental Effort: <span id="summaryPaas2">5/9</span></p>
+        <p style="font-size: 0.95em; margin-bottom: 6px; color: #334155;"><strong>Test 1 (Test A):</strong> <span id="summaryTest1Cond">-</span> | Time: <span id="summaryTest1Time">00:00:00</span></p>
+        <p style="font-size: 0.9em; margin-bottom: 10px; color: #475569; padding-left: 12px; border-left: 3px solid #0284c7;">• Paas Mental Effort (Test 1): <span id="summaryPaas1">5. neither low nor high mental effort</span></p>
         
+        <p style="font-size: 0.95em; margin-bottom: 6px; color: #334155;"><strong>Test 2 (Test B):</strong> <span id="summaryTest2Cond">-</span> | Time: <span id="summaryTest2Time">00:00:00</span></p>
+        <p style="font-size: 0.9em; margin-bottom: 14px; color: #475569; padding-left: 12px; border-left: 3px solid #7c3aed;">• Paas Mental Effort (Test 2): <span id="summaryPaas2">5. neither low nor high mental effort</span></p>
+
         <h4 style="font-size: 0.95em; color: #1e293b; margin-bottom: 6px; margin-top: 10px;">Pretest Scores:</h4>
         <p style="font-size: 0.9em; margin-bottom: 4px; color: #475569;">• Working Memory Capacity: <span id="summaryCorsi">-</span></p>
         <p style="font-size: 0.9em; margin-bottom: 4px; color: #475569;">• Personality Traits (BFI-2-XS): <span id="summaryBfi">-</span></p>
@@ -108,7 +124,7 @@
   <script>
     function savePaas2(val) {
       sessionStorage.setItem('paasScale_Test2', val);
-      document.getElementById('summaryPaas2').textContent = `${val}/9`;
+      document.getElementById('summaryPaas2').textContent = val;
     }
 
     (function() {
@@ -133,7 +149,7 @@
       }
 
       // Default Paas 2
-      savePaas2(5);
+      savePaas2("5. neither low nor high mental effort");
 
       // Populate Summary fields
       const pId = sessionStorage.getItem('participantId') || '1';
@@ -145,7 +161,7 @@
       document.getElementById('summaryTest1Time').textContent = sessionStorage.getItem('test1TimeFormatted') || '00:00:00';
       document.getElementById('summaryTest2Time').textContent = formattedBTime;
 
-      document.getElementById('summaryPaas1').textContent = `${sessionStorage.getItem('paasScale_Test1') || '5'}/9`;
+      document.getElementById('summaryPaas1').textContent = sessionStorage.getItem('paasScale_Test1') || '5. neither low nor high mental effort';
 
       document.getElementById('summaryCorsi').textContent = sessionStorage.getItem('pretest_corsi') || 'Not provided';
       document.getElementById('summaryBfi').textContent = sessionStorage.getItem('pretest_bfi') || 'Not provided';
