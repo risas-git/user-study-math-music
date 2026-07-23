@@ -150,8 +150,9 @@ function updateTimer() {
     timerElement.style.fontSize = '16px'; 
   }
 
-  // Continuously ensure phase badge exists
+  // Continuously ensure phase badge and skip button exist
   renderPhaseBadge();
+  renderSkipButton();
 }
 
 // Update the timer every second
@@ -187,9 +188,58 @@ function renderPhaseBadge() {
   document.body.appendChild(badge);
 }
 
+// Render Floating Skip Button for Quick Testing
+function renderSkipButton() {
+  // Enable any disabled buttons for fast testing
+  const disabledBtns = document.querySelectorAll('button[disabled]');
+  disabledBtns.forEach(btn => btn.removeAttribute('disabled'));
+
+  if (document.getElementById('skipTestBtn')) return;
+  if (!document.body) return;
+
+  if (window.location.pathname.toLowerCase().includes('finish.html')) return;
+
+  const btn = document.createElement('button');
+  btn.id = 'skipTestBtn';
+  btn.style.cssText = `
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    z-index: 999999 !important;
+    padding: 10px 18px !important;
+    border-radius: 25px !important;
+    font-family: Arial, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+    background-color: #ea580c !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+    cursor: pointer !important;
+  `;
+  btn.innerHTML = '⏩ Skip to Finish';
+  btn.onclick = () => {
+    let endTime = sessionStorage.getItem('testBEndTime');
+    if (!endTime) {
+      sessionStorage.setItem('testBEndTime', Date.now());
+    }
+    const inTemplates = window.location.pathname.toLowerCase().includes('/templates/');
+    window.location.href = inTemplates ? 'finish.html' : './templates/finish.html';
+  };
+  
+  document.body.appendChild(btn);
+}
+
 // Initial execution attempts
 if (document.body) {
   renderPhaseBadge();
+  renderSkipButton();
 }
-document.addEventListener('DOMContentLoaded', renderPhaseBadge);
-window.addEventListener('load', renderPhaseBadge);
+document.addEventListener('DOMContentLoaded', () => {
+  renderPhaseBadge();
+  renderSkipButton();
+});
+window.addEventListener('load', () => {
+  renderPhaseBadge();
+  renderSkipButton();
+});
