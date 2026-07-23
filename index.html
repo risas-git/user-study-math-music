@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Study - Select Test</title>
+  <title>User Study - Pretest Assessment & Test Selection</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,7 +14,12 @@
       --accent-b: #7c3aed;
       --accent-b-hover: #6b21a8;
       --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      --card-bg: #ffffff;
       --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --link-color: #2563eb;
+      --link-hover: #1d4ed8;
     }
 
     * {
@@ -31,19 +36,18 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 2rem 1rem;
+      justify-content: flex-start;
+      padding: 2.5rem 1rem;
     }
 
     .container {
       width: 100%;
-      max-width: 600px;
+      max-width: 720px;
       margin: 0 auto;
-      text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 2.5rem;
+      gap: 2rem;
     }
 
     .logo-container img {
@@ -52,16 +56,151 @@
       height: auto;
     }
 
+    .header-box {
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .header-box h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .header-box p {
+      font-size: 0.975rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .pretests-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .pretest-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      text-align: left;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .pretest-card:hover {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    .badge {
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      border: 1px solid #bfdbfe;
+    }
+
+    .instruction-text {
+      font-size: 0.9rem;
+      color: #475569;
+      background: #f8fafc;
+      padding: 0.6rem 0.8rem;
+      border-radius: 6px;
+      border-left: 3px solid #0284c7;
+    }
+
+    .link-box {
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+
+    .link-box a {
+      color: var(--link-color);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 0.15s ease;
+    }
+
+    .link-box a:hover {
+      color: var(--link-hover);
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-top: 0.25rem;
+    }
+
+    .input-group label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      font-size: 0.95rem;
+      font-family: inherit;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .input-group input:focus {
+      border-color: #0284c7;
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    }
+
+    .selection-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .selection-section h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
     .button-group {
       display: flex;
       flex-direction: column;
-      sm-flex-direction: row;
-      gap: 1.5rem;
+      gap: 1.25rem;
       width: 100%;
-      max-width: 480px;
+      max-width: 500px;
     }
 
-    @media (min-width: 480px) {
+    @media (min-width: 520px) {
       .button-group {
         flex-direction: row;
       }
@@ -72,14 +211,16 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 1.25rem 2rem;
-      font-size: 1.25rem;
+      padding: 1.1rem 1.75rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: #ffffff;
       border-radius: 12px;
       text-decoration: none;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
       transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      border: none;
     }
 
     .btn:hover {
@@ -111,11 +252,109 @@
       <img src="./Test A/static/Logo.png" alt="Study Logo" />
     </div>
 
-    <div class="button-group">
-      <a href="./Test A/index.html" class="btn btn-a" onclick="sessionStorage.setItem('testStartTime', Date.now()); sessionStorage.removeItem('testEndTime');">Test A</a>
-      <a href="./Test B/index.html" class="btn btn-b" onclick="sessionStorage.setItem('testStartTime', Date.now()); sessionStorage.removeItem('testEndTime');">Test B</a>
+    <div class="header-box">
+      <h1>Participant Pretest Scores</h1>
+      <p>Please enter your scores for each of the pretests below. If you have not completed a pretest yet, click the provided links to take it before starting the test.</p>
+    </div>
+
+    <div class="pretests-container">
+      
+      <!-- Pretest 1: Working Memory -->
+      <div class="pretest-card">
+        <div class="card-header">
+          <div class="card-title">1. Working Memory Capacity Test</div>
+          <span class="badge">~3 minutes</span>
+        </div>
+        <div class="instruction-text">
+          💡 Instructions: Click <strong>"Run the demo"</strong> on the test page.
+        </div>
+        <div class="link-box">
+          If you haven't done it yet before, then do it from here: 
+          <a href="https://www.psytoolkit.org/experiment-library/backward_corsi.html" target="_blank" rel="noopener noreferrer">Take Working Memory Capacity Test ↗</a>
+        </div>
+        <div class="input-group">
+          <label for="score_corsi">Enter the score for Working Memory Capacity Test:</label>
+          <input type="text" id="score_corsi" placeholder="Enter your score" />
+        </div>
+      </div>
+
+      <!-- Pretest 2: Personality Traits -->
+      <div class="pretest-card">
+        <div class="card-header">
+          <div class="card-title">2. Personality Traits</div>
+          <span class="badge">15 Questions, ~3 minutes</span>
+        </div>
+        <div class="instruction-text">
+          💡 Instructions: Select <strong>Big Five Inventory, BFI-2-XS</strong> on the test page.
+        </div>
+        <div class="link-box">
+          If you haven't done it yet before, then do it from here: 
+          <a href="https://psytests.org/big5/bfiSen.html" target="_blank" rel="noopener noreferrer">Take Personality Traits Assessment ↗</a>
+        </div>
+        <div class="input-group">
+          <label for="score_bfi">Enter the score for Personality Traits:</label>
+          <input type="text" id="score_bfi" placeholder="Enter your score" />
+        </div>
+      </div>
+
+      <!-- Pretest 3: Math Anxiety Scale -->
+      <div class="pretest-card">
+        <div class="card-header">
+          <div class="card-title">3. Math Anxiety Scale</div>
+          <span class="badge">9 Questions, ~2 minutes</span>
+        </div>
+        <div class="instruction-text">
+          💡 Instructions: Click <strong>"Run the demo"</strong> on the survey page.
+        </div>
+        <div class="link-box">
+          If you haven't done it yet before, then do it from here: 
+          <a href="https://www.psytoolkit.org/survey-library/math-anxiety-amas.html" target="_blank" rel="noopener noreferrer">Take Math Anxiety Scale ↗</a>
+        </div>
+        <div class="input-group">
+          <label for="score_amas">Enter the score for Math Anxiety Scale:</label>
+          <input type="text" id="score_amas" placeholder="Enter your score" />
+        </div>
+      </div>
+
+    </div>
+
+    <div class="selection-section">
+      <h2>Select Your Test Version to Begin</h2>
+      <div class="button-group">
+        <a href="./Test A/index.html" class="btn btn-a" onclick="savePretestAndStart(event, './Test A/index.html')">Start Test A</a>
+        <a href="./Test B/index.html" class="btn btn-b" onclick="savePretestAndStart(event, './Test B/index.html')">Start Test B</a>
+      </div>
     </div>
   </div>
 
+  <script>
+    // Restore saved scores if returning to main page
+    window.addEventListener('DOMContentLoaded', () => {
+      const corsiVal = sessionStorage.getItem('pretest_corsi');
+      const bfiVal = sessionStorage.getItem('pretest_bfi');
+      const amasVal = sessionStorage.getItem('pretest_amas');
+
+      if (corsiVal) document.getElementById('score_corsi').value = corsiVal;
+      if (bfiVal) document.getElementById('score_bfi').value = bfiVal;
+      if (amasVal) document.getElementById('score_amas').value = amasVal;
+    });
+
+    function savePretestAndStart(event, targetUrl) {
+      event.preventDefault();
+
+      const corsiVal = document.getElementById('score_corsi').value.trim();
+      const bfiVal = document.getElementById('score_bfi').value.trim();
+      const amasVal = document.getElementById('score_amas').value.trim();
+
+      sessionStorage.setItem('pretest_corsi', corsiVal || 'Not provided');
+      sessionStorage.setItem('pretest_bfi', bfiVal || 'Not provided');
+      sessionStorage.setItem('pretest_amas', amasVal || 'Not provided');
+
+      sessionStorage.setItem('testStartTime', Date.now());
+      sessionStorage.removeItem('testEndTime');
+
+      window.location.href = targetUrl;
+    }
+  </script>
 </body>
 </html>
