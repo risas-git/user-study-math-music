@@ -10,6 +10,8 @@
   <style>
     :root {
       --accent-primary: #0284c7;
+      --accent-green: #16a34a;
+      --accent-green-hover: #15803d;
       --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
       --card-bg: #ffffff;
       --text-main: #1e293b;
@@ -116,13 +118,44 @@
       margin-bottom: 0.25rem;
     }
 
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      align-items: center;
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1.75rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+      background-color: var(--accent-green);
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s;
+      width: 100%;
+      max-width: 340px;
+    }
+
+    .btn-download:hover {
+      background-color: var(--accent-green-hover);
+      transform: translateY(-2px);
+    }
+
     .btn-return {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
-      font-weight: 700;
+      padding: 0.85rem 1.75rem;
+      font-size: 1rem;
+      font-weight: 600;
       color: #ffffff;
       background-color: var(--accent-primary);
       border: none;
@@ -130,11 +163,19 @@
       text-decoration: none;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
       transition: all 0.2s;
+      width: 100%;
+      max-width: 340px;
     }
 
     .btn-return:hover {
       background-color: #0369a1;
       transform: translateY(-2px);
+    }
+
+    .status-text {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-top: 0.25rem;
     }
   </style>
 </head>
@@ -171,28 +212,100 @@
         </div>
       </div>
 
-      <a href="./index.html" class="btn-return">Return to Main Page</a>
+      <div class="button-group">
+        <button onclick="downloadCSV()" class="btn-download">📥 Download Data (CSV)</button>
+        <a href="./index.html" class="btn-return">Return to Main Page</a>
+        <p id="storageStatus" class="status-text"></p>
+      </div>
     </div>
   </div>
 
   <script>
+    // OPTIONAL: Set your Google Apps Script Webhook URL here to automatically log submissions to a Google Sheet
+    const GOOGLE_SHEET_WEBHOOK_URL = ""; 
+
+    let studyData = {};
+
     window.addEventListener('DOMContentLoaded', () => {
       const pId = sessionStorage.getItem('participantId') || '1';
       const isGroup1 = (parseInt(pId, 10) % 2 !== 0);
 
-      document.getElementById('sumTest1Cond').textContent = sessionStorage.getItem('test1Condition') || (isGroup1 ? 'With Music' : 'Without Music');
-      document.getElementById('sumTest2Cond').textContent = sessionStorage.getItem('test2Condition') || (isGroup1 ? 'Without Music' : 'With Music');
-      
-      document.getElementById('sumTest1Time').textContent = sessionStorage.getItem('test1TimeFormatted') || '00:00:00';
-      document.getElementById('sumTest2Time').textContent = sessionStorage.getItem('test2TimeFormatted') || '00:00:00';
+      studyData = {
+        timestamp: new Date().toISOString(),
+        participantId: pId,
+        group: isGroup1 ? 'Group 1' : 'Group 2',
+        test1_condition: sessionStorage.getItem('test1Condition') || (isGroup1 ? 'With Music' : 'Without Music'),
+        test1_time: sessionStorage.getItem('test1TimeFormatted') || '00:00:00',
+        test1_mental_effort: sessionStorage.getItem('paasScale_Test1') || '5. neither low nor high mental effort',
+        test2_condition: sessionStorage.getItem('test2Condition') || (isGroup1 ? 'Without Music' : 'With Music'),
+        test2_time: sessionStorage.getItem('test2TimeFormatted') || '00:00:00',
+        test2_mental_effort: sessionStorage.getItem('paasScale_Test2') || '5. neither low nor high mental effort',
+        pretest_corsi: sessionStorage.getItem('pretest_corsi') || 'Not provided',
+        pretest_bfi: sessionStorage.getItem('pretest_bfi') || 'Not provided',
+        pretest_amas: sessionStorage.getItem('pretest_amas') || 'Not provided'
+      };
 
-      document.getElementById('sumPaas1').textContent = sessionStorage.getItem('paasScale_Test1') || '5. neither low nor high mental effort';
-      document.getElementById('sumPaas2').textContent = sessionStorage.getItem('paasScale_Test2') || '5. neither low nor high mental effort';
+      document.getElementById('sumTest1Cond').textContent = studyData.test1_condition;
+      document.getElementById('sumTest1Time').textContent = studyData.test1_time;
+      document.getElementById('sumPaas1').textContent = studyData.test1_mental_effort;
 
-      document.getElementById('sumCorsi').textContent = sessionStorage.getItem('pretest_corsi') || 'Not provided';
-      document.getElementById('sumBfi').textContent = sessionStorage.getItem('pretest_bfi') || 'Not provided';
-      document.getElementById('sumAmas').textContent = sessionStorage.getItem('pretest_amas') || 'Not provided';
+      document.getElementById('sumTest2Cond').textContent = studyData.test2_condition;
+      document.getElementById('sumTest2Time').textContent = studyData.test2_time;
+      document.getElementById('sumPaas2').textContent = studyData.test2_mental_effort;
+
+      document.getElementById('sumCorsi').textContent = studyData.pretest_corsi;
+      document.getElementById('sumBfi').textContent = studyData.pretest_bfi;
+      document.getElementById('sumAmas').textContent = studyData.pretest_amas;
+
+      // Auto-submit to Google Sheet Webhook if configured
+      if (GOOGLE_SHEET_WEBHOOK_URL) {
+        sendToGoogleSheet(studyData);
+      }
     });
+
+    function downloadCSV() {
+      const headers = ["Timestamp", "Participant ID", "Group", "Pretest WMC", "Pretest BFI", "Pretest AMAS", "Test 1 Condition", "Test 1 Time", "Test 1 Mental Effort", "Test 2 Condition", "Test 2 Time", "Test 2 Mental Effort"];
+      const row = [
+        `"${studyData.timestamp}"`,
+        `"${studyData.participantId}"`,
+        `"${studyData.group}"`,
+        `"${studyData.pretest_corsi.replace(/"/g, '""')}"`,
+        `"${studyData.pretest_bfi.replace(/"/g, '""')}"`,
+        `"${studyData.pretest_amas.replace(/"/g, '""')}"`,
+        `"${studyData.test1_condition}"`,
+        `"${studyData.test1_time}"`,
+        `"${studyData.test1_mental_effort.replace(/"/g, '""')}"`,
+        `"${studyData.test2_condition}"`,
+        `"${studyData.test2_time}"`,
+        `"${studyData.test2_mental_effort.replace(/"/g, '""')}"`
+      ];
+
+      const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), row.join(",")].join("\n");
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", `participant_data_id${studyData.participantId}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function sendToGoogleSheet(data) {
+      const statusEl = document.getElementById('storageStatus');
+      if (statusEl) statusEl.textContent = 'Syncing responses...';
+
+      fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(() => {
+        if (statusEl) statusEl.textContent = '✓ Data successfully recorded to Google Sheet';
+      }).catch(err => {
+        console.error(err);
+        if (statusEl) statusEl.textContent = 'Note: Local CSV export available below';
+      });
+    }
   </script>
 </body>
 </html>
