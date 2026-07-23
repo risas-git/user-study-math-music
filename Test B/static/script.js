@@ -1,27 +1,5 @@
 const correctAnswers = {}; // Initialize as an empty object
 const firstAttempts = {};
-//const questionContainer = document.getElementById("questionContainer");
-// Load the question on the main html file
-/* function loadQuestions(questionsArray) {
-  const currentQuestion = questionsArray[currentQuestionIndex];
-
-  const questionDiv = document.createElement("div");
-  questionDiv.id = currentQuestion.id;
-  questionDiv.innerHTML = `
-    <p>${currentQuestion.question}</p>
-    ${currentQuestion.options
-      .map(
-        (option, index) =>
-          `<input type="radio" id="${currentQuestion.id}_option${index}" name="${currentQuestion.id}" value="${option.value}">
-           <label for="${currentQuestion.id}_option${index}">${option.label}</label><br>`
-      )
-      .join("")}
-    <button onclick="checkAnswer('${currentQuestion.id}', '${currentQuestion.correctAnswer}')">Check & Submit</button>
-  `;
-
-  questionContainer.innerHTML = "";
-  questionContainer.appendChild(questionDiv);
-} */
 
 // Store first attempts
 function checkAnswer(questionId, correctAnswer) {
@@ -59,7 +37,6 @@ function checkAnswer(questionId, correctAnswer) {
   }
 }
 
-//disableRadioButtons(options);
 // Check answers for all questions and display results
 function checkAnswers(lastPage) {
   event.preventDefault();
@@ -115,7 +92,6 @@ function checkAnswers(lastPage) {
     resultMessage.innerHTML = "No answers were selected.";
   }
 
-
   dialog.showModal();
   const closeButton = document.querySelector("#closeButton");
   closeButton.addEventListener("click", () => {
@@ -131,22 +107,24 @@ function showNextQuestionDiv(nextDivId, currentDivId) {
   const nextDiv = document.getElementById(nextDivId);
   nextDiv.style.display = 'block';
 }
+
 // Open next page
 function openPage(pagePath) {
   window.location.href = pagePath;
 }
+
 // Display time from start of test
-let startTime = parseInt(sessionStorage.getItem('testStartTime'), 10);
+let startTime = parseInt(sessionStorage.getItem('testBStartTime') || sessionStorage.getItem('testStartTime'), 10);
 if (!startTime || isNaN(startTime)) {
   startTime = Date.now();
-  sessionStorage.setItem('testStartTime', startTime);
+  sessionStorage.setItem('testBStartTime', startTime);
 }
 
 function updateTimer() {
   const timerElement = document.getElementById('timer');
   if (!timerElement) return;
 
-  const savedEndTime = sessionStorage.getItem('testEndTime');
+  const savedEndTime = sessionStorage.getItem('testBEndTime');
   const currentTime = savedEndTime ? parseInt(savedEndTime, 10) : Date.now();
   const elapsedTime = currentTime - startTime;
 
@@ -163,5 +141,35 @@ function updateTimer() {
 setInterval(updateTimer, 1000);
 updateTimer();
 
-    // button style 
-    // https://designmodo.com/create-css3-buttons/
+// Render Top-Right Persistent Phase Badge (With / Without Music)
+function renderPhaseBadge() {
+  if (document.getElementById('phaseHeaderBadge')) return;
+  const cond = sessionStorage.getItem('test2Condition') || 'Without Music';
+  const isMusic = cond.toLowerCase().includes('with music') && !cond.toLowerCase().includes('without');
+  
+  const badge = document.createElement('div');
+  badge.id = 'phaseHeaderBadge';
+  badge.style.cssText = `
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    z-index: 10000;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    background-color: ${isMusic ? '#7c3aed' : '#475569'};
+    color: #ffffff;
+    border: 2px solid #ffffff;
+  `;
+  badge.innerHTML = isMusic ? '🎵 Phase 2: WITH MUSIC' : '🔇 Phase 2: WITHOUT MUSIC';
+  document.body.appendChild(badge);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', renderPhaseBadge);
+} else {
+  renderPhaseBadge();
+}

@@ -56,7 +56,7 @@
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 1.75rem;
+      gap: 1.5rem;
       align-items: center;
     }
 
@@ -79,6 +79,14 @@
       font-size: 1.1rem;
       line-height: 1.6;
       color: #334155;
+    }
+
+    .btn-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.65rem;
+      width: 100%;
     }
 
     .btn-start {
@@ -105,6 +113,12 @@
       transform: translateY(-2px);
       box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     }
+
+    .timer-note {
+      font-size: 0.925rem;
+      color: #dc2626;
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
@@ -116,7 +130,10 @@
         <p id="instructionMessage">Loading instructions...</p>
       </div>
 
-      <button class="btn-start" onclick="startFirstTest()">Start Test 1</button>
+      <div class="btn-wrapper">
+        <button class="btn-start" onclick="startFirstTest()">Start Test 1</button>
+        <p class="timer-note">⏱️ Note: Once you press start, the time is counting.</p>
+      </div>
     </div>
   </div>
 
