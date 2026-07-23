@@ -221,7 +221,7 @@
   </div>
 
   <script>
-    // Google Apps Script Webhook URL for real-time Google Sheet logging
+    // Google Apps Script Webhook URL
     const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyOeOycCIHvjTfB9QzCeYWqtgWnrS9PkdbDNZTQSQQhO1xoFdM8CfVnsmJtdxdK1L8bKg/exec"; 
 
     let studyData = {};
@@ -257,7 +257,7 @@
       document.getElementById('sumBfi').textContent = studyData.pretest_bfi;
       document.getElementById('sumAmas').textContent = studyData.pretest_amas;
 
-      // Auto-submit to Google Sheet Webhook if configured
+      // Auto-submit to Google Sheet Webhook
       if (GOOGLE_SHEET_WEBHOOK_URL) {
         sendToGoogleSheet(studyData);
       }
@@ -294,16 +294,21 @@
       const statusEl = document.getElementById('storageStatus');
       if (statusEl) statusEl.textContent = 'Syncing responses to Google Sheet...';
 
+      const formData = new URLSearchParams();
+      for (const key in data) {
+        formData.append(key, data[key]);
+      }
+
       fetch(GOOGLE_SHEET_WEBHOOK_URL, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(data)
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formData.toString()
       }).then(() => {
         if (statusEl) statusEl.textContent = '✓ Data recorded to Google Sheet';
       }).catch(err => {
         console.error(err);
-        if (statusEl) statusEl.textContent = 'Note: Local CSV export available';
+        if (statusEl) statusEl.textContent = 'Note: Local CSV export available below';
       });
     }
   </script>
