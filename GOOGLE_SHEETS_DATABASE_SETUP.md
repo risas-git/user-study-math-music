@@ -23,7 +23,12 @@ You can automatically store every participant's study results directly into a **
 function doPost(e) {
   try {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    var data = JSON.parse(e.postData.contents);
+    var data = {};
+    if (e && e.postData && e.postData.contents) {
+      data = JSON.parse(e.postData.contents);
+    } else if (e && e.parameter) {
+      data = e.parameter;
+    }
     
     sheet.appendRow([
       data.timestamp || new Date().toISOString(),
