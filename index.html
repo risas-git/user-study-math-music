@@ -172,7 +172,9 @@
     .action-section {
       width: 100%;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
       margin-top: 1rem;
     }
 
@@ -277,8 +279,14 @@
   </div>
 
   <script>
-    // Restore saved scores if returning to pretest page
     window.addEventListener('DOMContentLoaded', () => {
+      // Check if URL has ?reset=true or ?reset=1 to reset participant ID counter back to 1
+      if (window.location.search.includes('reset=')) {
+        localStorage.removeItem('lastParticipantId');
+        sessionStorage.clear();
+      }
+
+      // Restore saved scores if returning to pretest page in same session
       const corsiVal = sessionStorage.getItem('pretest_corsi');
       const bfiVal = sessionStorage.getItem('pretest_bfi');
       const amasVal = sessionStorage.getItem('pretest_amas');

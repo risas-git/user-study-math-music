@@ -214,7 +214,7 @@
 
       <div class="button-group">
         <button onclick="downloadCSV()" class="btn-download">📥 Download Data (CSV)</button>
-        <a href="./index.html" class="btn-return">Return to Main Page</a>
+        <a href="./index.html" class="btn-return" onclick="sessionStorage.clear()">Return to Main Page</a>
         <p id="storageStatus" class="status-text"></p>
       </div>
     </div>
@@ -294,16 +294,16 @@
       const statusEl = document.getElementById('storageStatus');
       if (statusEl) statusEl.textContent = 'Syncing responses to Google Sheet...';
 
-      const formData = new URLSearchParams();
+      const params = new URLSearchParams();
       for (const key in data) {
-        formData.append(key, data[key]);
+        params.append(key, data[key]);
       }
 
-      fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+      fetch(GOOGLE_SHEET_WEBHOOK_URL + "?" + params.toString(), {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: formData.toString()
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(data)
       }).then(() => {
         if (statusEl) statusEl.textContent = '✓ Data recorded to Google Sheet';
       }).catch(err => {
