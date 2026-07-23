@@ -3,19 +3,25 @@ const firstAttempts = {};
 
 // Store first attempts
 function checkAnswer(questionId, correctAnswer) {
-  event.preventDefault();
+  if (typeof event !== 'undefined' && event && event.preventDefault) {
+    event.preventDefault();
+  }
   const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`);
   const resultMessage = document.querySelector(`#resultMessage_${questionId}`);
 
   if (!selectedAnswer) {
-    resultMessage.innerHTML = "Please select an option";
-    resultMessage.style.color = "red";
+    if (resultMessage) {
+      resultMessage.innerHTML = "Please select an option";
+      resultMessage.style.color = "red";
+    }
     return;
   }
 
   if (selectedAnswer.value === correctAnswer) {
-    resultMessage.innerHTML = "Correct answer!";
-    resultMessage.style.color = "green";
+    if (resultMessage) {
+      resultMessage.innerHTML = "Correct answer!";
+      resultMessage.style.color = "green";
+    }
     
     // Update correctAnswers based on first attempt
     if (!correctAnswers[questionId]) {
@@ -27,8 +33,10 @@ function checkAnswer(questionId, correctAnswer) {
       firstAttempts[questionId] = [selectedAnswer.value];
     }
   } else {
-    resultMessage.innerHTML = "Incorrect.";
-    resultMessage.style.color = "red";
+    if (resultMessage) {
+      resultMessage.innerHTML = "Incorrect.";
+      resultMessage.style.color = "red";
+    }
     
     // Store first attempt
     if (!firstAttempts[questionId]) {
@@ -39,7 +47,9 @@ function checkAnswer(questionId, correctAnswer) {
 
 // Check answers for all questions and display results
 function checkAnswers(lastPage) {
-  event.preventDefault();
+  if (typeof event !== 'undefined' && event && event.preventDefault) {
+    event.preventDefault();
+  }
   const dialog = document.querySelector("#resultDialog");
   const resultMessage = document.querySelector("#resultMessage");
 
@@ -64,9 +74,9 @@ function checkAnswers(lastPage) {
 
   if (correctCount >= 2) {
     resultMessage.innerHTML += "<br>Congratulations! You passed this exercise.";
-    nextButton.disabled = false;
-    submitButton3.disabled = true;
-    submitButton.disabled = true;
+    if (typeof nextButton !== 'undefined' && nextButton) nextButton.disabled = false;
+    if (typeof submitButton3 !== 'undefined' && submitButton3) submitButton3.disabled = true;
+    if (typeof submitButton !== 'undefined' && submitButton) submitButton.disabled = true;
 
     if (lastPage == true) {  
       let endTime = sessionStorage.getItem('testEndTime');
@@ -77,35 +87,39 @@ function checkAnswers(lastPage) {
 
       resultMessage.innerHTML += "<br><br><strong>All exercises are successfully completed!</strong>";
       resultMessage.innerHTML += "<br>Click <strong>End</strong> to view your total time.";
-      nextButton.disabled = false;
-      submitButton3.disabled = true;
-      submitButton.disabled = true;
+      if (typeof nextButton !== 'undefined' && nextButton) nextButton.disabled = false;
+      if (typeof submitButton3 !== 'undefined' && submitButton3) submitButton3.disabled = true;
+      if (typeof submitButton !== 'undefined' && submitButton) submitButton.disabled = true;
     }
   } 
   else {
     resultMessage.innerHTML += "<br>Check Examples and Reattempt Test.";
-    exampleButton.disabled = false;
-    submitButton3.disabled = true;
-    submitButton.disabled = true;
+    if (typeof exampleButton !== 'undefined' && exampleButton) exampleButton.disabled = false;
+    if (typeof submitButton3 !== 'undefined' && submitButton3) submitButton3.disabled = true;
+    if (typeof submitButton !== 'undefined' && submitButton) submitButton.disabled = true;
   }
   if (totalQuestions === 0) {
     resultMessage.innerHTML = "No answers were selected.";
   }
 
-  dialog.showModal();
-  const closeButton = document.querySelector("#closeButton");
-  closeButton.addEventListener("click", () => {
-    dialog.close();
-  });
+  if (dialog) {
+    dialog.showModal();
+    const closeButton = document.querySelector("#closeButton");
+    if (closeButton) {
+      closeButton.addEventListener("click", () => {
+        dialog.close();
+      });
+    }
+  }
 }
 
 // Show individual question
 function showNextQuestionDiv(nextDivId, currentDivId) {
   const currentDiv = document.getElementById(currentDivId);
-  currentDiv.style.display = 'none';
+  if (currentDiv) currentDiv.style.display = 'none';
 
   const nextDiv = document.getElementById(nextDivId);
-  nextDiv.style.display = 'block';
+  if (nextDiv) nextDiv.style.display = 'block';
 }
 
 // Open next page
@@ -122,54 +136,60 @@ if (!startTime || isNaN(startTime)) {
 
 function updateTimer() {
   const timerElement = document.getElementById('timer');
-  if (!timerElement) return;
+  if (timerElement) {
+    const savedEndTime = sessionStorage.getItem('testEndTime');
+    const currentTime = savedEndTime ? parseInt(savedEndTime, 10) : Date.now();
+    const elapsedTime = currentTime - startTime;
 
-  const savedEndTime = sessionStorage.getItem('testEndTime');
-  const currentTime = savedEndTime ? parseInt(savedEndTime, 10) : Date.now();
-  const elapsedTime = currentTime - startTime;
+    const hours = Math.floor(elapsedTime / 3600000);
+    const minutes = Math.floor((elapsedTime % 3600000) / 60000);
+    const seconds = Math.floor((elapsedTime % 60000) / 1000);
 
-  const hours = Math.floor(elapsedTime / 3600000);
-  const minutes = Math.floor((elapsedTime % 3600000) / 60000);
-  const seconds = Math.floor((elapsedTime % 60000) / 1000);
+    const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    timerElement.textContent = formattedTime;
+    timerElement.style.fontSize = '16px';
+  }
 
-  const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-  timerElement.textContent = formattedTime;
-  timerElement.style.fontSize = '16px'; 
+  // Continuously ensure phase badge exists
+  renderPhaseBadge();
 }
 
 // Update the timer every second
 setInterval(updateTimer, 1000);
-updateTimer();
 
 // Render Top-Right Persistent Phase Badge (With / Without Music)
 function renderPhaseBadge() {
   if (document.getElementById('phaseHeaderBadge')) return;
+  if (!document.body) return;
+
   const cond = sessionStorage.getItem('test1Condition') || 'With Music';
   const isMusic = cond.toLowerCase().includes('with music') && !cond.toLowerCase().includes('without');
   
   const badge = document.createElement('div');
   badge.id = 'phaseHeaderBadge';
   badge.style.cssText = `
-    position: fixed;
-    top: 15px;
-    right: 20px;
-    z-index: 10000;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    background-color: ${isMusic ? '#0284c7' : '#475569'};
-    color: #ffffff;
-    border: 2px solid #ffffff;
+    position: fixed !important;
+    top: 15px !important;
+    right: 20px !important;
+    z-index: 999999 !important;
+    padding: 8px 16px !important;
+    border-radius: 20px !important;
+    font-family: Arial, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25) !important;
+    background-color: ${isMusic ? '#0284c7' : '#475569'} !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+    pointer-events: none !important;
   `;
   badge.innerHTML = isMusic ? '🎵 Phase 1: WITH MUSIC' : '🔇 Phase 1: WITHOUT MUSIC';
   document.body.appendChild(badge);
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', renderPhaseBadge);
-} else {
+// Initial execution attempts
+if (document.body) {
   renderPhaseBadge();
 }
+document.addEventListener('DOMContentLoaded', renderPhaseBadge);
+window.addEventListener('load', renderPhaseBadge);
