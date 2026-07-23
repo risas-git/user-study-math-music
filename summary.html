@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You for Your Participation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent-primary: #0284c7;
+      --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #cbd5e1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.75rem;
+      text-align: center;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .header-box h1 {
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .header-box p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .summary-box {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: left;
+      width: 100%;
+    }
+
+    .summary-box h3 {
+      font-size: 1.1rem;
+      color: #0f172a;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 0.5rem;
+    }
+
+    .summary-section {
+      margin-bottom: 1.25rem;
+    }
+
+    .summary-section h4 {
+      font-size: 0.95rem;
+      color: #0284c7;
+      margin-bottom: 0.35rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .summary-row {
+      font-size: 0.95rem;
+      color: #334155;
+      margin-bottom: 0.3rem;
+      line-height: 1.5;
+    }
+
+    .summary-indent {
+      font-size: 0.9rem;
+      color: #475569;
+      padding-left: 0.85rem;
+      border-left: 3px solid #cbd5e1;
+      margin-bottom: 0.25rem;
+    }
+
+    .btn-return {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffffff;
+      background-color: var(--accent-primary);
+      border: none;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s;
+    }
+
+    .btn-return:hover {
+      background-color: #0369a1;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="card">
+      <div class="header-box">
+        <h1>Thank You for Your Participation! 🎉</h1>
+        <p>Thank you for taking part in our study. Your responses and performance data have been recorded successfully.</p>
+      </div>
+
+      <!-- Summary of Study Data -->
+      <div class="summary-box">
+        <h3>📋 Summary of Study Data</h3>
+
+        <div class="summary-section">
+          <h4>Test 1 (Test A)</h4>
+          <div class="summary-row"><strong>Condition:</strong> <span id="sumTest1Cond">-</span> | <strong>Time Taken:</strong> <span id="sumTest1Time">00:00:00</span></div>
+          <div class="summary-indent"><strong>Mental Effort:</strong> <span id="sumPaas1">-</span></div>
+        </div>
+
+        <div class="summary-section">
+          <h4>Test 2 (Test B)</h4>
+          <div class="summary-row"><strong>Condition:</strong> <span id="sumTest2Cond">-</span> | <strong>Time Taken:</strong> <span id="sumTest2Time">00:00:00</span></div>
+          <div class="summary-indent"><strong>Mental Effort:</strong> <span id="sumPaas2">-</span></div>
+        </div>
+
+        <div class="summary-section" style="margin-bottom: 0;">
+          <h4>Pretest Scores</h4>
+          <div class="summary-row">• <strong>Working Memory Capacity:</strong> <span id="sumCorsi">-</span></div>
+          <div class="summary-row">• <strong>Personality Traits (BFI-2-XS):</strong> <span id="sumBfi">-</span></div>
+          <div class="summary-row">• <strong>Math Anxiety Scale (AMAS):</strong> <span id="sumAmas">-</span></div>
+        </div>
+      </div>
+
+      <a href="./index.html" class="btn-return">Return to Main Page</a>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const pId = sessionStorage.getItem('participantId') || '1';
+      const isGroup1 = (parseInt(pId, 10) % 2 !== 0);
+
+      document.getElementById('sumTest1Cond').textContent = sessionStorage.getItem('test1Condition') || (isGroup1 ? 'With Music' : 'Without Music');
+      document.getElementById('sumTest2Cond').textContent = sessionStorage.getItem('test2Condition') || (isGroup1 ? 'Without Music' : 'With Music');
+      
+      document.getElementById('sumTest1Time').textContent = sessionStorage.getItem('test1TimeFormatted') || '00:00:00';
+      document.getElementById('sumTest2Time').textContent = sessionStorage.getItem('test2TimeFormatted') || '00:00:00';
+
+      document.getElementById('sumPaas1').textContent = sessionStorage.getItem('paasScale_Test1') || '5. neither low nor high mental effort';
+      document.getElementById('sumPaas2').textContent = sessionStorage.getItem('paasScale_Test2') || '5. neither low nor high mental effort';
+
+      document.getElementById('sumCorsi').textContent = sessionStorage.getItem('pretest_corsi') || 'Not provided';
+      document.getElementById('sumBfi').textContent = sessionStorage.getItem('pretest_bfi') || 'Not provided';
+      document.getElementById('sumAmas').textContent = sessionStorage.getItem('pretest_amas') || 'Not provided';
+    });
+  </script>
+</body>
+</html>
