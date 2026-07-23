@@ -4,34 +4,97 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
-  <title>Test Completed</title>
+  <title>Test 1 Completed</title>
+  <style>
+    .paas-scale {
+      display: flex;
+      justify-content: space-between;
+      gap: 4px;
+      margin: 15px 0;
+      flex-wrap: wrap;
+    }
+    .paas-option {
+      flex: 1;
+      min-width: 32px;
+      text-align: center;
+    }
+    .paas-option input {
+      display: none;
+    }
+    .paas-option label {
+      display: block;
+      padding: 10px 0;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #334155;
+      transition: all 0.2s;
+    }
+    .paas-option input:checked + label {
+      background: #0284c7;
+      color: white;
+      border-color: #0284c7;
+    }
+    .paas-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8em;
+      color: #64748b;
+    }
+  </style>
 </head>
 <body>
-  <div style="text-align: center; margin-top: 3%; margin-bottom: 2%;"> 
-    <img src="../static/Logo.png" width="40%" alt="Logo" />
+  <div style="text-align: center; margin-top: 2%; margin-bottom: 1%;"> 
+    <img src="../static/Logo.png" width="35%" alt="Logo" />
   </div>
 
-  <div class="centered" style="top: 50%;">  
-    <div class="exercise-box" style="text-align: center; padding: 30px; width: 80%;">
-      <h2 style="margin-bottom: 15px; color: #1e293b;">🎉 Test Completed!</h2>
-      <p style="font-size: 1.1em; line-height: 1.6; margin-bottom: 20px; color: #334155;">
-        Thank you for completing all the exercises in this study.
+  <div style="max-width: 720px; margin: 0 auto; padding: 15px;">  
+    <div class="exercise-box" style="text-align: center; padding: 25px;">
+      <h2 style="margin-bottom: 10px; color: #1e293b;">🎉 Test 1 Completed!</h2>
+      <p style="font-size: 1.05em; line-height: 1.5; color: #334155;">
+        You have successfully completed the first test section.
       </p>
 
-      <div style="background: #ffffff; border: 2px solid #0284c7; border-radius: 12px; padding: 20px; margin: 20px 0;">
-        <p style="font-size: 1em; color: #64748b; margin-bottom: 8px;">Total Time Taken:</p>
-        <h1 id="finalTime" style="font-size: 2.8em; color: #0284c7; font-family: monospace;">00:00:00</h1>
+      <div style="background: #ffffff; border: 2px solid #0284c7; border-radius: 12px; padding: 15px; margin: 15px 0;">
+        <p style="font-size: 0.9em; color: #64748b; margin-bottom: 4px;">Time Taken for Test 1:</p>
+        <h1 id="finalTime" style="font-size: 2.5em; color: #0284c7; font-family: monospace; margin: 0;">00:00:00</h1>
       </div>
 
-      <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 20px; margin: 20px 0; text-align: left;">
-        <h3 style="font-size: 1.1em; color: #1e293b; margin-bottom: 12px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;">📋 Recorded Pretest Scores</h3>
-        <p style="font-size: 0.95em; margin-bottom: 6px; color: #334155;"><strong>Working Memory Capacity:</strong> <span id="summaryCorsi">-</span></p>
-        <p style="font-size: 0.95em; margin-bottom: 6px; color: #334155;"><strong>Personality Traits (BFI-2-XS):</strong> <span id="summaryBfi">-</span></p>
-        <p style="font-size: 0.95em; margin-bottom: 0px; color: #334155;"><strong>Math Anxiety Scale (AMAS):</strong> <span id="summaryAmas">-</span></p>
+      <!-- Paas Scale Measurement -->
+      <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 18px; margin: 15px 0; text-align: left;">
+        <h3 style="font-size: 1em; color: #1e293b; margin-bottom: 8px;">📊 Paas Scale: Mental Effort Rating</h3>
+        <p style="font-size: 0.9em; color: #475569; margin-bottom: 12px;">Please rate the mental effort you invested in performing the math exercises in Test 1:</p>
+        
+        <div class="paas-scale">
+          <div class="paas-option"><input type="radio" name="paas1" id="paas1_1" value="1"><label for="paas1_1">1</label></div>
+          <div class="paas-option"><input type="radio" name="paas1" id="paas1_2" value="2"><label for="paas1_2">2</label></div>
+          <div class="paas-option"><input type="radio" name="paas1" id="paas1_3" value="3"><label for="paas1_3">3</label></div>
+          <div class="paas-option"><input type="radio" name="paas1" id="paas1_4" value="4"><label for="paas1_4">4</label></div>
+          <div class="paas-option"><input type="radio" name="paas1" id="paas1_5" value="5" checked><label for="paas1_5">5</label></div>
+          <div class="paas-option"><input type="radio" name="paas1" id="paas1_6" value="6"><label for="paas1_6">6</label></div>
+          <div class="paas-option"><input type="radio" name="paas1" id="paas1_7" value="7"><label for="paas1_7">7</label></div>
+          <div class="paas-option"><input type="radio" name="paas1" id="paas1_8" value="8"><label for="paas1_8">8</label></div>
+          <div class="paas-option"><input type="radio" name="paas1" id="paas1_9" value="9"><label for="paas1_9">9</label></div>
+        </div>
+        <div class="paas-labels">
+          <span>1 = Very, very low effort</span>
+          <span>5 = Medium effort</span>
+          <span>9 = Very, very high effort</span>
+        </div>
       </div>
 
-      <div style="margin-top: 25px;">
-        <a href="../../index.html" class="button gray" style="text-decoration: none; display: inline-block; width: 180px; height: 35px; line-height: 35px; font-weight: bold; border-radius: 6px;">Return to Main Page</a>
+      <!-- Second Test Instructions Box -->
+      <div style="background: #f0f9ff; border-left: 5px solid #0284c7; border-radius: 8px; padding: 18px; margin: 20px 0; text-align: left;">
+        <h3 style="font-size: 1.05em; color: #0369a1; margin-bottom: 8px;">Next Step: Second Test (Test B)</h3>
+        <p id="test2Instruction" style="font-size: 1.05em; line-height: 1.6; color: #1e293b;">
+          Loading instructions...
+        </p>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <button onclick="startTest2()" class="button" style="background-color: #7c3aed; color: white; border: none; padding: 12px 28px; font-size: 1.1em; font-weight: bold; border-radius: 8px; cursor: pointer;">Start Test 2 →</button>
       </div>
     </div>
   </div>
@@ -58,13 +121,34 @@
         if (finalTimeElement) {
           finalTimeElement.textContent = formattedTime;
         }
+        sessionStorage.setItem('test1TimeFormatted', formattedTime);
       }
 
-      // Display recorded pretest scores
-      document.getElementById('summaryCorsi').textContent = sessionStorage.getItem('pretest_corsi') || 'Not provided';
-      document.getElementById('summaryBfi').textContent = sessionStorage.getItem('pretest_bfi') || 'Not provided';
-      document.getElementById('summaryAmas').textContent = sessionStorage.getItem('pretest_amas') || 'Not provided';
+      // Read participant info
+      const participantId = sessionStorage.getItem('participantId') || '1';
+      const isGroup1 = (parseInt(participantId, 10) % 2 !== 0);
+
+      const msgElement = document.getElementById('test2Instruction');
+      if (isGroup1) {
+        msgElement.innerHTML = 'Now you take the second test <strong>WITHOUT MUSIC</strong>. Press start to start the test.';
+      } else {
+        msgElement.innerHTML = 'Now you take the second test <strong>WITH MUSIC</strong>. If you are ready to play the specified music with your headphone, press start to start the test.';
+      }
     })();
+
+    function startTest2() {
+      // Save Paas rating for Test 1
+      const selectedPaas = document.querySelector('input[name="paas1"]:checked');
+      if (selectedPaas) {
+        sessionStorage.setItem('paasScale_Test1', selectedPaas.value);
+      }
+
+      // Start timing for Test 2 (Test B)
+      sessionStorage.setItem('testBStartTime', Date.now());
+      sessionStorage.removeItem('testBEndTime');
+
+      window.location.href = '../../Test B/index.html';
+    }
   </script>
 </body>
 </html>
