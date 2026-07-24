@@ -55,7 +55,7 @@ While the original codebase provided basic static math exercises, this applicati
 
 Collaborators and researchers can view real-time participant results directly in the study database:
 
-👉 **[View Study Results in Google Sheets](https://docs.google.com/spreadsheets/d/1y61dD4Gf4yI4t3XWv12xXW1n4E2vX/edit)** *(Real-time participant data document)*
+👉 **[View Study Results in Google Sheets](https://docs.google.com/spreadsheets/d/1sKCx_820smp_PYYnc3YiOn2Cm9aLMFtOTcHEAywJfwo/edit?usp=sharing)** *(Real-time participant data document)*
 
 ---
 
