@@ -15,11 +15,24 @@ You can automatically store every participant's study results directly into a **
 
 ---
 
-## Step 2: Add Google Apps Script
+## Step 2: Add Google Apps Script (Handles Both POST Data & GET Links)
 1. In your Google Sheet, click **Extensions** → **Apps Script**.
 2. Delete any code in `Code.gs` and paste the following script:
 
 ```javascript
+function doGet(e) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  return HtmlService.createHtmlOutput(
+    "<div style='font-family: Arial, sans-serif; padding: 30px; text-align: center;'>" +
+    "<h2 style='color: #0284c7;'>✅ Math & Music User Study Database Active</h2>" +
+    "<p style='color: #334155; font-size: 15px;'>This Webhook automatically receives real-time participant results.</p>" +
+    "<div style='margin-top: 25px;'>" +
+    "<a href='" + ss.getUrl() + "' target='_blank' style='background: #16a34a; color: white; padding: 12px 24px; font-weight: bold; border-radius: 8px; text-decoration: none; display: inline-block;'>" +
+    "📊 Open Google Sheets Database Document ➔</a>" +
+    "</div></div>"
+  );
+}
+
 function doPost(e) {
   try {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
@@ -58,6 +71,7 @@ function doPost(e) {
     
     return ContentService.createTextOutput(JSON.stringify({result: "success"}))
       .setMimeType(ContentService.MimeType.JSON);
+      
   } catch (err) {
     return ContentService.createTextOutput(JSON.stringify({result: "error", error: err.toString()}))
       .setMimeType(ContentService.MimeType.JSON);
@@ -65,17 +79,9 @@ function doPost(e) {
 }
 ```
 
-3. Click **Save** (💾 icon).
-
----
-
-## Step 3: Deploy as Web App & Authorize
-
-1. Click **Deploy** → **Manage deployments**.
-2. Click the **Pencil (Edit ✏️)** icon next to your active deployment.
-3. Next to **Version**, click the dropdown menu and select **"New version"**.
-4. Click **Deploy**.
-
----
-
-That's it! Every participant who completes the study will now automatically log all 14 columns into your Google Sheet live!
+3. Click **Deploy** → **New Deployment**.
+4. Select type: **Web App**.
+5. Set:
+   - **Execute as**: *Me*
+   - **Who has access**: *Anyone* (Crucial!)
+6. Click **Deploy**, authorize permissions, and copy the Web App URL!
