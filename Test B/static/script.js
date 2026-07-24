@@ -1,34 +1,68 @@
 const correctAnswers = {}; // Initialize as an empty object
 const firstAttempts = {};
 
-// Comprehensive Misconception Catalog for Module 1: Mixed Arithmetic & Rational Operations (Test B)
+// 12-Question Misconception Catalog for Module 1 Across 4 Adaptive Tiers (Test B Isomorphic)
 const misconceptionHints = {
-  // Q1 (Tier 1: Multi-step Order of Operations)
-  "q1": {
-    "12195": "💡 <b>Misconception Hint</b>: Order of Operations rule (BODMAS/PEMDAS)! Calculate multiplication ($291 \\times 3 = 873$) and division ($180 \\div 9 = 20$) before subtracting and adding.",
+  // --- TIER 1: Easy Scaffolded Order of Operations & Basic Fractions ---
+  "T1_Q1": {
+    "12195": "💡 <b>Misconception Hint</b>: Order of Operations rule (BODMAS/PEMDAS)! Multiply ($291 \\times 3 = 873$) and divide ($180 \\div 9 = 20$) before subtracting/adding.",
     "3483": "💡 <b>Misconception Hint</b>: Check the final addition term: $4356 - 873 + 20 = 3503$."
   },
+  "T1_Q2": {
+    "96": "💡 <b>Misconception Hint</b>: Calculate parentheses first ($18-6=12$), then division ($360 \\div 12 = 30$), then multiplication ($14 \\times 5 = 70$), so $30 + 70 = 100$.",
+    "110": "💡 <b>Misconception Hint</b>: Double check your multiplication $14 \\times 5 = 70$."
+  },
+  "T1_Q3": {
+    "7/15": "💡 <b>Misconception Hint</b>: Find common denominator (15): $\\frac{7}{15} + \\frac{3}{15} - \\frac{5}{15} = \\frac{5}{15} = \\frac{1}{3}$.",
+    "1/2": "💡 <b>Misconception Hint</b>: Check simplifying $\\frac{5}{15} = \\frac{1}{3}$."
+  },
 
-  // Q2 (Tier 2: Fraction Addition & Subtraction)
-  "q2": {
+  // --- TIER 2: Medium Standard Fractions & Decimals ---
+  "T2_Q1": {
     "4/7": "💡 <b>Misconception Hint</b>: You added and subtracted numerators and denominators across directly ($2+3-1 = 4, 5+4-2 = 7$). Find the least common denominator (LCD = 20) first!",
     "15/20": "💡 <b>Misconception Hint</b>: Check the subtraction step: $\\frac{8}{20} + \\frac{15}{20} - \\frac{10}{20} = \\frac{13}{20}$."
   },
+  "T2_Q2": {
+    "1/3": "💡 <b>Misconception Hint</b>: Calculate parentheses first: $\\frac{1}{3} + \\frac{1}{4} = \\frac{7}{12}$. Then multiply: $\\frac{7}{12} \\times \\frac{4}{7} = \\frac{1}{3}$. Finally subtract: $\\frac{5}{6} - \\frac{2}{6} = \\frac{3}{6} = \\frac{1}{2}$.",
+    "3/4": "💡 <b>Misconception Hint</b>: Remember to complete the subtraction from $\\frac{5}{6}$."
+  },
+  "T2_Q3": {
+    "7.2": "💡 <b>Misconception Hint</b>: Evaluate multiplication and division first: $\\frac{3.6 \\times 0.8}{0.4} = \\frac{2.88}{0.4} = 7.2$. Then add $1.8$: $7.2 + 1.8 = 9.0$.",
+    "11.0": "💡 <b>Misconception Hint</b>: Check decimal division $\\frac{2.88}{0.4} = 7.2$."
+  },
 
-  // Q3 (Tier 3: Complex Fraction Division)
-  "q3": {
+  // --- TIER 3: Hard Complex Fraction Division & Rational Equations ---
+  "T3_Q1": {
     "15/192": "💡 <b>Misconception Hint</b>: When dividing by a fraction product, invert the denominator fraction and multiply: $\\frac{3}{8} \\div \\frac{5}{24} = \\frac{3}{8} \\times \\frac{24}{5} = \\frac{9}{5}$.",
     "5/9": "💡 <b>Misconception Hint</b>: You inverted the numerator fraction instead of the denominator fraction."
   },
+  "T3_Q2": {
+    "1 / ((x+2)(x-2))": "💡 <b>Misconception Hint</b>: Cross-multiply numerators: $4(x-2) - 3(x+2) = 4x - 8 - 3x - 6 = x - 14$.",
+    "(x + 2) / ((x+2)(x-2))": "💡 <b>Misconception Hint</b>: Watch out for distributing the negative sign: $-3(x+2) = -3x - 6$."
+  },
+  "T3_Q3": {
+    "x = 2": "💡 <b>Misconception Hint</b>: Subtract $\\frac{3}{x+2}$ from both sides: $\\frac{1}{x} = \\frac{3}{x+2} \\Rightarrow x+2 = 3x \\Rightarrow 2x = 2 \\Rightarrow x = \\frac{2}{3}$.",
+    "x = 1": "💡 <b>Misconception Hint</b>: Check cross multiplying $x+2 = 3x$."
+  },
 
-  // Q4 (Tier 4: Rational Algebraic Addition)
-  "q4": {
+  // --- TIER 4: Expert Rational Algebraic Expressions & Limits ---
+  "T4_Q1": {
     "(x + 2) / (2x + 2)": "💡 <b>Misconception Hint</b>: You added numerators and denominators across directly. Cross multiply by common denominator $(x+3)(x-1)$.",
     "(x^2 - 3x + 6) / ((x+3)(x-1))": "💡 <b>Misconception Hint</b>: Check expanding $x(x-1) + 2(x+3) = x^2 - x + 2x + 6 = x^2 + x + 6$."
+  },
+  "T4_Q2": {
+    "2 / (x(x+h))": "💡 <b>Misconception Hint</b>: Check the numerator subtraction: $2(x - (x+h)) = -2h$, so the negative sign remains!",
+    "0": "💡 <b>Misconception Hint</b>: $\\frac{2}{x+h}$ and $\\frac{2}{x}$ are not equal when $h \\neq 0$."
+  },
+  "T4_Q3": {
+    "x = 2": "💡 <b>Misconception Hint</b>: $x = 2$ makes the denominator $x-2 = 0$ (undefined value), so it is an extraneous solution!",
+    "x = 7/3": "💡 <b>Misconception Hint</b>: Check expanding $3x(x+2) + 4(x-2) = 3x^2 + 10x - 8 = 28$."
   }
 };
 
-let currentTier = 2; // Default start at Tier 2 (Fractions Baseline)
+let currentTier = 2; // Start at Tier 2 Medium
+let userStepCount = 0; // Exactly 4 questions per user session
+const tierIndices = { 1: 0, 2: 0, 3: 0, 4: 0 }; // Used variant per tier
 
 // Update Adaptive Mastery Score (BKT Light Model)
 function updateMasteryScore(isCorrect) {
@@ -50,14 +84,14 @@ function renderMasteryWidget() {
   
   let tierName = "Tier 2: Medium (Fractions)";
   let tierColor = "#7c3aed";
-  if (currentTier === 4 || score >= 80) {
-    tierName = "Tier 4: Advanced Rational Algebra";
+  if (currentTier === 4) {
+    tierName = "Tier 4: Expert Rational Algebra";
     tierColor = "#16a34a";
   } else if (currentTier === 3) {
-    tierName = "Tier 3: Complex Fraction Division";
+    tierName = "Tier 3: Hard Complex Division";
     tierColor = "#7c3aed";
-  } else if (currentTier === 1 || score < 40) {
-    tierName = "Tier 1: Order of Operations Arithmetic";
+  } else if (currentTier === 1) {
+    tierName = "Tier 1: Easy Arithmetic & Fractions";
     tierColor = "#ea580c";
   }
 
@@ -85,7 +119,8 @@ function renderMasteryWidget() {
     widget.style.borderColor = tierColor;
     widget.innerHTML = `
       <div style="font-weight: bold; color: ${tierColor}; margin-bottom: 4px;">🧠 Adaptive ITS Engine</div>
-      <div>Active Tier: <strong>${tierName}</strong></div>
+      <div>Progress: <strong>Step ${Math.min(userStepCount + 1, 4)} / 4</strong></div>
+      <div style="font-size: 12px; margin-top: 2px;">Active Level: <strong>${tierName}</strong></div>
       <div style="margin-top: 4px; background: #e2e8f0; border-radius: 6px; height: 8px; width: 160px; overflow: hidden;">
         <div style="background: ${tierColor}; width: ${score}%; height: 100%; transition: width 0.3s ease;"></div>
       </div>
@@ -94,31 +129,34 @@ function renderMasteryWidget() {
   }
 }
 
-// Dynamic Tier Branching Helper for 4 Questions
+// 4-Step Adaptive Trajectory Helper Engine
 function handleNextBranch(currentQId) {
   const isCorrect = (firstAttempts[currentQId] && firstAttempts[currentQId][0] === correctAnswers[currentQId]);
-  
-  let nextQId = 'Q3';
-  if (currentQId === 'q2') { // Baseline Start (Tier 2)
-    if (isCorrect) {
-      currentTier = 3;
-      nextQId = 'Q3'; // Branch UP to Tier 3 Complex Division
-    } else {
-      currentTier = 1;
-      nextQId = 'Q1'; // Branch DOWN to Tier 1 Order of Operations
-    }
-  } else if (currentQId === 'q1') {
-    currentTier = 3;
-    nextQId = 'Q3';
-  } else if (currentQId === 'q3') {
-    currentTier = 4;
-    nextQId = 'Q4';
-  } else if (currentQId === 'q4') {
-    nextQId = 'Q4';
+  userStepCount++;
+
+  if (userStepCount >= 4) {
+    // 4 Questions completed -> unlock Result
+    const resBtn = document.querySelector('#submitButton');
+    if (resBtn) resBtn.disabled = false;
+    checkAnswers(false);
+    return;
   }
 
+  // Branch UP or DOWN based on correctness
+  if (isCorrect) {
+    currentTier = Math.min(4, currentTier + 1);
+  } else {
+    currentTier = Math.max(1, currentTier - 1);
+  }
+
+  // Get next variant index for target tier (0, 1, 2)
+  const variantIndex = (tierIndices[currentTier] % 3) + 1;
+  tierIndices[currentTier]++;
+
+  const nextQId = `T${currentTier}_Q${variantIndex}`;
+
   renderMasteryWidget();
-  showNextQuestionDiv(nextQId, currentQId.toUpperCase());
+  showNextQuestionDiv(nextQId, currentQId);
 }
 
 // Store first attempts and count mistakes with Misconception Feedback
@@ -155,7 +193,7 @@ function checkAnswer(questionId, correctAnswer) {
     if (misconceptionHints[questionId] && misconceptionHints[questionId][selectedAnswer.value]) {
       hint = "<br>" + misconceptionHints[questionId][selectedAnswer.value];
     } else {
-      hint = "<br>💡 <b>Hint</b>: Check operational precedence, common denominators, or fraction inversion.";
+      hint = "<br>💡 <b>Hint</b>: Review operational precedence, common denominators, or fraction inversion.";
     }
 
     if (resultMessage) {
@@ -172,8 +210,7 @@ function checkAnswer(questionId, correctAnswer) {
   }
 
   // Enable Next Question or Result button after checking answer
-  const num = questionId.replace('q', '');
-  const nextBtn = document.querySelector(`#submitButton${num}`);
+  const nextBtn = document.querySelector(`#btn_next_${questionId}`);
   if (nextBtn) nextBtn.disabled = false;
 
   const resBtn = document.querySelector('#submitButton');
@@ -188,27 +225,27 @@ function reattemptExercise() {
   const dialog = document.querySelector("#resultDialog");
   if (dialog) dialog.close();
 
-  // Reset radio inputs and result messages
   const inputs = document.querySelectorAll('input[type="radio"]');
   inputs.forEach(input => input.checked = false);
 
   const msgs = document.querySelectorAll('[id^="resultMessage_"]');
   msgs.forEach(msg => msg.innerHTML = '');
 
-  // Reset attempt cache
   for (const key in firstAttempts) delete firstAttempts[key];
   for (const key in correctAnswers) delete correctAnswers[key];
 
   currentTier = 2;
+  userStepCount = 0;
+  for (const k in tierIndices) tierIndices[k] = 0;
 
-  // Show Q2 (Baseline Start)
-  for (let i = 1; i <= 4; i++) {
-    const q = document.getElementById(`Q${i}`);
-    if (q) q.style.display = (i === 2 ? 'block' : 'none');
-  }
+  // Show T2_Q1 (Baseline Start) and hide all others
+  const allDivs = document.querySelectorAll('[id^="T"]');
+  allDivs.forEach(div => div.style.display = 'none');
 
-  const s2 = document.querySelector('#submitButton2');
-  if (s2) s2.disabled = false;
+  const startDiv = document.getElementById('T2_Q1');
+  if (startDiv) startDiv.style.display = 'block';
+
+  renderMasteryWidget();
 }
 
 // Check answers for all questions and display results
@@ -229,9 +266,9 @@ function checkAnswers(lastPage) {
 
     if (correctAnswer === selectedAnswerValue) {
       correctCount++;
-      resultMessage.innerHTML += `<br>Question ${questionId.toUpperCase()}: Correct`;
+      resultMessage.innerHTML += `<br>Question ${questionId}: Correct`;
     } else if (selectedAnswerValue) {
-      resultMessage.innerHTML += `<br>Question ${questionId.toUpperCase()}: Wrong`;
+      resultMessage.innerHTML += `<br>Question ${questionId}: Wrong`;
     }
 
     totalQuestions++;
@@ -242,9 +279,9 @@ function checkAnswers(lastPage) {
   const nextExBtn = document.querySelector('#nextButton');
   if (nextExBtn) nextExBtn.disabled = false;
 
-  if (correctCount >= 1 || currentMastery >= 50) {
+  if (correctCount >= 2 || currentMastery >= 60) {
     resultMessage.innerHTML += `<br><br>🎉 <strong>Module 1 Mastered! (Score: ${currentMastery}%)</strong>`;
-    resultMessage.innerHTML += `<br>You may now advance to the next exercise section.`;
+    resultMessage.innerHTML += `<br>Completed 4 adaptive questions across your trajectory. You may now advance!`;
 
     if (lastPage == true) {  
       let endTime = sessionStorage.getItem('testBEndTime');
@@ -259,7 +296,7 @@ function checkAnswers(lastPage) {
   } 
   else {
     resultMessage.innerHTML += `<br><br>⚠️ <strong>Current Mastery: ${currentMastery}%</strong>`;
-    resultMessage.innerHTML += `<br><br><button onclick="reattemptExercise()" class="button gray" style="background:#7c3aed; color:#ffffff; font-weight:bold; padding:8px 16px; border-radius:6px; cursor:pointer;">🔁 Re-attempt Exercise</button>`;
+    resultMessage.innerHTML += `<br><br><button onclick="reattemptExercise()" class="button gray" style="background:#7c3aed; color:#ffffff; font-weight:bold; padding:8px 16px; border-radius:6px; cursor:pointer;">🔁 Re-attempt Module 1</button>`;
   }
 
   if (dialog) {
@@ -273,7 +310,6 @@ function checkAnswers(lastPage) {
   }
 }
 
-// Show individual question
 function showNextQuestionDiv(nextDivId, currentDivId) {
   const currentDiv = document.getElementById(currentDivId);
   if (currentDiv) currentDiv.style.display = 'none';
@@ -282,12 +318,10 @@ function showNextQuestionDiv(nextDivId, currentDivId) {
   if (nextDiv) nextDiv.style.display = 'block';
 }
 
-// Open next page
 function openPage(pagePath) {
   window.location.href = pagePath;
 }
 
-// Display time from start of test
 let startTime = parseInt(sessionStorage.getItem('testBStartTime') || sessionStorage.getItem('testStartTime'), 10);
 if (!startTime || isNaN(startTime)) {
   startTime = Date.now();
@@ -317,7 +351,6 @@ function updateTimer() {
 
 setInterval(updateTimer, 1000);
 
-// Render Top-Right Persistent Phase Badge (With / Without Music)
 function renderPhaseBadge() {
   if (document.getElementById('phaseHeaderBadge')) return;
   if (!document.body) return;
@@ -347,7 +380,6 @@ function renderPhaseBadge() {
   document.body.appendChild(badge);
 }
 
-// Render Floating Skip Button for Quick Testing
 function renderSkipButton() {
   if (document.getElementById('skipTestBtn')) return;
   if (!document.body) return;
