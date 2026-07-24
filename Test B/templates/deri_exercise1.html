@@ -6,106 +6,160 @@
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
   </script>
-  <script type="text/javascript" src="path/to/mathjax-config.js"></script>
-<script type="text/javascript" src="path/to/MathJax.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <meta charset="UTF-8">
-  <title>Derivative Exercise</title>
-  </head>
-<div style="position: fixed; top: 0; width: 100%;">
-  <div style="text-align: center; margin-top: 2%; margin-bottom: 2%;" > 
-    <img src="../static/Logo.png" width="50%" />
-    </div>
-    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <title>Module 2: Differentiation & Integration</title>
+</head>
+<body style="padding-top: 100px;">
+  <div style="position: fixed; top: 0; width: 100%; z-index: 999;">
+    <div style="text-align: center; margin-top: 1%; margin-bottom: 1%;" > 
+      <img src="../static/Logo.png" width="30%" />
+    </div>    
+  </div>
+
   <div class="centered">  
-    <div style= "max-width: 100%; max-height: 20%;">
-       <h2 class="headingtop_margen">Exercises for Derivative</h2>
+    <div style="max-width: 100%;">
+      <h2 class="headingtop_margen">Module 2: Differentiation & Integration</h2>
+    </div>
+    <div class="exercise-box">
+      <div class="timer" id="timer">
+        <p>00:00:00</p>
       </div>
-      <div class="exercise-box">
-      <div class="timer" id="timer" >
-        <p >00:00:00</p>
-      </div>
-      <h4>Power and Add/ Sub Rules</h4>
 
       <form id="exerciseForm">
-        <div id = "Q1">
-          <p class="line-spcaing"> Q1: \(y = -x^4 + 3x - 7\)  </p>
-          <input type="radio" id="der1" name="q1" value="-4x^3 + 3 - 7">
-          <label for="der1">\(-4x^3 + 3 - 7\)</label><br>
-          <input type="radio" id="der2" name="q1" value="-4x^3 + 3x">
-          <label for="der2">\(-4x^3 + 3x\)</label><br>
-          <input type="radio" id="der3" name="q1" value="-4x^3 + 3">
-          <label for="der3">\(-4x^3 + 3\)</label><br>
-          <p style="font-size: 14px;" id="resultMessage_q1"></p>
-          <button class="button gray" onclick="checkAnswer('q1', '-4x^3 + 3')">Check & Submit</button>
-          <!--<button type="submit" id="submitButton11" onclick="checkAnswer()">Submit</button>-->
-          <button class="button gray" type="button" id="submitButton1" onclick="showNextQuestionDiv('Q2', 'Q1')">Next Question</button>
-          
+        <!-- ================= TIER 1 (EASY SCAFFOLDED) ================= -->
+        <div id="T1_Q1" style="display: none;">
+          <p class="line-spcaing">Find the derivative of $y = 4x^4 + 3x^2 - 5x + 9$</p>
+          <input type="radio" id="t1q1_a" name="T1_Q1" value="16x^3 + 6x - 5"><label for="t1q1_a">$16x^3 + 6x - 5$</label><br>
+          <input type="radio" id="t1q1_b" name="T1_Q1" value="16x^3 + 6x + 9"><label for="t1q1_b">$16x^3 + 6x + 9$</label><br>
+          <input type="radio" id="t1q1_c" name="T1_Q1" value="4x^3 + 3x - 5"><label for="t1q1_c">$4x^3 + 3x - 5$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_T1_Q1"></p>
+          <button onclick="checkAnswer('T1_Q1', '16x^3 + 6x - 5')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="btn_next_T1_Q1" onclick="handleNextBranch('T1_Q1')" class="button gray" disabled>Next Question</button>
         </div>
 
-        <div id="Q2" style="display: none;">
-          <p class="line-spacing">Q2: \(y = 3x^2 + (1/x)\)</p>
-          <input type="radio" id="der" name="q2" value="6x - 1/(x^2)">
-          <label for="der1">\(6x - 1/(x^2)\)</label><br>
-          <input type="radio" id="der5" name="q2" value="6x + 1">
-          <label for="der5">\(6x + 1\)</label><br>
-          <input type="radio" id="der6" name="q2" value="6x - x^{-2}">
-          <label for="der6">\(6x - x^{-2}\)</label><br>
-          <p style="font-size: 14px;" id="resultMessage_q2"></p>
-          <button class="button gray" onclick="checkAnswer('q2', '6x - 1/(x^2)')">Check & Submit</button>
-          <!--<button type="submit" id="submitButton22" onclick="checkAnswer()">Submit</button>-->
-          <button class="button gray" type="button" id="submitButton2" onclick="showNextQuestionDiv('Q3', 'Q2')">Next Question</button>
-          
+        <div id="T1_Q2" style="display: none;">
+          <p class="line-spcaing">Evaluate the indefinite integral $\int (9x^2 + 6x - 4) \, dx$</p>
+          <input type="radio" id="t1q2_a" name="T1_Q2" value="3x^3 + 3x^2 - 4x + C"><label for="t1q2_a">$3x^3 + 3x^2 - 4x + C$</label><br>
+          <input type="radio" id="t1q2_b" name="T1_Q2" value="18x + 6 + C"><label for="t1q2_b">$18x + 6 + C$</label><br>
+          <input type="radio" id="t1q2_c" name="T1_Q2" value="9x^3 + 6x^2 - 4x + C"><label for="t1q2_c">$9x^3 + 6x^2 - 4x + C$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_T1_Q2"></p>
+          <button onclick="checkAnswer('T1_Q2', '3x^3 + 3x^2 - 4x + C')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="btn_next_T1_Q2" onclick="handleNextBranch('T1_Q2')" class="button gray" disabled>Next Question</button>
         </div>
-        
 
-        <div id = "Q3" style="display: none;">
-          <p class="line-spcaing">Q3: \(y = -x^3 + 8x^{-2} + 6x\)  </p>
-          <input type="radio" id="der7" name="q3" value="-3x^2 - 16x^{-1} + 6">
-          <label for="der7">\(-3x^2 - 16x^{-1} + 6\)</label><br>
-          <input type="radio" id="der8" name="q3" value="-3x^2 - 16x^{-3} + 6">
-          <label for="der8">\(-3x^2 - 16x^{-3} + 6\)</label><br>
-          <input type="radio" id="der9" name="q3" value="-3x^2 + 16x^{-3} + 6">
-          <label for="der9">\(-3x^2 + 16x^{-3} + 6\)</label><br>
-          <p style="font-size: 14px;" id="resultMessage_q3"></p>
-          <button id="submitButton3" onclick="checkAnswer('q3', '-3x^2 - 16x^{-3} + 6')" class="button gray">Check & Submit</button>
-          <button type="submit" id="submitButton" onclick="checkAnswers(true)" class="button gray">Result</button>
-          <br>
-          <button type="button" id="exampleButton" disabled onclick="openPage('deri_example1.html')" class="button gray">Example</button>
-          <button class="button gray" type="button" id="nextButton" onclick="openPage('finish.html')" disabled>End</button>
+        <div id="T1_Q3" style="display: none;">
+          <p class="line-spcaing">Find the derivative of $y = 6\sqrt{x} + \frac{5}{x}$</p>
+          <input type="radio" id="t1q3_a" name="T1_Q3" value="3/sqrt(x) - 5/x^2"><label for="t1q3_a">$\frac{3}{\sqrt{x}} - \frac{5}{x^2}$</label><br>
+          <input type="radio" id="t1q3_b" name="T1_Q3" value="3/sqrt(x) + 5/x^2"><label for="t1q3_b">$\frac{3}{\sqrt{x}} + \frac{5}{x^2}$</label><br>
+          <input type="radio" id="t1q3_c" name="T1_Q3" value="3sqrt(x) - 5x^-2"><label for="t1q3_c">$3\sqrt{x} - 5x^{-2}$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_T1_Q3"></p>
+          <button onclick="checkAnswer('T1_Q3', '3/sqrt(x) - 5/x^2')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="btn_next_T1_Q3" onclick="handleNextBranch('T1_Q3')" class="button gray" disabled>Next Question</button>
+        </div>
 
-          
-      </div>
+        <!-- ================= TIER 2 (MEDIUM BASELINE START) ================= -->
+        <div id="T2_Q1">
+          <p class="line-spcaing">Find the derivative of $y = 4e^{3x} + 2\sin(5x)$</p>
+          <input type="radio" id="t2q1_a" name="T2_Q1" value="12e^{3x} + 10\cos(5x)"><label for="t2q1_a">$12e^{3x} + 10\cos(5x)$</label><br>
+          <input type="radio" id="t2q1_b" name="T2_Q1" value="4e^{3x} + 2\cos(5x)"><label for="t2q1_b">$4e^{3x} + 2\cos(5x)$</label><br>
+          <input type="radio" id="t2q1_c" name="T2_Q1" value="12e^{3x} - 10\cos(5x)"><label for="t2q1_c">$12e^{3x} - 10\cos(5x)$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_T2_Q1"></p>
+          <button onclick="checkAnswer('T2_Q1', '12e^{3x} + 10\\cos(5x)')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="btn_next_T2_Q1" onclick="handleNextBranch('T2_Q1')" class="button gray" disabled>Next Question</button>
+        </div>
+
+        <div id="T2_Q2" style="display: none;">
+          <p class="line-spcaing">Evaluate the definite integral $\int_1^2 (6x^2 - 4x) \, dx$</p>
+          <input type="radio" id="t2q2_a" name="T2_Q2" value="8"><label for="t2q2_a">$8$</label><br>
+          <input type="radio" id="t2q2_b" name="T2_Q2" value="10"><label for="t2q2_b">$10$</label><br>
+          <input type="radio" id="t2q2_c" name="T2_Q2" value="6"><label for="t2q2_c">$6$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_T2_Q2"></p>
+          <button onclick="checkAnswer('T2_Q2', '8')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="btn_next_T2_Q2" onclick="handleNextBranch('T2_Q2')" class="button gray" disabled>Next Question</button>
+        </div>
+
+        <div id="T2_Q3" style="display: none;">
+          <p class="line-spcaing">Find the slope of the tangent line to $y = 3x^3 - 4x$ at $x = 2$</p>
+          <input type="radio" id="t2q3_a" name="T2_Q3" value="32"><label for="t2q3_a">$32$</label><br>
+          <input type="radio" id="t2q3_b" name="T2_Q3" value="24"><label for="t2q3_b">$24$</label><br>
+          <input type="radio" id="t2q3_c" name="T2_Q3" value="36"><label for="t2q3_c">$36$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_T2_Q3"></p>
+          <button onclick="checkAnswer('T2_Q3', '32')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="btn_next_T2_Q3" onclick="handleNextBranch('T2_Q3')" class="button gray" disabled>Next Question</button>
+        </div>
+
+        <!-- ================= TIER 3 (HARD PRODUCT/QUOTIENT & SUBSTITUTION) ================= -->
+        <div id="T3_Q1" style="display: none;">
+          <p class="line-spcaing">Find the derivative of $y = x^4 \cdot \ln(x)$</p>
+          <input type="radio" id="t3q1_a" name="T3_Q1" value="x^3(4ln(x) + 1)"><label for="t3q1_a">$x^3(4\ln(x) + 1)$</label><br>
+          <input type="radio" id="t3q1_b" name="T3_Q1" value="4x^3 * 1/x"><label for="t3q1_b">$4x^3 \cdot \frac{1}{x}$</label><br>
+          <input type="radio" id="t3q1_c" name="T3_Q1" value="4x^3 ln(x)"><label for="t3q1_c">$4x^3 \ln(x)$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_T3_Q1"></p>
+          <button onclick="checkAnswer('T3_Q1', 'x^3(4ln(x) + 1)')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="btn_next_T3_Q1" onclick="handleNextBranch('T3_Q1')" class="button gray" disabled>Next Question</button>
+        </div>
+
+        <div id="T3_Q2" style="display: none;">
+          <p class="line-spcaing">Evaluate the integral $\int 3x^2 \sin(x^3 + 2) \, dx$</p>
+          <input type="radio" id="t3q2_a" name="T3_Q2" value="-cos(x^3 + 2) + C"><label for="t3q2_a">$-\cos(x^3 + 2) + C$</label><br>
+          <input type="radio" id="t3q2_b" name="T3_Q2" value="x^3 cos(x^3 + 2) + C"><label for="t3q2_b">$x^3 \cos(x^3 + 2) + C$</label><br>
+          <input type="radio" id="t3q2_c" name="T3_Q2" value="cos(x^3 + 2) + C"><label for="t3q2_c">$\cos(x^3 + 2) + C$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_T3_Q2"></p>
+          <button onclick="checkAnswer('T3_Q2', '-cos(x^3 + 2) + C')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="btn_next_T3_Q2" onclick="handleNextBranch('T3_Q2')" class="button gray" disabled>Next Question</button>
+        </div>
+
+        <div id="T3_Q3" style="display: none;">
+          <p class="line-spcaing">Find the derivative of $y = \frac{x^2 + 3}{3x - 2}$</p>
+          <input type="radio" id="t3q3_a" name="T3_Q3" value="(3x^2 - 4x - 9) / (3x - 2)^2"><label for="t3q3_a">$\frac{3x^2 - 4x - 9}{(3x - 2)^2}$</label><br>
+          <input type="radio" id="t3q3_b" name="T3_Q3" value="2x / 3"><label for="t3q3_b">$\frac{2x}{3}$</label><br>
+          <input type="radio" id="t3q3_c" name="T3_Q3" value="(3x^2 + 4x + 9) / (3x - 2)^2"><label for="t3q3_c">$\frac{3x^2 + 4x + 9}{(3x - 2)^2}$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_T3_Q3"></p>
+          <button onclick="checkAnswer('T3_Q3', '(3x^2 - 4x - 9) / (3x - 2)^2')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="btn_next_T3_Q3" onclick="handleNextBranch('T3_Q3')" class="button gray" disabled>Next Question</button>
+        </div>
+
+        <!-- ================= TIER 4 (EXPERT PARTS & CHAIN RULE) ================= -->
+        <div id="T4_Q1" style="display: none;">
+          <p class="line-spcaing">Evaluate the integral $\int 2x e^{2x} \, dx$</p>
+          <input type="radio" id="t4q1_a" name="T4_Q1" value="e^{2x}(x - 1/2) + C"><label for="t4q1_a">$e^{2x}(x - \frac{1}{2}) + C$</label><br>
+          <input type="radio" id="t4q1_b" name="T4_Q1" value="x^2 e^{2x} + C"><label for="t4q1_b">$x^2 e^{2x} + C$</label><br>
+          <input type="radio" id="t4q1_c" name="T4_Q1" value="e^{2x}(x + 1/2) + C"><label for="t4q1_c">$e^{2x}(x + \frac{1}{2}) + C$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_T4_Q1"></p>
+          <button onclick="checkAnswer('T4_Q1', 'e^{2x}(x - 1/2) + C')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="btn_next_T4_Q1" onclick="handleNextBranch('T4_Q1')" class="button gray" disabled>Next Question</button>
+        </div>
+
+        <div id="T4_Q2" style="display: none;">
+          <p class="line-spcaing">Find the derivative of $y = \ln(x^4 + 5x)$</p>
+          <input type="radio" id="t4q2_a" name="T4_Q2" value="(4x^3 + 5) / (x^4 + 5x)"><label for="t4q2_a">$\frac{4x^3 + 5}{x^4 + 5x}$</label><br>
+          <input type="radio" id="t4q2_b" name="T4_Q2" value="1 / (x^4 + 5x)"><label for="t4q2_b">$\frac{1}{x^4 + 5x}$</label><br>
+          <input type="radio" id="t4q2_c" name="T4_Q2" value="(4x^3 + 5) / x"><label for="t4q2_c">$\frac{4x^3 + 5}{x}$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_T4_Q2"></p>
+          <button onclick="checkAnswer('T4_Q2', '(4x^3 + 5) / (x^4 + 5x)')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="btn_next_T4_Q2" onclick="handleNextBranch('T4_Q2')" class="button gray" disabled>Next Question</button>
+        </div>
+
+        <div id="T4_Q3" style="display: none;">
+          <p class="line-spcaing">Evaluate $\int_0^{\pi/2} \cos^2(x) \sin(x) \, dx$</p>
+          <input type="radio" id="t4q3_a" name="T4_Q3" value="1/3"><label for="t4q3_a">$\frac{1}{3}$</label><br>
+          <input type="radio" id="t4q3_b" name="T4_Q3" value="1/2"><label for="t4q3_b">$\frac{1}{2}$</label><br>
+          <input type="radio" id="t4q3_c" name="T4_Q3" value="1"><label for="t4q3_c">$1$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_T4_Q3"></p>
+          <button onclick="checkAnswer('T4_Q3', '1/3')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="btn_next_T4_Q3" onclick="handleNextBranch('T4_Q3')" class="button gray" disabled>Next Question</button>
+        </div>
       </form>
-       </div>
-       <div style="text-align: center;"> <p style="font-size:0.8em;">Note: You will get the final results based on your first attempt</p>
-       </div>
+    </div>
+    <div style="text-align: center; margin-top: 10px;"> 
+      <p style="font-size:0.85em; color: #475569;">💡 Adaptive ITS Engine: Serves 4 personalized questions adapting to your performance across Tiers 1-4.</p>
+    </div>
   </div>
-</div>
+
   <dialog id="resultDialog">
     <p id="resultMessage"></p>
-    <button id="closeButton">Close</button>
   </dialog>
-  <script>
-    var evTypep = window.performance.getEntriesByType("navigation")[0].type;
-  
-    if (evTypep == 'reload') {
-      // Display a confirmation dialog
-      var confirmationMessage = 'Refreshing this page will take you to the example page. Do you want to proceed?';
-      var userConfirmed = window.confirm(confirmationMessage);
-  
-      if (!userConfirmed) {
-        // If "Cancel," stay on the current page
-        window.addEventListener('beforeunload', function (e) {
-          e.preventDefault();
-        });
-      } else {
-        // If "OK," proceed with the refresh and redirect
-        window.location.replace('deri_example1.html');
-      }
-    }
-  </script>
- 
-  <script src="../static/script.js"></script>
+
+  <script src="../static/script.js?v=adaptive10"></script>
 </body>
 </html>
