@@ -177,16 +177,16 @@ function checkAnswer(questionId, correctAnswer) {
     }
   }
 
-  // Enable Next Question / Result button after checking answer
+  // Enable Next Question or Result button after checking answer
   const num = questionId.replace('q', '');
   const nextBtn = document.querySelector(`#submitButton${num}`);
-  if (nextBtn) {
-    nextBtn.disabled = false;
-  }
-  if (questionId === 'q6' || questionId === 'q5') {
-    const resBtn = document.querySelector('#submitButton');
-    if (resBtn) resBtn.disabled = false;
-  }
+  if (nextBtn) nextBtn.disabled = false;
+
+  const resBtn = document.querySelector('#submitButton');
+  if (resBtn) resBtn.disabled = false;
+
+  const nextExBtn = document.querySelector('#nextButton');
+  if (nextExBtn) nextExBtn.disabled = false;
 }
 
 // Re-attempt Exercise Module
@@ -205,24 +205,18 @@ function reattemptExercise() {
   for (const key in firstAttempts) delete firstAttempts[key];
   for (const key in correctAnswers) delete correctAnswers[key];
 
-  // Disable next buttons until Check & Submit is pressed again
-  for (let i = 1; i <= 6; i++) {
-    const b = document.querySelector(`#submitButton${i}`);
-    if (b) b.disabled = true;
-  }
-  const s = document.querySelector('#submitButton');
-  if (s) s.disabled = true;
-
   currentTier = 2;
 
-  // Show Q3 (Tier 2 Start)
+  // Show Q3 (Tier 2 Start) or Q1
   for (let i = 1; i <= 6; i++) {
     const q = document.getElementById(`Q${i}`);
-    if (q) q.style.display = (i === 3 ? 'block' : 'none');
+    if (q) q.style.display = (i === 3 || i === 1 ? 'block' : 'none');
   }
 
   const s3 = document.querySelector('#submitButton3');
   if (s3) s3.disabled = false;
+  const s1 = document.querySelector('#submitButton1');
+  if (s1) s1.disabled = false;
 }
 
 // Check answers for all questions and display results
@@ -253,10 +247,13 @@ function checkAnswers(lastPage) {
 
   const currentMastery = parseInt(sessionStorage.getItem('test2MasteryScore') || '50', 10);
 
-  if (correctCount >= 2 || currentMastery >= 75) {
-    resultMessage.innerHTML += `<br><br>🎉 <strong>Module Mastered! (Score: ${currentMastery}%)</strong>`;
+  // Un-disable Next Exercise button whenever Result is clicked
+  const nextExBtn = document.querySelector('#nextButton');
+  if (nextExBtn) nextExBtn.disabled = false;
+
+  if (correctCount >= 1 || currentMastery >= 50) {
+    resultMessage.innerHTML += `<br><br>🎉 <strong>Module Completed! (Score: ${currentMastery}%)</strong>`;
     resultMessage.innerHTML += `<br>You may now advance to the next exercise section.`;
-    if (typeof nextButton !== 'undefined' && nextButton) nextButton.disabled = false;
 
     if (lastPage == true) {  
       let endTime = sessionStorage.getItem('testBEndTime');
@@ -267,15 +264,11 @@ function checkAnswers(lastPage) {
 
       resultMessage.innerHTML += "<br><br><strong>All exercises are successfully completed!</strong>";
       resultMessage.innerHTML += "<br>Click <strong>End</strong> to view your total time.";
-      if (typeof nextButton !== 'undefined' && nextButton) nextButton.disabled = false;
     }
   } 
   else {
-    resultMessage.innerHTML += `<br><br>⚠️ <strong>Mastery Threshold Not Reached (Current: ${currentMastery}% | Required: 75%)</strong>`;
-    resultMessage.innerHTML += `<br>You must re-attempt this exercise module before advancing.`;
+    resultMessage.innerHTML += `<br><br>⚠️ <strong>Current Mastery: ${currentMastery}%</strong>`;
     resultMessage.innerHTML += `<br><br><button onclick="reattemptExercise()" class="button gray" style="background:#7c3aed; color:#ffffff; font-weight:bold; padding:8px 16px; border-radius:6px; cursor:pointer;">🔁 Re-attempt Exercise</button>`;
-    
-    if (typeof nextButton !== 'undefined' && nextButton) nextButton.disabled = true;
   }
 
   if (dialog) {
