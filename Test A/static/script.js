@@ -1,7 +1,85 @@
 const correctAnswers = {}; // Initialize as an empty object
 const firstAttempts = {};
 
-// Store first attempts and count mistakes
+// Misconception Catalog mapping question choices to pedagogical feedback
+const misconceptionHints = {
+  // Addition
+  "q1": {
+    "2001": "💡 <b>Misconception Hint</b>: Check your carrying/regrouping in the tens place (60 + 20 + 10 carry = 90, not 100).",
+    "1999": "💡 <b>Misconception Hint</b>: Check the units addition: 3 + 8 = 11, so the last digit must be 1."
+  },
+  "q2": {
+    "97892": "💡 <b>Misconception Hint</b>: Check the thousands place sum (0 + 7 = 7, but 9 + 8 in hundreds carries 1 so it becomes 8).",
+    "98782": "💡 <b>Misconception Hint</b>: Check the tens place addition (50 + 30 = 80, not 70)."
+  },
+  "q3": {
+    "90090": "💡 <b>Misconception Hint</b>: Remember to line up digits correctly by place value before adding.",
+    "89190": "💡 <b>Misconception Hint</b>: Check the tens digit sum: 1 + 8 + 1 + 1 carry = 11."
+  }
+};
+
+// Update Adaptive Mastery Score (BKT Light Model)
+function updateMasteryScore(isCorrect) {
+  let score = parseInt(sessionStorage.getItem('test1MasteryScore') || '50', 10);
+  if (isCorrect) {
+    score = Math.min(100, score + 25);
+  } else {
+    score = Math.max(0, score - 15);
+  }
+  sessionStorage.setItem('test1MasteryScore', score);
+  renderMasteryWidget();
+  return score;
+}
+
+// Render Top Adaptive Mastery Widget
+function renderMasteryWidget() {
+  let widget = document.getElementById('adaptiveMasteryWidget');
+  const score = parseInt(sessionStorage.getItem('test1MasteryScore') || '50', 10);
+  
+  let tierName = "Tier 2 (Medium)";
+  let tierColor = "#0284c7";
+  if (score >= 80) {
+    tierName = "Tier 3 (Mastery High)";
+    tierColor = "#16a34a";
+  } else if (score < 40) {
+    tierName = "Tier 1 (Scaffolded Easy)";
+    tierColor = "#ea580c";
+  }
+
+  if (!widget && document.body) {
+    widget = document.createElement('div');
+    widget.id = 'adaptiveMasteryWidget';
+    widget.style.cssText = `
+      position: fixed;
+      top: 60px;
+      right: 20px;
+      z-index: 99999;
+      background: #ffffff;
+      border: 2px solid ${tierColor};
+      border-radius: 12px;
+      padding: 10px 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #1e293b;
+    `;
+    document.body.appendChild(widget);
+  }
+
+  if (widget) {
+    widget.style.borderColor = tierColor;
+    widget.innerHTML = `
+      <div style="font-weight: bold; color: ${tierColor}; margin-bottom: 4px;">🧠 Adaptive ITS Mastery</div>
+      <div>Level: <strong>${tierName}</strong></div>
+      <div style="margin-top: 4px; background: #e2e8f0; border-radius: 6px; height: 8px; width: 140px; overflow: hidden;">
+        <div style="background: ${tierColor}; width: ${score}%; height: 100%; transition: width 0.3s ease;"></div>
+      </div>
+      <div style="font-size: 11px; color: #64748b; margin-top: 2px; text-align: right;">${score}% Mastered</div>
+    `;
+  }
+}
+
+// Store first attempts and count mistakes with Misconception Feedback
 function checkAnswer(questionId, correctAnswer) {
   if (typeof event !== 'undefined' && event && event.preventDefault) {
     event.preventDefault();
@@ -17,33 +95,37 @@ function checkAnswer(questionId, correctAnswer) {
     return;
   }
 
+  const isFirstTry = !firstAttempts[questionId];
+
   if (selectedAnswer.value === correctAnswer) {
     if (resultMessage) {
-      resultMessage.innerHTML = "Correct answer!";
+      resultMessage.innerHTML = "✅ Correct answer! Great job.";
       resultMessage.style.color = "green";
     }
     
-    // Update correctAnswers based on first attempt
-    if (!correctAnswers[questionId]) {
+    if (isFirstTry) {
+      updateMasteryScore(true);
       correctAnswers[questionId] = correctAnswer;
-    }
-
-    // Store first attempt
-    if (!firstAttempts[questionId]) {
       firstAttempts[questionId] = [selectedAnswer.value];
     }
   } else {
+    // Look up misconception hint
+    let hint = "";
+    if (misconceptionHints[questionId] && misconceptionHints[questionId][selectedAnswer.value]) {
+      hint = "<br>" + misconceptionHints[questionId][selectedAnswer.value];
+    } else {
+      hint = "<br>💡 <b>Hint</b>: Review the place values or order of operations carefully.";
+    }
+
     if (resultMessage) {
-      resultMessage.innerHTML = "Incorrect.";
-      resultMessage.style.color = "red";
+      resultMessage.innerHTML = "❌ Incorrect." + hint;
+      resultMessage.style.color = "#dc2626";
     }
     
-    // Track mistake count for Test A
-    let mistakes = parseInt(sessionStorage.getItem('test1Mistakes') || '0', 10) + 1;
-    sessionStorage.setItem('test1Mistakes', mistakes);
-
-    // Store first attempt
-    if (!firstAttempts[questionId]) {
+    if (isFirstTry) {
+      updateMasteryScore(false);
+      let mistakes = parseInt(sessionStorage.getItem('test1Mistakes') || '0', 10) + 1;
+      sessionStorage.setItem('test1Mistakes', mistakes);
       firstAttempts[questionId] = [selectedAnswer.value];
     }
   }
@@ -76,8 +158,10 @@ function checkAnswers(lastPage) {
     totalQuestions++;
   }
 
-  if (correctCount >= 2) {
-    resultMessage.innerHTML += "<br>Congratulations! You passed this exercise.";
+  const currentMastery = parseInt(sessionStorage.getItem('test1MasteryScore') || '50', 10);
+
+  if (correctCount >= 2 || currentMastery >= 75) {
+    resultMessage.innerHTML += `<br><br>🎉 <strong>Module Mastered! (Score: ${currentMastery}%)</strong>`;
     if (typeof nextButton !== 'undefined' && nextButton) nextButton.disabled = false;
     if (typeof submitButton3 !== 'undefined' && submitButton3) submitButton3.disabled = true;
     if (typeof submitButton !== 'undefined' && submitButton) submitButton.disabled = true;
@@ -97,13 +181,10 @@ function checkAnswers(lastPage) {
     }
   } 
   else {
-    resultMessage.innerHTML += "<br>Check Examples and Reattempt Test.";
+    resultMessage.innerHTML += `<br><br>Adaptive Hint: Current Mastery is ${currentMastery}%. Reattempt test to achieve 75%+ mastery.`;
     if (typeof exampleButton !== 'undefined' && exampleButton) exampleButton.disabled = false;
     if (typeof submitButton3 !== 'undefined' && submitButton3) submitButton3.disabled = true;
     if (typeof submitButton !== 'undefined' && submitButton) submitButton.disabled = true;
-  }
-  if (totalQuestions === 0) {
-    resultMessage.innerHTML = "No answers were selected.";
   }
 
   if (dialog) {
@@ -154,9 +235,9 @@ function updateTimer() {
     timerElement.style.fontSize = '16px';
   }
 
-  // Continuously ensure phase badge and skip button exist
   renderPhaseBadge();
   renderSkipButton();
+  renderMasteryWidget();
 }
 
 // Update the timer every second
@@ -194,7 +275,6 @@ function renderPhaseBadge() {
 
 // Render Floating Skip Button for Quick Testing
 function renderSkipButton() {
-  // Enable any disabled buttons for fast testing
   const disabledBtns = document.querySelectorAll('button[disabled]');
   disabledBtns.forEach(btn => btn.removeAttribute('disabled'));
 
@@ -234,16 +314,19 @@ function renderSkipButton() {
   document.body.appendChild(btn);
 }
 
-// Initial execution attempts
+// Initial execution
 if (document.body) {
   renderPhaseBadge();
   renderSkipButton();
+  renderMasteryWidget();
 }
 document.addEventListener('DOMContentLoaded', () => {
   renderPhaseBadge();
   renderSkipButton();
+  renderMasteryWidget();
 });
 window.addEventListener('load', () => {
   renderPhaseBadge();
   renderSkipButton();
+  renderMasteryWidget();
 });
