@@ -2,215 +2,314 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test A & Test B - Question Bank & Answer Key</title>
+  <title>Test A & Test B - Comprehensive Question Bank & Answer Key</title>
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
   <style>
-    body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: #f8fafc;
-      color: #0f172a;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem;
-      line-height: 1.6;
-    }
-    .header {
-      text-align: center;
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 2px solid #cbd5e1;
-    }
-    .header h1 {
-      font-size: 1.8rem;
-      color: #0284c7;
-    }
-    .header p {
-      color: #64748b;
-    }
-    .print-btn {
-      display: inline-block;
-      background: #16a34a;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-weight: bold;
-      text-decoration: none;
-      margin-top: 10px;
-      cursor: pointer;
-      border: none;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    }
-    .print-btn:hover {
-      background: #15803d;
-    }
-    .section-title {
-      background: #0284c7;
-      color: white;
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-size: 1.3rem;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-    }
-    .section-title.test-b {
-      background: #7c3aed;
-    }
-    .topic-card {
-      background: white;
-      border: 1px solid #cbd5e1;
-      border-radius: 12px;
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-    }
-    .topic-card h3 {
-      color: #1e293b;
-      margin-top: 0;
-      border-bottom: 1px solid #e2e8f0;
-      padding-bottom: 0.5rem;
-    }
-    .question-item {
-      margin-bottom: 1.25rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 1px dashed #e2e8f0;
-    }
-    .question-item:last-child {
-      border-bottom: none;
-    }
-    .q-text {
-      font-weight: 600;
-      color: #334155;
-      margin-bottom: 0.35rem;
-    }
-    .correct-ans {
-      color: #16a34a;
-      font-weight: bold;
-      background: #f0fdf4;
-      display: inline-block;
-      padding: 3px 8px;
-      border-radius: 6px;
-      border: 1px solid #bbf7d0;
-      font-size: 0.95rem;
-    }
-    @media print {
-      .print-btn { display: none; }
-      body { background: white; }
-    }
+    body { font-family: Arial, sans-serif; margin: 30px; line-height: 1.6; color: #1e293b; background-color: #f8fafc; }
+    h1 { color: #0f172a; text-align: center; margin-bottom: 5px; }
+    .subtitle { text-align: center; color: #64748b; font-size: 0.95em; margin-bottom: 25px; }
+    h2 { color: #1e3a8a; border-bottom: 2px solid #cbd5e1; padding-bottom: 5px; margin-top: 30px; }
+    h3 { color: #0284c7; margin-top: 20px; }
+    h4 { color: #334155; margin-top: 15px; margin-bottom: 5px; }
+    .test-container { background: #ffffff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); margin-bottom: 30px; }
+    .q-card { background: #f1f5f9; padding: 12px 18px; border-radius: 8px; margin-bottom: 12px; border-left: 4px solid #0284c7; }
+    .correct { color: #16a34a; font-weight: bold; }
+    .misconception { font-size: 0.9em; color: #475569; margin-top: 4px; background: #e2e8f0; padding: 6px 10px; border-radius: 4px; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8em; font-weight: bold; color: white; background-color: #475569; }
+    .t1 { background-color: #ea580c; }
+    .t2 { background-color: #0284c7; }
+    .t3 { background-color: #7c3aed; }
+    .t4 { background-color: #16a34a; }
   </style>
 </head>
 <body>
 
-  <div class="header">
-    <h1>Test A & Test B - Question Bank & Answer Key</h1>
-    <p>User Study Math & Music Project | Adaptive ITS Engine (Modules 1, 2, & 3)</p>
-    <button onclick="window.print()" class="print-btn">🖨️ Print / Save as PDF</button>
+  <h1>🎵 Test A & Test B Question Bank & Pedagogical Key</h1>
+  <div class="subtitle">User Study Math & Music Project | Adaptive ITS Trajectory (Modules 1, 2, & 3)</div>
+
+  <!-- TEST A -->
+  <div class="test-container">
+    <h2>🟦 TEST A (Phase 1)</h2>
+
+    <h3>1. Module 1: Mixed Operations & Rational Expressions</h3>
+
+    <span class="badge t1">Tier 1 (Easy / Scaffolded)</span>
+    <div class="q-card">
+      <p><strong>T1_Q1:</strong> Evaluate $5421 - 382 \times 4 + 120 \div 6$</p>
+      <p>Options: <span class="correct">3913 (Correct)</span>, 20176, 3893</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> BODMAS precedence rule ($382 \times 4 = 1528$, $120 \div 6 = 20 \Rightarrow 5421 - 1528 + 20 = 3913$). 20176 ignores operational precedence.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>T1_Q2:</strong> Evaluate $240 \div (15 - 3) + 18 \times 4$</p>
+      <p>Options: <span class="correct">92 (Correct)</span>, 88, 104</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Parentheses first ($240 \div 12 = 20$, $18 \times 4 = 72 \Rightarrow 20 + 72 = 92$).</div>
+    </div>
+    <div class="q-card">
+      <p><strong>T1_Q3:</strong> Evaluate $\frac{5}{12} + \frac{1}{4} - \frac{1}{3}$</p>
+      <p>Options: <span class="correct">1/3 (Correct)</span>, 5/12, 1/2</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> LCD = $12 \Rightarrow \frac{5+3-4}{12} = \frac{4}{12} = \frac{1}{3}$.</div>
+    </div>
+
+    <span class="badge t2">Tier 2 (Medium / Baseline Entry)</span>
+    <div class="q-card">
+      <p><strong>T2_Q1:</strong> Evaluate $\frac{3}{4} + \frac{5}{6} - \frac{2}{3}$</p>
+      <p>Options: <span class="correct">11/12 (Correct)</span>, 6/7, 13/12</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> LCD = $12 \Rightarrow \frac{9+10-8}{12} = \frac{11}{12}$. 6/7 comes from adding/subtracting across numerators/denominators directly.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>T2_Q2:</strong> Evaluate $\frac{7}{8} - \left(\frac{1}{2} + \frac{1}{4}\right) \times \frac{2}{3}$</p>
+      <p>Options: <span class="correct">3/8 (Correct)</span>, 1/4, 1/2</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Parentheses first ($\frac{3}{4} \times \frac{2}{3} = \frac{1}{2} \Rightarrow \frac{7}{8} - \frac{4}{8} = \frac{3}{8}$).</div>
+    </div>
+    <div class="q-card">
+      <p><strong>T2_Q3:</strong> Evaluate $\frac{4.5 \times 0.6}{0.3} + 2.5$</p>
+      <p>Options: <span class="correct">11.5 (Correct)</span>, 9.0, 14.0</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Decimal division precedence $\frac{2.7}{0.3} = 9 \Rightarrow 9 + 2.5 = 11.5$.</div>
+    </div>
+
+    <span class="badge t3">Tier 3 (Hard)</span>
+    <div class="q-card">
+      <p><strong>T3_Q1:</strong> Simplify $\frac{\frac{4}{9}}{\frac{2}{3} \times \frac{5}{6}}$</p>
+      <p>Options: <span class="correct">4/5 (Correct)</span>, 20/81, 5/4</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Invert denominator fraction: $\frac{4}{9} \times \frac{9}{5} = \frac{4}{5}$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>T3_Q2:</strong> Simplify $\frac{3}{x+1} - \frac{2}{x-1}$</p>
+      <p>Options: <span class="correct">(x - 5) / ((x+1)(x-1)) (Correct)</span>, 1 / ((x+1)(x-1)), (x + 1) / ((x+1)(x-1))</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Distribute negative sign: $3(x-1) - 2(x+1) = 3x - 3 - 2x - 2 = x - 5$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>T3_Q3:</strong> Solve for $x$: $\frac{2}{x+3} + \frac{1}{x} = \frac{5}{x+3}$</p>
+      <p>Options: <span class="correct">x = 3/2 (Correct)</span>, x = 3, x = 1</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> $\frac{1}{x} = \frac{3}{x+3} \Rightarrow x+3 = 3x \Rightarrow x = 3/2$.</div>
+    </div>
+
+    <span class="badge t4">Tier 4 (Expert)</span>
+    <div class="q-card">
+      <p><strong>T4_Q1:</strong> Simplify $\frac{x}{x+2} + \frac{3}{x-1}$</p>
+      <p>Options: <span class="correct">(x^2 + 2x + 6) / ((x+2)(x-1)) (Correct)</span>, (x + 3) / (2x + 1), (x^2 - 4x + 6) / ((x+2)(x-1))</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Cross-multiply: $x(x-1) + 3(x+2) = x^2 + 2x + 6$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>T4_Q2:</strong> Simplify $\frac{\frac{1}{x+h} - \frac{1}{x}}{h}$</p>
+      <p>Options: <span class="correct">-1 / (x(x+h)) (Correct)</span>, 1 / (x(x+h)), 0</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Numerator subtraction $x - (x+h) = -h \Rightarrow \frac{-1}{x(x+h)}$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>T4_Q3:</strong> Solve for $x$: $\frac{2x}{x-3} + \frac{5}{x+3} = \frac{36}{x^2-9}$</p>
+      <p>Options: <span class="correct">x = 7/2 (Correct)</span>, x = 3 (extraneous), x = 11/2</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Expand $2x(x+3) + 5(x-3) = 36 \Rightarrow x = 7/2$ ($x=3$ is extraneous).</div>
+    </div>
+
+    <h3>2. Module 2: Differentiation & Integration</h3>
+
+    <span class="badge t1">Tier 1 (Easy / Scaffolded)</span>
+    <div class="q-card">
+      <p><strong>M2_T1_Q1:</strong> Find derivative of $y = 3x^4 + 5x^2 - 7x + 2$</p>
+      <p>Options: <span class="correct">12x^3 + 10x - 7 (Correct)</span>, 12x^3 + 10x + 2, 3x^3 + 5x - 7</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Power rule $\frac{d}{dx}(x^n) = n x^{n-1}$. Constant derivative is 0.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>M2_T1_Q2:</strong> Evaluate $\int (6x^2 + 4x - 5) \, dx$</p>
+      <p>Options: <span class="correct">2x^3 + 2x^2 - 5x + C (Correct)</span>, 12x + 4 + C, 6x^3 + 4x^2 - 5x + C</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Integration rule $\int x^n dx = \frac{x^{n+1}}{n+1} + C$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>M2_T1_Q3:</strong> Find derivative of $y = 4\sqrt{x} + \frac{3}{x}$</p>
+      <p>Options: <span class="correct">2/sqrt(x) - 3/x^2 (Correct)</span>, 2/sqrt(x) + 3/x^2, 2sqrt(x) - 3x^-2</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> $4(\frac{1}{2}x^{-1/2}) + 3(-1x^{-2}) = \frac{2}{\sqrt{x}} - \frac{3}{x^2}$.</div>
+    </div>
+
+    <span class="badge t2">Tier 2 (Medium / Baseline Entry)</span>
+    <div class="q-card">
+      <p><strong>M2_T2_Q1:</strong> Find derivative of $y = 5e^{2x} + 3\sin(4x)$</p>
+      <p>Options: <span class="correct">10e^{2x} + 12\cos(4x) (Correct)</span>, 5e^{2x} + 3\cos(4x), 10e^{2x} - 12\cos(4x)</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Chain Rule: multiply by inner derivatives 2 and 4.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>M2_T2_Q2:</strong> Evaluate $\int_1^3 (3x^2 - 2x) \, dx$</p>
+      <p>Options: <span class="correct">18 (Correct)</span>, 20, 16</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> $F(3) - F(1) = (27-9) - (1-1) = 18$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>M2_T2_Q3:</strong> Tangent line slope for $y = 2x^3 - 5x$ at $x = 2$</p>
+      <p>Options: <span class="correct">19 (Correct)</span>, 11, 24</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Evaluate derivative $y' = 6x^2 - 5 \Rightarrow 6(4) - 5 = 19$.</div>
+    </div>
+
+    <span class="badge t3">Tier 3 (Hard)</span>
+    <div class="q-card">
+      <p><strong>M2_T3_Q1:</strong> Derivative of $y = x^3 \cdot \ln(x)$</p>
+      <p>Options: <span class="correct">x^2(3ln(x) + 1) (Correct)</span>, 3x^2 * 1/x, 3x^2 ln(x)</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Product Rule $(uv)' = u'v + uv' \Rightarrow x^2(3\ln(x)+1)$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>M2_T3_Q2:</strong> Evaluate $\int 2x \cos(x^2 + 1) \, dx$</p>
+      <p>Options: <span class="correct">sin(x^2 + 1) + C (Correct)</span>, x^2 sin(x^2 + 1) + C, -sin(x^2 + 1) + C</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> $u$-substitution $u=x^2+1 \Rightarrow \int \cos(u)du = \sin(x^2+1)+C$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>M2_T3_Q3:</strong> Derivative of $y = \frac{x^2 + 1}{2x - 3}$</p>
+      <p>Options: <span class="correct">(2x^2 - 6x - 2) / (2x - 3)^2 (Correct)</span>, 2x / 2, (2x^2 + 6x + 2) / (2x - 3)^2</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Quotient Rule $\frac{u'v - uv'}{v^2} = \frac{2x^2 - 6x - 2}{(2x-3)^2}$.</div>
+    </div>
+
+    <span class="badge t4">Tier 4 (Expert)</span>
+    <div class="q-card">
+      <p><strong>M2_T4_Q1:</strong> Evaluate $\int x e^x \, dx$</p>
+      <p>Options: <span class="correct">e^x(x - 1) + C (Correct)</span>, 1/2 x^2 e^x + C, e^x(x + 1) + C</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Integration by Parts $\int u\,dv = uv - \int v\,du \Rightarrow e^x(x-1)+C$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>M2_T4_Q2:</strong> Derivative of $y = \ln(x^3 + 4x)$</p>
+      <p>Options: <span class="correct">(3x^2 + 4) / (x^3 + 4x) (Correct)</span>, 1 / (x^3 + 4x), (3x^2 + 4) / x</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Chain Rule for natural log $\frac{g'(x)}{g(x)} = \frac{3x^2+4}{x^3+4x}$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>M2_T4_Q3:</strong> Evaluate $\int_0^{\pi/2} \sin^2(x) \cos(x) \, dx$</p>
+      <p>Options: <span class="correct">1/3 (Correct)</span>, 1/2, 1</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> $u$-sub $u=\sin(x) \Rightarrow \int_0^1 u^2 du = [\frac{u^3}{3}]_0^1 = 1/3$.</div>
+    </div>
+
+    <h3>3. Module 3: Linear & Quadratic Equations</h3>
+
+    <span class="badge t1">Tier 1 (Easy / Scaffolded)</span>
+    <div class="q-card">
+      <p><strong>M3_T1_Q1:</strong> Solve for $x$: $4x - 7 = 17$</p>
+      <p>Options: <span class="correct">x = 6 (Correct)</span>, x = 5, x = 4</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Add 7 to both sides: $4x = 24 \Rightarrow x = 6$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>M3_T1_Q2:</strong> Solve for $x$: $3(x - 2) = 15$</p>
+      <p>Options: <span class="correct">x = 7 (Correct)</span>, x = 5, x = 3</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Divide by 3: $x-2 = 5 \Rightarrow x = 7$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>M3_T1_Q3:</strong> Solve for $x$: $x^2 = 49$</p>
+      <p>Options: <span class="correct">x = +-7 (Correct)</span>, x = 7, x = 24.5</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Square root yields both positive and negative roots $x = \pm 7$.</div>
+    </div>
+
+    <span class="badge t2">Tier 2 (Medium / Baseline Entry)</span>
+    <div class="q-card">
+      <p><strong>M3_T2_Q1:</strong> Solve for $x$: $x^2 - 5x + 6 = 0$</p>
+      <p>Options: <span class="correct">x = 2, 3 (Correct)</span>, x = -2, -3, x = 1, 6</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Factoring $(x-2)(x-3) = 0 \Rightarrow x = +2, +3$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>M3_T2_Q2:</strong> Solve for $x$: $x^2 + 4x - 12 = 0$</p>
+      <p>Options: <span class="correct">x = 2, -6 (Correct)</span>, x = -2, 6, x = 3, -4</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Factoring $(x+6)(x-2) = 0 \Rightarrow x = -6, +2$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>M3_T2_Q3:</strong> Solve for $x$: $2x^2 - 8x = 0$</p>
+      <p>Options: <span class="correct">x = 0, 4 (Correct)</span>, x = 4, x = 0, -4</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Factor out $2x(x-4) = 0 \Rightarrow x = 0, 4$.</div>
+    </div>
+
+    <span class="badge t3">Tier 3 (Hard)</span>
+    <div class="q-card">
+      <p><strong>M3_T3_Q1:</strong> Solve for $x$: $2x^2 + 7x + 3 = 0$</p>
+      <p>Options: <span class="correct">x = -1/2, -3 (Correct)</span>, x = 1/2, 3, x = -1, -3</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Quadratic Formula $\frac{-7 \pm 5}{4} = -1/2, -3$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>M3_T3_Q2:</strong> Discriminant of $3x^2 - 5x + 2 = 0$</p>
+      <p>Options: <span class="correct">D = 1 (2 real distinct rational roots) (Correct)</span>, D = -1 (No real roots), D = 49 (2 real roots)</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> $D = b^2 - 4ac = 25 - 24 = +1 > 0$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>M3_T3_Q3:</strong> Completing the square: $x^2 - 6x + 5 = 0$</p>
+      <p>Options: <span class="correct">x = 1, 5 (Correct)</span>, x = -1, -5, x = 2, 3</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> $(x-3)^2 = 4 \Rightarrow x - 3 = \pm 2 \Rightarrow x = 5, 1$.</div>
+    </div>
+
+    <span class="badge t4">Tier 4 (Expert)</span>
+    <div class="q-card">
+      <p><strong>M3_T4_Q1:</strong> Solve system: $x + y = 10$ and $xy = 21$</p>
+      <p>Options: <span class="correct">(x,y) = (7,3) or (3,7) (Correct)</span>, (x,y) = (5,5), (x,y) = (8,2)</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> $x(10-x) = 21 \Rightarrow x^2 - 10x + 21 = 0 \Rightarrow x = 7, 3$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>M3_T4_Q2:</strong> Solve for $x$: $x^4 - 5x^2 + 4 = 0$</p>
+      <p>Options: <span class="correct">x = +-1, +-2 (Correct)</span>, x = 1, 4, x = +-1, +-4</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Substitute $u = x^2 \Rightarrow u = 1, 4 \Rightarrow x = \pm 1, \pm 2$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>M3_T4_Q3:</strong> Solve for $x$: $x + \sqrt{x} - 6 = 0$</p>
+      <p>Options: <span class="correct">x = 4 (Correct)</span>, x = 4, 9, x = -3, 2</p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Substitute $u = \sqrt{x} \Rightarrow (u+3)(u-2) = 0 \Rightarrow u = 2 \Rightarrow x = 4$.</div>
+    </div>
   </div>
 
-  <!-- TEST A SECTION -->
-  <div class="section-title">🟦 TEST A (Phase 1)</div>
+  <!-- TEST B -->
+  <div class="test-container">
+    <h2>🟪 TEST B (Phase 2 - Isomorphic Pair)</h2>
 
-  <div class="topic-card">
-    <h3>1. Module 1: Mixed Operations & Rational Expressions (12 Adaptive Questions)</h3>
-    <div class="question-item"><div class="q-text">[Tier 1] T1_Q1: Evaluate \(5421 - 382 \times 4 + 120 \div 6\)</div><div class="correct-ans">✓ Correct: 3913</div></div>
-    <div class="question-item"><div class="q-text">[Tier 1] T1_Q2: Evaluate \(240 \div (15 - 3) + 18 \times 4\)</div><div class="correct-ans">✓ Correct: 92</div></div>
-    <div class="question-item"><div class="q-text">[Tier 1] T1_Q3: Evaluate \(\frac{5}{12} + \frac{1}{4} - \frac{1}{3}\)</div><div class="correct-ans">✓ Correct: 1/3</div></div>
-    <div class="question-item"><div class="q-text">[Tier 2] T2_Q1: Evaluate \(\frac{3}{4} + \frac{5}{6} - \frac{2}{3}\)</div><div class="correct-ans">✓ Correct: 11/12</div></div>
-    <div class="question-item"><div class="q-text">[Tier 2] T2_Q2: Evaluate \(\frac{7}{8} - \left(\frac{1}{2} + \frac{1}{4}\right) \times \frac{2}{3}\)</div><div class="correct-ans">✓ Correct: 3/8</div></div>
-    <div class="question-item"><div class="q-text">[Tier 2] T2_Q3: Evaluate \(\frac{4.5 \times 0.6}{0.3} + 2.5\)</div><div class="correct-ans">✓ Correct: 11.5</div></div>
-    <div class="question-item"><div class="q-text">[Tier 3] T3_Q1: Simplify \(\frac{\frac{4}{9}}{\frac{2}{3} \times \frac{5}{6}}\)</div><div class="correct-ans">✓ Correct: 4/5</div></div>
-    <div class="question-item"><div class="q-text">[Tier 3] T3_Q2: Simplify \(\frac{3}{x+1} - \frac{2}{x-1}\)</div><div class="correct-ans">✓ Correct: (x - 5) / ((x+1)(x-1))</div></div>
-    <div class="question-item"><div class="q-text">[Tier 3] T3_Q3: Solve for \(x\): \(\frac{2}{x+3} + \frac{1}{x} = \frac{5}{x+3}\)</div><div class="correct-ans">✓ Correct: x = 3/2</div></div>
-    <div class="question-item"><div class="q-text">[Tier 4] T4_Q1: Simplify \(\frac{x}{x+2} + \frac{3}{x-1}\)</div><div class="correct-ans">✓ Correct: (x^2 + 2x + 6) / ((x+2)(x-1))</div></div>
-    <div class="question-item"><div class="q-text">[Tier 4] T4_Q2: Simplify \(\frac{\frac{1}{x+h} - \frac{1}{x}}{h}\)</div><div class="correct-ans">✓ Correct: -1 / (x(x+h))</div></div>
-    <div class="question-item"><div class="q-text">[Tier 4] T4_Q3: Solve for \(x\): \(\frac{2x}{x-3} + \frac{5}{x+3} = \frac{36}{x^2-9}\)</div><div class="correct-ans">✓ Correct: x = 7/2</div></div>
-  </div>
+    <h3>1. Module 1: Mixed Operations & Rational Expressions</h3>
+    <div class="q-card">
+      <p><strong>T1_Q1:</strong> Evaluate $4356 - 291 \times 3 + 180 \div 9$ $\rightarrow$ <span class="correct">3503</span></p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> BODMAS precedence rule ($291 \times 3 = 873$, $180 \div 9 = 20 \Rightarrow 4356 - 873 + 20 = 3503$).</div>
+    </div>
+    <div class="q-card">
+      <p><strong>T1_Q2:</strong> Evaluate $360 \div (18 - 6) + 14 \times 5$ $\rightarrow$ <span class="correct">100</span></p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Parentheses first ($360 \div 12 = 30$, $14 \times 5 = 70 \Rightarrow 30 + 70 = 100$).</div>
+    </div>
+    <div class="q-card">
+      <p><strong>T1_Q3:</strong> Evaluate $\frac{7}{15} + \frac{1}{5} - \frac{1}{3}$ $\rightarrow$ <span class="correct">1/3</span></p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> LCD = $15 \Rightarrow \frac{7+3-5}{15} = \frac{5}{15} = \frac{1}{3}$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>T2_Q1:</strong> Evaluate $\frac{2}{5} + \frac{3}{4} - \frac{1}{2}$ $\rightarrow$ <span class="correct">13/20</span></p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> LCD = $20 \Rightarrow \frac{8+15-10}{20} = \frac{13}{20}$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>T2_Q2:</strong> Evaluate $\frac{5}{6} - \left(\frac{1}{3} + \frac{1}{4}\right) \times \frac{4}{7}$ $\rightarrow$ <span class="correct">1/2</span></p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Parentheses first ($\frac{7}{12} \times \frac{4}{7} = \frac{1}{3} \Rightarrow \frac{5}{6} - \frac{2}{6} = \frac{3}{6} = \frac{1}{2}$).</div>
+    </div>
+    <div class="q-card">
+      <p><strong>T2_Q3:</strong> Evaluate $\frac{3.6 \times 0.8}{0.4} + 1.8$ $\rightarrow$ <span class="correct">9.0</span></p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Decimal division precedence $\frac{2.88}{0.4} = 7.2 \Rightarrow 7.2 + 1.8 = 9.0$.</div>
+    </div>
 
-  <div class="topic-card">
-    <h3>2. Module 2: Differentiation & Integration (12 Adaptive Questions)</h3>
-    <div class="question-item"><div class="q-text">[Tier 1] M2_T1_Q1: Find derivative of \(y = 3x^4 + 5x^2 - 7x + 2\)</div><div class="correct-ans">✓ Correct: 12x^3 + 10x - 7</div></div>
-    <div class="question-item"><div class="q-text">[Tier 1] M2_T1_Q2: Evaluate \(\int (6x^2 + 4x - 5) \, dx\)</div><div class="correct-ans">✓ Correct: 2x^3 + 2x^2 - 5x + C</div></div>
-    <div class="question-item"><div class="q-text">[Tier 1] M2_T1_Q3: Find derivative of \(y = 4\sqrt{x} + \frac{3}{x}\)</div><div class="correct-ans">✓ Correct: 2/sqrt(x) - 3/x^2</div></div>
-    <div class="question-item"><div class="q-text">[Tier 2] M2_T2_Q1: Find derivative of \(y = 5e^{2x} + 3\sin(4x)\)</div><div class="correct-ans">✓ Correct: 10e^{2x} + 12\cos(4x)</div></div>
-    <div class="question-item"><div class="q-text">[Tier 2] M2_T2_Q2: Evaluate \(\int_1^3 (3x^2 - 2x) \, dx\)</div><div class="correct-ans">✓ Correct: 18</div></div>
-    <div class="question-item"><div class="q-text">[Tier 2] M2_T2_Q3: Find tangent line slope for \(y = 2x^3 - 5x\) at \(x = 2\)</div><div class="correct-ans">✓ Correct: 19</div></div>
-    <div class="question-item"><div class="q-text">[Tier 3] M2_T3_Q1: Find derivative of \(y = x^3 \cdot \ln(x)\)</div><div class="correct-ans">✓ Correct: x^2(3ln(x) + 1)</div></div>
-    <div class="question-item"><div class="q-text">[Tier 3] M2_T3_Q2: Evaluate \(\int 2x \cos(x^2 + 1) \, dx\)</div><div class="correct-ans">✓ Correct: sin(x^2 + 1) + C</div></div>
-    <div class="question-item"><div class="q-text">[Tier 3] M2_T3_Q3: Find derivative of \(y = \frac{x^2 + 1}{2x - 3}\)</div><div class="correct-ans">✓ Correct: (2x^2 - 6x - 2) / (2x - 3)^2</div></div>
-    <div class="question-item"><div class="q-text">[Tier 4] M2_T4_Q1: Evaluate \(\int x e^x \, dx\)</div><div class="correct-ans">✓ Correct: e^x(x - 1) + C</div></div>
-    <div class="question-item"><div class="q-text">[Tier 4] M2_T4_Q2: Find derivative of \(y = \ln(x^3 + 4x)\)</div><div class="correct-ans">✓ Correct: (3x^2 + 4) / (x^3 + 4x)</div></div>
-    <div class="question-item"><div class="q-text">[Tier 4] M2_T4_Q3: Evaluate \(\int_0^{\pi/2} \sin^2(x) \cos(x) \, dx\)</div><div class="correct-ans">✓ Correct: 1/3</div></div>
-  </div>
+    <h3>2. Module 2: Differentiation & Integration</h3>
+    <div class="q-card">
+      <p><strong>M2_T1_Q1:</strong> Find derivative of $y = 4x^4 + 3x^2 - 5x + 9$ $\rightarrow$ <span class="correct">16x^3 + 6x - 5</span></p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Power rule $\frac{d}{dx}(4x^4+3x^2-5x+9) = 16x^3 + 6x - 5$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>M2_T1_Q2:</strong> Evaluate $\int (9x^2 + 6x - 4) \, dx$ $\rightarrow$ <span class="correct">3x^3 + 3x^2 - 4x + C</span></p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Power integration $\frac{9x^3}{3} + \frac{6x^2}{2} - 4x = 3x^3 + 3x^2 - 4x + C$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>M2_T2_Q1:</strong> Find derivative of $y = 4e^{3x} + 2\sin(5x)$ $\rightarrow$ <span class="correct">12e^{3x} + 10\cos(5x)</span></p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Chain Rule $4(3e^{3x}) + 2(5\cos(5x)) = 12e^{3x} + 10\cos(5x)$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>M2_T2_Q2:</strong> Evaluate $\int_1^2 (6x^2 - 4x) \, dx$ $\rightarrow$ <span class="correct">8</span></p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Antiderivative $F(x) = 2x^3 - 2x^2 \Rightarrow F(2) - F(1) = 8$.</div>
+    </div>
 
-  <div class="topic-card">
-    <h3>3. Module 3: Linear & Quadratic Equations (12 Adaptive Questions)</h3>
-    <div class="question-item"><div class="q-text">[Tier 1] M3_T1_Q1: Solve for \(x\): \(4x - 7 = 17\)</div><div class="correct-ans">✓ Correct: x = 6</div></div>
-    <div class="question-item"><div class="q-text">[Tier 1] M3_T1_Q2: Solve for \(x\): \(3(x - 2) = 15\)</div><div class="correct-ans">✓ Correct: x = 7</div></div>
-    <div class="question-item"><div class="q-text">[Tier 1] M3_T1_Q3: Solve for \(x\): \(x^2 = 49\)</div><div class="correct-ans">✓ Correct: x = +-7</div></div>
-    <div class="question-item"><div class="q-text">[Tier 2] M3_T2_Q1: Solve for \(x\): \(x^2 - 5x + 6 = 0\)</div><div class="correct-ans">✓ Correct: x = 2, 3</div></div>
-    <div class="question-item"><div class="q-text">[Tier 2] M3_T2_Q2: Solve for \(x\): \(x^2 + 4x - 12 = 0\)</div><div class="correct-ans">✓ Correct: x = 2, -6</div></div>
-    <div class="question-item"><div class="q-text">[Tier 2] M3_T2_Q3: Solve for \(x\): \(2x^2 - 8x = 0\)</div><div class="correct-ans">✓ Correct: x = 0, 4</div></div>
-    <div class="question-item"><div class="q-text">[Tier 3] M3_T3_Q1: Solve for \(x\): \(2x^2 + 7x + 3 = 0\)</div><div class="correct-ans">✓ Correct: x = -1/2, -3</div></div>
-    <div class="question-item"><div class="q-text">[Tier 3] M3_T3_Q2: Find discriminant of \(3x^2 - 5x + 2 = 0\)</div><div class="correct-ans">✓ Correct: D = 1 (2 real distinct rational roots)</div></div>
-    <div class="question-item"><div class="q-text">[Tier 3] M3_T3_Q3: Solve for \(x\) by completing square: \(x^2 - 6x + 5 = 0\)</div><div class="correct-ans">✓ Correct: x = 1, 5</div></div>
-    <div class="question-item"><div class="q-text">[Tier 4] M3_T4_Q1: Solve system: \(x + y = 10\) and \(xy = 21\)</div><div class="correct-ans">✓ Correct: (x,y) = (7,3) or (3,7)</div></div>
-    <div class="question-item"><div class="q-text">[Tier 4] M3_T4_Q2: Solve for \(x\): \(x^4 - 5x^2 + 4 = 0\)</div><div class="correct-ans">✓ Correct: x = +-1, +-2</div></div>
-    <div class="question-item"><div class="q-text">[Tier 4] M3_T4_Q3: Solve for \(x\): \(x + \sqrt{x} - 6 = 0\)</div><div class="correct-ans">✓ Correct: x = 4</div></div>
-  </div>
-
-
-  <!-- TEST B SECTION -->
-  <div class="section-title test-b">🟪 TEST B (Phase 2 - Isomorphic Parallel Pair)</div>
-
-  <div class="topic-card">
-    <h3>1. Module 1: Mixed Operations & Rational Expressions (12 Isomorphic Questions)</h3>
-    <div class="question-item"><div class="q-text">[Tier 1] T1_Q1: Evaluate \(4356 - 291 \times 3 + 180 \div 9\)</div><div class="correct-ans">✓ Correct: 3503</div></div>
-    <div class="question-item"><div class="q-text">[Tier 1] T1_Q2: Evaluate \(360 \div (18 - 6) + 14 \times 5\)</div><div class="correct-ans">✓ Correct: 100</div></div>
-    <div class="question-item"><div class="q-text">[Tier 1] T1_Q3: Evaluate \(\frac{7}{15} + \frac{1}{5} - \frac{1}{3}\)</div><div class="correct-ans">✓ Correct: 1/3</div></div>
-    <div class="question-item"><div class="q-text">[Tier 2] T2_Q1: Evaluate \(\frac{2}{5} + \frac{3}{4} - \frac{1}{2}\)</div><div class="correct-ans">✓ Correct: 13/20</div></div>
-    <div class="question-item"><div class="q-text">[Tier 2] T2_Q2: Evaluate \(\frac{5}{6} - \left(\frac{1}{3} + \frac{1}{4}\right) \times \frac{4}{7}\)</div><div class="correct-ans">✓ Correct: 1/2</div></div>
-    <div class="question-item"><div class="q-text">[Tier 2] T2_Q3: Evaluate \(\frac{3.6 \times 0.8}{0.4} + 1.8\)</div><div class="correct-ans">✓ Correct: 9.0</div></div>
-    <div class="question-item"><div class="q-text">[Tier 3] T3_Q1: Simplify \(\frac{\frac{3}{8}}{\frac{1}{4} \times \frac{5}{6}}\)</div><div class="correct-ans">✓ Correct: 9/5</div></div>
-    <div class="question-item"><div class="q-text">[Tier 3] T3_Q2: Simplify \(\frac{4}{x+2} - \frac{3}{x-2}\)</div><div class="correct-ans">✓ Correct: (x - 14) / ((x+2)(x-2))</div></div>
-    <div class="question-item"><div class="q-text">[Tier 3] T3_Q3: Solve for \(x\): \(\frac{3}{x+2} + \frac{1}{x} = \frac{6}{x+2}\)</div><div class="correct-ans">✓ Correct: x = 2/3</div></div>
-    <div class="question-item"><div class="q-text">[Tier 4] T4_Q1: Simplify \(\frac{x}{x+3} + \frac{2}{x-1}\)</div><div class="correct-ans">✓ Correct: (x^2 + 1x + 6) / ((x+3)(x-1))</div></div>
-    <div class="question-item"><div class="q-text">[Tier 4] T4_Q2: Simplify \(\frac{\frac{2}{x+h} - \frac{2}{x}}{h}\)</div><div class="correct-ans">✓ Correct: -2 / (x(x+h))</div></div>
-    <div class="question-item"><div class="q-text">[Tier 4] T4_Q3: Solve for \(x\): \(\frac{3x}{x-2} + \frac{4}{x+2} = \frac{28}{x^2-4}\)</div><div class="correct-ans">✓ Correct: x = 5/3</div></div>
-  </div>
-
-  <div class="topic-card">
-    <h3>2. Module 2: Differentiation & Integration (12 Isomorphic Questions)</h3>
-    <div class="question-item"><div class="q-text">[Tier 1] M2_T1_Q1: Find derivative of \(y = 4x^4 + 3x^2 - 5x + 9\)</div><div class="correct-ans">✓ Correct: 16x^3 + 6x - 5</div></div>
-    <div class="question-item"><div class="q-text">[Tier 1] M2_T1_Q2: Evaluate \(\int (9x^2 + 6x - 4) \, dx\)</div><div class="correct-ans">✓ Correct: 3x^3 + 3x^2 - 4x + C</div></div>
-    <div class="question-item"><div class="q-text">[Tier 1] M2_T1_Q3: Find derivative of \(y = 6\sqrt{x} + \frac{5}{x}\)</div><div class="correct-ans">✓ Correct: 3/sqrt(x) - 5/x^2</div></div>
-    <div class="question-item"><div class="q-text">[Tier 2] M2_T2_Q1: Find derivative of \(y = 4e^{3x} + 2\sin(5x)\)</div><div class="correct-ans">✓ Correct: 12e^{3x} + 10\cos(5x)</div></div>
-    <div class="question-item"><div class="q-text">[Tier 2] M2_T2_Q2: Evaluate \(\int_1^2 (6x^2 - 4x) \, dx\)</div><div class="correct-ans">✓ Correct: 8</div></div>
-    <div class="question-item"><div class="q-text">[Tier 2] M2_T2_Q3: Find tangent line slope for \(y = 3x^3 - 4x\) at \(x = 2\)</div><div class="correct-ans">✓ Correct: 32</div></div>
-    <div class="question-item"><div class="q-text">[Tier 3] M2_T3_Q1: Find derivative of \(y = x^4 \cdot \ln(x)\)</div><div class="correct-ans">✓ Correct: x^3(4ln(x) + 1)</div></div>
-    <div class="question-item"><div class="q-text">[Tier 3] M2_T3_Q2: Evaluate \(\int 3x^2 \sin(x^3 + 2) \, dx\)</div><div class="correct-ans">✓ Correct: -cos(x^3 + 2) + C</div></div>
-    <div class="question-item"><div class="q-text">[Tier 3] M2_T3_Q3: Find derivative of \(y = \frac{x^2 + 3}{3x - 2}\)</div><div class="correct-ans">✓ Correct: (3x^2 - 4x - 9) / (3x - 2)^2</div></div>
-    <div class="question-item"><div class="q-text">[Tier 4] M2_T4_Q1: Evaluate \(\int 2x e^{2x} \, dx\)</div><div class="correct-ans">✓ Correct: e^{2x}(x - 1/2) + C</div></div>
-    <div class="question-item"><div class="q-text">[Tier 4] M2_T4_Q2: Find derivative of \(y = \ln(x^4 + 5x)\)</div><div class="correct-ans">✓ Correct: (4x^3 + 5) / (x^4 + 5x)</div></div>
-    <div class="question-item"><div class="q-text">[Tier 4] M2_T4_Q3: Evaluate \(\int_0^{\pi/2} \cos^2(x) \sin(x) \, dx\)</div><div class="correct-ans">✓ Correct: 1/3</div></div>
-  </div>
-
-  <div class="topic-card">
-    <h3>3. Module 3: Linear & Quadratic Equations (12 Isomorphic Questions)</h3>
-    <div class="question-item"><div class="q-text">[Tier 1] M3_T1_Q1: Solve for \(x\): \(5x - 8 = 22\)</div><div class="correct-ans">✓ Correct: x = 6</div></div>
-    <div class="question-item"><div class="q-text">[Tier 1] M3_T1_Q2: Solve for \(x\): \(4(x - 3) = 16\)</div><div class="correct-ans">✓ Correct: x = 7</div></div>
-    <div class="question-item"><div class="q-text">[Tier 1] M3_T1_Q3: Solve for \(x\): \(x^2 = 64\)</div><div class="correct-ans">✓ Correct: x = +-8</div></div>
-    <div class="question-item"><div class="q-text">[Tier 2] M3_T2_Q1: Solve for \(x\): \(x^2 - 7x + 12 = 0\)</div><div class="correct-ans">✓ Correct: x = 3, 4</div></div>
-    <div class="question-item"><div class="q-text">[Tier 2] M3_T2_Q2: Solve for \(x\): \(x^2 + 5x - 14 = 0\)</div><div class="correct-ans">✓ Correct: x = 2, -7</div></div>
-    <div class="question-item"><div class="q-text">[Tier 2] M3_T2_Q3: Solve for \(x\): \(3x^2 - 12x = 0\)</div><div class="correct-ans">✓ Correct: x = 0, 4</div></div>
-    <div class="question-item"><div class="q-text">[Tier 3] M3_T3_Q1: Solve for \(x\): \(2x^2 + 9x + 4 = 0\)</div><div class="correct-ans">✓ Correct: x = -1/2, -4</div></div>
-    <div class="question-item"><div class="q-text">[Tier 3] M3_T3_Q2: Find discriminant of \(2x^2 - 7x + 3 = 0\)</div><div class="correct-ans">✓ Correct: D = 25 (2 real distinct rational roots)</div></div>
-    <div class="question-item"><div class="q-text">[Tier 3] M3_T3_Q3: Solve for \(x\) by completing square: \(x^2 - 8x + 12 = 0\)</div><div class="correct-ans">✓ Correct: x = 2, 6</div></div>
-    <div class="question-item"><div class="q-text">[Tier 4] M3_T4_Q1: Solve system: \(x + y = 12\) and \(xy = 35\)</div><div class="correct-ans">✓ Correct: (x,y) = (7,5) or (5,7)</div></div>
-    <div class="question-item"><div class="q-text">[Tier 4] M3_T4_Q2: Solve for \(x\): \(x^4 - 10x^2 + 9 = 0\)</div><div class="correct-ans">✓ Correct: x = +-1, +-3</div></div>
-    <div class="question-item"><div class="q-text">[Tier 4] M3_T4_Q3: Solve for \(x\): \(x + 2\sqrt{x} - 8 = 0\)</div><div class="correct-ans">✓ Correct: x = 4</div></div>
+    <h3>3. Module 3: Linear & Quadratic Equations</h3>
+    <div class="q-card">
+      <p><strong>M3_T1_Q1:</strong> Solve for $x$: $5x - 8 = 22$ $\rightarrow$ <span class="correct">x = 6</span></p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Add 8 to both sides: $5x = 30 \Rightarrow x = 6$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>M3_T2_Q1:</strong> Solve for $x$: $x^2 - 7x + 12 = 0$ $\rightarrow$ <span class="correct">x = 3, 4</span></p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Factoring $(x-3)(x-4) = 0 \Rightarrow x = +3, +4$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>M3_T3_Q1:</strong> Solve for $x$: $2x^2 + 9x + 4 = 0$ $\rightarrow$ <span class="correct">x = -1/2, -4</span></p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Quadratic Formula $x = \frac{-9 \pm \sqrt{81-32}}{4} = -1/2, -4$.</div>
+    </div>
+    <div class="q-card">
+      <p><strong>M3_T4_Q1:</strong> Solve system: $x + y = 12$ and $xy = 35$ $\rightarrow$ <span class="correct">(x,y) = (7,5) or (5,7)</span></p>
+      <div class="misconception">💡 <strong>Misconception Rationale:</strong> Substitute $y = 12-x \Rightarrow x^2 - 12x + 35 = 0 \Rightarrow x = 7, 5$.</div>
+    </div>
   </div>
 
 </body>
