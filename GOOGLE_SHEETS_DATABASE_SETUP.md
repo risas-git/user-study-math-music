@@ -7,7 +7,7 @@ You can automatically store every participant's study results directly into a **
 ## Step 1: Create a Google Sheet
 1. Go to [Google Sheets](https://sheets.new) and create a new blank spreadsheet.
 2. Name it **"Math Music User Study Results"**.
-3. In Row 1, add these column headers:
+3. In Row 1, add these column headers (A through N):
 
 | A | B | C | D | E | F | G | H | I | J | K | L | M | N |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -25,7 +25,7 @@ function doPost(e) {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     var data = {};
 
-    // 1. Try parsing JSON body
+    // 1. Parse JSON body
     if (e && e.postData && e.postData.contents) {
       try {
         data = JSON.parse(e.postData.contents);
@@ -71,27 +71,11 @@ function doPost(e) {
 
 ## Step 3: Deploy as Web App & Authorize
 
-1. Click **Deploy** → **New deployment**.
-2. Click the gear icon (⚙️) next to *Select type* and choose **Web app**.
-3. Fill in:
-   - **Description**: `User Study Webhook`
-   - **Execute as**: `Me`
-   - **Who has access**: `Anyone` *(Crucial so participants can submit without logging into Google)*
+1. Click **Deploy** → **Manage deployments**.
+2. Click the **Pencil (Edit ✏️)** icon next to your active deployment.
+3. Next to **Version**, click the dropdown menu and select **"New version"**.
 4. Click **Deploy**.
-5. Click **Authorize access** when prompted.
-
-### ⚠️ How to bypass the "Google hasn't verified this app" screen:
-This warning appears because it is your personal Google Apps Script. Follow these 3 simple clicks:
-1. On the *"Google hasn't verified this app"* popup screen, click **"Advanced"** (or *"Erweitert"* at the bottom-left).
-2. Click the link at the bottom that says **"Go to Untitled project (unsafe)"** (or *"Weiter zu Untitled project (unsicher)"*).
-3. Click **"Allow"** (or *"Zulassen"*).
-
-6. Copy the generated **Web App URL** (ends in `/exec`).
 
 ---
 
-## Step 4: Paste URL into `summary.html`
-In `summary.html` line 225, update:
-```js
-const GOOGLE_SHEET_WEBHOOK_URL = "YOUR_COPIED_WEBAPP_URL_HERE";
-```
+That's it! Every participant who completes the study will now automatically log all 14 columns into your Google Sheet live!
