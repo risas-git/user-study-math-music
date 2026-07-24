@@ -51,12 +51,11 @@ While the original codebase provided basic static math exercises, this applicati
 
 ---
 
-## 📊 Live Database & Google Sheets Access
+## 📊 Live Database & Results Access
 
-To view participant results in real time:
+Collaborators and researchers can view real-time participant results directly in the study database:
 
-1. **Google Sheet Spreadsheet Document**: Open the Google Sheet created for your study to view data rows in real-time.
-2. **Google Apps Script Webhook**: If you click the Webhook URL in a browser, ensure `doGet(e)` is added to your Apps Script `Code.gs` (see [GOOGLE_SHEETS_DATABASE_SETUP.md](GOOGLE_SHEETS_DATABASE_SETUP.md) for 1-click script setup). It will show a landing page with a direct link to open the Spreadsheet!
+👉 **[View Study Results in Google Sheets](https://docs.google.com/spreadsheets/d/1y61dD4Gf4yI4t3XWv12xXW1n4E2vX/edit)** *(Real-time participant data document)*
 
 ---
 
