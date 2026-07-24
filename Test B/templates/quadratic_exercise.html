@@ -6,104 +6,160 @@
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
   </script>
-  <script type="text/javascript" src="path/to/mathjax-config.js"></script>
-<script type="text/javascript" src="path/to/MathJax.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <meta charset="UTF-8">
-  <title>Quadratic Algebra Exercise</title>
-  </head>
-<div style="position: fixed; top: 0; width: 100%;">
-  <div style="text-align: center; margin-top: 2%; margin-bottom: 2%;" > 
-    <img src="../static/Logo.png" width="50%" />
-    </div>
-    
-  <div class="centered">  
-    <div style= "max-width: 100%; max-height: 20%;">
-      <h2 class="headingtop_margen">Exercises for Algebra</h2>
-      </div>
-      <div class="exercise-box">
-      <div class="timer" id="timer" >
-        <p >00:00:00</p>
-      </div>
-      <h4>Quadratic Equation</h3>
-
-      <form id="exerciseForm">
-        <div id = "Q1">
-          <p class="line-spcaing">Q1: \((x - 3)^2 = 9\)  </p>
-          <input type="radio" id="qua1" name="q1" value="0">
-          <label for="qua1">0</label><br>
-          <input type="radio" id="qua2" name="q1" value="6">
-          <label for="qua2">6</label><br>
-          <input type="radio" id="qua3" name="q1" value="6, 0">
-          <label for="qua3">6, 0</label><br>
-          <p style="font-size: 14px;" id="resultMessage_q1"></p>
-          <button class="button gray" onclick="checkAnswer('q1', '6, 0')">Check & Submit</button>
-          <!--<button type="submit" id="submitButton11" onclick="checkAnswer()">Submit</button>-->
-          
-          <button class="button gray" type="button" id="submitButton1" onclick="showNextQuestionDiv('Q2', 'Q1')">Next Question</button>
-          
-        </div>
-
-        <div id = "Q2" style="display: none;">
-            <p class="line-spcaing">Q2: \(x^2 - 4x - 5 = 0\)  </p>
-          <input type="radio" id="qua4" name="q2" value="-5, 1">
-          <label for="qua4">-5 ,1</label><br>
-          <input type="radio" id="qua5" name="q2" value="5, -1">
-          <label for="qua5">5, -1</label><br>
-          <input type="radio" id="qua6" name="q2" value="5, 1">
-          <label for="qua6">5, 1</label><br>
-          <p style="font-size: 14px;" id="resultMessage_q2"></p>
-          <button class="button gray" onclick="checkAnswer('q2', '5, -1')">Check & Submit</button>
-          <!--<button type="submit" id="submitButton22" onclick="checkAnswer()">Submit</button>-->
-          <button class="button gray" type="button" id="submitButton2" onclick="showNextQuestionDiv('Q3', 'Q2')">Next Question</button>
-         
-        </div>
-
-        <div id = "Q3" style="display: none;">
-          <p class="line-spcaing">Q3: \(x^2 = 5x\)  </p>
-          <input type="radio" id="qua7" name="q3" value="5, 0">
-          <label for="qua7">5, 0</label><br>
-          <input type="radio" id="qua8" name="q3" value="5">
-          <label for="qua8">5</label><br>
-          <input type="radio" id="qua9" name="q3" value="keine Lösung">
-          <label for="qua9">keine Lösung</label><br>
-          <p style="font-size: 14px;" id="resultMessage_q3"></p>
-          <button id="submitButton3" onclick="checkAnswer('q3', '5, 0')" class="button gray">Check & Submit</button>
-          <button type="submit" id="submitButton" onclick="checkAnswers(false)" class="button gray">Result</button>
-          <br>
-          <button type="button" id="exampleButton" disabled onclick="openPage('qua_example.html')" class="button gray">Example</button>
-          <button class="button gray" type="button" id="nextButton" onclick="openPage('derivatives.html')" disabled>Next Chapter</button>         
-      </div>
-      </form>
-       </div>
-       <div align="center"> <p style="font-size:0.8em;">Note: You will get the final results based on your first attempt</p>
-       </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <title>Module 3: Linear & Quadratic Equations</title>
+</head>
+<body style="padding-top: 100px;">
+  <div style="position: fixed; top: 0; width: 100%; z-index: 999;">
+    <div style="text-align: center; margin-top: 1%; margin-bottom: 1%;" > 
+      <img src="../static/Logo.png" width="30%" />
+    </div>    
   </div>
-</div>
+
+  <div class="centered">  
+    <div style="max-width: 100%;">
+      <h2 class="headingtop_margen">Module 3: Linear & Quadratic Equations</h2>
+    </div>
+    <div class="exercise-box">
+      <div class="timer" id="timer">
+        <p>00:00:00</p>
+      </div>
+
+      <form id="exerciseForm" autocomplete="off">
+        <!-- ================= TIER 1 (EASY SCAFFOLDED) ================= -->
+        <div id="M3_T1_Q1" style="display: none;">
+          <p class="line-spcaing">Solve for $x$: $5x - 8 = 22$</p>
+          <input type="radio" id="m3_t1q1_a" name="M3_T1_Q1" value="x = 6" autocomplete="off"><label for="m3_t1q1_a">$x = 6$</label><br>
+          <input type="radio" id="m3_t1q1_b" name="M3_T1_Q1" value="x = 5" autocomplete="off"><label for="m3_t1q1_b">$x = 5$</label><br>
+          <input type="radio" id="m3_t1q1_c" name="M3_T1_Q1" value="x = 14/5" autocomplete="off"><label for="m3_t1q1_c">$x = \frac{14}{5}$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_M3_T1_Q1"></p>
+          <button onclick="checkAnswer('M3_T1_Q1', 'x = 6')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="btn_next_M3_T1_Q1" onclick="handleNextBranch('M3_T1_Q1')" class="button gray" disabled>Next Question</button>
+        </div>
+
+        <div id="M3_T1_Q2" style="display: none;">
+          <p class="line-spcaing">Solve for $x$: $4(x - 3) = 16$</p>
+          <input type="radio" id="m3_t1q2_a" name="M3_T1_Q2" value="x = 7" autocomplete="off"><label for="m3_t1q2_a">$x = 7$</label><br>
+          <input type="radio" id="m3_t1q2_b" name="M3_T1_Q2" value="x = 4" autocomplete="off"><label for="m3_t1q2_b">$x = 4$</label><br>
+          <input type="radio" id="m3_t1q2_c" name="M3_T1_Q2" value="x = 1" autocomplete="off"><label for="m3_t1q2_c">$x = 1$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_M3_T1_Q2"></p>
+          <button onclick="checkAnswer('M3_T1_Q2', 'x = 7')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="btn_next_M3_T1_Q2" onclick="handleNextBranch('M3_T1_Q2')" class="button gray" disabled>Next Question</button>
+        </div>
+
+        <div id="M3_T1_Q3" style="display: none;">
+          <p class="line-spcaing">Solve for $x$: $x^2 = 64$</p>
+          <input type="radio" id="m3_t1q3_a" name="M3_T1_Q3" value="x = +-8" autocomplete="off"><label for="m3_t1q3_a">$x = \pm 8$</label><br>
+          <input type="radio" id="m3_t1q3_b" name="M3_T1_Q3" value="x = 8" autocomplete="off"><label for="m3_t1q3_b">$x = 8$</label><br>
+          <input type="radio" id="m3_t1q3_c" name="M3_T1_Q3" value="x = 32" autocomplete="off"><label for="m3_t1q3_c">$x = 32$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_M3_T1_Q3"></p>
+          <button onclick="checkAnswer('M3_T1_Q3', 'x = +-8')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="btn_next_M3_T1_Q3" onclick="handleNextBranch('M3_T1_Q3')" class="button gray" disabled>Next Question</button>
+        </div>
+
+        <!-- ================= TIER 2 (MEDIUM BASELINE START) ================= -->
+        <div id="M3_T2_Q1">
+          <p class="line-spcaing">Solve for $x$: $x^2 - 7x + 12 = 0$</p>
+          <input type="radio" id="m3_t2q1_a" name="M3_T2_Q1" value="x = 3, 4" autocomplete="off"><label for="m3_t2q1_a">$x = 3, 4$</label><br>
+          <input type="radio" id="m3_t2q1_b" name="M3_T2_Q1" value="x = -3, -4" autocomplete="off"><label for="m3_t2q1_b">$x = -3, -4$</label><br>
+          <input type="radio" id="m3_t2q1_c" name="M3_T2_Q1" value="x = 2, 6" autocomplete="off"><label for="m3_t2q1_c">$x = 2, 6$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_M3_T2_Q1"></p>
+          <button onclick="checkAnswer('M3_T2_Q1', 'x = 3, 4')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="btn_next_M3_T2_Q1" onclick="handleNextBranch('M3_T2_Q1')" class="button gray" disabled>Next Question</button>
+        </div>
+
+        <div id="M3_T2_Q2" style="display: none;">
+          <p class="line-spcaing">Solve for $x$: $x^2 + 5x - 14 = 0$</p>
+          <input type="radio" id="m3_t2q2_a" name="M3_T2_Q2" value="x = 2, -7" autocomplete="off"><label for="m3_t2q2_a">$x = 2, -7$</label><br>
+          <input type="radio" id="m3_t2q2_b" name="M3_T2_Q2" value="x = -2, 7" autocomplete="off"><label for="m3_t2q2_b">$x = -2, 7$</label><br>
+          <input type="radio" id="m3_t2q2_c" name="M3_T2_Q2" value="x = 1, -14" autocomplete="off"><label for="m3_t2q2_c">$x = 1, -14$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_M3_T2_Q2"></p>
+          <button onclick="checkAnswer('M3_T2_Q2', 'x = 2, -7')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="btn_next_M3_T2_Q2" onclick="handleNextBranch('M3_T2_Q2')" class="button gray" disabled>Next Question</button>
+        </div>
+
+        <div id="M3_T2_Q3" style="display: none;">
+          <p class="line-spcaing">Solve for $x$: $3x^2 - 12x = 0$</p>
+          <input type="radio" id="m3_t2q3_a" name="M3_T2_Q3" value="x = 0, 4" autocomplete="off"><label for="m3_t2q3_a">$x = 0, 4$</label><br>
+          <input type="radio" id="m3_t2q3_b" name="M3_T2_Q3" value="x = 4" autocomplete="off"><label for="m3_t2q3_b">$x = 4$</label><br>
+          <input type="radio" id="m3_t2q3_c" name="M3_T2_Q3" value="x = 0, -4" autocomplete="off"><label for="m3_t2q3_c">$x = 0, -4$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_M3_T2_Q3"></p>
+          <button onclick="checkAnswer('M3_T2_Q3', 'x = 0, 4')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="btn_next_M3_T2_Q3" onclick="handleNextBranch('M3_T2_Q3')" class="button gray" disabled>Next Question</button>
+        </div>
+
+        <!-- ================= TIER 3 (HARD QUADRATIC FORMULA & DISCRIMINANT) ================= -->
+        <div id="M3_T3_Q1" style="display: none;">
+          <p class="line-spcaing">Solve for $x$: $2x^2 + 9x + 4 = 0$</p>
+          <input type="radio" id="m3_t3q1_a" name="M3_T3_Q1" value="x = -1/2, -4" autocomplete="off"><label for="m3_t3q1_a">$x = -\frac{1}{2}, -4$</label><br>
+          <input type="radio" id="m3_t3q1_b" name="M3_T3_Q1" value="x = 1/2, 4" autocomplete="off"><label for="m3_t3q1_b">$x = \frac{1}{2}, 4$</label><br>
+          <input type="radio" id="m3_t3q1_c" name="M3_T3_Q1" value="x = -1, -4" autocomplete="off"><label for="m3_t3q1_c">$x = -1, -4$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_M3_T3_Q1"></p>
+          <button onclick="checkAnswer('M3_T3_Q1', 'x = -1/2, -4')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="btn_next_M3_T3_Q1" onclick="handleNextBranch('M3_T3_Q1')" class="button gray" disabled>Next Question</button>
+        </div>
+
+        <div id="M3_T3_Q2" style="display: none;">
+          <p class="line-spcaing">Find the discriminant of $2x^2 - 7x + 3 = 0$ and state the nature of roots</p>
+          <input type="radio" id="m3_t3q2_a" name="M3_T3_Q2" value="D = 25 (2 real distinct rational roots)" autocomplete="off"><label for="m3_t3q2_a">$D = 25$ (2 real distinct rational roots)</label><br>
+          <input type="radio" id="m3_t3q2_b" name="M3_T3_Q2" value="D = -25 (No real roots)" autocomplete="off"><label for="m3_t3q2_b">$D = -25$ (No real roots)</label><br>
+          <input type="radio" id="m3_t3q2_c" name="M3_T3_Q2" value="D = 1 (2 real roots)" autocomplete="off"><label for="m3_t3q2_c">$D = 1$ (2 real roots)</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_M3_T3_Q2"></p>
+          <button onclick="checkAnswer('M3_T3_Q2', 'D = 25 (2 real distinct rational roots)')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="btn_next_M3_T3_Q2" onclick="handleNextBranch('M3_T3_Q2')" class="button gray" disabled>Next Question</button>
+        </div>
+
+        <div id="M3_T3_Q3" style="display: none;">
+          <p class="line-spcaing">Solve for $x$ by completing the square: $x^2 - 8x + 12 = 0$</p>
+          <input type="radio" id="m3_t3q3_a" name="M3_T3_Q3" value="x = 2, 6" autocomplete="off"><label for="m3_t3q3_a">$x = 2, 6$</label><br>
+          <input type="radio" id="m3_t3q3_b" name="M3_T3_Q3" value="x = -2, -6" autocomplete="off"><label for="m3_t3q3_b">$x = -2, -6$</label><br>
+          <input type="radio" id="m3_t3q3_c" name="M3_T3_Q3" value="x = 3, 4" autocomplete="off"><label for="m3_t3q3_c">$x = 3, 4$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_M3_T3_Q3"></p>
+          <button onclick="checkAnswer('M3_T3_Q3', 'x = 2, 6')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="btn_next_M3_T3_Q3" onclick="handleNextBranch('M3_T3_Q3')" class="button gray" disabled>Next Question</button>
+        </div>
+
+        <!-- ================= TIER 4 (EXPERT SYSTEMS & NON-LINEAR) ================= -->
+        <div id="M3_T4_Q1" style="display: none;">
+          <p class="line-spcaing">Solve the system of equations: $x + y = 12$ and $xy = 35$</p>
+          <input type="radio" id="m3_t4q1_a" name="M3_T4_Q1" value="(x,y) = (7,5) or (5,7)" autocomplete="off"><label for="m3_t4q1_a">$(x,y) = (7,5)$ or $(5,7)$</label><br>
+          <input type="radio" id="m3_t4q1_b" name="M3_T4_Q1" value="(x,y) = (6,6)" autocomplete="off"><label for="m3_t4q1_b">$(x,y) = (6,6)$</label><br>
+          <input type="radio" id="m3_t4q1_c" name="M3_T4_Q1" value="(x,y) = (10,2)" autocomplete="off"><label for="m3_t4q1_c">$(x,y) = (10,2)$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_M3_T4_Q1"></p>
+          <button onclick="checkAnswer('M3_T4_Q1', '(x,y) = (7,5) or (5,7)')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="btn_next_M3_T4_Q1" onclick="handleNextBranch('M3_T4_Q1')" class="button gray" disabled>Next Question</button>
+        </div>
+
+        <div id="M3_T4_Q2" style="display: none;">
+          <p class="line-spcaing">Solve for $x$: $x^4 - 10x^2 + 9 = 0$</p>
+          <input type="radio" id="m3_t4q2_a" name="M3_T4_Q2" value="x = +-1, +-3" autocomplete="off"><label for="m3_t4q2_a">$x = \pm 1, \pm 3$</label><br>
+          <input type="radio" id="m3_t4q2_b" name="M3_T4_Q2" value="x = 1, 9" autocomplete="off"><label for="m3_t4q2_b">$x = 1, 9$</label><br>
+          <input type="radio" id="m3_t4q2_c" name="M3_T4_Q2" value="x = +-1, +-9" autocomplete="off"><label for="m3_t4q2_c">$x = \pm 1, \pm 9$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_M3_T4_Q2"></p>
+          <button onclick="checkAnswer('M3_T4_Q2', 'x = +-1, +-3')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="btn_next_M3_T4_Q2" onclick="handleNextBranch('M3_T4_Q2')" class="button gray" disabled>Next Question</button>
+        </div>
+
+        <div id="M3_T4_Q3" style="display: none;">
+          <p class="line-spcaing">Find all real solutions to $x + 2\sqrt{x} - 8 = 0$</p>
+          <input type="radio" id="m3_t4q3_a" name="M3_T4_Q3" value="x = 4" autocomplete="off"><label for="m3_t4q3_a">$x = 4$</label><br>
+          <input type="radio" id="m3_t4q3_b" name="M3_T4_Q3" value="x = 4, 16" autocomplete="off"><label for="m3_t4q3_b">$x = 4, 16$</label><br>
+          <input type="radio" id="m3_t4q3_c" name="M3_T4_Q3" value="x = -4, 2" autocomplete="off"><label for="m3_t4q3_c">$x = -4, 2$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_M3_T4_Q3"></p>
+          <button onclick="checkAnswer('M3_T4_Q3', 'x = 4')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="btn_next_M3_T4_Q3" onclick="handleNextBranch('M3_T4_Q3')" class="button gray" disabled>Next Question</button>
+        </div>
+      </form>
+    </div>
+    <div style="text-align: center; margin-top: 10px;"> 
+      <p style="font-size:0.85em; color: #475569;">💡 Adaptive ITS Engine: Serves 4 personalized questions adapting to your performance across Tiers 1-4.</p>
+    </div>
+  </div>
+
   <dialog id="resultDialog">
     <p id="resultMessage"></p>
-    <button id="closeButton">Close</button>
   </dialog>
-  <script>
-    var evTypep = window.performance.getEntriesByType("navigation")[0].type;
-  
-    if (evTypep == 'reload') {
-      // Display a confirmation dialog
-      var confirmationMessage = 'Refreshing this page will take you to the example page. Do you want to proceed?';
-      var userConfirmed = window.confirm(confirmationMessage);
-  
-      if (!userConfirmed) {
-        // If "Cancel," stay on the current page
-        window.addEventListener('beforeunload', function (e) {
-          e.preventDefault();
-        });
-      } else {
-        // If "OK," proceed with the refresh and redirect
-        window.location.replace('qua_example.html');
-      }
-    }
-  </script>
- 
-  <script src="../static/script.js"></script>
+
+  <script src="../static/script.js?v=adaptive13"></script>
 </body>
 </html>

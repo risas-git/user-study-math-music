@@ -86,15 +86,6 @@
       color: #334155;
       margin-bottom: 0.35rem;
     }
-    .choice-list {
-      list-style-type: none;
-      padding-left: 1.25rem;
-      margin: 0.35rem 0;
-    }
-    .choice-list li {
-      color: #475569;
-      margin-bottom: 0.25rem;
-    }
     .correct-ans {
       color: #16a34a;
       font-weight: bold;
@@ -115,7 +106,7 @@
 
   <div class="header">
     <h1>Test A & Test B - Question Bank & Answer Key</h1>
-    <p>User Study Math & Music Project | Adaptive ITS Engine (Modules 1 & 2)</p>
+    <p>User Study Math & Music Project | Adaptive ITS Engine (Modules 1, 2, & 3)</p>
     <button onclick="window.print()" class="print-btn">🖨️ Print / Save as PDF</button>
   </div>
 
@@ -123,7 +114,7 @@
   <div class="section-title">🟦 TEST A (Phase 1)</div>
 
   <div class="topic-card">
-    <h3>1. Module 1: Mixed Operations & Rational Expressions (12 Adaptive Questions, 4 Tiers)</h3>
+    <h3>1. Module 1: Mixed Operations & Rational Expressions (12 Adaptive Questions)</h3>
     <div class="question-item"><div class="q-text">[Tier 1] T1_Q1: Evaluate \(5421 - 382 \times 4 + 120 \div 6\)</div><div class="correct-ans">✓ Correct: 3913</div></div>
     <div class="question-item"><div class="q-text">[Tier 1] T1_Q2: Evaluate \(240 \div (15 - 3) + 18 \times 4\)</div><div class="correct-ans">✓ Correct: 92</div></div>
     <div class="question-item"><div class="q-text">[Tier 1] T1_Q3: Evaluate \(\frac{5}{12} + \frac{1}{4} - \frac{1}{3}\)</div><div class="correct-ans">✓ Correct: 1/3</div></div>
@@ -139,19 +130,35 @@
   </div>
 
   <div class="topic-card">
-    <h3>2. Module 2: Differentiation & Integration (12 Adaptive Questions, 4 Tiers)</h3>
-    <div class="question-item"><div class="q-text">[Tier 1] T1_Q1: Find derivative of \(y = 3x^4 + 5x^2 - 7x + 2\)</div><div class="correct-ans">✓ Correct: 12x^3 + 10x - 7</div></div>
-    <div class="question-item"><div class="q-text">[Tier 1] T1_Q2: Evaluate \(\int (6x^2 + 4x - 5) \, dx\)</div><div class="correct-ans">✓ Correct: 2x^3 + 2x^2 - 5x + C</div></div>
-    <div class="question-item"><div class="q-text">[Tier 1] T1_Q3: Find derivative of \(y = 4\sqrt{x} + \frac{3}{x}\)</div><div class="correct-ans">✓ Correct: 2/sqrt(x) - 3/x^2</div></div>
-    <div class="question-item"><div class="q-text">[Tier 2] T2_Q1: Find derivative of \(y = 5e^{2x} + 3\sin(4x)\)</div><div class="correct-ans">✓ Correct: 10e^{2x} + 12\cos(4x)</div></div>
-    <div class="question-item"><div class="q-text">[Tier 2] T2_Q2: Evaluate \(\int_1^3 (3x^2 - 2x) \, dx\)</div><div class="correct-ans">✓ Correct: 18</div></div>
-    <div class="question-item"><div class="q-text">[Tier 2] T2_Q3: Find tangent line slope for \(y = 2x^3 - 5x\) at \(x = 2\)</div><div class="correct-ans">✓ Correct: 19</div></div>
-    <div class="question-item"><div class="q-text">[Tier 3] T3_Q1: Find derivative of \(y = x^3 \cdot \ln(x)\)</div><div class="correct-ans">✓ Correct: x^2(3ln(x) + 1)</div></div>
-    <div class="question-item"><div class="q-text">[Tier 3] T3_Q2: Evaluate \(\int 2x \cos(x^2 + 1) \, dx\)</div><div class="correct-ans">✓ Correct: sin(x^2 + 1) + C</div></div>
-    <div class="question-item"><div class="q-text">[Tier 3] T3_Q3: Find derivative of \(y = \frac{x^2 + 1}{2x - 3}\)</div><div class="correct-ans">✓ Correct: (2x^2 - 6x - 2) / (2x - 3)^2</div></div>
-    <div class="question-item"><div class="q-text">[Tier 4] T4_Q1: Evaluate \(\int x e^x \, dx\)</div><div class="correct-ans">✓ Correct: e^x(x - 1) + C</div></div>
-    <div class="question-item"><div class="q-text">[Tier 4] T4_Q2: Find derivative of \(y = \ln(x^3 + 4x)\)</div><div class="correct-ans">✓ Correct: (3x^2 + 4) / (x^3 + 4x)</div></div>
-    <div class="question-item"><div class="q-text">[Tier 4] T4_Q3: Evaluate \(\int_0^{\pi/2} \sin^2(x) \cos(x) \, dx\)</div><div class="correct-ans">✓ Correct: 1/3</div></div>
+    <h3>2. Module 2: Differentiation & Integration (12 Adaptive Questions)</h3>
+    <div class="question-item"><div class="q-text">[Tier 1] M2_T1_Q1: Find derivative of \(y = 3x^4 + 5x^2 - 7x + 2\)</div><div class="correct-ans">✓ Correct: 12x^3 + 10x - 7</div></div>
+    <div class="question-item"><div class="q-text">[Tier 1] M2_T1_Q2: Evaluate \(\int (6x^2 + 4x - 5) \, dx\)</div><div class="correct-ans">✓ Correct: 2x^3 + 2x^2 - 5x + C</div></div>
+    <div class="question-item"><div class="q-text">[Tier 1] M2_T1_Q3: Find derivative of \(y = 4\sqrt{x} + \frac{3}{x}\)</div><div class="correct-ans">✓ Correct: 2/sqrt(x) - 3/x^2</div></div>
+    <div class="question-item"><div class="q-text">[Tier 2] M2_T2_Q1: Find derivative of \(y = 5e^{2x} + 3\sin(4x)\)</div><div class="correct-ans">✓ Correct: 10e^{2x} + 12\cos(4x)</div></div>
+    <div class="question-item"><div class="q-text">[Tier 2] M2_T2_Q2: Evaluate \(\int_1^3 (3x^2 - 2x) \, dx\)</div><div class="correct-ans">✓ Correct: 18</div></div>
+    <div class="question-item"><div class="q-text">[Tier 2] M2_T2_Q3: Find tangent line slope for \(y = 2x^3 - 5x\) at \(x = 2\)</div><div class="correct-ans">✓ Correct: 19</div></div>
+    <div class="question-item"><div class="q-text">[Tier 3] M2_T3_Q1: Find derivative of \(y = x^3 \cdot \ln(x)\)</div><div class="correct-ans">✓ Correct: x^2(3ln(x) + 1)</div></div>
+    <div class="question-item"><div class="q-text">[Tier 3] M2_T3_Q2: Evaluate \(\int 2x \cos(x^2 + 1) \, dx\)</div><div class="correct-ans">✓ Correct: sin(x^2 + 1) + C</div></div>
+    <div class="question-item"><div class="q-text">[Tier 3] M2_T3_Q3: Find derivative of \(y = \frac{x^2 + 1}{2x - 3}\)</div><div class="correct-ans">✓ Correct: (2x^2 - 6x - 2) / (2x - 3)^2</div></div>
+    <div class="question-item"><div class="q-text">[Tier 4] M2_T4_Q1: Evaluate \(\int x e^x \, dx\)</div><div class="correct-ans">✓ Correct: e^x(x - 1) + C</div></div>
+    <div class="question-item"><div class="q-text">[Tier 4] M2_T4_Q2: Find derivative of \(y = \ln(x^3 + 4x)\)</div><div class="correct-ans">✓ Correct: (3x^2 + 4) / (x^3 + 4x)</div></div>
+    <div class="question-item"><div class="q-text">[Tier 4] M2_T4_Q3: Evaluate \(\int_0^{\pi/2} \sin^2(x) \cos(x) \, dx\)</div><div class="correct-ans">✓ Correct: 1/3</div></div>
+  </div>
+
+  <div class="topic-card">
+    <h3>3. Module 3: Linear & Quadratic Equations (12 Adaptive Questions)</h3>
+    <div class="question-item"><div class="q-text">[Tier 1] M3_T1_Q1: Solve for \(x\): \(4x - 7 = 17\)</div><div class="correct-ans">✓ Correct: x = 6</div></div>
+    <div class="question-item"><div class="q-text">[Tier 1] M3_T1_Q2: Solve for \(x\): \(3(x - 2) = 15\)</div><div class="correct-ans">✓ Correct: x = 7</div></div>
+    <div class="question-item"><div class="q-text">[Tier 1] M3_T1_Q3: Solve for \(x\): \(x^2 = 49\)</div><div class="correct-ans">✓ Correct: x = +-7</div></div>
+    <div class="question-item"><div class="q-text">[Tier 2] M3_T2_Q1: Solve for \(x\): \(x^2 - 5x + 6 = 0\)</div><div class="correct-ans">✓ Correct: x = 2, 3</div></div>
+    <div class="question-item"><div class="q-text">[Tier 2] M3_T2_Q2: Solve for \(x\): \(x^2 + 4x - 12 = 0\)</div><div class="correct-ans">✓ Correct: x = 2, -6</div></div>
+    <div class="question-item"><div class="q-text">[Tier 2] M3_T2_Q3: Solve for \(x\): \(2x^2 - 8x = 0\)</div><div class="correct-ans">✓ Correct: x = 0, 4</div></div>
+    <div class="question-item"><div class="q-text">[Tier 3] M3_T3_Q1: Solve for \(x\): \(2x^2 + 7x + 3 = 0\)</div><div class="correct-ans">✓ Correct: x = -1/2, -3</div></div>
+    <div class="question-item"><div class="q-text">[Tier 3] M3_T3_Q2: Find discriminant of \(3x^2 - 5x + 2 = 0\)</div><div class="correct-ans">✓ Correct: D = 1 (2 real distinct rational roots)</div></div>
+    <div class="question-item"><div class="q-text">[Tier 3] M3_T3_Q3: Solve for \(x\) by completing square: \(x^2 - 6x + 5 = 0\)</div><div class="correct-ans">✓ Correct: x = 1, 5</div></div>
+    <div class="question-item"><div class="q-text">[Tier 4] M3_T4_Q1: Solve system: \(x + y = 10\) and \(xy = 21\)</div><div class="correct-ans">✓ Correct: (x,y) = (7,3) or (3,7)</div></div>
+    <div class="question-item"><div class="q-text">[Tier 4] M3_T4_Q2: Solve for \(x\): \(x^4 - 5x^2 + 4 = 0\)</div><div class="correct-ans">✓ Correct: x = +-1, +-2</div></div>
+    <div class="question-item"><div class="q-text">[Tier 4] M3_T4_Q3: Solve for \(x\): \(x + \sqrt{x} - 6 = 0\)</div><div class="correct-ans">✓ Correct: x = 4</div></div>
   </div>
 
 
@@ -176,18 +183,34 @@
 
   <div class="topic-card">
     <h3>2. Module 2: Differentiation & Integration (12 Isomorphic Questions)</h3>
-    <div class="question-item"><div class="q-text">[Tier 1] T1_Q1: Find derivative of \(y = 4x^4 + 3x^2 - 5x + 9\)</div><div class="correct-ans">✓ Correct: 16x^3 + 6x - 5</div></div>
-    <div class="question-item"><div class="q-text">[Tier 1] T1_Q2: Evaluate \(\int (9x^2 + 6x - 4) \, dx\)</div><div class="correct-ans">✓ Correct: 3x^3 + 3x^2 - 4x + C</div></div>
-    <div class="question-item"><div class="q-text">[Tier 1] T1_Q3: Find derivative of \(y = 6\sqrt{x} + \frac{5}{x}\)</div><div class="correct-ans">✓ Correct: 3/sqrt(x) - 5/x^2</div></div>
-    <div class="question-item"><div class="q-text">[Tier 2] T2_Q1: Find derivative of \(y = 4e^{3x} + 2\sin(5x)\)</div><div class="correct-ans">✓ Correct: 12e^{3x} + 10\cos(5x)</div></div>
-    <div class="question-item"><div class="q-text">[Tier 2] T2_Q2: Evaluate \(\int_1^2 (6x^2 - 4x) \, dx\)</div><div class="correct-ans">✓ Correct: 8</div></div>
-    <div class="question-item"><div class="q-text">[Tier 2] T2_Q3: Find tangent line slope for \(y = 3x^3 - 4x\) at \(x = 2\)</div><div class="correct-ans">✓ Correct: 32</div></div>
-    <div class="question-item"><div class="q-text">[Tier 3] T3_Q1: Find derivative of \(y = x^4 \cdot \ln(x)\)</div><div class="correct-ans">✓ Correct: x^3(4ln(x) + 1)</div></div>
-    <div class="question-item"><div class="q-text">[Tier 3] T3_Q2: Evaluate \(\int 3x^2 \sin(x^3 + 2) \, dx\)</div><div class="correct-ans">✓ Correct: -cos(x^3 + 2) + C</div></div>
-    <div class="question-item"><div class="q-text">[Tier 3] T3_Q3: Find derivative of \(y = \frac{x^2 + 3}{3x - 2}\)</div><div class="correct-ans">✓ Correct: (3x^2 - 4x - 9) / (3x - 2)^2</div></div>
-    <div class="question-item"><div class="q-text">[Tier 4] T4_Q1: Evaluate \(\int 2x e^{2x} \, dx\)</div><div class="correct-ans">✓ Correct: e^{2x}(x - 1/2) + C</div></div>
-    <div class="question-item"><div class="q-text">[Tier 4] T4_Q2: Find derivative of \(y = \ln(x^4 + 5x)\)</div><div class="correct-ans">✓ Correct: (4x^3 + 5) / (x^4 + 5x)</div></div>
-    <div class="question-item"><div class="q-text">[Tier 4] T4_Q3: Evaluate \(\int_0^{\pi/2} \cos^2(x) \sin(x) \, dx\)</div><div class="correct-ans">✓ Correct: 1/3</div></div>
+    <div class="question-item"><div class="q-text">[Tier 1] M2_T1_Q1: Find derivative of \(y = 4x^4 + 3x^2 - 5x + 9\)</div><div class="correct-ans">✓ Correct: 16x^3 + 6x - 5</div></div>
+    <div class="question-item"><div class="q-text">[Tier 1] M2_T1_Q2: Evaluate \(\int (9x^2 + 6x - 4) \, dx\)</div><div class="correct-ans">✓ Correct: 3x^3 + 3x^2 - 4x + C</div></div>
+    <div class="question-item"><div class="q-text">[Tier 1] M2_T1_Q3: Find derivative of \(y = 6\sqrt{x} + \frac{5}{x}\)</div><div class="correct-ans">✓ Correct: 3/sqrt(x) - 5/x^2</div></div>
+    <div class="question-item"><div class="q-text">[Tier 2] M2_T2_Q1: Find derivative of \(y = 4e^{3x} + 2\sin(5x)\)</div><div class="correct-ans">✓ Correct: 12e^{3x} + 10\cos(5x)</div></div>
+    <div class="question-item"><div class="q-text">[Tier 2] M2_T2_Q2: Evaluate \(\int_1^2 (6x^2 - 4x) \, dx\)</div><div class="correct-ans">✓ Correct: 8</div></div>
+    <div class="question-item"><div class="q-text">[Tier 2] M2_T2_Q3: Find tangent line slope for \(y = 3x^3 - 4x\) at \(x = 2\)</div><div class="correct-ans">✓ Correct: 32</div></div>
+    <div class="question-item"><div class="q-text">[Tier 3] M2_T3_Q1: Find derivative of \(y = x^4 \cdot \ln(x)\)</div><div class="correct-ans">✓ Correct: x^3(4ln(x) + 1)</div></div>
+    <div class="question-item"><div class="q-text">[Tier 3] M2_T3_Q2: Evaluate \(\int 3x^2 \sin(x^3 + 2) \, dx\)</div><div class="correct-ans">✓ Correct: -cos(x^3 + 2) + C</div></div>
+    <div class="question-item"><div class="q-text">[Tier 3] M2_T3_Q3: Find derivative of \(y = \frac{x^2 + 3}{3x - 2}\)</div><div class="correct-ans">✓ Correct: (3x^2 - 4x - 9) / (3x - 2)^2</div></div>
+    <div class="question-item"><div class="q-text">[Tier 4] M2_T4_Q1: Evaluate \(\int 2x e^{2x} \, dx\)</div><div class="correct-ans">✓ Correct: e^{2x}(x - 1/2) + C</div></div>
+    <div class="question-item"><div class="q-text">[Tier 4] M2_T4_Q2: Find derivative of \(y = \ln(x^4 + 5x)\)</div><div class="correct-ans">✓ Correct: (4x^3 + 5) / (x^4 + 5x)</div></div>
+    <div class="question-item"><div class="q-text">[Tier 4] M2_T4_Q3: Evaluate \(\int_0^{\pi/2} \cos^2(x) \sin(x) \, dx\)</div><div class="correct-ans">✓ Correct: 1/3</div></div>
+  </div>
+
+  <div class="topic-card">
+    <h3>3. Module 3: Linear & Quadratic Equations (12 Isomorphic Questions)</h3>
+    <div class="question-item"><div class="q-text">[Tier 1] M3_T1_Q1: Solve for \(x\): \(5x - 8 = 22\)</div><div class="correct-ans">✓ Correct: x = 6</div></div>
+    <div class="question-item"><div class="q-text">[Tier 1] M3_T1_Q2: Solve for \(x\): \(4(x - 3) = 16\)</div><div class="correct-ans">✓ Correct: x = 7</div></div>
+    <div class="question-item"><div class="q-text">[Tier 1] M3_T1_Q3: Solve for \(x\): \(x^2 = 64\)</div><div class="correct-ans">✓ Correct: x = +-8</div></div>
+    <div class="question-item"><div class="q-text">[Tier 2] M3_T2_Q1: Solve for \(x\): \(x^2 - 7x + 12 = 0\)</div><div class="correct-ans">✓ Correct: x = 3, 4</div></div>
+    <div class="question-item"><div class="q-text">[Tier 2] M3_T2_Q2: Solve for \(x\): \(x^2 + 5x - 14 = 0\)</div><div class="correct-ans">✓ Correct: x = 2, -7</div></div>
+    <div class="question-item"><div class="q-text">[Tier 2] M3_T2_Q3: Solve for \(x\): \(3x^2 - 12x = 0\)</div><div class="correct-ans">✓ Correct: x = 0, 4</div></div>
+    <div class="question-item"><div class="q-text">[Tier 3] M3_T3_Q1: Solve for \(x\): \(2x^2 + 9x + 4 = 0\)</div><div class="correct-ans">✓ Correct: x = -1/2, -4</div></div>
+    <div class="question-item"><div class="q-text">[Tier 3] M3_T3_Q2: Find discriminant of \(2x^2 - 7x + 3 = 0\)</div><div class="correct-ans">✓ Correct: D = 25 (2 real distinct rational roots)</div></div>
+    <div class="question-item"><div class="q-text">[Tier 3] M3_T3_Q3: Solve for \(x\) by completing square: \(x^2 - 8x + 12 = 0\)</div><div class="correct-ans">✓ Correct: x = 2, 6</div></div>
+    <div class="question-item"><div class="q-text">[Tier 4] M3_T4_Q1: Solve system: \(x + y = 12\) and \(xy = 35\)</div><div class="correct-ans">✓ Correct: (x,y) = (7,5) or (5,7)</div></div>
+    <div class="question-item"><div class="q-text">[Tier 4] M3_T4_Q2: Solve for \(x\): \(x^4 - 10x^2 + 9 = 0\)</div><div class="correct-ans">✓ Correct: x = +-1, +-3</div></div>
+    <div class="question-item"><div class="q-text">[Tier 4] M3_T4_Q3: Solve for \(x\): \(x + 2\sqrt{x} - 8 = 0\)</div><div class="correct-ans">✓ Correct: x = 4</div></div>
   </div>
 
 </body>

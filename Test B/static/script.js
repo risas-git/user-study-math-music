@@ -33,11 +33,26 @@ const misconceptionHintsModule2 = {
   "M2_T4_Q3": { "1/2": "💡 <b>Misconception Hint</b>: Substitute $u = \\cos(x) \\Rightarrow du = -\\sin(x) dx$. Integral is $\\int_0^1 u^2 du = [\\frac{u^3}{3}]_0^1 = \\frac{1}{3}$.", "1": "💡 <b>Misconception Hint</b>: Evaluate $[\\frac{u^3}{3}]_0^1 = \\frac{1}{3} - 0 = \\frac{1}{3}$." }
 };
 
+// Misconception Catalog for Module 3 (Linear & Quadratic Equations - Test B Isomorphic)
+const misconceptionHintsModule3 = {
+  "M3_T1_Q1": { "x = 5": "💡 <b>Misconception Hint</b>: Add $8$ to both sides first: $5x = 30 \\Rightarrow x = 6$.", "x = 14/5": "💡 <b>Misconception Hint</b>: $30 \\div 5 = 6$." },
+  "M3_T1_Q2": { "x = 4": "💡 <b>Misconception Hint</b>: After dividing by $4$, $x - 3 = 4 \\Rightarrow x = 7$.", "x = 1": "💡 <b>Misconception Hint</b>: Add $3$ to both sides." },
+  "M3_T1_Q3": { "x = 8": "💡 <b>Misconception Hint</b>: Quadratic equations have both positive and negative roots: $x = \\pm 8$.", "x = 32": "💡 <b>Misconception Hint</b>: Take the square root, do not divide by 2!" },
+  "M3_T2_Q1": { "x = -3, -4": "💡 <b>Misconception Hint</b>: $(x-3)(x-4) = 0 \\Rightarrow x = +3, +4$. Watch signs!", "x = 2, 6": "💡 <b>Misconception Hint</b>: $-2 + (-6) = -8$, not $-7$." },
+  "M3_T2_Q2": { "x = -2, 7": "💡 <b>Misconception Hint</b>: $(x+7)(x-2) = 0 \\Rightarrow x = -7, +2$.", "x = 1, -14": "💡 <b>Misconception Hint</b>: Check sum $1 + (-14) = -13 \\neq 5$." },
+  "M3_T2_Q3": { "x = 4": "💡 <b>Misconception Hint</b>: Do not divide by $x$! $x = 0$ is also a valid root: $3x(x-4)=0$.", "x = 0, -4": "💡 <b>Misconception Hint</b>: $x - 4 = 0 \\Rightarrow x = +4$." },
+  "M3_T3_Q1": { "x = 1/2, 4": "💡 <b>Misconception Hint</b>: $x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a} = \\frac{-9 \\pm 7}{4} = -\\frac{1}{2}, -4$.", "x = -1, -4": "💡 <b>Misconception Hint</b>: Check $\\frac{-9+7}{4} = -\\frac{2}{4} = -\\frac{1}{2}$." },
+  "M3_T3_Q2": { "D = -25 (No real roots)": "💡 <b>Misconception Hint</b>: $D = b^2 - 4ac = (-7)^2 - 4(2)(3) = 49 - 24 = +25 > 0$.", "D = 1 (2 real roots)": "💡 <b>Misconception Hint</b>: $49 - 24 = 25$." },
+  "M3_T3_Q3": { "x = -2, -6": "💡 <b>Misconception Hint</b>: $(x-4)^2 = 4 \\Rightarrow x - 4 = \\pm 2 \\Rightarrow x = 6, 2$.", "x = 3, 4": "💡 <b>Misconception Hint</b>: Check $(3)^2 - 8(3) + 12 = -3 \\neq 0$." },
+  "M3_T4_Q1": { "(x,y) = (6,6)": "💡 <b>Misconception Hint</b>: $6 \\times 6 = 36 \\neq 35$. Solve $x(12-x) = 35$.", "(x,y) = (10,2)": "💡 <b>Misconception Hint</b>: $10 \\times 2 = 20 \\neq 35$." },
+  "M3_T4_Q2": { "x = 1, 9": "💡 <b>Misconception Hint</b>: Substitute $u = x^2 \\Rightarrow u = 1, 9 \\Rightarrow x = \\pm 1, \\pm 3$.", "x = +-1, +-9": "💡 <b>Misconception Hint</b>: $\\sqrt{9} = 3$, not $9$." },
+  "M3_T4_Q3": { "x = 4, 16": "💡 <b>Misconception Hint</b>: $\\sqrt{x}$ cannot be negative! $u = -4$ yields no real $x$.", "x = -4, 2": "💡 <b>Misconception Hint</b>: These are values of $u = \\sqrt{x}$, so $x = u^2 = 4$." }
+};
+
 let currentTier = 2; // Start at Tier 2 Medium
 let userStepCount = 0; // Exactly 4 questions per user session
 const tierIndices = { 1: 0, 2: 0, 3: 0, 4: 0 }; // Used variant per tier
 
-// Explicitly reset form inputs and messages on page load to prevent pre-checked browser cache
 function resetExerciseFormState() {
   const form = document.getElementById('exerciseForm');
   if (form) form.reset();
@@ -69,10 +84,11 @@ function resetExerciseFormState() {
   userStepCount = 0;
   for (const k in tierIndices) tierIndices[k] = 0;
 
+  const isMod3 = window.location.pathname.toLowerCase().includes('quadratic_exercise');
   const isMod2 = window.location.pathname.toLowerCase().includes('deri_exercise1');
-  const startId = isMod2 ? 'M2_T2_Q1' : 'T2_Q1';
+  const startId = isMod3 ? 'M3_T2_Q1' : (isMod2 ? 'M2_T2_Q1' : 'T2_Q1');
 
-  const allDivs = document.querySelectorAll('[id^="T"], [id^="M2_T"]');
+  const allDivs = document.querySelectorAll('[id^="T"], [id^="M2_T"], [id^="M3_T"]');
   allDivs.forEach(div => div.style.display = 'none');
 
   const startDiv = document.getElementById(startId);
@@ -80,7 +96,11 @@ function resetExerciseFormState() {
 }
 
 function getMisconceptionCatalog() {
-  if (window.location.pathname.toLowerCase().includes('deri_exercise1')) {
+  const path = window.location.pathname.toLowerCase();
+  if (path.includes('quadratic_exercise')) {
+    return misconceptionHintsModule3;
+  }
+  if (path.includes('deri_exercise1')) {
     return misconceptionHintsModule2;
   }
   return misconceptionHintsModule1;
@@ -88,8 +108,8 @@ function getMisconceptionCatalog() {
 
 // Update Adaptive Mastery Score (BKT Light Model)
 function updateMasteryScore(isCorrect) {
-  const isMod2 = window.location.pathname.toLowerCase().includes('deri_exercise1');
-  const key = isMod2 ? 'test2Mod2MasteryScore' : 'test2MasteryScore';
+  const path = window.location.pathname.toLowerCase();
+  const key = path.includes('quadratic_exercise') ? 'test2Mod3MasteryScore' : (path.includes('deri_exercise1') ? 'test2Mod2MasteryScore' : 'test2MasteryScore');
   let score = parseInt(sessionStorage.getItem(key) || '50', 10);
   if (isCorrect) {
     score = Math.min(100, score + 25);
@@ -104,20 +124,20 @@ function updateMasteryScore(isCorrect) {
 // Render Top Adaptive Mastery Widget
 function renderMasteryWidget() {
   let widget = document.getElementById('adaptiveMasteryWidget');
-  const isMod2 = window.location.pathname.toLowerCase().includes('deri_exercise1');
-  const key = isMod2 ? 'test2Mod2MasteryScore' : 'test2MasteryScore';
+  const path = window.location.pathname.toLowerCase();
+  const key = path.includes('quadratic_exercise') ? 'test2Mod3MasteryScore' : (path.includes('deri_exercise1') ? 'test2Mod2MasteryScore' : 'test2MasteryScore');
   const score = parseInt(sessionStorage.getItem(key) || '50', 10);
   
   let tierName = "Tier 2: Medium (Baseline)";
   let tierColor = "#7c3aed";
   if (currentTier === 4) {
-    tierName = "Tier 4: Expert Advanced Calculus";
+    tierName = "Tier 4: Expert Advanced Algebra";
     tierColor = "#16a34a";
   } else if (currentTier === 3) {
-    tierName = "Tier 3: Hard Complex Calculus";
+    tierName = "Tier 3: Hard Complex Algebra";
     tierColor = "#7c3aed";
   } else if (currentTier === 1) {
-    tierName = "Tier 1: Easy Basic Calculus";
+    tierName = "Tier 1: Easy Basic Algebra";
     tierColor = "#ea580c";
   }
 
@@ -174,8 +194,12 @@ function handleNextBranch(currentQId) {
   const variantIndex = (tierIndices[currentTier] % 3) + 1;
   tierIndices[currentTier]++;
 
-  const isMod2 = window.location.pathname.toLowerCase().includes('deri_exercise1');
-  const nextQId = isMod2 ? `M2_T${currentTier}_Q${variantIndex}` : `T${currentTier}_Q${variantIndex}`;
+  const path = window.location.pathname.toLowerCase();
+  let prefix = 'T';
+  if (path.includes('quadratic_exercise')) prefix = 'M3_T';
+  else if (path.includes('deri_exercise1')) prefix = 'M2_T';
+
+  const nextQId = `${prefix}${currentTier}_Q${variantIndex}`;
 
   renderMasteryWidget();
   showNextQuestionDiv(nextQId, currentQId);
@@ -216,7 +240,7 @@ function checkAnswer(questionId, correctAnswer) {
     if (catalog[questionId] && catalog[questionId][selectedAnswer.value]) {
       hint = "<br>" + catalog[questionId][selectedAnswer.value];
     } else {
-      hint = "<br>💡 <b>Hint</b>: Review power rules, antiderivatives, product/quotient rules, or substitution.";
+      hint = "<br>💡 <b>Hint</b>: Review linear isolation, quadratic formula, or factoring techniques.";
     }
 
     if (resultMessage) {
@@ -282,13 +306,23 @@ function checkAnswers(lastPage) {
     totalQuestions++;
   }
 
-  const isMod2 = window.location.pathname.toLowerCase().includes('deri_exercise1');
-  const key = isMod2 ? 'test2Mod2MasteryScore' : 'test2MasteryScore';
-  const currentMastery = parseInt(sessionStorage.getItem(key) || '50', 10);
+  const path = window.location.pathname.toLowerCase();
+  const isMod3 = path.includes('quadratic_exercise');
+  const isMod2 = path.includes('deri_exercise1');
 
-  const moduleTitle = isMod2 ? 'Module 2 (Differentiation & Integration)' : 'Module 1 (Mixed Operations)';
-  const nextPage = isMod2 ? 'finish.html' : 'deri_exercise1.html';
-  const nextBtnText = isMod2 ? 'Finish Study ➔' : 'Next Module (Differentiation & Integration) ➔';
+  let moduleTitle = 'Module 1 (Mixed Operations)';
+  let nextPage = 'deri_exercise1.html';
+  let nextBtnText = 'Next Module (Differentiation & Integration) ➔';
+
+  if (isMod2) {
+    moduleTitle = 'Module 2 (Differentiation & Integration)';
+    nextPage = 'quadratic_exercise.html';
+    nextBtnText = 'Next Module (Linear & Quadratic Equations) ➔';
+  } else if (isMod3) {
+    moduleTitle = 'Module 3 (Linear & Quadratic Equations)';
+    nextPage = 'finish.html';
+    nextBtnText = 'Finish Study ➔';
+  }
 
   // Must have at least 2 correct answers out of 4 (>= 50%)
   if (correctCount >= 2) {
@@ -296,7 +330,7 @@ function checkAnswers(lastPage) {
     resultMessage.innerHTML += `<br>You passed the requirement (at least 50% correct). Click below to advance!`;
     resultMessage.innerHTML += `<br><br><button onclick="openPage('${nextPage}')" class="button gray" style="background:#7c3aed; color:#ffffff; font-weight:bold; padding:10px 20px; border-radius:6px; cursor:pointer;">${nextBtnText}</button>`;
 
-    if (isMod2 || lastPage == true) {  
+    if (isMod3 || lastPage == true) {  
       let endTime = sessionStorage.getItem('testBEndTime');
       if (!endTime) {
         endTime = Date.now();
@@ -308,9 +342,10 @@ function checkAnswers(lastPage) {
     }
   } 
   else {
+    let modLabel = isMod3 ? 'Module 3' : (isMod2 ? 'Module 2' : 'Module 1');
     resultMessage.innerHTML += `<br><br>⚠️ <strong>Score: ${correctCount}/4 Correct (${Math.round((correctCount/4)*100)}%)</strong>`;
     resultMessage.innerHTML += `<br>You must answer at least 2 out of 4 questions correctly (50%) to advance.`;
-    resultMessage.innerHTML += `<br><br><button onclick="reattemptExercise()" class="button gray" style="background:#7c3aed; color:#ffffff; font-weight:bold; padding:10px 20px; border-radius:6px; cursor:pointer;">🔁 Re-attempt ${isMod2 ? 'Module 2' : 'Module 1'}</button>`;
+    resultMessage.innerHTML += `<br><br><button onclick="reattemptExercise()" class="button gray" style="background:#7c3aed; color:#ffffff; font-weight:bold; padding:10px 20px; border-radius:6px; cursor:pointer;">🔁 Re-attempt ${modLabel}</button>`;
   }
 
   if (dialog) {
