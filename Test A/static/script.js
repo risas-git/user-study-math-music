@@ -222,9 +222,6 @@ function checkAnswer(questionId, correctAnswer) {
 
   const resBtn = document.querySelector('#submitButton');
   if (resBtn) resBtn.disabled = false;
-
-  const nextExBtn = document.querySelector('#nextButton');
-  if (nextExBtn) nextExBtn.disabled = false;
 }
 
 // Re-attempt Exercise Module
@@ -241,6 +238,10 @@ function reattemptExercise() {
   // Re-enable all check buttons
   const checkBtns = document.querySelectorAll('button[onclick*="checkAnswer"]');
   checkBtns.forEach(btn => btn.disabled = false);
+
+  // Disable Next Exercise button until passed
+  const nextExBtn = document.querySelector('#nextButton');
+  if (nextExBtn) nextExBtn.disabled = true;
 
   for (const key in firstAttempts) delete firstAttempts[key];
   for (const key in correctAnswers) delete correctAnswers[key];
@@ -265,6 +266,7 @@ function checkAnswers(lastPage) {
   }
   const dialog = document.querySelector("#resultDialog");
   const resultMessage = document.querySelector("#resultMessage");
+  const closeButton = document.querySelector("#closeButton");
   if (resultMessage) resultMessage.innerHTML = "";
 
   let correctCount = 0;
@@ -285,13 +287,15 @@ function checkAnswers(lastPage) {
   }
 
   const currentMastery = parseInt(sessionStorage.getItem('test1MasteryScore') || '50', 10);
-
   const nextExBtn = document.querySelector('#nextButton');
-  if (nextExBtn) nextExBtn.disabled = false;
 
-  if (correctCount >= 2 || currentMastery >= 60) {
-    resultMessage.innerHTML += `<br><br>🎉 <strong>Module 1 Mastered! (Score: ${currentMastery}%)</strong>`;
-    resultMessage.innerHTML += `<br>Completed 4 adaptive questions across your trajectory. You may now advance!`;
+  // Must have at least 2 correct answers out of 4 (>= 50%)
+  if (correctCount >= 2) {
+    if (nextExBtn) nextExBtn.disabled = false;
+    if (closeButton) closeButton.style.display = 'inline-block'; // Show Close button on pass
+
+    resultMessage.innerHTML += `<br><br>🎉 <strong>Module 1 Mastered! (${correctCount}/4 Correct - ${Math.round((correctCount/4)*100)}%)</strong>`;
+    resultMessage.innerHTML += `<br>You passed the requirement (at least 50% correct). You may now advance to the next exercise!`;
 
     if (lastPage == true) {  
       let endTime = sessionStorage.getItem('testEndTime');
@@ -305,17 +309,18 @@ function checkAnswers(lastPage) {
     }
   } 
   else {
-    resultMessage.innerHTML += `<br><br>⚠️ <strong>Current Mastery: ${currentMastery}%</strong>`;
-    resultMessage.innerHTML += `<br><br><button onclick="reattemptExercise()" class="button gray" style="background:#0284c7; color:#ffffff; font-weight:bold; padding:8px 16px; border-radius:6px; cursor:pointer;">🔁 Re-attempt Module 1</button>`;
+    if (nextExBtn) nextExBtn.disabled = true; // PROHIBIT advancing
+    if (closeButton) closeButton.style.display = 'none'; // HIDE Close button - force user to re-attempt!
+
+    resultMessage.innerHTML += `<br><br>⚠️ <strong>Score: ${correctCount}/4 Correct (${Math.round((correctCount/4)*100)}%)</strong>`;
+    resultMessage.innerHTML += `<br>You must answer at least 2 out of 4 questions correctly (50%) to advance.`;
+    resultMessage.innerHTML += `<br><br><button onclick="reattemptExercise()" class="button gray" style="background:#0284c7; color:#ffffff; font-weight:bold; padding:10px 20px; border-radius:6px; cursor:pointer;">🔁 Re-attempt Module 1</button>`;
   }
 
   if (dialog) {
     dialog.showModal();
-    const closeButton = document.querySelector("#closeButton");
     if (closeButton) {
-      closeButton.addEventListener("click", () => {
-        dialog.close();
-      });
+      closeButton.onclick = () => dialog.close();
     }
   }
 }
