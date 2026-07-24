@@ -9,9 +9,9 @@ You can automatically store every participant's study results directly into a **
 2. Name it **"Math Music User Study Results"**.
 3. In Row 1, add these column headers:
 
-| A | B | C | D | E | F | G | H | I | J | K | L |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Timestamp** | **Participant ID** | **Group** | **WMC Score** | **BFI Score** | **AMAS Score** | **Test 1 Condition** | **Test 1 Time** | **Test 1 Mental Effort** | **Test 2 Condition** | **Test 2 Time** | **Test 2 Mental Effort** |
+| A | B | C | D | E | F | G | H | I | J | K | L | M | N |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Timestamp** | **Participant ID** | **Group** | **WMC Score** | **BFI Score** | **AMAS Score** | **Test 1 Condition** | **Test 1 Time** | **Test 1 Mistakes** | **Test 1 Mental Effort** | **Test 2 Condition** | **Test 2 Time** | **Test 2 Mistakes** | **Test 2 Mental Effort** |
 
 ---
 
@@ -24,10 +24,19 @@ function doPost(e) {
   try {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     var data = {};
+
+    // 1. Try parsing JSON body
     if (e && e.postData && e.postData.contents) {
-      data = JSON.parse(e.postData.contents);
-    } else if (e && e.parameter) {
-      data = e.parameter;
+      try {
+        data = JSON.parse(e.postData.contents);
+      } catch (jsonErr) {}
+    }
+    
+    // 2. Fallback to URL parameters
+    if (!data || !data.participantId) {
+      if (e && e.parameter && Object.keys(e.parameter).length > 0) {
+        data = e.parameter;
+      }
     }
     
     sheet.appendRow([
@@ -39,9 +48,11 @@ function doPost(e) {
       data.pretest_amas || "",
       data.test1_condition || "",
       data.test1_time || "",
+      data.test1_mistakes || "0",
       data.test1_mental_effort || "",
       data.test2_condition || "",
       data.test2_time || "",
+      data.test2_mistakes || "0",
       data.test2_mental_effort || ""
     ]);
     
@@ -80,9 +91,7 @@ This warning appears because it is your personal Google Apps Script. Follow thes
 ---
 
 ## Step 4: Paste URL into `summary.html`
-In `summary.html` line 180, update:
+In `summary.html` line 225, update:
 ```js
 const GOOGLE_SHEET_WEBHOOK_URL = "YOUR_COPIED_WEBAPP_URL_HERE";
 ```
-
-That's it! Every participant who completes the study will now automatically log their data into your Google Sheet live!

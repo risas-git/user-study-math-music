@@ -148,6 +148,9 @@
       <div class="time-box">
         <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 0.25rem;">Time Taken for Test 1:</p>
         <div id="finalTime" class="time-display">00:00:00</div>
+        <p style="font-size: 0.95rem; color: #475569; margin-top: 0.5rem; font-weight: 600;">
+          Mistakes Made: <span id="finalMistakes1" style="color: #dc2626; font-size: 1.1rem;">0</span>
+        </p>
       </div>
 
       <!-- Subjective Mental Effort Scale (Test 1) -->
@@ -207,6 +210,10 @@
         }
         sessionStorage.setItem('test1TimeFormatted', formattedTime);
       }
+
+      // Display mistakes
+      const mistakesCount = sessionStorage.getItem('test1Mistakes') || '0';
+      document.getElementById('finalMistakes1').textContent = mistakesCount;
 
       // Read participant info
       const participantId = sessionStorage.getItem('participantId') || '1';

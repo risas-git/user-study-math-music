@@ -137,10 +137,13 @@
         You have successfully completed the second test section.
       </p>
 
-      <!-- Time Taken for Test 2 (ABOVE Scale) -->
+      <!-- Time Taken & Mistakes for Test 2 (ABOVE Scale) -->
       <div class="time-box">
         <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 0.25rem;">Time Taken for Test 2:</p>
         <div id="test2Time" class="time-display">00:00:00</div>
+        <p style="font-size: 0.95rem; color: #475569; margin-top: 0.5rem; font-weight: 600;">
+          Mistakes Made: <span id="finalMistakes2" style="color: #dc2626; font-size: 1.1rem;">0</span>
+        </p>
       </div>
 
       <!-- Subjective Mental Effort Scale (Test 2) -->
@@ -190,6 +193,10 @@
         document.getElementById('test2Time').textContent = formattedBTime;
       }
       sessionStorage.setItem('test2TimeFormatted', formattedBTime);
+
+      // Display mistakes
+      const mistakesCount = sessionStorage.getItem('test2Mistakes') || '0';
+      document.getElementById('finalMistakes2').textContent = mistakesCount;
     })();
 
     function finishStudy() {

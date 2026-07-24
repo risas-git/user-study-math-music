@@ -1,7 +1,7 @@
 const correctAnswers = {}; // Initialize as an empty object
 const firstAttempts = {};
 
-// Store first attempts
+// Store first attempts and count mistakes
 function checkAnswer(questionId, correctAnswer) {
   if (typeof event !== 'undefined' && event && event.preventDefault) {
     event.preventDefault();
@@ -38,6 +38,10 @@ function checkAnswer(questionId, correctAnswer) {
       resultMessage.style.color = "red";
     }
     
+    // Track mistake count for Test B
+    let mistakes = parseInt(sessionStorage.getItem('test2Mistakes') || '0', 10) + 1;
+    sessionStorage.setItem('test2Mistakes', mistakes);
+
     // Store first attempt
     if (!firstAttempts[questionId]) {
       firstAttempts[questionId] = [selectedAnswer.value];
@@ -79,10 +83,10 @@ function checkAnswers(lastPage) {
     if (typeof submitButton !== 'undefined' && submitButton) submitButton.disabled = true;
 
     if (lastPage == true) {  
-      let endTime = sessionStorage.getItem('testEndTime');
+      let endTime = sessionStorage.getItem('testBEndTime');
       if (!endTime) {
         endTime = Date.now();
-        sessionStorage.setItem('testEndTime', endTime);
+        sessionStorage.setItem('testBEndTime', endTime);
       }
 
       resultMessage.innerHTML += "<br><br><strong>All exercises are successfully completed!</strong>";

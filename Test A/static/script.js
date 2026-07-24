@@ -1,7 +1,7 @@
 const correctAnswers = {}; // Initialize as an empty object
 const firstAttempts = {};
 
-// Store first attempts
+// Store first attempts and count mistakes
 function checkAnswer(questionId, correctAnswer) {
   if (typeof event !== 'undefined' && event && event.preventDefault) {
     event.preventDefault();
@@ -38,6 +38,10 @@ function checkAnswer(questionId, correctAnswer) {
       resultMessage.style.color = "red";
     }
     
+    // Track mistake count for Test A
+    let mistakes = parseInt(sessionStorage.getItem('test1Mistakes') || '0', 10) + 1;
+    sessionStorage.setItem('test1Mistakes', mistakes);
+
     // Store first attempt
     if (!firstAttempts[questionId]) {
       firstAttempts[questionId] = [selectedAnswer.value];
@@ -179,7 +183,7 @@ function renderPhaseBadge() {
     font-size: 14px !important;
     font-weight: bold !important;
     box-shadow: 0 4px 12px rgba(0,0,0,0.25) !important;
-    background-color: ${isMusic ? '#0284c7' : '#475569'} !important;
+    background-color: ${isMusic ? '#7c3aed' : '#475569'} !important;
     color: #ffffff !important;
     border: 2px solid #ffffff !important;
     pointer-events: none !important;
