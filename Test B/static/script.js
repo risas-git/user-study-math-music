@@ -53,6 +53,10 @@ let currentTier = 2; // Start at Tier 2 Medium
 let userStepCount = 0; // Exactly 4 questions per user session
 const tierIndices = { 1: 0, 2: 0, 3: 0, 4: 0 }; // Used variant per tier
 
+function openExamples(examplePage) {
+  window.open(examplePage, '_blank');
+}
+
 function resetExerciseFormState() {
   const form = document.getElementById('exerciseForm');
   if (form) form.reset();

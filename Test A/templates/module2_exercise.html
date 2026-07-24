@@ -35,6 +35,7 @@
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_M2_T1_Q1"></p>
           <button onclick="checkAnswer('M2_T1_Q1', '12x^3 + 10x - 7')" class="button gray" type="button">Check & Submit</button>
           <button type="button" id="btn_next_M2_T1_Q1" onclick="handleNextBranch('M2_T1_Q1')" class="button gray" disabled>Next Question</button>
+          <button type="button" onclick="openExamples('module2_example.html')" class="button gray" style="background:#64748b; color:#ffffff;">📖 Examples</button>
         </div>
 
         <div id="M2_T1_Q2" style="display: none;">
@@ -45,27 +46,30 @@
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_M2_T1_Q2"></p>
           <button onclick="checkAnswer('M2_T1_Q2', '2x^3 + 2x^2 - 5x + C')" class="button gray" type="button">Check & Submit</button>
           <button type="button" id="btn_next_M2_T1_Q2" onclick="handleNextBranch('M2_T1_Q2')" class="button gray" disabled>Next Question</button>
+          <button type="button" onclick="openExamples('module2_example.html')" class="button gray" style="background:#64748b; color:#ffffff;">📖 Examples</button>
         </div>
 
         <div id="M2_T1_Q3" style="display: none;">
-          <p class="line-spcaing">Find the derivative of $y = 4\sqrt{x} + \frac{3}{x}$</p>
+          <p class="line-spcaing">Find derivative of $y = 4\sqrt{x} + \frac{3}{x}$</p>
           <input type="radio" id="m2_t1q3_a" name="M2_T1_Q3" value="2/sqrt(x) - 3/x^2" autocomplete="off"><label for="m2_t1q3_a">$\frac{2}{\sqrt{x}} - \frac{3}{x^2}$</label><br>
           <input type="radio" id="m2_t1q3_b" name="M2_T1_Q3" value="2/sqrt(x) + 3/x^2" autocomplete="off"><label for="m2_t1q3_b">$\frac{2}{\sqrt{x}} + \frac{3}{x^2}$</label><br>
           <input type="radio" id="m2_t1q3_c" name="M2_T1_Q3" value="2sqrt(x) - 3x^-2" autocomplete="off"><label for="m2_t1q3_c">$2\sqrt{x} - 3x^{-2}$</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_M2_T1_Q3"></p>
           <button onclick="checkAnswer('M2_T1_Q3', '2/sqrt(x) - 3/x^2')" class="button gray" type="button">Check & Submit</button>
           <button type="button" id="btn_next_M2_T1_Q3" onclick="handleNextBranch('M2_T1_Q3')" class="button gray" disabled>Next Question</button>
+          <button type="button" onclick="openExamples('module2_example.html')" class="button gray" style="background:#64748b; color:#ffffff;">📖 Examples</button>
         </div>
 
         <!-- ================= TIER 2 (MEDIUM BASELINE START) ================= -->
         <div id="M2_T2_Q1">
-          <p class="line-spcaing">Find the derivative of $y = 5e^{2x} + 3\sin(4x)$</p>
+          <p class="line-spcaing">Find derivative of $y = 5e^{2x} + 3\sin(4x)$</p>
           <input type="radio" id="m2_t2q1_a" name="M2_T2_Q1" value="10e^{2x} + 12\cos(4x)" autocomplete="off"><label for="m2_t2q1_a">$10e^{2x} + 12\cos(4x)$</label><br>
           <input type="radio" id="m2_t2q1_b" name="M2_T2_Q1" value="5e^{2x} + 3\cos(4x)" autocomplete="off"><label for="m2_t2q1_b">$5e^{2x} + 3\cos(4x)$</label><br>
           <input type="radio" id="m2_t2q1_c" name="M2_T2_Q1" value="10e^{2x} - 12\cos(4x)" autocomplete="off"><label for="m2_t2q1_c">$10e^{2x} - 12\cos(4x)$</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_M2_T2_Q1"></p>
           <button onclick="checkAnswer('M2_T2_Q1', '10e^{2x} + 12\\cos(4x)')" class="button gray" type="button">Check & Submit</button>
           <button type="button" id="btn_next_M2_T2_Q1" onclick="handleNextBranch('M2_T2_Q1')" class="button gray" disabled>Next Question</button>
+          <button type="button" onclick="openExamples('module2_example.html')" class="button gray" style="background:#64748b; color:#ffffff;">📖 Examples</button>
         </div>
 
         <div id="M2_T2_Q2" style="display: none;">
@@ -76,78 +80,86 @@
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_M2_T2_Q2"></p>
           <button onclick="checkAnswer('M2_T2_Q2', '18')" class="button gray" type="button">Check & Submit</button>
           <button type="button" id="btn_next_M2_T2_Q2" onclick="handleNextBranch('M2_T2_Q2')" class="button gray" disabled>Next Question</button>
+          <button type="button" onclick="openExamples('module2_example.html')" class="button gray" style="background:#64748b; color:#ffffff;">📖 Examples</button>
         </div>
 
         <div id="M2_T2_Q3" style="display: none;">
-          <p class="line-spcaing">Find the slope of the tangent line to $y = 2x^3 - 5x$ at $x = 2$</p>
+          <p class="line-spcaing">Find tangent line slope for $y = 2x^3 - 5x$ at $x = 2$</p>
           <input type="radio" id="m2_t2q3_a" name="M2_T2_Q3" value="19" autocomplete="off"><label for="m2_t2q3_a">$19$</label><br>
           <input type="radio" id="m2_t2q3_b" name="M2_T2_Q3" value="11" autocomplete="off"><label for="m2_t2q3_b">$11$</label><br>
           <input type="radio" id="m2_t2q3_c" name="M2_T2_Q3" value="24" autocomplete="off"><label for="m2_t2q3_c">$24$</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_M2_T2_Q3"></p>
           <button onclick="checkAnswer('M2_T2_Q3', '19')" class="button gray" type="button">Check & Submit</button>
           <button type="button" id="btn_next_M2_T2_Q3" onclick="handleNextBranch('M2_T2_Q3')" class="button gray" disabled>Next Question</button>
+          <button type="button" onclick="openExamples('module2_example.html')" class="button gray" style="background:#64748b; color:#ffffff;">📖 Examples</button>
         </div>
 
-        <!-- ================= TIER 3 (HARD PRODUCT/QUOTIENT & SUBSTITUTION) ================= -->
+        <!-- ================= TIER 3 (HARD PRODUCT/QUOTIENT & SUB) ================= -->
         <div id="M2_T3_Q1" style="display: none;">
-          <p class="line-spcaing">Find the derivative of $y = x^3 \cdot \ln(x)$</p>
+          <p class="line-spcaing">Find derivative of $y = x^3 \cdot \ln(x)$</p>
           <input type="radio" id="m2_t3q1_a" name="M2_T3_Q1" value="x^2(3ln(x) + 1)" autocomplete="off"><label for="m2_t3q1_a">$x^2(3\ln(x) + 1)$</label><br>
           <input type="radio" id="m2_t3q1_b" name="M2_T3_Q1" value="3x^2 * 1/x" autocomplete="off"><label for="m2_t3q1_b">$3x^2 \cdot \frac{1}{x}$</label><br>
           <input type="radio" id="m2_t3q1_c" name="M2_T3_Q1" value="3x^2 ln(x)" autocomplete="off"><label for="m2_t3q1_c">$3x^2 \ln(x)$</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_M2_T3_Q1"></p>
           <button onclick="checkAnswer('M2_T3_Q1', 'x^2(3ln(x) + 1)')" class="button gray" type="button">Check & Submit</button>
           <button type="button" id="btn_next_M2_T3_Q1" onclick="handleNextBranch('M2_T3_Q1')" class="button gray" disabled>Next Question</button>
+          <button type="button" onclick="openExamples('module2_example.html')" class="button gray" style="background:#64748b; color:#ffffff;">📖 Examples</button>
         </div>
 
         <div id="M2_T3_Q2" style="display: none;">
-          <p class="line-spcaing">Evaluate the integral $\int 2x \cos(x^2 + 1) \, dx$</p>
+          <p class="line-spcaing">Evaluate integral $\int 2x \cos(x^2 + 1) \, dx$</p>
           <input type="radio" id="m2_t3q2_a" name="M2_T3_Q2" value="sin(x^2 + 1) + C" autocomplete="off"><label for="m2_t3q2_a">$\sin(x^2 + 1) + C$</label><br>
           <input type="radio" id="m2_t3q2_b" name="M2_T3_Q2" value="x^2 sin(x^2 + 1) + C" autocomplete="off"><label for="m2_t3q2_b">$x^2 \sin(x^2 + 1) + C$</label><br>
           <input type="radio" id="m2_t3q2_c" name="M2_T3_Q2" value="-sin(x^2 + 1) + C" autocomplete="off"><label for="m2_t3q2_c">$-\sin(x^2 + 1) + C$</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_M2_T3_Q2"></p>
           <button onclick="checkAnswer('M2_T3_Q2', 'sin(x^2 + 1) + C')" class="button gray" type="button">Check & Submit</button>
           <button type="button" id="btn_next_M2_T3_Q2" onclick="handleNextBranch('M2_T3_Q2')" class="button gray" disabled>Next Question</button>
+          <button type="button" onclick="openExamples('module2_example.html')" class="button gray" style="background:#64748b; color:#ffffff;">📖 Examples</button>
         </div>
 
         <div id="M2_T3_Q3" style="display: none;">
-          <p class="line-spcaing">Find the derivative of $y = \frac{x^2 + 1}{2x - 3}$</p>
+          <p class="line-spcaing">Find derivative of $y = \frac{x^2 + 1}{2x - 3}$</p>
           <input type="radio" id="m2_t3q3_a" name="M2_T3_Q3" value="(2x^2 - 6x - 2) / (2x - 3)^2" autocomplete="off"><label for="m2_t3q3_a">$\frac{2x^2 - 6x - 2}{(2x - 3)^2}$</label><br>
-          <input type="radio" id="m2_t3q3_b" name="M2_T3_Q3" value="2x / 2" autocomplete="off"><label for="m2_t3q3_b">$\frac{2x}{2}$</label><br>
+          <input type="radio" id="m2_t3q3_b" name="M2_T3_Q3" value="2x / 2" autocomplete="off"><label for="m2_t3q3_b">$\frac{2x}{2} = x$</label><br>
           <input type="radio" id="m2_t3q3_c" name="M2_T3_Q3" value="(2x^2 + 6x + 2) / (2x - 3)^2" autocomplete="off"><label for="m2_t3q3_c">$\frac{2x^2 + 6x + 2}{(2x - 3)^2}$</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_M2_T3_Q3"></p>
           <button onclick="checkAnswer('M2_T3_Q3', '(2x^2 - 6x - 2) / (2x - 3)^2')" class="button gray" type="button">Check & Submit</button>
           <button type="button" id="btn_next_M2_T3_Q3" onclick="handleNextBranch('M2_T3_Q3')" class="button gray" disabled>Next Question</button>
+          <button type="button" onclick="openExamples('module2_example.html')" class="button gray" style="background:#64748b; color:#ffffff;">📖 Examples</button>
         </div>
 
-        <!-- ================= TIER 4 (EXPERT PARTS & CHAIN RULE) ================= -->
+        <!-- ================= TIER 4 (EXPERT PARTS & CHAIN) ================= -->
         <div id="M2_T4_Q1" style="display: none;">
-          <p class="line-spcaing">Evaluate the integral $\int x e^x \, dx$</p>
+          <p class="line-spcaing">Evaluate integral by parts: $\int x e^x \, dx$</p>
           <input type="radio" id="m2_t4q1_a" name="M2_T4_Q1" value="e^x(x - 1) + C" autocomplete="off"><label for="m2_t4q1_a">$e^x(x - 1) + C$</label><br>
           <input type="radio" id="m2_t4q1_b" name="M2_T4_Q1" value="1/2 x^2 e^x + C" autocomplete="off"><label for="m2_t4q1_b">$\frac{1}{2}x^2 e^x + C$</label><br>
           <input type="radio" id="m2_t4q1_c" name="M2_T4_Q1" value="e^x(x + 1) + C" autocomplete="off"><label for="m2_t4q1_c">$e^x(x + 1) + C$</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_M2_T4_Q1"></p>
           <button onclick="checkAnswer('M2_T4_Q1', 'e^x(x - 1) + C')" class="button gray" type="button">Check & Submit</button>
           <button type="button" id="btn_next_M2_T4_Q1" onclick="handleNextBranch('M2_T4_Q1')" class="button gray" disabled>Next Question</button>
+          <button type="button" onclick="openExamples('module2_example.html')" class="button gray" style="background:#64748b; color:#ffffff;">📖 Examples</button>
         </div>
 
         <div id="M2_T4_Q2" style="display: none;">
-          <p class="line-spcaing">Find the derivative of $y = \ln(x^3 + 4x)$</p>
+          <p class="line-spcaing">Find derivative of $y = \ln(x^3 + 4x)$</p>
           <input type="radio" id="m2_t4q2_a" name="M2_T4_Q2" value="(3x^2 + 4) / (x^3 + 4x)" autocomplete="off"><label for="m2_t4q2_a">$\frac{3x^2 + 4}{x^3 + 4x}$</label><br>
           <input type="radio" id="m2_t4q2_b" name="M2_T4_Q2" value="1 / (x^3 + 4x)" autocomplete="off"><label for="m2_t4q2_b">$\frac{1}{x^3 + 4x}$</label><br>
           <input type="radio" id="m2_t4q2_c" name="M2_T4_Q2" value="(3x^2 + 4) / x" autocomplete="off"><label for="m2_t4q2_c">$\frac{3x^2 + 4}{x}$</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_M2_T4_Q2"></p>
           <button onclick="checkAnswer('M2_T4_Q2', '(3x^2 + 4) / (x^3 + 4x)')" class="button gray" type="button">Check & Submit</button>
           <button type="button" id="btn_next_M2_T4_Q2" onclick="handleNextBranch('M2_T4_Q2')" class="button gray" disabled>Next Question</button>
+          <button type="button" onclick="openExamples('module2_example.html')" class="button gray" style="background:#64748b; color:#ffffff;">📖 Examples</button>
         </div>
 
         <div id="M2_T4_Q3" style="display: none;">
-          <p class="line-spcaing">Evaluate $\int_0^{\pi/2} \sin^2(x) \cos(x) \, dx$</p>
+          <p class="line-spcaing">Evaluate definite integral $\int_0^{\pi/2} \sin^2(x) \cos(x) \, dx$</p>
           <input type="radio" id="m2_t4q3_a" name="M2_T4_Q3" value="1/3" autocomplete="off"><label for="m2_t4q3_a">$\frac{1}{3}$</label><br>
           <input type="radio" id="m2_t4q3_b" name="M2_T4_Q3" value="1/2" autocomplete="off"><label for="m2_t4q3_b">$\frac{1}{2}$</label><br>
           <input type="radio" id="m2_t4q3_c" name="M2_T4_Q3" value="1" autocomplete="off"><label for="m2_t4q3_c">$1$</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_M2_T4_Q3"></p>
           <button onclick="checkAnswer('M2_T4_Q3', '1/3')" class="button gray" type="button">Check & Submit</button>
           <button type="button" id="btn_next_M2_T4_Q3" onclick="handleNextBranch('M2_T4_Q3')" class="button gray" disabled>Next Question</button>
+          <button type="button" onclick="openExamples('module2_example.html')" class="button gray" style="background:#64748b; color:#ffffff;">📖 Examples</button>
         </div>
       </form>
     </div>
@@ -160,6 +172,6 @@
     <p id="resultMessage"></p>
   </dialog>
 
-  <script src="../static/script.js?v=adaptive12"></script>
+  <script src="../static/script.js?v=adaptive14"></script>
 </body>
 </html>
