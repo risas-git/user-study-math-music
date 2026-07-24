@@ -257,23 +257,24 @@ function checkAnswers(lastPage) {
   }
   const dialog = document.querySelector("#resultDialog");
   const resultMessage = document.querySelector("#resultMessage");
-  const closeButton = document.querySelector("#closeButton");
   if (resultMessage) resultMessage.innerHTML = "";
 
   let correctCount = 0;
   let totalQuestions = 0;
 
+  let stepNum = 1;
   for (const questionId in firstAttempts) {
     const selectedAnswerValue = firstAttempts[questionId][0];
     const correctAnswer = correctAnswers[questionId];
 
     if (correctAnswer === selectedAnswerValue) {
       correctCount++;
-      resultMessage.innerHTML += `<br>Question ${questionId}: Correct`;
+      resultMessage.innerHTML += `<br>Question ${stepNum}: Correct`;
     } else if (selectedAnswerValue) {
-      resultMessage.innerHTML += `<br>Question ${questionId}: Wrong`;
+      resultMessage.innerHTML += `<br>Question ${stepNum}: Wrong`;
     }
 
+    stepNum++;
     totalQuestions++;
   }
 
@@ -281,8 +282,6 @@ function checkAnswers(lastPage) {
 
   // Must have at least 2 correct answers out of 4 (>= 50%)
   if (correctCount >= 2) {
-    if (closeButton) closeButton.style.display = 'inline-block';
-
     resultMessage.innerHTML += `<br><br>🎉 <strong>Module 1 Mastered! (${correctCount}/4 Correct - ${Math.round((correctCount/4)*100)}%)</strong>`;
     resultMessage.innerHTML += `<br>You passed the requirement (at least 50% correct). Click below to advance!`;
     resultMessage.innerHTML += `<br><br><button onclick="openPage('linear_exercise.html')" class="button gray" style="background:#7c3aed; color:#ffffff; font-weight:bold; padding:10px 20px; border-radius:6px; cursor:pointer;">Next Exercise ➔</button>`;
@@ -299,8 +298,6 @@ function checkAnswers(lastPage) {
     }
   } 
   else {
-    if (closeButton) closeButton.style.display = 'none'; // HIDE Close button - force user to re-attempt!
-
     resultMessage.innerHTML += `<br><br>⚠️ <strong>Score: ${correctCount}/4 Correct (${Math.round((correctCount/4)*100)}%)</strong>`;
     resultMessage.innerHTML += `<br>You must answer at least 2 out of 4 questions correctly (50%) to advance.`;
     resultMessage.innerHTML += `<br><br><button onclick="reattemptExercise()" class="button gray" style="background:#7c3aed; color:#ffffff; font-weight:bold; padding:10px 20px; border-radius:6px; cursor:pointer;">🔁 Re-attempt Module 1</button>`;
@@ -308,9 +305,6 @@ function checkAnswers(lastPage) {
 
   if (dialog) {
     dialog.showModal();
-    if (closeButton) {
-      closeButton.onclick = () => dialog.close();
-    }
   }
 }
 
