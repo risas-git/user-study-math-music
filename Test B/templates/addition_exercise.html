@@ -25,13 +25,13 @@
         <p>00:00:00</p>
       </div>
 
-      <form id="exerciseForm">
+      <form id="exerciseForm" autocomplete="off">
         <!-- ================= TIER 1 ================= -->
         <div id="T1_Q1" style="display: none;">
           <p class="line-spcaing">Evaluate $4356 - 291 \times 3 + 180 \div 9$</p>
-          <input type="radio" id="t1q1_a" name="T1_Q1" value="3503"><label for="t1q1_a">$3503$</label><br>
-          <input type="radio" id="t1q1_b" name="T1_Q1" value="12195"><label for="t1q1_b">$12195$</label><br>
-          <input type="radio" id="t1q1_c" name="T1_Q1" value="3483"><label for="t1q1_c">$3483$</label><br>
+          <input type="radio" id="t1q1_a" name="T1_Q1" value="3503" autocomplete="off"><label for="t1q1_a">$3503$</label><br>
+          <input type="radio" id="t1q1_b" name="T1_Q1" value="12195" autocomplete="off"><label for="t1q1_b">$12195$</label><br>
+          <input type="radio" id="t1q1_c" name="T1_Q1" value="3483" autocomplete="off"><label for="t1q1_c">$3483$</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_T1_Q1"></p>
           <button onclick="checkAnswer('T1_Q1', '3503')" class="button gray" type="button">Check & Submit</button>
           <button type="button" id="btn_next_T1_Q1" onclick="handleNextBranch('T1_Q1')" class="button gray" disabled>Next Question</button>
@@ -39,9 +39,9 @@
 
         <div id="T1_Q2" style="display: none;">
           <p class="line-spcaing">Evaluate $360 \div (18 - 6) + 14 \times 5$</p>
-          <input type="radio" id="t1q2_a" name="T1_Q2" value="100"><label for="t1q2_a">$100$</label><br>
-          <input type="radio" id="t1q2_b" name="T1_Q2" value="96"><label for="t1q2_b">$96$</label><br>
-          <input type="radio" id="t1q2_c" name="T1_Q2" value="110"><label for="t1q2_c">$110$</label><br>
+          <input type="radio" id="t1q2_a" name="T1_Q2" value="100" autocomplete="off"><label for="t1q2_a">$100$</label><br>
+          <input type="radio" id="t1q2_b" name="T1_Q2" value="96" autocomplete="off"><label for="t1q2_b">$96$</label><br>
+          <input type="radio" id="t1q2_c" name="T1_Q2" value="110" autocomplete="off"><label for="t1q2_c">$110$</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_T1_Q2"></p>
           <button onclick="checkAnswer('T1_Q2', '100')" class="button gray" type="button">Check & Submit</button>
           <button type="button" id="btn_next_T1_Q2" onclick="handleNextBranch('T1_Q2')" class="button gray" disabled>Next Question</button>
@@ -49,9 +49,9 @@
 
         <div id="T1_Q3" style="display: none;">
           <p class="line-spcaing">Evaluate $\frac{7}{15} + \frac{1}{5} - \frac{1}{3}$</p>
-          <input type="radio" id="t1q3_a" name="T1_Q3" value="1/3"><label for="t1q3_a">$\frac{1}{3}$</label><br>
-          <input type="radio" id="t1q3_b" name="T1_Q3" value="7/15"><label for="t1q3_b">$\frac{7}{15}$</label><br>
-          <input type="radio" id="t1q3_c" name="T1_Q3" value="1/2"><label for="t1q3_c">$\frac{1}{2}$</label><br>
+          <input type="radio" id="t1q3_a" name="T1_Q3" value="1/3" autocomplete="off"><label for="t1q3_a">$\frac{1}{3}$</label><br>
+          <input type="radio" id="t1q3_b" name="T1_Q3" value="7/15" autocomplete="off"><label for="t1q3_b">$\frac{7}{15}$</label><br>
+          <input type="radio" id="t1q3_c" name="T1_Q3" value="1/2" autocomplete="off"><label for="t1q3_c">$\frac{1}{2}$</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_T1_Q3"></p>
           <button onclick="checkAnswer('T1_Q3', '1/3')" class="button gray" type="button">Check & Submit</button>
           <button type="button" id="btn_next_T1_Q3" onclick="handleNextBranch('T1_Q3')" class="button gray" disabled>Next Question</button>
@@ -60,9 +60,9 @@
         <!-- ================= TIER 2 (BASELINE START) ================= -->
         <div id="T2_Q1">
           <p class="line-spcaing">Evaluate $\frac{2}{5} + \frac{3}{4} - \frac{1}{2}$</p>
-          <input type="radio" id="t2q1_a" name="T2_Q1" value="13/20"><label for="t2q1_a">$\frac{13}{20}$</label><br>
-          <input type="radio" id="t2q1_b" name="T2_Q1" value="4/7"><label for="t2q1_b">$\frac{4}{7}$</label><br>
-          <input type="radio" id="t2q1_c" name="T2_Q1" value="15/20"><label for="t2q1_c">$\frac{15}{20}$</label><br>
+          <input type="radio" id="t2q1_a" name="T2_Q1" value="13/20" autocomplete="off"><label for="t2q1_a">$\frac{13}{20}$</label><br>
+          <input type="radio" id="t2q1_b" name="T2_Q1" value="4/7" autocomplete="off"><label for="t2q1_b">$\frac{4}{7}$</label><br>
+          <input type="radio" id="t2q1_c" name="T2_Q1" value="15/20" autocomplete="off"><label for="t2q1_c">$\frac{15}{20}$</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_T2_Q1"></p>
           <button onclick="checkAnswer('T2_Q1', '13/20')" class="button gray" type="button">Check & Submit</button>
           <button type="button" id="btn_next_T2_Q1" onclick="handleNextBranch('T2_Q1')" class="button gray" disabled>Next Question</button>
@@ -70,9 +70,9 @@
 
         <div id="T2_Q2" style="display: none;">
           <p class="line-spcaing">Evaluate $\frac{5}{6} - \left(\frac{1}{3} + \frac{1}{4}\right) \times \frac{4}{7}$</p>
-          <input type="radio" id="t2q2_a" name="T2_Q2" value="1/2"><label for="t2q2_a">$\frac{1}{2}$</label><br>
-          <input type="radio" id="t2q2_b" name="T2_Q2" value="1/3"><label for="t2q2_b">$\frac{1}{3}$</label><br>
-          <input type="radio" id="t2q2_c" name="T2_Q2" value="3/4"><label for="t2q2_c">$\frac{3}{4}$</label><br>
+          <input type="radio" id="t2q2_a" name="T2_Q2" value="1/2" autocomplete="off"><label for="t2q2_a">$\frac{1}{2}$</label><br>
+          <input type="radio" id="t2q2_b" name="T2_Q2" value="1/3" autocomplete="off"><label for="t2q2_b">$\frac{1}{3}$</label><br>
+          <input type="radio" id="t2q2_c" name="T2_Q2" value="3/4" autocomplete="off"><label for="t2q2_c">$\frac{3}{4}$</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_T2_Q2"></p>
           <button onclick="checkAnswer('T2_Q2', '1/2')" class="button gray" type="button">Check & Submit</button>
           <button type="button" id="btn_next_T2_Q2" onclick="handleNextBranch('T2_Q2')" class="button gray" disabled>Next Question</button>
@@ -80,9 +80,9 @@
 
         <div id="T2_Q3" style="display: none;">
           <p class="line-spcaing">Evaluate $\frac{3.6 \times 0.8}{0.4} + 1.8$</p>
-          <input type="radio" id="t2q3_a" name="T2_Q3" value="9.0"><label for="t2q3_a">$9.0$</label><br>
-          <input type="radio" id="t2q3_b" name="T2_Q3" value="7.2"><label for="t2q3_b">$7.2$</label><br>
-          <input type="radio" id="t2q3_c" name="T2_Q3" value="11.0"><label for="t2q3_c">$11.0$</label><br>
+          <input type="radio" id="t2q3_a" name="T2_Q3" value="9.0" autocomplete="off"><label for="t2q3_a">$9.0$</label><br>
+          <input type="radio" id="t2q3_b" name="T2_Q3" value="7.2" autocomplete="off"><label for="t2q3_b">$7.2$</label><br>
+          <input type="radio" id="t2q3_c" name="T2_Q3" value="11.0" autocomplete="off"><label for="t2q3_c">$11.0$</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_T2_Q3"></p>
           <button onclick="checkAnswer('T2_Q3', '9.0')" class="button gray" type="button">Check & Submit</button>
           <button type="button" id="btn_next_T2_Q3" onclick="handleNextBranch('T2_Q3')" class="button gray" disabled>Next Question</button>
@@ -91,9 +91,9 @@
         <!-- ================= TIER 3 ================= -->
         <div id="T3_Q1" style="display: none;">
           <p class="line-spcaing">Simplify $\frac{\frac{3}{8}}{\frac{1}{4} \times \frac{5}{6}}$</p>
-          <input type="radio" id="t3q1_a" name="T3_Q1" value="9/5"><label for="t3q1_a">$\frac{9}{5}$</label><br>
-          <input type="radio" id="t3q1_b" name="T3_Q1" value="15/192"><label for="t3q1_b">$\frac{15}{192}$</label><br>
-          <input type="radio" id="t3q1_c" name="T3_Q1" value="5/9"><label for="t3q1_c">$\frac{5}{9}$</label><br>
+          <input type="radio" id="t3q1_a" name="T3_Q1" value="9/5" autocomplete="off"><label for="t3q1_a">$\frac{9}{5}$</label><br>
+          <input type="radio" id="t3q1_b" name="T3_Q1" value="15/192" autocomplete="off"><label for="t3q1_b">$\frac{15}{192}$</label><br>
+          <input type="radio" id="t3q1_c" name="T3_Q1" value="5/9" autocomplete="off"><label for="t3q1_c">$\frac{5}{9}$</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_T3_Q1"></p>
           <button onclick="checkAnswer('T3_Q1', '9/5')" class="button gray" type="button">Check & Submit</button>
           <button type="button" id="btn_next_T3_Q1" onclick="handleNextBranch('T3_Q1')" class="button gray" disabled>Next Question</button>
@@ -101,9 +101,9 @@
 
         <div id="T3_Q2" style="display: none;">
           <p class="line-spcaing">Simplify $\frac{4}{x+2} - \frac{3}{x-2}$</p>
-          <input type="radio" id="t3q2_a" name="T3_Q2" value="(x - 14) / ((x+2)(x-2))"><label for="t3q2_a">$\frac{x - 14}{(x+2)(x-2)}$</label><br>
-          <input type="radio" id="t3q2_b" name="T3_Q2" value="1 / ((x+2)(x-2))"><label for="t3q2_b">$\frac{1}{(x+2)(x-2)}$</label><br>
-          <input type="radio" id="t3q2_c" name="T3_Q2" value="(x + 2) / ((x+2)(x-2))"><label for="t3q2_c">$\frac{x + 2}{(x+2)(x-2)}$</label><br>
+          <input type="radio" id="t3q2_a" name="T3_Q2" value="(x - 14) / ((x+2)(x-2))" autocomplete="off"><label for="t3q2_a">$\frac{x - 14}{(x+2)(x-2)}$</label><br>
+          <input type="radio" id="t3q2_b" name="T3_Q2" value="1 / ((x+2)(x-2))" autocomplete="off"><label for="t3q2_b">$\frac{1}{(x+2)(x-2)}$</label><br>
+          <input type="radio" id="t3q2_c" name="T3_Q2" value="(x + 2) / ((x+2)(x-2))" autocomplete="off"><label for="t3q2_c">$\frac{x + 2}{(x+2)(x-2)}$</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_T3_Q2"></p>
           <button onclick="checkAnswer('T3_Q2', '(x - 14) / ((x+2)(x-2))')" class="button gray" type="button">Check & Submit</button>
           <button type="button" id="btn_next_T3_Q2" onclick="handleNextBranch('T3_Q2')" class="button gray" disabled>Next Question</button>
@@ -111,9 +111,9 @@
 
         <div id="T3_Q3" style="display: none;">
           <p class="line-spcaing">Solve for $x$: $\frac{3}{x+2} + \frac{1}{x} = \frac{6}{x+2}$</p>
-          <input type="radio" id="t3q3_a" name="T3_Q3" value="x = 2/3"><label for="t3q3_a">$x = \frac{2}{3}$</label><br>
-          <input type="radio" id="t3q3_b" name="T3_Q3" value="x = 2"><label for="t3q3_b">$x = 2$</label><br>
-          <input type="radio" id="t3q3_c" name="T3_Q3" value="x = 1"><label for="t3q3_c">$x = 1$</label><br>
+          <input type="radio" id="t3q3_a" name="T3_Q3" value="x = 2/3" autocomplete="off"><label for="t3q3_a">$x = \frac{2}{3}$</label><br>
+          <input type="radio" id="t3q3_b" name="T3_Q3" value="x = 2" autocomplete="off"><label for="t3q3_b">$x = 2$</label><br>
+          <input type="radio" id="t3q3_c" name="T3_Q3" value="x = 1" autocomplete="off"><label for="t3q3_c">$x = 1$</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_T3_Q3"></p>
           <button onclick="checkAnswer('T3_Q3', 'x = 2/3')" class="button gray" type="button">Check & Submit</button>
           <button type="button" id="btn_next_T3_Q3" onclick="handleNextBranch('T3_Q3')" class="button gray" disabled>Next Question</button>
@@ -122,9 +122,9 @@
         <!-- ================= TIER 4 ================= -->
         <div id="T4_Q1" style="display: none;">
           <p class="line-spcaing">Simplify $\frac{x}{x+3} + \frac{2}{x-1}$</p>
-          <input type="radio" id="t4q1_a" name="T4_Q1" value="(x^2 + 1x + 6) / ((x+3)(x-1))"><label for="t4q1_a">$\frac{x^2 + x + 6}{(x+3)(x-1)}$</label><br>
-          <input type="radio" id="t4q1_b" name="T4_Q1" value="(x + 2) / (2x + 2)"><label for="t4q1_b">$\frac{x + 2}{2x + 2}$</label><br>
-          <input type="radio" id="t4q1_c" name="T4_Q1" value="(x^2 - 3x + 6) / ((x+3)(x-1))"><label for="t4q1_c">$\frac{x^2 - 3x + 6}{(x+3)(x-1)}$</label><br>
+          <input type="radio" id="t4q1_a" name="T4_Q1" value="(x^2 + 1x + 6) / ((x+3)(x-1))" autocomplete="off"><label for="t4q1_a">$\frac{x^2 + x + 6}{(x+3)(x-1)}$</label><br>
+          <input type="radio" id="t4q1_b" name="T4_Q1" value="(x + 2) / (2x + 2)" autocomplete="off"><label for="t4q1_b">$\frac{x + 2}{2x + 2}$</label><br>
+          <input type="radio" id="t4q1_c" name="T4_Q1" value="(x^2 - 3x + 6) / ((x+3)(x-1))" autocomplete="off"><label for="t4q1_c">$\frac{x^2 - 3x + 6}{(x+3)(x-1)}$</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_T4_Q1"></p>
           <button onclick="checkAnswer('T4_Q1', '(x^2 + 1x + 6) / ((x+3)(x-1))')" class="button gray" type="button">Check & Submit</button>
           <button type="button" id="btn_next_T4_Q1" onclick="handleNextBranch('T4_Q1')" class="button gray" disabled>Next Question</button>
@@ -132,9 +132,9 @@
 
         <div id="T4_Q2" style="display: none;">
           <p class="line-spcaing">Simplify $\frac{\frac{2}{x+h} - \frac{2}{x}}{h}$</p>
-          <input type="radio" id="t4q2_a" name="T4_Q2" value="-2 / (x(x+h))"><label for="t4q2_a">$\frac{-2}{x(x+h)}$</label><br>
-          <input type="radio" id="t4q2_b" name="T4_Q2" value="2 / (x(x+h))"><label for="t4q2_b">$\frac{2}{x(x+h)}$</label><br>
-          <input type="radio" id="t4q2_c" name="T4_Q2" value="0"><label for="t4q2_c">$0$</label><br>
+          <input type="radio" id="t4q2_a" name="T4_Q2" value="-2 / (x(x+h))" autocomplete="off"><label for="t4q2_a">$\frac{-2}{x(x+h)}$</label><br>
+          <input type="radio" id="t4q2_b" name="T4_Q2" value="2 / (x(x+h))" autocomplete="off"><label for="t4q2_b">$\frac{2}{x(x+h)}$</label><br>
+          <input type="radio" id="t4q2_c" name="T4_Q2" value="0" autocomplete="off"><label for="t4q2_c">$0$</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_T4_Q2"></p>
           <button onclick="checkAnswer('T4_Q2', '-2 / (x(x+h))')" class="button gray" type="button">Check & Submit</button>
           <button type="button" id="btn_next_T4_Q2" onclick="handleNextBranch('T4_Q2')" class="button gray" disabled>Next Question</button>
@@ -142,9 +142,9 @@
 
         <div id="T4_Q3" style="display: none;">
           <p class="line-spcaing">Solve for $x$: $\frac{3x}{x-2} + \frac{4}{x+2} = \frac{28}{x^2-4}$</p>
-          <input type="radio" id="t4q3_a" name="T4_Q3" value="x = 5/3"><label for="t4q3_a">$x = \frac{5}{3}$</label><br>
-          <input type="radio" id="t4q3_b" name="T4_Q3" value="x = 2"><label for="t4q3_b">$x = 2$</label><br>
-          <input type="radio" id="t4q3_c" name="T4_Q3" value="x = 7/3"><label for="t4q3_c">$\frac{7}{3}$</label><br>
+          <input type="radio" id="t4q3_a" name="T4_Q3" value="x = 5/3" autocomplete="off"><label for="t4q3_a">$x = \frac{5}{3}$</label><br>
+          <input type="radio" id="t4q3_b" name="T4_Q3" value="x = 2" autocomplete="off"><label for="t4q3_b">$x = 2$</label><br>
+          <input type="radio" id="t4q3_c" name="T4_Q3" value="x = 7/3" autocomplete="off"><label for="t4q3_c">$\frac{7}{3}$</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_T4_Q3"></p>
           <button onclick="checkAnswer('T4_Q3', 'x = 5/3')" class="button gray" type="button">Check & Submit</button>
           <button type="button" id="btn_next_T4_Q3" onclick="handleNextBranch('T4_Q3')" class="button gray" disabled>Next Question</button>
@@ -160,6 +160,6 @@
     <p id="resultMessage"></p>
   </dialog>
 
-  <script src="../static/script.js?v=adaptive9"></script>
+  <script src="../static/script.js?v=adaptive11"></script>
 </body>
 </html>

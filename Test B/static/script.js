@@ -37,6 +37,42 @@ let currentTier = 2; // Start at Tier 2 Medium
 let userStepCount = 0; // Exactly 4 questions per user session
 const tierIndices = { 1: 0, 2: 0, 3: 0, 4: 0 }; // Used variant per tier
 
+// Explicitly reset form inputs and messages on page load to prevent pre-checked browser cache
+function resetExerciseFormState() {
+  const inputs = document.querySelectorAll('input[type="radio"]');
+  inputs.forEach(input => {
+    input.checked = false;
+  });
+
+  const msgs = document.querySelectorAll('[id^="resultMessage_"]');
+  msgs.forEach(msg => {
+    msg.innerHTML = '';
+  });
+
+  const checkBtns = document.querySelectorAll('button[onclick*="checkAnswer"]');
+  checkBtns.forEach(btn => {
+    btn.disabled = false;
+  });
+
+  const nextBtns = document.querySelectorAll('[id^="btn_next_"]');
+  nextBtns.forEach(btn => {
+    btn.disabled = true;
+  });
+
+  for (const key in firstAttempts) delete firstAttempts[key];
+  for (const key in correctAnswers) delete correctAnswers[key];
+
+  currentTier = 2;
+  userStepCount = 0;
+  for (const k in tierIndices) tierIndices[k] = 0;
+
+  const allDivs = document.querySelectorAll('[id^="T"]');
+  allDivs.forEach(div => div.style.display = 'none');
+
+  const startDiv = document.getElementById('T2_Q1');
+  if (startDiv) startDiv.style.display = 'block';
+}
+
 function getMisconceptionCatalog() {
   if (window.location.pathname.toLowerCase().includes('deri_exercise1')) {
     return misconceptionHintsModule2;
@@ -206,33 +242,9 @@ function checkAnswer(questionId, correctAnswer) {
 
 // Re-attempt Exercise Module
 function reattemptExercise() {
+  resetExerciseFormState();
   const dialog = document.querySelector("#resultDialog");
   if (dialog) dialog.close();
-
-  const inputs = document.querySelectorAll('input[type="radio"]');
-  inputs.forEach(input => input.checked = false);
-
-  const msgs = document.querySelectorAll('[id^="resultMessage_"]');
-  msgs.forEach(msg => msg.innerHTML = '');
-
-  // Re-enable all check buttons
-  const checkBtns = document.querySelectorAll('button[onclick*="checkAnswer"]');
-  checkBtns.forEach(btn => btn.disabled = false);
-
-  for (const key in firstAttempts) delete firstAttempts[key];
-  for (const key in correctAnswers) delete correctAnswers[key];
-
-  currentTier = 2;
-  userStepCount = 0;
-  for (const k in tierIndices) tierIndices[k] = 0;
-
-  const allDivs = document.querySelectorAll('[id^="T"]');
-  allDivs.forEach(div => div.style.display = 'none');
-
-  const startDiv = document.getElementById('T2_Q1');
-  if (startDiv) startDiv.style.display = 'block';
-
-  renderMasteryWidget();
 }
 
 // Check answers for all questions and display results
@@ -412,11 +424,13 @@ if (document.body) {
   renderMasteryWidget();
 }
 document.addEventListener('DOMContentLoaded', () => {
+  resetExerciseFormState();
   renderPhaseBadge();
   renderSkipButton();
   renderMasteryWidget();
 });
 window.addEventListener('load', () => {
+  resetExerciseFormState();
   renderPhaseBadge();
   renderSkipButton();
   renderMasteryWidget();
