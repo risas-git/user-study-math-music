@@ -84,8 +84,9 @@ function resetExerciseFormState() {
   userStepCount = 0;
   for (const k in tierIndices) tierIndices[k] = 0;
 
-  const isMod3 = window.location.pathname.toLowerCase().includes('quadratic_exercise');
-  const isMod2 = window.location.pathname.toLowerCase().includes('deri_exercise1');
+  const path = window.location.pathname.toLowerCase();
+  const isMod3 = path.includes('module3_exercise') || path.includes('quadratic_exercise');
+  const isMod2 = path.includes('module2_exercise') || path.includes('deri_exercise1');
   const startId = isMod3 ? 'M3_T2_Q1' : (isMod2 ? 'M2_T2_Q1' : 'T2_Q1');
 
   const allDivs = document.querySelectorAll('[id^="T"], [id^="M2_T"], [id^="M3_T"]');
@@ -97,10 +98,10 @@ function resetExerciseFormState() {
 
 function getMisconceptionCatalog() {
   const path = window.location.pathname.toLowerCase();
-  if (path.includes('quadratic_exercise')) {
+  if (path.includes('module3_exercise') || path.includes('quadratic_exercise')) {
     return misconceptionHintsModule3;
   }
-  if (path.includes('deri_exercise1')) {
+  if (path.includes('module2_exercise') || path.includes('deri_exercise1')) {
     return misconceptionHintsModule2;
   }
   return misconceptionHintsModule1;
@@ -109,7 +110,7 @@ function getMisconceptionCatalog() {
 // Update Adaptive Mastery Score (BKT Light Model)
 function updateMasteryScore(isCorrect) {
   const path = window.location.pathname.toLowerCase();
-  const key = path.includes('quadratic_exercise') ? 'test2Mod3MasteryScore' : (path.includes('deri_exercise1') ? 'test2Mod2MasteryScore' : 'test2MasteryScore');
+  const key = (path.includes('module3_exercise') || path.includes('quadratic_exercise')) ? 'test2Mod3MasteryScore' : ((path.includes('module2_exercise') || path.includes('deri_exercise1')) ? 'test2Mod2MasteryScore' : 'test2MasteryScore');
   let score = parseInt(sessionStorage.getItem(key) || '50', 10);
   if (isCorrect) {
     score = Math.min(100, score + 25);
@@ -125,19 +126,19 @@ function updateMasteryScore(isCorrect) {
 function renderMasteryWidget() {
   let widget = document.getElementById('adaptiveMasteryWidget');
   const path = window.location.pathname.toLowerCase();
-  const key = path.includes('quadratic_exercise') ? 'test2Mod3MasteryScore' : (path.includes('deri_exercise1') ? 'test2Mod2MasteryScore' : 'test2MasteryScore');
+  const key = (path.includes('module3_exercise') || path.includes('quadratic_exercise')) ? 'test2Mod3MasteryScore' : ((path.includes('module2_exercise') || path.includes('deri_exercise1')) ? 'test2Mod2MasteryScore' : 'test2MasteryScore');
   const score = parseInt(sessionStorage.getItem(key) || '50', 10);
   
   let tierName = "Tier 2: Medium (Baseline)";
   let tierColor = "#7c3aed";
   if (currentTier === 4) {
-    tierName = "Tier 4: Expert Advanced Algebra";
+    tierName = "Tier 4: Expert Level";
     tierColor = "#16a34a";
   } else if (currentTier === 3) {
-    tierName = "Tier 3: Hard Complex Algebra";
+    tierName = "Tier 3: Hard Level";
     tierColor = "#7c3aed";
   } else if (currentTier === 1) {
-    tierName = "Tier 1: Easy Basic Algebra";
+    tierName = "Tier 1: Easy Level";
     tierColor = "#ea580c";
   }
 
@@ -196,8 +197,8 @@ function handleNextBranch(currentQId) {
 
   const path = window.location.pathname.toLowerCase();
   let prefix = 'T';
-  if (path.includes('quadratic_exercise')) prefix = 'M3_T';
-  else if (path.includes('deri_exercise1')) prefix = 'M2_T';
+  if (path.includes('module3_exercise') || path.includes('quadratic_exercise')) prefix = 'M3_T';
+  else if (path.includes('module2_exercise') || path.includes('deri_exercise1')) prefix = 'M2_T';
 
   const nextQId = `${prefix}${currentTier}_Q${variantIndex}`;
 
@@ -240,7 +241,7 @@ function checkAnswer(questionId, correctAnswer) {
     if (catalog[questionId] && catalog[questionId][selectedAnswer.value]) {
       hint = "<br>" + catalog[questionId][selectedAnswer.value];
     } else {
-      hint = "<br>💡 <b>Hint</b>: Review linear isolation, quadratic formula, or factoring techniques.";
+      hint = "<br>💡 <b>Hint</b>: Review operational precedence, calculus rules, or linear/quadratic formulas.";
     }
 
     if (resultMessage) {
@@ -307,16 +308,16 @@ function checkAnswers(lastPage) {
   }
 
   const path = window.location.pathname.toLowerCase();
-  const isMod3 = path.includes('quadratic_exercise');
-  const isMod2 = path.includes('deri_exercise1');
+  const isMod3 = path.includes('module3_exercise') || path.includes('quadratic_exercise');
+  const isMod2 = path.includes('module2_exercise') || path.includes('deri_exercise1');
 
   let moduleTitle = 'Module 1 (Mixed Operations)';
-  let nextPage = 'deri_exercise1.html';
+  let nextPage = 'module2_explanation.html';
   let nextBtnText = 'Next Module (Differentiation & Integration) ➔';
 
   if (isMod2) {
     moduleTitle = 'Module 2 (Differentiation & Integration)';
-    nextPage = 'quadratic_exercise.html';
+    nextPage = 'module3_explanation.html';
     nextBtnText = 'Next Module (Linear & Quadratic Equations) ➔';
   } else if (isMod3) {
     moduleTitle = 'Module 3 (Linear & Quadratic Equations)';

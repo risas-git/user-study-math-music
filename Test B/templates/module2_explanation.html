@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <title>Module 2 Explanation: Differentiation & Integration</title>
+</head>
+<body style="padding-top: 50px; padding-bottom: 50px;">
+  <div style="text-align: center; margin-bottom: 20px;"> 
+    <img src="../static/Logo.png" width="30%" />
+  </div>
+
+  <div style="max-width: 800px; margin: 0 auto; background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); font-family: Arial, sans-serif;">
+    <h2 style="color: #7c3aed; margin-top: 0; text-align: center;">Module 2: Differentiation & Integration</h2>
+    <p style="font-size: 15px; color: #475569; line-height: 1.6;">
+      This module tests fundamental and advanced differential and integral calculus concepts. Review the rules below before starting the exercise.
+    </p>
+
+    <div style="border-left: 4px solid #7c3aed; padding-left: 15px; margin-top: 20px;">
+      <h3 style="color: #1e293b; margin-bottom: 5px;">1. Power Rule for Derivatives & Integrals</h3>
+      <p style="font-size: 14px; color: #334155; line-height: 1.5;">
+        • <strong>Derivative:</strong> $\frac{d}{dx}(x^n) = n x^{n-1}$ (Derivative of a constant $c$ is $0$).
+        <br>• <strong>Indefinite Integral:</strong> $\int x^n dx = \frac{x^{n+1}}{n+1} + C \quad (n \neq -1)$.
+      </p>
+    </div>
+
+    <div style="border-left: 4px solid #7c3aed; padding-left: 15px; margin-top: 20px;">
+      <h3 style="color: #1e293b; margin-bottom: 5px;">2. Exponential, Trigonometric & Logarithmic Calculus</h3>
+      <p style="font-size: 14px; color: #334155; line-height: 1.5;">
+        • $\frac{d}{dx}(e^{kx}) = k e^{kx} \quad \text{and} \quad \frac{d}{dx}(\sin(kx)) = k \cos(kx)$
+        <br>• $\frac{d}{dx}\ln(g(x)) = \frac{g'(x)}{g(x)}$
+      </p>
+    </div>
+
+    <div style="border-left: 4px solid #7c3aed; padding-left: 15px; margin-top: 20px;">
+      <h3 style="color: #1e293b; margin-bottom: 5px;">3. Product & Quotient Rules</h3>
+      <p style="font-size: 14px; color: #334155; line-height: 1.5;">
+        • <strong>Product Rule:</strong> $\frac{d}{dx}(u \cdot v) = u'v + uv'$
+        <br>• <strong>Quotient Rule:</strong> $\frac{d}{dx}\left(\frac{u}{v}\right) = \frac{u'v - uv'}{v^2}$
+      </p>
+    </div>
+
+    <div style="border-left: 4px solid #7c3aed; padding-left: 15px; margin-top: 20px;">
+      <h3 style="color: #1e293b; margin-bottom: 5px;">4. Integration by Substitution & Parts</h3>
+      <p style="font-size: 14px; color: #334155; line-height: 1.5;">
+        • <strong>$u$-substitution:</strong> Substitute $u = g(x) \Rightarrow du = g'(x)dx$.
+        <br>• <strong>Integration by Parts:</strong> $\int u \, dv = uv - \int v \, du$.
+      </p>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px; display: flex; justify-content: center; gap: 15px;">
+      <a href="./module2_example.html" class="button gray" target="_blank" style="background: #64748b; color: white; padding: 12px 20px; font-weight: bold; border-radius: 8px; text-decoration: none;">
+        📖 View Calculus Formulas & Worked Examples
+      </a>
+      <a href="./module2_exercise.html" class="button gray" style="background: #7c3aed; color: white; padding: 12px 24px; font-weight: bold; border-radius: 8px; text-decoration: none;">
+        🚀 Start Module 2 Exercise ➔
+      </a>
+    </div>
+  </div>
+</body>
+</html>

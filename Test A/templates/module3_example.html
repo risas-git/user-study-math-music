@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <title>Module 3 Reference: Formulas & Worked Examples</title>
+</head>
+<body style="padding: 30px; background: #f8fafc; font-family: Arial, sans-serif;">
+  <div style="max-width: 800px; margin: 0 auto; background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+    <h2 style="color: #0284c7; margin-top: 0; text-align: center;">Module 3 Reference & Worked Examples</h2>
+
+    <!-- EXAMPLE 1 -->
+    <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px; margin-bottom: 20px; background: #f1f5f9;">
+      <h4 style="margin-top:0; color: #1e293b;">Example 1: Linear Equation Isolation</h4>
+      <p style="margin-bottom: 5px; font-weight: bold; color: #334155;">Solve for $x$: $4x - 7 = 17$</p>
+      <div style="font-size: 14px; color: #475569;">
+        <strong>Step 1 (Add constant 7 to both sides):</strong> $4x = 17 + 7 = 24$<br>
+        <strong>Step 2 (Divide by coefficient 4):</strong> $x = \frac{24}{4} = 6$<br>
+        <span style="color: #16a34a; font-weight: bold;">Answer: $x = 6$</span>
+      </div>
+    </div>
+
+    <!-- EXAMPLE 2 -->
+    <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px; margin-bottom: 20px; background: #f1f5f9;">
+      <h4 style="margin-top:0; color: #1e293b;">Example 2: Quadratic Equation Factoring</h4>
+      <p style="margin-bottom: 5px; font-weight: bold; color: #334155;">Solve for $x$: $x^2 - 5x + 6 = 0$</p>
+      <div style="font-size: 14px; color: #475569;">
+        <strong>Step 1 (Find factors of +6 that sum to -5):</strong> $-2$ and $-3$<br>
+        <strong>Step 2 (Factor quadratic):</strong> $(x - 2)(x - 3) = 0$<br>
+        <strong>Step 3 (Solve linear roots):</strong> $x - 2 = 0 \Rightarrow x = 2$ and $x - 3 = 0 \Rightarrow x = 3$<br>
+        <span style="color: #16a34a; font-weight: bold;">Answer: $x = 2, 3$</span>
+      </div>
+    </div>
+
+    <!-- EXAMPLE 3 -->
+    <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px; margin-bottom: 20px; background: #f1f5f9;">
+      <h4 style="margin-top:0; color: #1e293b;">Example 3: Quadratic Formula & Discriminant Analysis</h4>
+      <p style="margin-bottom: 5px; font-weight: bold; color: #334155;">Solve for $x$: $2x^2 + 7x + 3 = 0$</p>
+      <div style="font-size: 14px; color: #475569;">
+        <strong>Step 1 (Identify $a, b, c$):</strong> $a = 2, b = 7, c = 3$<br>
+        <strong>Step 2 (Calculate Discriminant $D$):</strong> $D = b^2 - 4ac = 7^2 - 4(2)(3) = 49 - 24 = 25 > 0$ (2 real distinct rational roots)<br>
+        <strong>Step 3 (Apply Formula):</strong> $x = \frac{-7 \pm \sqrt{25}}{2(2)} = \frac{-7 \pm 5}{4} \Rightarrow x = -\frac{2}{4} = -\frac{1}{2}$ or $x = -\frac{12}{4} = -3$<br>
+        <span style="color: #16a34a; font-weight: bold;">Answer: $x = -\frac{1}{2}, -3$</span>
+      </div>
+    </div>
+
+    <!-- EXAMPLE 4 -->
+    <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px; margin-bottom: 20px; background: #f1f5f9;">
+      <h4 style="margin-top:0; color: #1e293b;">Example 4: Non-Linear Systems of Equations</h4>
+      <p style="margin-bottom: 5px; font-weight: bold; color: #334155;">Solve the system: $x + y = 10$ and $xy = 21$</p>
+      <div style="font-size: 14px; color: #475569;">
+        <strong>Step 1 (Substitute $y$):</strong> $y = 10 - x \rightarrow x(10 - x) = 21 \rightarrow 10x - x^2 = 21$<br>
+        <strong>Step 2 (Rearrange into standard quadratic):</strong> $x^2 - 10x + 21 = 0 \rightarrow (x - 7)(x - 3) = 0$<br>
+        <strong>Step 3 (Find $(x,y)$ pairs):</strong> When $x = 7 \Rightarrow y = 3$; when $x = 3 \Rightarrow y = 7$<br>
+        <span style="color: #16a34a; font-weight: bold;">Answer: $(x,y) = (7,3)$ or $(3,7)$</span>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+      <button onclick="window.close()" class="button gray" style="background: #475569; color: white; padding: 10px 20px; font-weight: bold; border-radius: 6px; border: none; cursor: pointer;">
+        ✖ Close Reference Window
+      </button>
+    </div>
+  </div>
+</body>
+</html>

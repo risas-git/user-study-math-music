@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <title>Module 2 Reference: Formulas & Worked Examples</title>
+</head>
+<body style="padding: 30px; background: #f8fafc; font-family: Arial, sans-serif;">
+  <div style="max-width: 800px; margin: 0 auto; background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+    <h2 style="color: #0284c7; margin-top: 0; text-align: center;">Module 2 Reference & Worked Examples</h2>
+
+    <!-- EXAMPLE 1 -->
+    <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px; margin-bottom: 20px; background: #f1f5f9;">
+      <h4 style="margin-top:0; color: #1e293b;">Example 1: Polynomial Derivatives & Power Rule</h4>
+      <p style="margin-bottom: 5px; font-weight: bold; color: #334155;">Find the derivative of $y = 3x^4 + 5x^2 - 7x + 2$</p>
+      <div style="font-size: 14px; color: #475569;">
+        <strong>Step 1 (Apply Power Rule):</strong> $\frac{d}{dx}(3x^4) = 12x^3$, $\frac{d}{dx}(5x^2) = 10x$, $\frac{d}{dx}(-7x) = -7$<br>
+        <strong>Step 2 (Constant Derivative):</strong> $\frac{d}{dx}(2) = 0$<br>
+        <span style="color: #16a34a; font-weight: bold;">Answer: $y' = 12x^3 + 10x - 7$</span>
+      </div>
+    </div>
+
+    <!-- EXAMPLE 2 -->
+    <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px; margin-bottom: 20px; background: #f1f5f9;">
+      <h4 style="margin-top:0; color: #1e293b;">Example 2: Definite Integration & Fundamental Theorem</h4>
+      <p style="margin-bottom: 5px; font-weight: bold; color: #334155;">Evaluate $\int_1^3 (3x^2 - 2x) \, dx$</p>
+      <div style="font-size: 14px; color: #475569;">
+        <strong>Step 1 (Find Antiderivative):</strong> $F(x) = \int (3x^2 - 2x) dx = x^3 - x^2$<br>
+        <strong>Step 2 (Evaluate Limits $F(3) - F(1)$):</strong> $(3^3 - 3^2) - (1^3 - 1^2) = (27 - 9) - (1 - 1) = 18 - 0 = 18$<br>
+        <span style="color: #16a34a; font-weight: bold;">Answer: $18$</span>
+      </div>
+    </div>
+
+    <!-- EXAMPLE 3 -->
+    <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px; margin-bottom: 20px; background: #f1f5f9;">
+      <h4 style="margin-top:0; color: #1e293b;">Example 3: Product Rule & Logarithms</h4>
+      <p style="margin-bottom: 5px; font-weight: bold; color: #334155;">Find the derivative of $y = x^3 \cdot \ln(x)$</p>
+      <div style="font-size: 14px; color: #475569;">
+        <strong>Step 1 (Identify $u$ and $v$):</strong> $u = x^3 \Rightarrow u' = 3x^2$ and $v = \ln(x) \Rightarrow v' = \frac{1}{x}$<br>
+        <strong>Step 2 (Apply $u'v + uv'$):</strong> $3x^2 \ln(x) + x^3 \cdot \frac{1}{x} = 3x^2 \ln(x) + x^2 = x^2(3\ln(x) + 1)$<br>
+        <span style="color: #16a34a; font-weight: bold;">Answer: $y' = x^2(3\ln(x) + 1)$</span>
+      </div>
+    </div>
+
+    <!-- EXAMPLE 4 -->
+    <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px; margin-bottom: 20px; background: #f1f5f9;">
+      <h4 style="margin-top:0; color: #1e293b;">Example 4: Integration by Parts</h4>
+      <p style="margin-bottom: 5px; font-weight: bold; color: #334155;">Evaluate $\int x e^x \, dx$</p>
+      <div style="font-size: 14px; color: #475569;">
+        <strong>Step 1 (Set $u$ and $dv$):</strong> $u = x \Rightarrow du = dx$ and $dv = e^x dx \Rightarrow v = e^x$<br>
+        <strong>Step 2 (Apply $uv - \int v du$):</strong> $x e^x - \int e^x dx = x e^x - e^x + C = e^x(x - 1) + C$<br>
+        <span style="color: #16a34a; font-weight: bold;">Answer: $e^x(x - 1) + C$</span>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+      <button onclick="window.close()" class="button gray" style="background: #475569; color: white; padding: 10px 20px; font-weight: bold; border-radius: 6px; border: none; cursor: pointer;">
+        ✖ Close Reference Window
+      </button>
+    </div>
+  </div>
+</body>
+</html>

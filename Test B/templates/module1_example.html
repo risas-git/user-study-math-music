@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <title>Module 1 Reference: Formulas & Worked Examples</title>
+</head>
+<body style="padding: 30px; background: #f8fafc; font-family: Arial, sans-serif;">
+  <div style="max-width: 800px; margin: 0 auto; background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+    <h2 style="color: #7c3aed; margin-top: 0; text-align: center;">Module 1 Reference & Worked Examples</h2>
+
+    <!-- EXAMPLE 1 -->
+    <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px; margin-bottom: 20px; background: #f1f5f9;">
+      <h4 style="margin-top:0; color: #1e293b;">Example 1: Order of Operations (Arithmetic Precedence)</h4>
+      <p style="margin-bottom: 5px; font-weight: bold; color: #334155;">Evaluate $360 \div (18 - 6) + 14 \times 5$</p>
+      <div style="font-size: 14px; color: #475569;">
+        <strong>Step 1 (Parentheses):</strong> $18 - 6 = 12 \rightarrow 360 \div 12 + 14 \times 5$<br>
+        <strong>Step 2 (Division & Multiplication):</strong> $360 \div 12 = 30$ and $14 \times 5 = 70 \rightarrow 30 + 70$<br>
+        <strong>Step 3 (Addition):</strong> $30 + 70 = 100$<br>
+        <span style="color: #16a34a; font-weight: bold;">Answer: $100$</span>
+      </div>
+    </div>
+
+    <!-- EXAMPLE 2 -->
+    <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px; margin-bottom: 20px; background: #f1f5f9;">
+      <h4 style="margin-top:0; color: #1e293b;">Example 2: Common Denominators & Fraction Operations</h4>
+      <p style="margin-bottom: 5px; font-weight: bold; color: #334155;">Evaluate $\frac{2}{5} + \frac{3}{4} - \frac{1}{2}$</p>
+      <div style="font-size: 14px; color: #475569;">
+        <strong>Step 1 (Find LCD):</strong> Least Common Denominator of $5, 4, 2$ is $20$.<br>
+        <strong>Step 2 (Convert fractions):</strong> $\frac{2 \times 4}{20} + \frac{3 \times 5}{20} - \frac{1 \times 10}{20} = \frac{8}{20} + \frac{15}{20} - \frac{10}{20}$<br>
+        <strong>Step 3 (Combine numerators):</strong> $\frac{8 + 15 - 10}{20} = \frac{13}{20}$<br>
+        <span style="color: #16a34a; font-weight: bold;">Answer: $\frac{13}{20}$</span>
+      </div>
+    </div>
+
+    <!-- EXAMPLE 3 -->
+    <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px; margin-bottom: 20px; background: #f1f5f9;">
+      <h4 style="margin-top:0; color: #1e293b;">Example 3: Complex Fraction Division</h4>
+      <p style="margin-bottom: 5px; font-weight: bold; color: #334155;">Simplify $\frac{\frac{3}{8}}{\frac{1}{4} \times \frac{5}{6}}$</p>
+      <div style="font-size: 14px; color: #475569;">
+        <strong>Step 1 (Denominator Multiplication):</strong> $\frac{1}{4} \times \frac{5}{6} = \frac{5}{24}$<br>
+        <strong>Step 2 (Invert and Multiply):</strong> $\frac{3}{8} \div \frac{5}{24} = \frac{3}{8} \times \frac{24}{5} = \frac{3 \times 3}{5} = \frac{9}{5}$<br>
+        <span style="color: #16a34a; font-weight: bold;">Answer: $\frac{9}{5}$</span>
+      </div>
+    </div>
+
+    <!-- EXAMPLE 4 -->
+    <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px; margin-bottom: 20px; background: #f1f5f9;">
+      <h4 style="margin-top:0; color: #1e293b;">Example 4: Rational Algebraic Equations</h4>
+      <p style="margin-bottom: 5px; font-weight: bold; color: #334155;">Solve for $x$: $\frac{3}{x+2} + \frac{1}{x} = \frac{6}{x+2}$</p>
+      <div style="font-size: 14px; color: #475569;">
+        <strong>Step 1 (Group like terms):</strong> Subtract $\frac{3}{x+2}$ from both sides $\rightarrow \frac{1}{x} = \frac{6 - 3}{x+2} = \frac{3}{x+2}$<br>
+        <strong>Step 2 (Cross Multiply):</strong> $x+2 = 3x \rightarrow 2x = 2 \rightarrow x = \frac{2}{3}$<br>
+        <span style="color: #16a34a; font-weight: bold;">Answer: $x = \frac{2}{3}$</span>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+      <button onclick="window.close()" class="button gray" style="background: #475569; color: white; padding: 10px 20px; font-weight: bold; border-radius: 6px; border: none; cursor: pointer;">
+        ✖ Close Reference Window
+      </button>
+    </div>
+  </div>
+</body>
+</html>
