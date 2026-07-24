@@ -444,58 +444,18 @@ function renderPhaseBadge() {
   document.body.appendChild(badge);
 }
 
-function renderSkipButton() {
-  if (document.getElementById('skipTestBtn')) return;
-  if (!document.body) return;
-
-  if (window.location.pathname.toLowerCase().includes('finish.html')) return;
-
-  const btn = document.createElement('button');
-  btn.id = 'skipTestBtn';
-  btn.style.cssText = `
-    position: fixed !important;
-    bottom: 20px !important;
-    right: 20px !important;
-    z-index: 999999 !important;
-    padding: 10px 18px !important;
-    border-radius: 25px !important;
-    font-family: Arial, sans-serif !important;
-    font-size: 14px !important;
-    font-weight: bold !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
-    background-color: #ea580c !important;
-    color: #ffffff !important;
-    border: 2px solid #ffffff !important;
-    cursor: pointer !important;
-  `;
-  btn.innerHTML = '⏩ Skip to Finish';
-  btn.onclick = () => {
-    let endTime = sessionStorage.getItem('testBEndTime');
-    if (!endTime) {
-      sessionStorage.setItem('testBEndTime', Date.now());
-    }
-    const inTemplates = window.location.pathname.toLowerCase().includes('/templates/');
-    window.location.href = inTemplates ? 'finish.html' : './templates/finish.html';
-  };
-  
-  document.body.appendChild(btn);
-}
-
 if (document.body) {
   renderPhaseBadge();
-  renderSkipButton();
   renderMasteryWidget();
 }
 document.addEventListener('DOMContentLoaded', () => {
   resetExerciseFormState();
   renderPhaseBadge();
-  renderSkipButton();
   renderMasteryWidget();
 });
 window.addEventListener('load', () => {
   resetExerciseFormState();
   renderPhaseBadge();
-  renderSkipButton();
   renderMasteryWidget();
 });
 window.addEventListener('pageshow', () => {

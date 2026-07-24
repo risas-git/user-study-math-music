@@ -2,7 +2,23 @@
 
 > **Final Project** for *392049 User Studies in Interactive Intelligent Systems (SoSe 2026)*  
 > **Repository:** [user-study-math-music](https://github.com/risas-git/user-study-math-music)  
-> **Live Demo:** [https://risas-git.github.io/user-study-math-music/](https://risas-git.github.io/user-study-math-music/)
+> **🚀 Start Entire User Study (Participant Entry):** [https://risas-git.github.io/user-study-math-music/](https://risas-git.github.io/user-study-math-music/)
+
+---
+
+## ⚡ Quick Links & Navigation (For Reviewers & Coworkers)
+
+Use these direct links to inspect specific modules, explanations, examples, or answer keys quickly:
+
+| Content / Module | Explanation Page | Formula Sheet & Examples | Test A Exercise | Test B Exercise |
+| :--- | :--- | :--- | :--- | :--- |
+| **Module 1**: Mixed Operations | [📖 View Explanation](https://risas-git.github.io/user-study-math-music/Test%20A/templates/module1_explanation.html) | [📝 View Examples](https://risas-git.github.io/user-study-math-music/Test%20A/templates/module1_example.html) | [✏️ Start Test A M1](https://risas-git.github.io/user-study-math-music/Test%20A/templates/module1_exercise.html) | [✏️ Start Test B M1](https://risas-git.github.io/user-study-math-music/Test%20B/templates/module1_exercise.html) |
+| **Module 2**: Calculus | [📖 View Explanation](https://risas-git.github.io/user-study-math-music/Test%20A/templates/module2_explanation.html) | [📝 View Examples](https://risas-git.github.io/user-study-math-music/Test%20A/templates/module2_example.html) | [✏️ Start Test A M2](https://risas-git.github.io/user-study-math-music/Test%20A/templates/module2_exercise.html) | [✏️ Start Test B M2](https://risas-git.github.io/user-study-math-music/Test%20B/templates/module2_exercise.html) |
+| **Module 3**: Algebra Equations | [📖 View Explanation](https://risas-git.github.io/user-study-math-music/Test%20A/templates/module3_explanation.html) | [📝 View Examples](https://risas-git.github.io/user-study-math-music/Test%20A/templates/module3_example.html) | [✏️ Start Test A M3](https://risas-git.github.io/user-study-math-music/Test%20A/templates/module3_exercise.html) | [✏️ Start Test B M3](https://risas-git.github.io/user-study-math-music/Test%20B/templates/module3_exercise.html) |
+
+### 🔑 Question Bank & Answer Keys
+- 📋 **[Full Question & Answer Bank (Interactive Web Page)](https://risas-git.github.io/user-study-math-music/Test_A_and_Test_B_Question_Bank.html)**
+- 📄 **[Full Question & Answer Bank (GitHub Markdown View)](https://github.com/risas-git/user-study-math-music/blob/main/Test_A_and_Test_B_Question_Bank.md)**
 
 ---
 
