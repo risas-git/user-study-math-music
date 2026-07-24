@@ -1,40 +1,34 @@
 const correctAnswers = {}; // Initialize as an empty object
 const firstAttempts = {};
 
-// Comprehensive Misconception Catalog for University-Level Mathematics (Test B Isomorphic)
+// Comprehensive Misconception Catalog for Module 1: Mixed Arithmetic & Rational Operations (Test B)
 const misconceptionHints = {
-  // Tier 1: Polynomial & Like Terms
+  // Q1 (Tier 1: Multi-step Order of Operations)
   "q1": {
-    "7x^2 - 8x + 13": "💡 <b>Misconception Hint</b>: Watch the signs! $-2x + 6x = +4x$ and $9 + (-4) = +5$.",
-    "10x^2 + 4x + 5": "💡 <b>Misconception Hint</b>: When adding like terms, add coefficients ($5+2=7$), do not multiply them."
-  },
-  "q2": {
-    "5a^2b + 11ab^2 + 4": "💡 <b>Misconception Hint</b>: Check the $ab^2$ terms: $4ab^2 + (-7ab^2) = -3ab^2$.",
-    "7a^3b^3 + 4": "💡 <b>Misconception Hint</b>: You cannot combine $a^2b$ and $ab^2$ terms because their exponent powers differ."
+    "12195": "💡 <b>Misconception Hint</b>: Order of Operations rule (BODMAS/PEMDAS)! Calculate multiplication ($291 \\times 3 = 873$) and division ($180 \\div 9 = 20$) before subtracting and adding.",
+    "3483": "💡 <b>Misconception Hint</b>: Check the final addition term: $4356 - 873 + 20 = 3503$."
   },
 
-  // Tier 2: Complex Fractions & Rational Expressions
-  "q3": {
-    "4/7": "💡 <b>Misconception Hint</b>: You added numerators AND denominators directly ($2+3-1 = 4, 5+4-2 = 7$). Find the least common denominator (LCD = 20) first!",
+  // Q2 (Tier 2: Fraction Addition & Subtraction)
+  "q2": {
+    "4/7": "💡 <b>Misconception Hint</b>: You added and subtracted numerators and denominators across directly ($2+3-1 = 4, 5+4-2 = 7$). Find the least common denominator (LCD = 20) first!",
     "15/20": "💡 <b>Misconception Hint</b>: Check the subtraction step: $\\frac{8}{20} + \\frac{15}{20} - \\frac{10}{20} = \\frac{13}{20}$."
   },
+
+  // Q3 (Tier 3: Complex Fraction Division)
+  "q3": {
+    "15/192": "💡 <b>Misconception Hint</b>: When dividing by a fraction product, invert the denominator fraction and multiply: $\\frac{3}{8} \\div \\frac{5}{24} = \\frac{3}{8} \\times \\frac{24}{5} = \\frac{9}{5}$.",
+    "5/9": "💡 <b>Misconception Hint</b>: You inverted the numerator fraction instead of the denominator fraction."
+  },
+
+  // Q4 (Tier 4: Rational Algebraic Addition)
   "q4": {
     "(x + 2) / (2x + 2)": "💡 <b>Misconception Hint</b>: You added numerators and denominators across directly. Cross multiply by common denominator $(x+3)(x-1)$.",
     "(x^2 - 3x + 6) / ((x+3)(x-1))": "💡 <b>Misconception Hint</b>: Check expanding $x(x-1) + 2(x+3) = x^2 - x + 2x + 6 = x^2 + x + 6$."
-  },
-
-  // Tier 3: Rational Algebraic Equations & Difference Quotient
-  "q5": {
-    "x = 2": "💡 <b>Misconception Hint</b>: $x = 2$ makes the denominator $x-2 = 0$ (undefined value), so it is an extraneous solution!",
-    "x = 7/3": "💡 <b>Misconception Hint</b>: Check expanding $3x(x+2) + 4(x-2) = 3x^2 + 10x - 8 = 28$."
-  },
-  "q6": {
-    "2 / (x(x+h))": "💡 <b>Misconception Hint</b>: Check the numerator subtraction: $2(x - (x+h)) = -2h$, so the negative sign remains!",
-    "0": "💡 <b>Misconception Hint</b>: $\\frac{2}{x+h}$ and $\\frac{2}{x}$ are not equal when $h \\neq 0$."
   }
 };
 
-let currentTier = 2; // Default start at Tier 2 (Medium)
+let currentTier = 2; // Default start at Tier 2 (Fractions Baseline)
 
 // Update Adaptive Mastery Score (BKT Light Model)
 function updateMasteryScore(isCorrect) {
@@ -54,13 +48,16 @@ function renderMasteryWidget() {
   let widget = document.getElementById('adaptiveMasteryWidget');
   const score = parseInt(sessionStorage.getItem('test2MasteryScore') || '50', 10);
   
-  let tierName = "Tier 2: Medium (Standard Uni)";
+  let tierName = "Tier 2: Medium (Fractions)";
   let tierColor = "#7c3aed";
-  if (currentTier === 3 || score >= 75) {
-    tierName = "Tier 3: Advanced (Mastery High)";
+  if (currentTier === 4 || score >= 80) {
+    tierName = "Tier 4: Advanced Rational Algebra";
     tierColor = "#16a34a";
+  } else if (currentTier === 3) {
+    tierName = "Tier 3: Complex Fraction Division";
+    tierColor = "#7c3aed";
   } else if (currentTier === 1 || score < 40) {
-    tierName = "Tier 1: Moderate (Scaffolded)";
+    tierName = "Tier 1: Order of Operations Arithmetic";
     tierColor = "#ea580c";
   }
 
@@ -89,7 +86,7 @@ function renderMasteryWidget() {
     widget.innerHTML = `
       <div style="font-weight: bold; color: ${tierColor}; margin-bottom: 4px;">🧠 Adaptive ITS Engine</div>
       <div>Active Tier: <strong>${tierName}</strong></div>
-      <div style="margin-top: 4px; background: #e2e8f0; border-radius: 6px; height: 8px; width: 150px; overflow: hidden;">
+      <div style="margin-top: 4px; background: #e2e8f0; border-radius: 6px; height: 8px; width: 160px; overflow: hidden;">
         <div style="background: ${tierColor}; width: ${score}%; height: 100%; transition: width 0.3s ease;"></div>
       </div>
       <div style="font-size: 11px; color: #64748b; margin-top: 2px; text-align: right;">${score}% Mastered</div>
@@ -97,29 +94,27 @@ function renderMasteryWidget() {
   }
 }
 
-// Dynamic Tier Branching Helper
+// Dynamic Tier Branching Helper for 4 Questions
 function handleNextBranch(currentQId) {
   const isCorrect = (firstAttempts[currentQId] && firstAttempts[currentQId][0] === correctAnswers[currentQId]);
   
-  let nextQId = 'Q4';
-  if (currentQId === 'q3') {
+  let nextQId = 'Q3';
+  if (currentQId === 'q2') { // Baseline Start (Tier 2)
     if (isCorrect) {
       currentTier = 3;
-      nextQId = 'Q5'; // Branch UP to Tier 3 Advanced
+      nextQId = 'Q3'; // Branch UP to Tier 3 Complex Division
     } else {
       currentTier = 1;
-      nextQId = 'Q1'; // Branch DOWN to Tier 1 Scaffolded
+      nextQId = 'Q1'; // Branch DOWN to Tier 1 Order of Operations
     }
   } else if (currentQId === 'q1') {
-    nextQId = isCorrect ? 'Q4' : 'Q2';
-  } else if (currentQId === 'q2') {
+    currentTier = 3;
+    nextQId = 'Q3';
+  } else if (currentQId === 'q3') {
+    currentTier = 4;
     nextQId = 'Q4';
   } else if (currentQId === 'q4') {
-    nextQId = 'Q5';
-  } else if (currentQId === 'q5') {
-    nextQId = 'Q6';
-  } else if (currentQId === 'q6') {
-    nextQId = 'Q6';
+    nextQId = 'Q4';
   }
 
   renderMasteryWidget();
@@ -156,12 +151,11 @@ function checkAnswer(questionId, correctAnswer) {
       firstAttempts[questionId] = [selectedAnswer.value];
     }
   } else {
-    // Look up misconception hint
     let hint = "";
     if (misconceptionHints[questionId] && misconceptionHints[questionId][selectedAnswer.value]) {
       hint = "<br>" + misconceptionHints[questionId][selectedAnswer.value];
     } else {
-      hint = "<br>💡 <b>Hint</b>: Review common denominators, expanding brackets, or sign rules carefully.";
+      hint = "<br>💡 <b>Hint</b>: Check operational precedence, common denominators, or fraction inversion.";
     }
 
     if (resultMessage) {
@@ -207,16 +201,14 @@ function reattemptExercise() {
 
   currentTier = 2;
 
-  // Show Q3 (Tier 2 Start) or Q1
-  for (let i = 1; i <= 6; i++) {
+  // Show Q2 (Baseline Start)
+  for (let i = 1; i <= 4; i++) {
     const q = document.getElementById(`Q${i}`);
-    if (q) q.style.display = (i === 3 || i === 1 ? 'block' : 'none');
+    if (q) q.style.display = (i === 2 ? 'block' : 'none');
   }
 
-  const s3 = document.querySelector('#submitButton3');
-  if (s3) s3.disabled = false;
-  const s1 = document.querySelector('#submitButton1');
-  if (s1) s1.disabled = false;
+  const s2 = document.querySelector('#submitButton2');
+  if (s2) s2.disabled = false;
 }
 
 // Check answers for all questions and display results
@@ -247,12 +239,11 @@ function checkAnswers(lastPage) {
 
   const currentMastery = parseInt(sessionStorage.getItem('test2MasteryScore') || '50', 10);
 
-  // Un-disable Next Exercise button whenever Result is clicked
   const nextExBtn = document.querySelector('#nextButton');
   if (nextExBtn) nextExBtn.disabled = false;
 
   if (correctCount >= 1 || currentMastery >= 50) {
-    resultMessage.innerHTML += `<br><br>🎉 <strong>Module Completed! (Score: ${currentMastery}%)</strong>`;
+    resultMessage.innerHTML += `<br><br>🎉 <strong>Module 1 Mastered! (Score: ${currentMastery}%)</strong>`;
     resultMessage.innerHTML += `<br>You may now advance to the next exercise section.`;
 
     if (lastPage == true) {  
