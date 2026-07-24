@@ -135,8 +135,6 @@ function handleNextBranch(currentQId) {
   userStepCount++;
 
   if (userStepCount >= 4) {
-    const resBtn = document.querySelector('#submitButton');
-    if (resBtn) resBtn.disabled = false;
     checkAnswers(false);
     return;
   }
@@ -219,9 +217,6 @@ function checkAnswer(questionId, correctAnswer) {
   // 2. Enable Next Question button after Check & Submit is clicked
   const nextBtn = document.querySelector(`#btn_next_${questionId}`);
   if (nextBtn) nextBtn.disabled = false;
-
-  const resBtn = document.querySelector('#submitButton');
-  if (resBtn) resBtn.disabled = false;
 }
 
 // Re-attempt Exercise Module
@@ -238,10 +233,6 @@ function reattemptExercise() {
   // Re-enable all check buttons
   const checkBtns = document.querySelectorAll('button[onclick*="checkAnswer"]');
   checkBtns.forEach(btn => btn.disabled = false);
-
-  // Disable Next Exercise button until passed
-  const nextExBtn = document.querySelector('#nextButton');
-  if (nextExBtn) nextExBtn.disabled = true;
 
   for (const key in firstAttempts) delete firstAttempts[key];
   for (const key in correctAnswers) delete correctAnswers[key];
@@ -287,15 +278,14 @@ function checkAnswers(lastPage) {
   }
 
   const currentMastery = parseInt(sessionStorage.getItem('test2MasteryScore') || '50', 10);
-  const nextExBtn = document.querySelector('#nextButton');
 
   // Must have at least 2 correct answers out of 4 (>= 50%)
   if (correctCount >= 2) {
-    if (nextExBtn) nextExBtn.disabled = false;
-    if (closeButton) closeButton.style.display = 'inline-block'; // Show Close button on pass
+    if (closeButton) closeButton.style.display = 'inline-block';
 
     resultMessage.innerHTML += `<br><br>🎉 <strong>Module 1 Mastered! (${correctCount}/4 Correct - ${Math.round((correctCount/4)*100)}%)</strong>`;
-    resultMessage.innerHTML += `<br>You passed the requirement (at least 50% correct). You may now advance to the next exercise!`;
+    resultMessage.innerHTML += `<br>You passed the requirement (at least 50% correct). Click below to advance!`;
+    resultMessage.innerHTML += `<br><br><button onclick="openPage('linear_exercise.html')" class="button gray" style="background:#7c3aed; color:#ffffff; font-weight:bold; padding:10px 20px; border-radius:6px; cursor:pointer;">Next Exercise ➔</button>`;
 
     if (lastPage == true) {  
       let endTime = sessionStorage.getItem('testBEndTime');
@@ -309,7 +299,6 @@ function checkAnswers(lastPage) {
     }
   } 
   else {
-    if (nextExBtn) nextExBtn.disabled = true; // PROHIBIT advancing
     if (closeButton) closeButton.style.display = 'none'; // HIDE Close button - force user to re-attempt!
 
     resultMessage.innerHTML += `<br><br>⚠️ <strong>Score: ${correctCount}/4 Correct (${Math.round((correctCount/4)*100)}%)</strong>`;
