@@ -135,21 +135,18 @@ function handleNextBranch(currentQId) {
   userStepCount++;
 
   if (userStepCount >= 4) {
-    // 4 Questions completed -> unlock Result
     const resBtn = document.querySelector('#submitButton');
     if (resBtn) resBtn.disabled = false;
     checkAnswers(false);
     return;
   }
 
-  // Branch UP or DOWN based on correctness
   if (isCorrect) {
     currentTier = Math.min(4, currentTier + 1);
   } else {
     currentTier = Math.max(1, currentTier - 1);
   }
 
-  // Get next variant index for target tier (0, 1, 2)
   const variantIndex = (tierIndices[currentTier] % 3) + 1;
   tierIndices[currentTier]++;
 
@@ -209,7 +206,17 @@ function checkAnswer(questionId, correctAnswer) {
     }
   }
 
-  // Enable Next Question or Result button after checking answer
+  // 1. Disable Check & Submit button for this question (can only click once!)
+  if (typeof event !== 'undefined' && event && event.target) {
+    event.target.disabled = true;
+  }
+  const currentDiv = document.querySelector(`#${questionId}`);
+  if (currentDiv) {
+    const checkBtn = currentDiv.querySelector('button[onclick*="checkAnswer"]');
+    if (checkBtn) checkBtn.disabled = true;
+  }
+
+  // 2. Enable Next Question button after Check & Submit is clicked
   const nextBtn = document.querySelector(`#btn_next_${questionId}`);
   if (nextBtn) nextBtn.disabled = false;
 
@@ -231,6 +238,10 @@ function reattemptExercise() {
   const msgs = document.querySelectorAll('[id^="resultMessage_"]');
   msgs.forEach(msg => msg.innerHTML = '');
 
+  // Re-enable all check buttons
+  const checkBtns = document.querySelectorAll('button[onclick*="checkAnswer"]');
+  checkBtns.forEach(btn => btn.disabled = false);
+
   for (const key in firstAttempts) delete firstAttempts[key];
   for (const key in correctAnswers) delete correctAnswers[key];
 
@@ -238,7 +249,6 @@ function reattemptExercise() {
   userStepCount = 0;
   for (const k in tierIndices) tierIndices[k] = 0;
 
-  // Show T2_Q1 (Baseline Start) and hide all others
   const allDivs = document.querySelectorAll('[id^="T"]');
   allDivs.forEach(div => div.style.display = 'none');
 
