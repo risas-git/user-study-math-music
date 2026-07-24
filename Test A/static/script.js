@@ -19,18 +19,18 @@ const misconceptionHintsModule1 = {
 
 // Misconception Catalog for Module 2 (Differentiation & Integration - Test A)
 const misconceptionHintsModule2 = {
-  "T1_Q1": { "12x^3 + 10x + 2": "💡 <b>Misconception Hint</b>: Derivative of constant term $+2$ is $0$!", "3x^3 + 5x - 7": "💡 <b>Misconception Hint</b>: Multiply exponent by coefficient: $4 \\times 3 = 12$, $2 \\times 5 = 10$." },
-  "T1_Q2": { "12x + 4 + C": "💡 <b>Misconception Hint</b>: You differentiated instead of integrating! Use $\\int x^n dx = \\frac{x^{n+1}}{n+1} + C$.", "6x^3 + 4x^2 - 5x + C": "💡 <b>Misconception Hint</b>: Divide by new power: $\\frac{6x^3}{3} = 2x^3$ and $\\frac{4x^2}{2} = 2x^2$." },
-  "T1_Q3": { "2/sqrt(x) + 3/x^2": "💡 <b>Misconception Hint</b>: Derivative of $\\frac{3}{x} = 3x^{-1}$ is $-3x^{-2} = -\\frac{3}{x^2}$.", "2sqrt(x) - 3x^-2": "💡 <b>Misconception Hint</b>: Derivative of $4x^{1/2}$ is $4 \\cdot \\frac{1}{2} x^{-1/2} = \\frac{2}{\\sqrt{x}}$." },
-  "T2_Q1": { "5e^{2x} + 3\\cos(4x)": "💡 <b>Misconception Hint</b>: Apply Chain Rule! Multiply by inner derivative: $\\frac{d}{dx}(e^{2x}) = 2e^{2x}$ and $\\frac{d}{dx}(\\sin(4x)) = 4\\cos(4x)$.", "10e^{2x} - 12\\cos(4x)": "💡 <b>Misconception Hint</b>: Derivative of $\\sin(u)$ is positive $+\\cos(u)$." },
-  "T2_Q2": { "20": "💡 <b>Misconception Hint</b>: Calculate $F(3) - F(1) = (27-9) - (1-1) = 18 - 0 = 18$.", "16": "💡 <b>Misconception Hint</b>: Check evaluating $F(3) = 3^3 - 3^2 = 27 - 9 = 18$." },
-  "T2_Q3": { "11": "💡 <b>Misconception Hint</b>: Derivative is $y' = 6x^2 - 5$. Evaluate at $x = 2$: $6(4) - 5 = 19$.", "24": "💡 <b>Misconception Hint</b>: Do not forget to subtract $5$: $24 - 5 = 19$." },
-  "T3_Q1": { "3x^2 * 1/x": "💡 <b>Misconception Hint</b>: Use Product Rule: $\\frac{d}{dx}(u \\cdot v) = u'v + uv'$. Do not just multiply derivatives!", "3x^2 ln(x)": "💡 <b>Misconception Hint</b>: Include the second product term: $x^3 \\cdot \\frac{1}{x} = x^2$." },
-  "T3_Q2": { "x^2 sin(x^2 + 1) + C": "💡 <b>Misconception Hint</b>: Substitution $u = x^2+1 \\Rightarrow du = 2x \, dx$. Integral is $\\int \\cos(u) du = \\sin(u) + C$.", "-sin(x^2 + 1) + C": "💡 <b>Misconception Hint</b>: Integral of $\\cos(u)$ is $+\\sin(u)$." },
-  "T3_Q3": { "2x / 2": "💡 <b>Misconception Hint</b>: Use Quotient Rule: $\\frac{u'v - uv'}{v^2}$. Do not differentiate numerator and denominator separately!", "(2x^2 + 6x + 2) / (2x - 3)^2": "💡 <b>Misconception Hint</b>: Expand numerator carefully: $2x(2x-3) - 2(x^2+1) = 4x^2 - 6x - 2x^2 - 2 = 2x^2 - 6x - 2$." },
-  "T4_Q1": { "1/2 x^2 e^x + C": "💡 <b>Misconception Hint</b>: Use Integration by Parts: $\\int u \, dv = uv - \\int v \, du$. Do not just integrate factors separately!", "e^x(x + 1) + C": "💡 <b>Misconception Hint</b>: Formula gives $x e^x - \\int e^x dx = e^x(x - 1) + C$." },
-  "T4_Q2": { "1 / (x^3 + 4x)": "💡 <b>Misconception Hint</b>: Apply Chain Rule for logarithm: $\\frac{d}{dx}\\ln(g(x)) = \\frac{g'(x)}{g(x)} = \\frac{3x^2 + 4}{x^3 + 4x}$.", "(3x^2 + 4) / x": "💡 <b>Misconception Hint</b>: Keep full denominator $x^3 + 4x$." },
-  "T4_Q3": { "1/2": "💡 <b>Misconception Hint</b>: Substitute $u = \\sin(x) \\Rightarrow du = \\cos(x) dx$. Integral is $\\int_0^1 u^2 du = [\\frac{u^3}{3}]_0^1 = \\frac{1}{3}$.", "1": "💡 <b>Misconception Hint</b>: Evaluate $[\\frac{u^3}{3}]_0^1 = \\frac{1}{3} - 0 = \\frac{1}{3}$." }
+  "M2_T1_Q1": { "12x^3 + 10x + 2": "💡 <b>Misconception Hint</b>: Derivative of constant term $+2$ is $0$!", "3x^3 + 5x - 7": "💡 <b>Misconception Hint</b>: Multiply exponent by coefficient: $4 \\times 3 = 12$, $2 \\times 5 = 10$." },
+  "M2_T1_Q2": { "12x + 4 + C": "💡 <b>Misconception Hint</b>: You differentiated instead of integrating! Use $\\int x^n dx = \\frac{x^{n+1}}{n+1} + C$.", "6x^3 + 4x^2 - 5x + C": "💡 <b>Misconception Hint</b>: Divide by new power: $\\frac{6x^3}{3} = 2x^3$ and $\\frac{4x^2}{2} = 2x^2$." },
+  "M2_T1_Q3": { "2/sqrt(x) + 3/x^2": "💡 <b>Misconception Hint</b>: Derivative of $\\frac{3}{x} = 3x^{-1}$ is $-3x^{-2} = -\\frac{3}{x^2}$.", "2sqrt(x) - 3x^-2": "💡 <b>Misconception Hint</b>: Derivative of $4x^{1/2}$ is $4 \\cdot \\frac{1}{2} x^{-1/2} = \\frac{2}{\\sqrt{x}}$." },
+  "M2_T2_Q1": { "5e^{2x} + 3\\cos(4x)": "💡 <b>Misconception Hint</b>: Apply Chain Rule! Multiply by inner derivative: $\\frac{d}{dx}(e^{2x}) = 2e^{2x}$ and $\\frac{d}{dx}(\\sin(4x)) = 4\\cos(4x)$.", "10e^{2x} - 12\\cos(4x)": "💡 <b>Misconception Hint</b>: Derivative of $\\sin(u)$ is positive $+\\cos(u)$." },
+  "M2_T2_Q2": { "20": "💡 <b>Misconception Hint</b>: Calculate $F(3) - F(1) = (27-9) - (1-1) = 18 - 0 = 18$.", "16": "💡 <b>Misconception Hint</b>: Check evaluating $F(3) = 3^3 - 3^2 = 27 - 9 = 18$." },
+  "M2_T2_Q3": { "11": "💡 <b>Misconception Hint</b>: Derivative is $y' = 6x^2 - 5$. Evaluate at $x = 2$: $6(4) - 5 = 19$.", "24": "💡 <b>Misconception Hint</b>: Do not forget to subtract $5$: $24 - 5 = 19$." },
+  "M2_T3_Q1": { "3x^2 * 1/x": "💡 <b>Misconception Hint</b>: Use Product Rule: $\\frac{d}{dx}(u \\cdot v) = u'v + uv'$. Do not just multiply derivatives!", "3x^2 ln(x)": "💡 <b>Misconception Hint</b>: Include the second product term: $x^3 \\cdot \\frac{1}{x} = x^2$." },
+  "M2_T3_Q2": { "x^2 sin(x^2 + 1) + C": "💡 <b>Misconception Hint</b>: Substitution $u = x^2+1 \\Rightarrow du = 2x \, dx$. Integral is $\\int \\cos(u) du = \\sin(u) + C$.", "-sin(x^2 + 1) + C": "💡 <b>Misconception Hint</b>: Integral of $\\cos(u)$ is $+\\sin(u)$." },
+  "M2_T3_Q3": { "2x / 2": "💡 <b>Misconception Hint</b>: Use Quotient Rule: $\\frac{u'v - uv'}{v^2}$. Do not differentiate numerator and denominator separately!", "(2x^2 + 6x + 2) / (2x - 3)^2": "💡 <b>Misconception Hint</b>: Expand numerator carefully: $2x(2x-3) - 2(x^2+1) = 4x^2 - 6x - 2x^2 - 2 = 2x^2 - 6x - 2$." },
+  "M2_T4_Q1": { "1/2 x^2 e^x + C": "💡 <b>Misconception Hint</b>: Use Integration by Parts: $\\int u \, dv = uv - \\int v \, du$. Do not just integrate factors separately!", "e^x(x + 1) + C": "💡 <b>Misconception Hint</b>: Formula gives $x e^x - \\int e^x dx = e^x(x - 1) + C$." },
+  "M2_T4_Q2": { "1 / (x^3 + 4x)": "💡 <b>Misconception Hint</b>: Apply Chain Rule for logarithm: $\\frac{d}{dx}\\ln(g(x)) = \\frac{g'(x)}{g(x)} = \\frac{3x^2 + 4}{x^3 + 4x}$.", "(3x^2 + 4) / x": "💡 <b>Misconception Hint</b>: Keep full denominator $x^3 + 4x$." },
+  "M2_T4_Q3": { "1/2": "💡 <b>Misconception Hint</b>: Substitute $u = \\sin(x) \\Rightarrow du = \\cos(x) dx$. Integral is $\\int_0^1 u^2 du = [\\frac{u^3}{3}]_0^1 = \\frac{1}{3}$.", "1": "💡 <b>Misconception Hint</b>: Evaluate $[\\frac{u^3}{3}]_0^1 = \\frac{1}{3} - 0 = \\frac{1}{3}$." }
 };
 
 let currentTier = 2; // Start at Tier 2 Medium
@@ -39,6 +39,9 @@ const tierIndices = { 1: 0, 2: 0, 3: 0, 4: 0 }; // Used variant per tier
 
 // Explicitly reset form inputs and messages on page load to prevent pre-checked browser cache
 function resetExerciseFormState() {
+  const form = document.getElementById('exerciseForm');
+  if (form) form.reset();
+
   const inputs = document.querySelectorAll('input[type="radio"]');
   inputs.forEach(input => {
     input.checked = false;
@@ -66,10 +69,13 @@ function resetExerciseFormState() {
   userStepCount = 0;
   for (const k in tierIndices) tierIndices[k] = 0;
 
-  const allDivs = document.querySelectorAll('[id^="T"]');
+  const isMod2 = window.location.pathname.toLowerCase().includes('deri_exercise1');
+  const startId = isMod2 ? 'M2_T2_Q1' : 'T2_Q1';
+
+  const allDivs = document.querySelectorAll('[id^="T"], [id^="M2_T"]');
   allDivs.forEach(div => div.style.display = 'none');
 
-  const startDiv = document.getElementById('T2_Q1');
+  const startDiv = document.getElementById(startId);
   if (startDiv) startDiv.style.display = 'block';
 }
 
@@ -168,7 +174,8 @@ function handleNextBranch(currentQId) {
   const variantIndex = (tierIndices[currentTier] % 3) + 1;
   tierIndices[currentTier]++;
 
-  const nextQId = `T${currentTier}_Q${variantIndex}`;
+  const isMod2 = window.location.pathname.toLowerCase().includes('deri_exercise1');
+  const nextQId = isMod2 ? `M2_T${currentTier}_Q${variantIndex}` : `T${currentTier}_Q${variantIndex}`;
 
   renderMasteryWidget();
   showNextQuestionDiv(nextQId, currentQId);
@@ -434,4 +441,7 @@ window.addEventListener('load', () => {
   renderPhaseBadge();
   renderSkipButton();
   renderMasteryWidget();
+});
+window.addEventListener('pageshow', () => {
+  resetExerciseFormState();
 });
