@@ -38,8 +38,8 @@ function renderMasteryWidget() {
   
   let tierName = "Tier 2 (Medium)";
   let tierColor = "#7c3aed";
-  if (score >= 80) {
-    tierName = "Tier 3 (Mastery High)";
+  if (score >= 75) {
+    tierName = "Tier 3 (Mastery Achieved)";
     tierColor = "#16a34a";
   } else if (score < 40) {
     tierName = "Tier 1 (Scaffolded Easy)";
@@ -131,6 +131,41 @@ function checkAnswer(questionId, correctAnswer) {
   }
 }
 
+// Re-attempt Exercise Module
+function reattemptExercise() {
+  const dialog = document.querySelector("#resultDialog");
+  if (dialog) dialog.close();
+
+  // Reset radio inputs and result messages
+  const inputs = document.querySelectorAll('input[type="radio"]');
+  inputs.forEach(input => input.checked = false);
+
+  const msgs = document.querySelectorAll('[id^="resultMessage_"]');
+  msgs.forEach(msg => msg.innerHTML = '');
+
+  // Reset attempt cache for page
+  for (const key in firstAttempts) {
+    delete firstAttempts[key];
+  }
+  for (const key in correctAnswers) {
+    delete correctAnswers[key];
+  }
+
+  // Show Q1
+  const q1 = document.getElementById('Q1');
+  if (q1) q1.style.display = 'block';
+  const q2 = document.getElementById('Q2');
+  if (q2) q2.style.display = 'none';
+  const q3 = document.getElementById('Q3');
+  if (q3) q3.style.display = 'none';
+
+  // Re-enable check buttons
+  const s3 = document.querySelector('#submitButton3');
+  if (s3) s3.disabled = false;
+  const s = document.querySelector('#submitButton');
+  if (s) s.disabled = false;
+}
+
 // Check answers for all questions and display results
 function checkAnswers(lastPage) {
   if (typeof event !== 'undefined' && event && event.preventDefault) {
@@ -138,12 +173,13 @@ function checkAnswers(lastPage) {
   }
   const dialog = document.querySelector("#resultDialog");
   const resultMessage = document.querySelector("#resultMessage");
+  if (resultMessage) resultMessage.innerHTML = "";
 
   let correctCount = 0;
   let totalQuestions = 0;
 
   for (const questionId in firstAttempts) {
-    const selectedAnswerValue = firstAttempts[questionId][0]; // Get the first attempt
+    const selectedAnswerValue = firstAttempts[questionId][0];
     const correctAnswer = correctAnswers[questionId];
 
     if (correctAnswer === selectedAnswerValue) {
@@ -162,6 +198,7 @@ function checkAnswers(lastPage) {
 
   if (correctCount >= 2 || currentMastery >= 75) {
     resultMessage.innerHTML += `<br><br>🎉 <strong>Module Mastered! (Score: ${currentMastery}%)</strong>`;
+    resultMessage.innerHTML += `<br>You may now advance to the next exercise section.`;
     if (typeof nextButton !== 'undefined' && nextButton) nextButton.disabled = false;
     if (typeof submitButton3 !== 'undefined' && submitButton3) submitButton3.disabled = true;
     if (typeof submitButton !== 'undefined' && submitButton) submitButton.disabled = true;
@@ -181,10 +218,12 @@ function checkAnswers(lastPage) {
     }
   } 
   else {
-    resultMessage.innerHTML += `<br><br>Adaptive Hint: Current Mastery is ${currentMastery}%. Reattempt test to achieve 75%+ mastery.`;
+    resultMessage.innerHTML += `<br><br>⚠️ <strong>Mastery Threshold Not Reached (Current: ${currentMastery}% | Required: 75%)</strong>`;
+    resultMessage.innerHTML += `<br>You must re-attempt this exercise module before advancing.`;
+    resultMessage.innerHTML += `<br><br><button onclick="reattemptExercise()" class="button gray" style="background:#7c3aed; color:#ffffff; font-weight:bold; padding:8px 16px; border-radius:6px; cursor:pointer;">🔁 Re-attempt Exercise</button>`;
+    
+    if (typeof nextButton !== 'undefined' && nextButton) nextButton.disabled = true;
     if (typeof exampleButton !== 'undefined' && exampleButton) exampleButton.disabled = false;
-    if (typeof submitButton3 !== 'undefined' && submitButton3) submitButton3.disabled = true;
-    if (typeof submitButton !== 'undefined' && submitButton) submitButton.disabled = true;
   }
 
   if (dialog) {
@@ -276,7 +315,11 @@ function renderPhaseBadge() {
 // Render Floating Skip Button for Quick Testing
 function renderSkipButton() {
   const disabledBtns = document.querySelectorAll('button[disabled]');
-  disabledBtns.forEach(btn => btn.removeAttribute('disabled'));
+  disabledBtns.forEach(btn => {
+    if (btn.id !== 'nextButton') {
+      btn.removeAttribute('disabled');
+    }
+  });
 
   if (document.getElementById('skipTestBtn')) return;
   if (!document.body) return;
