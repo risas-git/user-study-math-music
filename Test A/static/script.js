@@ -26,9 +26,9 @@ const misconceptionHintsModule2 = {
   "M2_T2_Q2": { "20": "💡 <b>Misconception Hint</b>: Calculate $F(3) - F(1) = (27-9) - (1-1) = 18 - 0 = 18$.", "16": "💡 <b>Misconception Hint</b>: Check evaluating $F(3) = 3^3 - 3^2 = 27 - 9 = 18$." },
   "M2_T2_Q3": { "11": "💡 <b>Misconception Hint</b>: Derivative is $y' = 6x^2 - 5$. Evaluate at $x = 2$: $6(4) - 5 = 19$.", "24": "💡 <b>Misconception Hint</b>: Do not forget to subtract $5$: $24 - 5 = 19$." },
   "M2_T3_Q1": { "3x^2 * 1/x": "💡 <b>Misconception Hint</b>: Use Product Rule: $\\frac{d}{dx}(u \\cdot v) = u'v + uv'$. Do not just multiply derivatives!", "3x^2 ln(x)": "💡 <b>Misconception Hint</b>: Include the second product term: $x^3 \\cdot \\frac{1}{x} = x^2$." },
-  "M2_T3_Q2": { "x^2 sin(x^2 + 1) + C": "💡 <b>Misconception Hint</b>: Substitution $u = x^2+1 \\Rightarrow du = 2x \, dx$. Integral is $\\int \\cos(u) du = \\sin(u) + C$.", "-sin(x^2 + 1) + C": "💡 <b>Misconception Hint</b>: Integral of $\\cos(u)$ is $+\\sin(u)$." },
+  "M2_T3_Q2": { "x^2 sin(x^2 + 1) + C": "💡 <b>Misconception Hint</b>: Substitution $u = x^2+1 \\Rightarrow du = 2x \\, dx$. Integral is $\\int \\cos(u) du = \\sin(u) + C$.", "-sin(x^2 + 1) + C": "💡 <b>Misconception Hint</b>: Integral of $\\cos(u)$ is $+\\sin(u)$." },
   "M2_T3_Q3": { "2x / 2": "💡 <b>Misconception Hint</b>: Use Quotient Rule: $\\frac{u'v - uv'}{v^2}$. Do not differentiate numerator and denominator separately!", "(2x^2 + 6x + 2) / (2x - 3)^2": "💡 <b>Misconception Hint</b>: Expand numerator carefully: $2x(2x-3) - 2(x^2+1) = 4x^2 - 6x - 2x^2 - 2 = 2x^2 - 6x - 2$." },
-  "M2_T4_Q1": { "1/2 x^2 e^x + C": "💡 <b>Misconception Hint</b>: Use Integration by Parts: $\\int u \, dv = uv - \\int v \, du$. Do not just integrate factors separately!", "e^x(x + 1) + C": "💡 <b>Misconception Hint</b>: Formula gives $x e^x - \\int e^x dx = e^x(x - 1) + C$." },
+  "M2_T4_Q1": { "1/2 x^2 e^x + C": "💡 <b>Misconception Hint</b>: Use Integration by Parts: $\\int u \\, dv = uv - \\int v \\, du$. Do not just integrate factors separately!", "e^x(x + 1) + C": "💡 <b>Misconception Hint</b>: Formula gives $x e^x - \\int e^x dx = e^x(x - 1) + C$." },
   "M2_T4_Q2": { "1 / (x^3 + 4x)": "💡 <b>Misconception Hint</b>: Apply Chain Rule for logarithm: $\\frac{d}{dx}\\ln(g(x)) = \\frac{g'(x)}{g(x)} = \\frac{3x^2 + 4}{x^3 + 4x}$.", "(3x^2 + 4) / x": "💡 <b>Misconception Hint</b>: Keep full denominator $x^3 + 4x$." },
   "M2_T4_Q3": { "1/2": "💡 <b>Misconception Hint</b>: Substitute $u = \\sin(x) \\Rightarrow du = \\cos(x) dx$. Integral is $\\int_0^1 u^2 du = [\\frac{u^3}{3}]_0^1 = \\frac{1}{3}$.", "1": "💡 <b>Misconception Hint</b>: Evaluate $[\\frac{u^3}{3}]_0^1 = \\frac{1}{3} - 0 = \\frac{1}{3}$." }
 };
@@ -247,6 +247,15 @@ function checkAnswer(questionId, correctAnswer) {
     if (resultMessage) {
       resultMessage.innerHTML = "❌ Incorrect." + hint;
       resultMessage.style.color = "#dc2626";
+
+      // Dynamically trigger MathJax re-typesetting for rendered LaTeX math in feedback!
+      if (window.MathJax) {
+        if (window.MathJax.Hub && window.MathJax.Hub.Queue) {
+          window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub, resultMessage]);
+        } else if (window.MathJax.typesetPromise) {
+          window.MathJax.typesetPromise([resultMessage]);
+        }
+      }
     }
     
     if (isFirstTry) {
@@ -351,6 +360,13 @@ function checkAnswers(lastPage) {
 
   if (dialog) {
     dialog.showModal();
+    if (window.MathJax) {
+      if (window.MathJax.Hub && window.MathJax.Hub.Queue) {
+        window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub, resultMessage]);
+      } else if (window.MathJax.typesetPromise) {
+        window.MathJax.typesetPromise([resultMessage]);
+      }
+    }
   }
 }
 

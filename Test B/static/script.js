@@ -247,6 +247,15 @@ function checkAnswer(questionId, correctAnswer) {
     if (resultMessage) {
       resultMessage.innerHTML = "❌ Incorrect." + hint;
       resultMessage.style.color = "#dc2626";
+
+      // Dynamically trigger MathJax re-typesetting for rendered LaTeX math in feedback!
+      if (window.MathJax) {
+        if (window.MathJax.Hub && window.MathJax.Hub.Queue) {
+          window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub, resultMessage]);
+        } else if (window.MathJax.typesetPromise) {
+          window.MathJax.typesetPromise([resultMessage]);
+        }
+      }
     }
     
     if (isFirstTry) {
@@ -351,6 +360,13 @@ function checkAnswers(lastPage) {
 
   if (dialog) {
     dialog.showModal();
+    if (window.MathJax) {
+      if (window.MathJax.Hub && window.MathJax.Hub.Queue) {
+        window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub, resultMessage]);
+      } else if (window.MathJax.typesetPromise) {
+        window.MathJax.typesetPromise([resultMessage]);
+      }
+    }
   }
 }
 
