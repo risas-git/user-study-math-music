@@ -37,7 +37,7 @@
           <label for="add3">1999</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_q1"></p>
           <button onclick="checkAnswer('q1', '1991')" class="button gray" type="button">Check & Submit</button>
-          <button type="button" id="submitButton1" onclick="showNextQuestionDiv('Q2', 'Q1')" class="button gray">Next Question</button>
+          <button type="button" id="submitButton1" onclick="showNextQuestionDiv('Q2', 'Q1')" class="button gray" disabled>Next Question</button>
         </div>
 
         <div id="Q2" style="display: none;" >
@@ -50,7 +50,7 @@
           <label for="add6">98782</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_q2"></p>
           <button onclick="checkAnswer('q2', '98782')" class="button gray" type="button">Check & Submit</button>
-          <button type="button" id="submitButton2" onclick="showNextQuestionDiv('Q3', 'Q2')" class="button gray">Next Question</button>
+          <button type="button" id="submitButton2" onclick="showNextQuestionDiv('Q3', 'Q2')" class="button gray" disabled>Next Question</button>
         </div>
 
         <div id="Q3" style="display: none;">
@@ -64,7 +64,7 @@
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_q3"></p>
         
           <button type="button" id="submitButton3" onclick="checkAnswer('q3', '89210')" class="button gray">Check & Submit</button>
-          <button type="button" id="submitButton" onclick="checkAnswers(false)" class="button gray">Result</button>
+          <button type="button" id="submitButton" onclick="checkAnswers(false)" class="button gray" disabled>Result</button>
           <br>
           <button type="button" id="exampleButton" disabled onclick="openPage('add_example.html')" class="button gray">Example</button>
           <button class="button gray" type="button" id="nextButton" onclick="openPage('subtraction_exercise.html')" disabled>Next Exercise</button>
@@ -81,6 +81,6 @@
     <button id="closeButton">Close</button>
   </dialog>
 
-  <script src="../static/script.js?v=adaptive1"></script>
+  <script src="../static/script.js?v=adaptive2"></script>
 </body>
 </html>

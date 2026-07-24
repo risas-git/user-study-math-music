@@ -89,7 +89,7 @@ function checkAnswer(questionId, correctAnswer) {
 
   if (!selectedAnswer) {
     if (resultMessage) {
-      resultMessage.innerHTML = "Please select an option";
+      resultMessage.innerHTML = "Please select an option first";
       resultMessage.style.color = "red";
     }
     return;
@@ -129,6 +129,17 @@ function checkAnswer(questionId, correctAnswer) {
       firstAttempts[questionId] = [selectedAnswer.value];
     }
   }
+
+  // Enable Next Question / Result button after checking answer
+  const num = questionId.replace('q', '');
+  const nextBtn = document.querySelector(`#submitButton${num}`);
+  if (nextBtn) {
+    nextBtn.disabled = false;
+  }
+  if (questionId === 'q3') {
+    const resBtn = document.querySelector('#submitButton');
+    if (resBtn) resBtn.disabled = false;
+  }
 }
 
 // Re-attempt Exercise Module
@@ -151,6 +162,14 @@ function reattemptExercise() {
     delete correctAnswers[key];
   }
 
+  // Disable next buttons until Check & Submit is pressed again
+  const b1 = document.querySelector('#submitButton1');
+  if (b1) b1.disabled = true;
+  const b2 = document.querySelector('#submitButton2');
+  if (b2) b2.disabled = true;
+  const s = document.querySelector('#submitButton');
+  if (s) s.disabled = true;
+
   // Show Q1
   const q1 = document.getElementById('Q1');
   if (q1) q1.style.display = 'block';
@@ -162,8 +181,6 @@ function reattemptExercise() {
   // Re-enable check buttons
   const s3 = document.querySelector('#submitButton3');
   if (s3) s3.disabled = false;
-  const s = document.querySelector('#submitButton');
-  if (s) s.disabled = false;
 }
 
 // Check answers for all questions and display results
@@ -314,13 +331,6 @@ function renderPhaseBadge() {
 
 // Render Floating Skip Button for Quick Testing
 function renderSkipButton() {
-  const disabledBtns = document.querySelectorAll('button[disabled]');
-  disabledBtns.forEach(btn => {
-    if (btn.id !== 'nextButton') {
-      btn.removeAttribute('disabled');
-    }
-  });
-
   if (document.getElementById('skipTestBtn')) return;
   if (!document.body) return;
 
