@@ -1,22 +1,40 @@
 const correctAnswers = {}; // Initialize as an empty object
 const firstAttempts = {};
 
-// Misconception Catalog mapping question choices to pedagogical feedback
+// Comprehensive Misconception Catalog for University-Level Mathematics (Test B Isomorphic)
 const misconceptionHints = {
-  // Addition Test B
+  // Tier 1: Polynomial & Like Terms
   "q1": {
-    "1991": "💡 <b>Misconception Hint</b>: Check the thousands place addition (1000 + 400 = 1400, carry 1 = 1500).",
-    "2001": "💡 <b>Misconception Hint</b>: Check the units addition: 3 + 8 = 11, so the unit digit must be 1."
+    "7x^2 - 8x + 13": "💡 <b>Misconception Hint</b>: Watch the signs! $-2x + 6x = +4x$ and $9 + (-4) = +5$.",
+    "10x^2 + 4x + 5": "💡 <b>Misconception Hint</b>: When adding like terms, add coefficients ($5+2=7$), do not multiply them."
   },
   "q2": {
-    "97892": "💡 <b>Misconception Hint</b>: Check the thousands place sum (0 + 7 = 7, but carry makes it 8).",
-    "98782": "💡 <b>Misconception Hint</b>: Check the tens place addition (50 + 30 = 80)."
+    "5a^2b + 11ab^2 + 4": "💡 <b>Misconception Hint</b>: Check the $ab^2$ terms: $4ab^2 + (-7ab^2) = -3ab^2$.",
+    "7a^3b^3 + 4": "💡 <b>Misconception Hint</b>: You cannot combine $a^2b$ and $ab^2$ terms because their exponent powers differ."
   },
+
+  // Tier 2: Complex Fractions & Rational Expressions
   "q3": {
-    "90090": "💡 <b>Misconception Hint</b>: Line up place values before adding.",
-    "89190": "💡 <b>Misconception Hint</b>: Check the tens digit sum."
+    "4/7": "💡 <b>Misconception Hint</b>: You added numerators AND denominators directly ($2+3-1 = 4, 5+4-2 = 7$). Find the least common denominator (LCD = 20) first!",
+    "15/20": "💡 <b>Misconception Hint</b>: Check the subtraction step: $\\frac{8}{20} + \\frac{15}{20} - \\frac{10}{20} = \\frac{13}{20}$."
+  },
+  "q4": {
+    "(x + 2) / (2x + 2)": "💡 <b>Misconception Hint</b>: You added numerators and denominators across directly. Cross multiply by common denominator $(x+3)(x-1)$.",
+    "(x^2 - 3x + 6) / ((x+3)(x-1))": "💡 <b>Misconception Hint</b>: Check expanding $x(x-1) + 2(x+3) = x^2 - x + 2x + 6 = x^2 + x + 6$."
+  },
+
+  // Tier 3: Rational Algebraic Equations & Difference Quotient
+  "q5": {
+    "x = 2": "💡 <b>Misconception Hint</b>: $x = 2$ makes the denominator $x-2 = 0$ (undefined value), so it is an extraneous solution!",
+    "x = 7/3": "💡 <b>Misconception Hint</b>: Check expanding $3x(x+2) + 4(x-2) = 3x^2 + 10x - 8 = 28$."
+  },
+  "q6": {
+    "2 / (x(x+h))": "💡 <b>Misconception Hint</b>: Check the numerator subtraction: $2(x - (x+h)) = -2h$, so the negative sign remains!",
+    "0": "💡 <b>Misconception Hint</b>: $\\frac{2}{x+h}$ and $\\frac{2}{x}$ are not equal when $h \\neq 0$."
   }
 };
+
+let currentTier = 2; // Default start at Tier 2 (Medium)
 
 // Update Adaptive Mastery Score (BKT Light Model)
 function updateMasteryScore(isCorrect) {
@@ -36,13 +54,13 @@ function renderMasteryWidget() {
   let widget = document.getElementById('adaptiveMasteryWidget');
   const score = parseInt(sessionStorage.getItem('test2MasteryScore') || '50', 10);
   
-  let tierName = "Tier 2 (Medium)";
+  let tierName = "Tier 2: Medium (Standard Uni)";
   let tierColor = "#7c3aed";
-  if (score >= 75) {
-    tierName = "Tier 3 (Mastery Achieved)";
+  if (currentTier === 3 || score >= 75) {
+    tierName = "Tier 3: Advanced (Mastery High)";
     tierColor = "#16a34a";
-  } else if (score < 40) {
-    tierName = "Tier 1 (Scaffolded Easy)";
+  } else if (currentTier === 1 || score < 40) {
+    tierName = "Tier 1: Moderate (Scaffolded)";
     tierColor = "#ea580c";
   }
 
@@ -69,14 +87,43 @@ function renderMasteryWidget() {
   if (widget) {
     widget.style.borderColor = tierColor;
     widget.innerHTML = `
-      <div style="font-weight: bold; color: ${tierColor}; margin-bottom: 4px;">🧠 Adaptive ITS Mastery</div>
-      <div>Level: <strong>${tierName}</strong></div>
-      <div style="margin-top: 4px; background: #e2e8f0; border-radius: 6px; height: 8px; width: 140px; overflow: hidden;">
+      <div style="font-weight: bold; color: ${tierColor}; margin-bottom: 4px;">🧠 Adaptive ITS Engine</div>
+      <div>Active Tier: <strong>${tierName}</strong></div>
+      <div style="margin-top: 4px; background: #e2e8f0; border-radius: 6px; height: 8px; width: 150px; overflow: hidden;">
         <div style="background: ${tierColor}; width: ${score}%; height: 100%; transition: width 0.3s ease;"></div>
       </div>
       <div style="font-size: 11px; color: #64748b; margin-top: 2px; text-align: right;">${score}% Mastered</div>
     `;
   }
+}
+
+// Dynamic Tier Branching Helper
+function handleNextBranch(currentQId) {
+  const isCorrect = (firstAttempts[currentQId] && firstAttempts[currentQId][0] === correctAnswers[currentQId]);
+  
+  let nextQId = 'Q4';
+  if (currentQId === 'q3') {
+    if (isCorrect) {
+      currentTier = 3;
+      nextQId = 'Q5'; // Branch UP to Tier 3 Advanced
+    } else {
+      currentTier = 1;
+      nextQId = 'Q1'; // Branch DOWN to Tier 1 Scaffolded
+    }
+  } else if (currentQId === 'q1') {
+    nextQId = isCorrect ? 'Q4' : 'Q2';
+  } else if (currentQId === 'q2') {
+    nextQId = 'Q4';
+  } else if (currentQId === 'q4') {
+    nextQId = 'Q5';
+  } else if (currentQId === 'q5') {
+    nextQId = 'Q6';
+  } else if (currentQId === 'q6') {
+    nextQId = 'Q6';
+  }
+
+  renderMasteryWidget();
+  showNextQuestionDiv(nextQId, currentQId.toUpperCase());
 }
 
 // Store first attempts and count mistakes with Misconception Feedback
@@ -114,7 +161,7 @@ function checkAnswer(questionId, correctAnswer) {
     if (misconceptionHints[questionId] && misconceptionHints[questionId][selectedAnswer.value]) {
       hint = "<br>" + misconceptionHints[questionId][selectedAnswer.value];
     } else {
-      hint = "<br>💡 <b>Hint</b>: Review the place values or order of operations carefully.";
+      hint = "<br>💡 <b>Hint</b>: Review common denominators, expanding brackets, or sign rules carefully.";
     }
 
     if (resultMessage) {
@@ -136,7 +183,7 @@ function checkAnswer(questionId, correctAnswer) {
   if (nextBtn) {
     nextBtn.disabled = false;
   }
-  if (questionId === 'q3') {
+  if (questionId === 'q6' || questionId === 'q5') {
     const resBtn = document.querySelector('#submitButton');
     if (resBtn) resBtn.disabled = false;
   }
@@ -154,31 +201,26 @@ function reattemptExercise() {
   const msgs = document.querySelectorAll('[id^="resultMessage_"]');
   msgs.forEach(msg => msg.innerHTML = '');
 
-  // Reset attempt cache for page
-  for (const key in firstAttempts) {
-    delete firstAttempts[key];
-  }
-  for (const key in correctAnswers) {
-    delete correctAnswers[key];
-  }
+  // Reset attempt cache
+  for (const key in firstAttempts) delete firstAttempts[key];
+  for (const key in correctAnswers) delete correctAnswers[key];
 
   // Disable next buttons until Check & Submit is pressed again
-  const b1 = document.querySelector('#submitButton1');
-  if (b1) b1.disabled = true;
-  const b2 = document.querySelector('#submitButton2');
-  if (b2) b2.disabled = true;
+  for (let i = 1; i <= 6; i++) {
+    const b = document.querySelector(`#submitButton${i}`);
+    if (b) b.disabled = true;
+  }
   const s = document.querySelector('#submitButton');
   if (s) s.disabled = true;
 
-  // Show Q1
-  const q1 = document.getElementById('Q1');
-  if (q1) q1.style.display = 'block';
-  const q2 = document.getElementById('Q2');
-  if (q2) q2.style.display = 'none';
-  const q3 = document.getElementById('Q3');
-  if (q3) q3.style.display = 'none';
+  currentTier = 2;
 
-  // Re-enable check buttons
+  // Show Q3 (Tier 2 Start)
+  for (let i = 1; i <= 6; i++) {
+    const q = document.getElementById(`Q${i}`);
+    if (q) q.style.display = (i === 3 ? 'block' : 'none');
+  }
+
   const s3 = document.querySelector('#submitButton3');
   if (s3) s3.disabled = false;
 }
@@ -201,11 +243,9 @@ function checkAnswers(lastPage) {
 
     if (correctAnswer === selectedAnswerValue) {
       correctCount++;
-      resultMessage.innerHTML += `<br>Question ${questionId}: Correct`;
+      resultMessage.innerHTML += `<br>Question ${questionId.toUpperCase()}: Correct`;
     } else if (selectedAnswerValue) {
-      resultMessage.innerHTML += `<br>Question ${questionId}: Wrong`;
-    } else {
-      resultMessage.innerHTML += `<br>Question ${questionId}: Not selected`;
+      resultMessage.innerHTML += `<br>Question ${questionId.toUpperCase()}: Wrong`;
     }
 
     totalQuestions++;
@@ -217,8 +257,6 @@ function checkAnswers(lastPage) {
     resultMessage.innerHTML += `<br><br>🎉 <strong>Module Mastered! (Score: ${currentMastery}%)</strong>`;
     resultMessage.innerHTML += `<br>You may now advance to the next exercise section.`;
     if (typeof nextButton !== 'undefined' && nextButton) nextButton.disabled = false;
-    if (typeof submitButton3 !== 'undefined' && submitButton3) submitButton3.disabled = true;
-    if (typeof submitButton !== 'undefined' && submitButton) submitButton.disabled = true;
 
     if (lastPage == true) {  
       let endTime = sessionStorage.getItem('testBEndTime');
@@ -230,8 +268,6 @@ function checkAnswers(lastPage) {
       resultMessage.innerHTML += "<br><br><strong>All exercises are successfully completed!</strong>";
       resultMessage.innerHTML += "<br>Click <strong>End</strong> to view your total time.";
       if (typeof nextButton !== 'undefined' && nextButton) nextButton.disabled = false;
-      if (typeof submitButton3 !== 'undefined' && submitButton3) submitButton3.disabled = true;
-      if (typeof submitButton !== 'undefined' && submitButton) submitButton.disabled = true;
     }
   } 
   else {
@@ -240,7 +276,6 @@ function checkAnswers(lastPage) {
     resultMessage.innerHTML += `<br><br><button onclick="reattemptExercise()" class="button gray" style="background:#7c3aed; color:#ffffff; font-weight:bold; padding:8px 16px; border-radius:6px; cursor:pointer;">🔁 Re-attempt Exercise</button>`;
     
     if (typeof nextButton !== 'undefined' && nextButton) nextButton.disabled = true;
-    if (typeof exampleButton !== 'undefined' && exampleButton) exampleButton.disabled = false;
   }
 
   if (dialog) {
@@ -296,7 +331,6 @@ function updateTimer() {
   renderMasteryWidget();
 }
 
-// Update the timer every second
 setInterval(updateTimer, 1000);
 
 // Render Top-Right Persistent Phase Badge (With / Without Music)
@@ -367,7 +401,6 @@ function renderSkipButton() {
   document.body.appendChild(btn);
 }
 
-// Initial execution
 if (document.body) {
   renderPhaseBadge();
   renderSkipButton();

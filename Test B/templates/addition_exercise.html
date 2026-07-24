@@ -7,7 +7,7 @@
     MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <title>Addition Exercise</title>
+  <title>Addition & Rational Expressions Exercise</title>
 </head>
 <body style="padding-top: 100px;">
   <div style="position: fixed; top: 0; width: 100%; z-index: 999;">
@@ -18,52 +18,94 @@
 
   <div class="centered">  
     <div style="max-width: 100%;">
-      <h2 class="headingtop_margen">Exercises for Arithmetic (Adaptive Mode)</h2>
+      <h2 class="headingtop_margen">Arithmetic & Rational Expressions (Adaptive Mode)</h2>
     </div>
     <div class="exercise-box">
-      <div class="timer" id="timer" >
+      <div class="timer" id="timer">
         <p>00:00:00</p>
       </div>
-      <h4>Addition</h4>
+      <h4>University Math Module</h4>
 
       <form id="exerciseForm">
-        <div id="Q1">
-          <p class="line-spcaing">Q1: 1563 + 428 = </p>
-          <input type="radio" id="add1" name="q1" value="1991">
-          <label for="add1">1991</label><br>
-          <input type="radio" id="add2" name="q1" value="2001">
-          <label for="add2">2001</label><br>
-          <input type="radio" id="add3" name="q1" value="1999">
-          <label for="add3">1999</label><br>
+        <!-- Tier 1: Moderate University (Q1 & Q2) -->
+        <div id="Q1" style="display: none;">
+          <p class="line-spcaing"><strong>[Tier 1 Moderate]</strong> Q1: Simplify $(5x^2 - 2x + 9) + (2x^2 + 6x - 4)$</p>
+          <input type="radio" id="q1a" name="q1" value="7x^2 + 4x + 5">
+          <label for="q1a">$7x^2 + 4x + 5$</label><br>
+          <input type="radio" id="q1b" name="q1" value="7x^2 - 8x + 13">
+          <label for="q1b">$7x^2 - 8x + 13$</label><br>
+          <input type="radio" id="q1c" name="q1" value="10x^2 + 4x + 5">
+          <label for="q1c">$10x^2 + 4x + 5$</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_q1"></p>
-          <button onclick="checkAnswer('q1', '1991')" class="button gray" type="button">Check & Submit</button>
-          <button type="button" id="submitButton1" onclick="showNextQuestionDiv('Q2', 'Q1')" class="button gray" disabled>Next Question</button>
+          <button onclick="checkAnswer('q1', '7x^2 + 4x + 5')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="submitButton1" onclick="handleNextBranch('q1')" class="button gray" disabled>Next Question</button>
         </div>
 
-        <div id="Q2" style="display: none;" >
-          <p class="line-spcaing">Q2: 30951 + 67831 = </p>
-          <input type="radio" id="add4" name="q2" value="98892">
-          <label for="add4">98892</label><br>
-          <input type="radio" id="add5" name="q2" value="97892">
-          <label for="add5">97892</label><br>
-          <input type="radio" id="add6" name="q2" value="98782">
-          <label for="add6">98782</label><br>
+        <div id="Q2" style="display: none;">
+          <p class="line-spcaing"><strong>[Tier 1 Moderate]</strong> Q2: Simplify $(3a^2b + 4ab^2 - 5) + (2a^2b - 7ab^2 + 9)$</p>
+          <input type="radio" id="q2a" name="q2" value="5a^2b - 3ab^2 + 4">
+          <label for="q2a">$5a^2b - 3ab^2 + 4$</label><br>
+          <input type="radio" id="q2b" name="q2" value="5a^2b + 11ab^2 + 4">
+          <label for="q2b">$5a^2b + 11ab^2 + 4$</label><br>
+          <input type="radio" id="q2c" name="q2" value="7a^3b^3 + 4">
+          <label for="q2c">$7a^3b^3 + 4$</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_q2"></p>
-          <button onclick="checkAnswer('q2', '98782')" class="button gray" type="button">Check & Submit</button>
-          <button type="button" id="submitButton2" onclick="showNextQuestionDiv('Q3', 'Q2')" class="button gray" disabled>Next Question</button>
+          <button onclick="checkAnswer('q2', '5a^2b - 3ab^2 + 4')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="submitButton2" onclick="handleNextBranch('q2')" class="button gray" disabled>Next Question</button>
         </div>
 
-        <div id="Q3" style="display: none;">
-          <p class="line-spcaing">Q3: 13 + 14786 + 74411 = </p>
-          <input type="radio" id="add7" name="q3" value="90090">
-          <label for="add7">90090</label><br>
-          <input type="radio" id="add8" name="q3" value="89210">
-          <label for="add8">89210</label><br>
-          <input type="radio" id="add9" name="q3" value="89190">
-          <label for="add9">89190</label><br>
+        <!-- Tier 2: Medium Standard (Q3 Start & Q4) -->
+        <div id="Q3">
+          <p class="line-spcaing"><strong>[Tier 2 Medium]</strong> Q3: Evaluate $\frac{2}{5} + \frac{3}{4} - \frac{1}{2}$</p>
+          <input type="radio" id="q3a" name="q3" value="13/20">
+          <label for="q3a">$\frac{13}{20}$</label><br>
+          <input type="radio" id="q3b" name="q3" value="4/7">
+          <label for="q3b">$\frac{4}{7}$</label><br>
+          <input type="radio" id="q3c" name="q3" value="15/20">
+          <label for="q3c">$\frac{15}{20}$</label><br>
           <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_q3"></p>
+          <button onclick="checkAnswer('q3', '13/20')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="submitButton3" onclick="handleNextBranch('q3')" class="button gray" disabled>Next Question</button>
+        </div>
+
+        <div id="Q4" style="display: none;">
+          <p class="line-spcaing"><strong>[Tier 2 Medium]</strong> Q4: Simplify $\frac{x}{x+3} + \frac{2}{x-1}$</p>
+          <input type="radio" id="q4a" name="q4" value="(x^2 + 1x + 6) / ((x+3)(x-1))">
+          <label for="q4a">$\frac{x^2 + x + 6}{(x+3)(x-1)}$</label><br>
+          <input type="radio" id="q4b" name="q4" value="(x + 2) / (2x + 2)">
+          <label for="q4b">$\frac{x + 2}{2x + 2}$</label><br>
+          <input type="radio" id="q4c" name="q4" value="(x^2 - 3x + 6) / ((x+3)(x-1))">
+          <label for="q4c">$\frac{x^2 - 3x + 6}{(x+3)(x-1)}$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_q4"></p>
+          <button onclick="checkAnswer('q4', '(x^2 + 1x + 6) / ((x+3)(x-1))')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="submitButton4" onclick="handleNextBranch('q4')" class="button gray" disabled>Next Question</button>
+        </div>
+
+        <!-- Tier 3: Advanced Mastery (Q5 & Q6) -->
+        <div id="Q5" style="display: none;">
+          <p class="line-spcaing"><strong>[Tier 3 Advanced]</strong> Q5: Solve for $x$: $\frac{3x}{x-2} + \frac{4}{x+2} = \frac{28}{x^2-4}$</p>
+          <input type="radio" id="q5a" name="q5" value="x = 5/3">
+          <label for="q5a">$x = \frac{5}{3}$</label><br>
+          <input type="radio" id="q5b" name="q5" value="x = 2">
+          <label for="q5b">$x = 2$</label><br>
+          <input type="radio" id="q5c" name="q5" value="x = 7/3">
+          <label for="q5c">$x = \frac{7}{3}$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_q5"></p>
+          <button onclick="checkAnswer('q5', 'x = 5/3')" class="button gray" type="button">Check & Submit</button>
+          <button type="button" id="submitButton5" onclick="handleNextBranch('q5')" class="button gray" disabled>Next Question</button>
+        </div>
+
+        <div id="Q6" style="display: none;">
+          <p class="line-spcaing"><strong>[Tier 3 Advanced]</strong> Q6: Simplify $\frac{\frac{2}{x+h} - \frac{2}{x}}{h}$</p>
+          <input type="radio" id="q6a" name="q6" value="-2 / (x(x+h))">
+          <label for="q6a">$\frac{-2}{x(x+h)}$</label><br>
+          <input type="radio" id="q6b" name="q6" value="2 / (x(x+h))">
+          <label for="q6b">$\frac{2}{x(x+h)}$</label><br>
+          <input type="radio" id="q6c" name="q6" value="0">
+          <label for="q6c">$0$</label><br>
+          <p style="font-size: 14px; margin-top: 6px;" id="resultMessage_q6"></p>
         
-          <button type="button" id="submitButton3" onclick="checkAnswer('q3', '89210')" class="button gray">Check & Submit</button>
+          <button type="button" id="submitButton6" onclick="checkAnswer('q6', '-2 / (x(x+h))')" class="button gray">Check & Submit</button>
           <button type="button" id="submitButton" onclick="checkAnswers(false)" class="button gray" disabled>Result</button>
           <br>
           <button type="button" id="exampleButton" disabled onclick="openPage('add_example.html')" class="button gray">Example</button>
@@ -72,7 +114,7 @@
       </form>
     </div>
     <div style="text-align: center; margin-top: 10px;"> 
-      <p style="font-size:0.85em; color: #475569;">💡 Adaptive ITS: Incorrect answers unlock targeted misconception feedback.</p>
+      <p style="font-size:0.85em; color: #475569;">💡 Adaptive ITS: Questions dynamically adapt to Tier 1, 2, or 3 based on your accuracy.</p>
     </div>
   </div>
 
@@ -81,6 +123,6 @@
     <button id="closeButton">Close</button>
   </dialog>
 
-  <script src="../static/script.js?v=adaptive2"></script>
+  <script src="../static/script.js?v=adaptive3"></script>
 </body>
 </html>
