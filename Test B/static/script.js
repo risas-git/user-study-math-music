@@ -444,20 +444,57 @@ function renderPhaseBadge() {
   document.body.appendChild(badge);
 }
 
+function shuffleAllQuestionOptions() {
+  const questionDivs = document.querySelectorAll('div[id^="T"], div[id^="M2_T"], div[id^="M3_T"]');
+  
+  questionDivs.forEach(qDiv => {
+    const radios = Array.from(qDiv.querySelectorAll('input[type="radio"]'));
+    if (radios.length < 2) return;
+
+    const optionGroups = radios.map(radio => {
+      const label = qDiv.querySelector(`label[for="${radio.id}"]`);
+      let br = label ? label.nextElementSibling : null;
+      if (br && br.tagName && br.tagName.toLowerCase() !== 'br') br = null;
+      return { input: radio, label: label, br: br };
+    });
+
+    for (let i = optionGroups.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [optionGroups[i], optionGroups[j]] = [optionGroups[j], optionGroups[i]];
+    }
+
+    const refNode = qDiv.querySelector('p[id^="resultMessage_"]') || qDiv.querySelector('button');
+
+    optionGroups.forEach(grp => {
+      if (grp.input && refNode) qDiv.insertBefore(grp.input, refNode);
+      if (grp.label && refNode) qDiv.insertBefore(grp.label, refNode);
+      if (grp.br && refNode) qDiv.insertBefore(grp.br, refNode);
+    });
+  });
+
+  if (window.MathJax && MathJax.Hub) {
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+  }
+}
+
 if (document.body) {
   renderPhaseBadge();
   renderMasteryWidget();
+  shuffleAllQuestionOptions();
 }
 document.addEventListener('DOMContentLoaded', () => {
   resetExerciseFormState();
   renderPhaseBadge();
   renderMasteryWidget();
+  shuffleAllQuestionOptions();
 });
 window.addEventListener('load', () => {
   resetExerciseFormState();
   renderPhaseBadge();
   renderMasteryWidget();
+  shuffleAllQuestionOptions();
 });
 window.addEventListener('pageshow', () => {
   resetExerciseFormState();
+  shuffleAllQuestionOptions();
 });
