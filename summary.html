@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -235,13 +236,14 @@
     }
   </style>
 </head>
+
 <body>
 
   <div class="container">
     <div class="card">
       <div class="header-box">
         <h1>Thank You for Your Participation! 🎉</h1>
-        <p>Thank you for your time during this exam phase!</p>
+        <p>Thank you so much for your time!</p>
       </div>
 
       <!-- Top Syncing Status Banner -->
@@ -258,7 +260,8 @@
       <!-- Download CSV Section BEFORE Result Info -->
       <div class="csv-backup-box">
         <p class="csv-notice">
-          Your result is automatically saved, but just in case, please download the result CSV and send it to me at <a href="mailto:risa.hirata@uni-bielefeld.de">risa.hirata@uni-bielefeld.de</a>
+          Your result is automatically saved, but just in case, please download the result CSV and send it to me at <a
+            href="mailto:risa.hirata@uni-bielefeld.de">risa.hirata@uni-bielefeld.de</a>
         </p>
         <button onclick="downloadCSV()" class="btn-download">📥 Download Result CSV</button>
       </div>
@@ -270,8 +273,8 @@
         <div class="summary-section">
           <h4>Test 1 (Test A)</h4>
           <div class="summary-row">
-            <strong>Condition:</strong> <span id="sumTest1Cond">-</span> | 
-            <strong>Time Taken:</strong> <span id="sumTest1Time">00:00:00</span> | 
+            <strong>Condition:</strong> <span id="sumTest1Cond">-</span> |
+            <strong>Time Taken:</strong> <span id="sumTest1Time">00:00:00</span> |
             <strong>Mistakes:</strong> <span id="sumTest1Mistakes">0</span> |
             <strong>Mastery:</strong> <span id="sumTest1Mastery">50%</span>
           </div>
@@ -281,8 +284,8 @@
         <div class="summary-section">
           <h4>Test 2 (Test B)</h4>
           <div class="summary-row">
-            <strong>Condition:</strong> <span id="sumTest2Cond">-</span> | 
-            <strong>Time Taken:</strong> <span id="sumTest2Time">00:00:00</span> | 
+            <strong>Condition:</strong> <span id="sumTest2Cond">-</span> |
+            <strong>Time Taken:</strong> <span id="sumTest2Time">00:00:00</span> |
             <strong>Mistakes:</strong> <span id="sumTest2Mistakes">0</span> |
             <strong>Mastery:</strong> <span id="sumTest2Mastery">50%</span>
           </div>
@@ -305,7 +308,7 @@
 
   <script>
     // Google Apps Script Webhook URL
-    const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwPD4tACeuLFvmaNdQ46-uiButevGtjh10bW2YjcFzIyv8h6qzINXgHBddDEz_G89bDPQ/exec"; 
+    const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwPD4tACeuLFvmaNdQ46-uiButevGtjh10bW2YjcFzIyv8h6qzINXgHBddDEz_G89bDPQ/exec";
 
     let studyData = {};
 
@@ -425,4 +428,5 @@
     }
   </script>
 </body>
+
 </html>
