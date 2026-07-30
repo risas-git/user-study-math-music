@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -252,29 +253,31 @@
     }
   </style>
 </head>
+
 <body>
 
   <div class="container">
     <div class="header-box">
       <h1>Participant Pretest Scores</h1>
-      
+
       <!-- Participant Info & Group Banner -->
       <div class="participant-info-banner" id="participantBanner">
         <div class="info-badge">
-          <span class="info-label">👤 Participant ID:</span>
+          <span class="info-label"> Participant ID:</span>
           <span class="info-value" id="dispParticipantId">Assigning...</span>
         </div>
         <div class="info-badge">
-          <span class="info-label">🎲 Assigned Group:</span>
+          <span class="info-label"> Assigned Group:</span>
           <span class="info-value" id="dispParticipantGroup">Assigning...</span>
         </div>
       </div>
 
-      <p>Please enter your scores for each of the pretests below. If you have not completed a pretest yet, click the provided link to complete it before proceeding.</p>
+      <p>Please enter your scores for each of the pretests below. If you have not completed a pretest yet, click the
+        provided link to complete it before proceeding.</p>
     </div>
 
     <div class="pretests-container">
-      
+
       <!-- Pretest 1: Working Memory -->
       <div class="pretest-card">
         <div class="card-header">
@@ -285,8 +288,9 @@
           💡 Instructions: Click <strong>"Run the demo"</strong> on the test page.
         </div>
         <div class="link-box">
-          If you haven't done it yet before, then do it from here: 
-          <a href="https://www.psytoolkit.org/experiment-library/backward_corsi.html" target="_blank" rel="noopener noreferrer">Take Working Memory Capacity Test ↗</a>
+          If you haven't done it yet before, then do it from here:
+          <a href="https://www.psytoolkit.org/experiment-library/backward_corsi.html" target="_blank"
+            rel="noopener noreferrer">Take Working Memory Capacity Test ↗</a>
         </div>
         <div class="input-group">
           <label for="score_corsi">Enter the score for Working Memory Capacity Test:</label>
@@ -304,8 +308,9 @@
           💡 Instructions: Select <strong>Big Five Inventory, BFI-2-XS</strong> on the test page.
         </div>
         <div class="link-box">
-          If you haven't done it yet before, then do it from here: 
-          <a href="https://psytests.org/big5/bfiSen.html" target="_blank" rel="noopener noreferrer">Take Personality Traits Assessment ↗</a>
+          If you haven't done it yet before, then do it from here:
+          <a href="https://psytests.org/big5/bfiSen.html" target="_blank" rel="noopener noreferrer">Take Personality
+            Traits Assessment ↗</a>
         </div>
         <div style="font-weight: 600; font-size: 0.9rem; color: #334155; margin-top: 0.25rem;">
           Enter your 5 BFI-2 Personality Trait scores (Scale 1.0 - 5.0):
@@ -344,8 +349,9 @@
           💡 Instructions: Click <strong>"Run the demo"</strong> on the survey page.
         </div>
         <div class="link-box">
-          If you haven't done it yet before, then do it from here: 
-          <a href="https://www.psytoolkit.org/survey-library/math-anxiety-amas.html" target="_blank" rel="noopener noreferrer">Take Math Anxiety Scale ↗</a>
+          If you haven't done it yet before, then do it from here:
+          <a href="https://www.psytoolkit.org/survey-library/math-anxiety-amas.html" target="_blank"
+            rel="noopener noreferrer">Take Math Anxiety Scale ↗</a>
         </div>
         <div class="input-group">
           <label for="score_amas">Enter the score for Math Anxiety Scale:</label>
@@ -415,7 +421,7 @@
         const script = document.createElement('script');
         script.src = GOOGLE_SHEET_WEBHOOK_URL + "?prefix=handleGlobalIdIndex&t=" + Date.now();
         document.body.appendChild(script);
-      } catch (e) {}
+      } catch (e) { }
 
       // Restore saved scores if returning to pretest page in same session
       const corsiVal = sessionStorage.getItem('pretest_corsi');
@@ -459,4 +465,5 @@
     }
   </script>
 </body>
+
 </html>
