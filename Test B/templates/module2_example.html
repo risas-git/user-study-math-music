@@ -11,27 +11,30 @@
 </head>
 <body style="padding: 30px; background: #f8fafc; font-family: Arial, sans-serif;">
   <div style="max-width: 800px; margin: 0 auto; background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
-    <h2 style="color: #7c3aed; margin-top: 0; text-align: center;">Module 2 Reference & Worked Examples</h2>
+    <h2 style="color: #0284c7; margin-top: 0; text-align: center;">Module 2 Reference & Worked Examples</h2>
+    <p style="font-size: 14px; color: #64748b; text-align: center; margin-bottom: 20px;">
+      💡 <em>Note: These worked examples illustrate the core mathematical procedures using distinct sample problems.</em>
+    </p>
 
     <!-- EXAMPLE 1 -->
     <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px; margin-bottom: 20px; background: #f1f5f9;">
       <h4 style="margin-top:0; color: #1e293b;">Example 1: Polynomial Derivatives & Power Rule</h4>
-      <p style="margin-bottom: 5px; font-weight: bold; color: #334155;">Find the derivative of $y = 4x^4 + 3x^2 - 5x + 9$</p>
+      <p style="margin-bottom: 5px; font-weight: bold; color: #334155;">Find the derivative of $y = 5x^4 + 3x^3 - 8x + 9$</p>
       <div style="font-size: 14px; color: #475569;">
-        <strong>Step 1 (Apply Power Rule):</strong> $\frac{d}{dx}(4x^4) = 16x^3$, $\frac{d}{dx}(3x^2) = 6x$, $\frac{d}{dx}(-5x) = -5$<br>
+        <strong>Step 1 (Apply Power Rule):</strong> $\frac{d}{dx}(5x^4) = 20x^3$, $\frac{d}{dx}(3x^3) = 9x^2$, $\frac{d}{dx}(-8x) = -8$<br>
         <strong>Step 2 (Constant Derivative):</strong> $\frac{d}{dx}(9) = 0$<br>
-        <span style="color: #16a34a; font-weight: bold;">Answer: $y' = 16x^3 + 6x - 5$</span>
+        <span style="color: #16a34a; font-weight: bold;">Answer: $y' = 20x^3 + 9x^2 - 8$</span>
       </div>
     </div>
 
     <!-- EXAMPLE 2 -->
     <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px; margin-bottom: 20px; background: #f1f5f9;">
       <h4 style="margin-top:0; color: #1e293b;">Example 2: Definite Integration & Fundamental Theorem</h4>
-      <p style="margin-bottom: 5px; font-weight: bold; color: #334155;">Evaluate $\int_1^2 (6x^2 - 4x) \, dx$</p>
+      <p style="margin-bottom: 5px; font-weight: bold; color: #334155;">Evaluate $\int_1^2 (4x^3 - 6x) \, dx$</p>
       <div style="font-size: 14px; color: #475569;">
-        <strong>Step 1 (Find Antiderivative):</strong> $F(x) = \int (6x^2 - 4x) dx = 2x^3 - 2x^2$<br>
-        <strong>Step 2 (Evaluate Limits $F(2) - F(1)$):</strong> $(2(8) - 2(4)) - (2(1) - 2(1)) = (16 - 8) - (2 - 2) = 8 - 0 = 8$<br>
-        <span style="color: #16a34a; font-weight: bold;">Answer: $8$</span>
+        <strong>Step 1 (Find Antiderivative):</strong> $F(x) = \int (4x^3 - 6x) dx = x^4 - 3x^2$<br>
+        <strong>Step 2 (Evaluate Limits $F(2) - F(1)$):</strong> $(2^4 - 3(2)^2) - (1^4 - 3(1)^2) = (16 - 12) - (1 - 3) = 4 - (-2) = 6$<br>
+        <span style="color: #16a34a; font-weight: bold;">Answer: $6$</span>
       </div>
     </div>
 
@@ -49,11 +52,11 @@
     <!-- EXAMPLE 4 -->
     <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px; margin-bottom: 20px; background: #f1f5f9;">
       <h4 style="margin-top:0; color: #1e293b;">Example 4: Integration by Parts</h4>
-      <p style="margin-bottom: 5px; font-weight: bold; color: #334155;">Evaluate $\int 2x e^{2x} \, dx$</p>
+      <p style="margin-bottom: 5px; font-weight: bold; color: #334155;">Evaluate $\int x \cos(x) \, dx$</p>
       <div style="font-size: 14px; color: #475569;">
-        <strong>Step 1 (Set $u$ and $dv$):</strong> $u = x \Rightarrow du = dx$ and $dv = 2e^{2x} dx \Rightarrow v = e^{2x}$<br>
-        <strong>Step 2 (Apply $uv - \int v du$):</strong> $x e^{2x} - \int e^{2x} dx = x e^{2x} - \frac{1}{2}e^{2x} + C = e^{2x}(x - \frac{1}{2}) + C$<br>
-        <span style="color: #16a34a; font-weight: bold;">Answer: $e^{2x}(x - \frac{1}{2}) + C$</span>
+        <strong>Step 1 (Set $u$ and $dv$):</strong> $u = x \Rightarrow du = dx$ and $dv = \cos(x) dx \Rightarrow v = \sin(x)$<br>
+        <strong>Step 2 (Apply $uv - \int v du$):</strong> $x \sin(x) - \int \sin(x) dx = x \sin(x) - (-\cos(x)) + C = x \sin(x) + \cos(x) + C$<br>
+        <span style="color: #16a34a; font-weight: bold;">Answer: $x \sin(x) + \cos(x) + C$</span>
       </div>
     </div>
 
