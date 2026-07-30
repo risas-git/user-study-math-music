@@ -217,7 +217,7 @@
         <div class="summary-section" style="margin-bottom: 0;">
           <h4>Pretest Scores</h4>
           <div class="summary-row">• <strong>Working Memory Capacity:</strong> <span id="sumCorsi">-</span></div>
-          <div class="summary-row">• <strong>Personality Traits (BFI-2-XS):</strong> <span id="sumBfi">-</span></div>
+          <div class="summary-row">• <strong>Personality Traits (BFI-2):</strong> <span id="sumBfi">-</span></div>
           <div class="summary-row">• <strong>Math Anxiety Scale (AMAS):</strong> <span id="sumAmas">-</span></div>
         </div>
       </div>
@@ -256,6 +256,11 @@
         test2_mental_effort: sessionStorage.getItem('paasScale_Test2') || '5. neither low nor high mental effort',
         pretest_corsi: sessionStorage.getItem('pretest_corsi') || 'Not provided',
         pretest_bfi: sessionStorage.getItem('pretest_bfi') || 'Not provided',
+        pretest_bfi_extraversion: sessionStorage.getItem('pretest_bfi_extraversion') || 'N/A',
+        pretest_bfi_agreeableness: sessionStorage.getItem('pretest_bfi_agreeableness') || 'N/A',
+        pretest_bfi_conscientiousness: sessionStorage.getItem('pretest_bfi_conscientiousness') || 'N/A',
+        pretest_bfi_neuroticism: sessionStorage.getItem('pretest_bfi_neuroticism') || 'N/A',
+        pretest_bfi_openness: sessionStorage.getItem('pretest_bfi_openness') || 'N/A',
         pretest_amas: sessionStorage.getItem('pretest_amas') || 'Not provided'
       };
 
@@ -282,13 +287,18 @@
     });
 
     function downloadCSV() {
-      const headers = ["Timestamp", "Participant ID", "Group", "Pretest WMC", "Pretest BFI", "Pretest AMAS", "Test 1 Condition", "Test 1 Time", "Test 1 Mistakes", "Test 1 Mastery", "Test 1 Mental Effort", "Test 2 Condition", "Test 2 Time", "Test 2 Mistakes", "Test 2 Mastery", "Test 2 Mental Effort"];
+      const headers = ["Timestamp", "Participant ID", "Group", "Pretest WMC", "Pretest BFI (Full)", "BFI Extraversion", "BFI Agreeableness", "BFI Conscientiousness", "BFI Negative Emotionality", "BFI Open-Mindedness", "Pretest AMAS", "Test 1 Condition", "Test 1 Time", "Test 1 Mistakes", "Test 1 Mastery", "Test 1 Mental Effort", "Test 2 Condition", "Test 2 Time", "Test 2 Mistakes", "Test 2 Mastery", "Test 2 Mental Effort"];
       const row = [
         `"${studyData.timestamp}"`,
         `"${studyData.participantId}"`,
         `"${studyData.group}"`,
         `"${studyData.pretest_corsi.replace(/"/g, '""')}"`,
         `"${studyData.pretest_bfi.replace(/"/g, '""')}"`,
+        `"${studyData.pretest_bfi_extraversion}"`,
+        `"${studyData.pretest_bfi_agreeableness}"`,
+        `"${studyData.pretest_bfi_conscientiousness}"`,
+        `"${studyData.pretest_bfi_neuroticism}"`,
+        `"${studyData.pretest_bfi_openness}"`,
         `"${studyData.pretest_amas.replace(/"/g, '""')}"`,
         `"${studyData.test1_condition}"`,
         `"${studyData.test1_time}"`,

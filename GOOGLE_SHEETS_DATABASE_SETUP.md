@@ -7,11 +7,11 @@ You can automatically store every participant's study results directly into a **
 ## Step 1: Create a Google Sheet
 1. Go to [Google Sheets](https://sheets.new) and create a new blank spreadsheet.
 2. Name it **"Math Music User Study Results"**.
-3. In Row 1, add these column headers (A through N):
+3. In Row 1, add these column headers (A through S):
 
-| A | B | C | D | E | F | G | H | I | J | K | L | M | N |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Timestamp** | **Participant ID** | **Group** | **WMC Score** | **BFI Score** | **AMAS Score** | **Test 1 Condition** | **Test 1 Time** | **Test 1 Mistakes** | **Test 1 Mental Effort** | **Test 2 Condition** | **Test 2 Time** | **Test 2 Mistakes** | **Test 2 Mental Effort** |
+| A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Timestamp** | **Participant ID** | **Group** | **WMC Score** | **BFI (Full String)** | **BFI Extraversion** | **BFI Agreeableness** | **BFI Conscientiousness** | **BFI Negative Emotionality** | **BFI Open-Mindedness** | **AMAS Score** | **Test 1 Condition** | **Test 1 Time** | **Test 1 Mistakes** | **Test 1 Mental Effort** | **Test 2 Condition** | **Test 2 Time** | **Test 2 Mistakes** | **Test 2 Mental Effort** |
 
 ---
 
@@ -58,6 +58,11 @@ function doPost(e) {
       data.group || "",
       data.pretest_corsi || "",
       data.pretest_bfi || "",
+      data.pretest_bfi_extraversion || "",
+      data.pretest_bfi_agreeableness || "",
+      data.pretest_bfi_conscientiousness || "",
+      data.pretest_bfi_neuroticism || "",
+      data.pretest_bfi_openness || "",
       data.pretest_amas || "",
       data.test1_condition || "",
       data.test1_time || "",
