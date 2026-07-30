@@ -83,6 +83,7 @@ function resetExerciseFormState() {
 
   for (const key in firstAttempts) delete firstAttempts[key];
   for (const key in correctAnswers) delete correctAnswers[key];
+  sessionSteps = [];
 
   currentTier = 2;
   userStepCount = 0;
@@ -180,10 +181,13 @@ function renderMasteryWidget() {
   }
 }
 
+let sessionSteps = []; // Track exact step attempts sequentially (1 through 4)
+
 // 4-Step Adaptive Trajectory Helper Engine
 function handleNextBranch(currentQId) {
-  const isCorrect = (firstAttempts[currentQId] && firstAttempts[currentQId][0] === correctAnswers[currentQId]);
-  userStepCount++;
+  const lastStep = sessionSteps[sessionSteps.length - 1];
+  const isCorrect = lastStep ? lastStep.isCorrect : false;
+  userStepCount = sessionSteps.length;
 
   if (userStepCount >= 4) {
     checkAnswers(false);
@@ -210,7 +214,7 @@ function handleNextBranch(currentQId) {
   showNextQuestionDiv(nextQId, currentQId);
 }
 
-// Store first attempts and count mistakes with Misconception Feedback
+// Store step attempts and count mistakes with Misconception Feedback
 function checkAnswer(questionId, correctAnswer) {
   if (typeof event !== 'undefined' && event && event.preventDefault) {
     event.preventDefault();
@@ -226,20 +230,26 @@ function checkAnswer(questionId, correctAnswer) {
     return;
   }
 
-  const isFirstTry = !firstAttempts[questionId];
   const catalog = getMisconceptionCatalog();
+  const isCorrect = (selectedAnswer.value === correctAnswer);
 
-  if (selectedAnswer.value === correctAnswer) {
+  // Push step result sequentially
+  sessionSteps.push({
+    step: sessionSteps.length + 1,
+    questionId: questionId,
+    userAnswer: selectedAnswer.value,
+    correctAnswer: correctAnswer,
+    isCorrect: isCorrect
+  });
+
+  if (isCorrect) {
     if (resultMessage) {
       resultMessage.innerHTML = "✅ Correct answer! Great job.";
       resultMessage.style.color = "green";
     }
-    
-    if (isFirstTry) {
-      updateMasteryScore(true);
-      correctAnswers[questionId] = correctAnswer;
-      firstAttempts[questionId] = [selectedAnswer.value];
-    }
+    updateMasteryScore(true);
+    correctAnswers[questionId] = correctAnswer;
+    firstAttempts[questionId] = [selectedAnswer.value];
   } else {
     let hint = "";
     if (catalog[questionId] && catalog[questionId][selectedAnswer.value]) {
@@ -252,7 +262,6 @@ function checkAnswer(questionId, correctAnswer) {
       resultMessage.innerHTML = "❌ Incorrect." + hint;
       resultMessage.style.color = "#dc2626";
 
-      // Dynamically trigger MathJax re-typesetting for rendered LaTeX math in feedback!
       if (window.MathJax) {
         if (window.MathJax.Hub && window.MathJax.Hub.Queue) {
           window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub, resultMessage]);
@@ -262,15 +271,13 @@ function checkAnswer(questionId, correctAnswer) {
       }
     }
     
-    if (isFirstTry) {
-      updateMasteryScore(false);
-      let mistakes = parseInt(sessionStorage.getItem('test2Mistakes') || '0', 10) + 1;
-      sessionStorage.setItem('test2Mistakes', mistakes);
-      firstAttempts[questionId] = [selectedAnswer.value];
-    }
+    updateMasteryScore(false);
+    let mistakes = parseInt(sessionStorage.getItem('test2Mistakes') || '0', 10) + 1;
+    sessionStorage.setItem('test2Mistakes', mistakes);
+    firstAttempts[questionId] = [selectedAnswer.value];
   }
 
-  // 1. Disable Check & Submit button for this question (can only click once!)
+  // 1. Disable Check & Submit button for this question
   if (typeof event !== 'undefined' && event && event.target) {
     event.target.disabled = true;
   }
@@ -302,23 +309,15 @@ function checkAnswers(lastPage) {
   if (resultMessage) resultMessage.innerHTML = "";
 
   let correctCount = 0;
-  let totalQuestions = 0;
 
-  let stepNum = 1;
-  for (const questionId in firstAttempts) {
-    const selectedAnswerValue = firstAttempts[questionId][0];
-    const correctAnswer = correctAnswers[questionId];
-
-    if (correctAnswer === selectedAnswerValue) {
+  sessionSteps.forEach(stepRes => {
+    if (stepRes.isCorrect) {
       correctCount++;
-      resultMessage.innerHTML += `<br>Question ${stepNum}: Correct`;
-    } else if (selectedAnswerValue) {
-      resultMessage.innerHTML += `<br>Question ${stepNum}: Wrong`;
+      resultMessage.innerHTML += `<br>Question ${stepRes.step}: Correct`;
+    } else {
+      resultMessage.innerHTML += `<br>Question ${stepRes.step}: Wrong`;
     }
-
-    stepNum++;
-    totalQuestions++;
-  }
+  });
 
   const path = window.location.pathname.toLowerCase();
   const isMod3 = path.includes('module3_exercise') || path.includes('quadratic_exercise');
