@@ -127,27 +127,41 @@
     <div class="card">
       <div class="instruction-box">
         <h3>First Test Instructions</h3>
-        <p id="instructionMessage">Loading instructions...</p>
+        <p id="instructionMessage">Assigning your study condition...</p>
       </div>
 
       <div class="btn-wrapper">
-        <button class="btn-start" onclick="startFirstTest()">Start Test 1</button>
+        <button class="btn-start" id="startBtn" onclick="startFirstTest()">Start Test 1</button>
         <p class="timer-note">⏱️ Note: Once you press start, the time is counting.</p>
       </div>
     </div>
   </div>
 
   <script>
+    const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwPD4tACeuLFvmaNdQ46-uiButevGtjh10bW2YjcFzIyv8h6qzINXgHBddDEz_G89bDPQ/exec";
     let currentId = 1;
 
-    window.addEventListener('DOMContentLoaded', () => {
-      // Auto-assign or retrieve ID silently in background for randomization
+    window.addEventListener('DOMContentLoaded', async () => {
       let savedId = sessionStorage.getItem('participantId');
+      
       if (!savedId) {
-        let lastId = parseInt(localStorage.getItem('lastParticipantId') || '0', 10);
-        savedId = lastId + 1;
-        localStorage.setItem('lastParticipantId', savedId);
-        sessionStorage.setItem('participantId', savedId);
+        // Fetch next global participant ID & group server-side from Google Apps Script Webhook
+        try {
+          const response = await fetch(GOOGLE_SHEET_WEBHOOK_URL + "?action=getNextId");
+          const json = await response.json();
+          if (json && json.nextParticipantId) {
+            savedId = json.nextParticipantId;
+            sessionStorage.setItem('participantId', savedId);
+            sessionStorage.setItem('participantGroup', json.group);
+          }
+        } catch (err) {
+          console.error("Could not fetch global ID, using timestamp fallback", err);
+        }
+
+        if (!savedId) {
+          savedId = Math.floor(Date.now() / 1000) % 10000;
+          sessionStorage.setItem('participantId', savedId);
+        }
       } else {
         savedId = parseInt(savedId, 10);
       }
@@ -158,7 +172,7 @@
 
     function updateDisplay() {
       const msgElement = document.getElementById('instructionMessage');
-      const isGroup1 = (currentId % 2 !== 0); // Odd ID = Group 1, Even ID = Group 2
+      const isGroup1 = (currentId % 2 !== 0); // Odd ID = Group 1 (With Music), Even ID = Group 2 (Without Music)
 
       if (isGroup1) {
         msgElement.innerHTML = 'Now you take the first test <strong>WITH MUSIC</strong>. If you are ready to play the specified music with your headphone, press start to start the test.';

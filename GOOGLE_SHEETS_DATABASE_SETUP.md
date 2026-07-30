@@ -15,13 +15,45 @@ You can automatically store every participant's study results directly into a **
 
 ---
 
-## Step 2: Add Google Apps Script (Handles Both POST Data & GET Links)
+## Step 2: Add Google Apps Script (Handles Auto Global ID & POST Data)
 1. In your Google Sheet, click **Extensions** → **Apps Script**.
 2. Delete any code in `Code.gs` and paste the following script:
 
 ```javascript
 function doGet(e) {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getActiveSheet();
+
+  // 1. Handle Global Participant ID & Group Assignment request
+  if (e && e.parameter && e.parameter.action === 'getNextId') {
+    var props = PropertiesService.getScriptProperties();
+    var lastAssigned = parseInt(props.getProperty('LAST_ASSIGNED_ID'), 10);
+    
+    if (isNaN(lastAssigned) || lastAssigned <= 0) {
+      var lastRow = sheet.getLastRow();
+      var maxId = 0;
+      for (var r = lastRow; r >= 2; r--) {
+        var val = parseInt(sheet.getRange(r, 2).getValue(), 10);
+        if (!isNaN(val) && val > maxId) {
+          maxId = val;
+        }
+      }
+      lastAssigned = maxId > 0 ? maxId : 35; // Default to 35 if 35 was last recorded
+    }
+    
+    var nextId = lastAssigned + 1;
+    props.setProperty('LAST_ASSIGNED_ID', nextId.toString());
+    
+    var group = (nextId % 2 !== 0) ? "Group 1" : "Group 2";
+    
+    return ContentService.createTextOutput(JSON.stringify({
+      status: "success",
+      nextParticipantId: nextId,
+      group: group
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
+
+  // 2. Default HTML landing page when URL is opened in browser
   return HtmlService.createHtmlOutput(
     "<div style='font-family: Arial, sans-serif; padding: 30px; text-align: center;'>" +
     "<h2 style='color: #0284c7;'>✅ Math & Music User Study Database Active</h2>" +
@@ -84,9 +116,4 @@ function doPost(e) {
 }
 ```
 
-3. Click **Deploy** → **New Deployment**.
-4. Select type: **Web App**.
-5. Set:
-   - **Execute as**: *Me*
-   - **Who has access**: *Anyone* (Crucial!)
-6. Click **Deploy**, authorize permissions, and copy the Web App URL!
+3. Click **Deploy** → **Manage Deployments** → Edit (pencil) → Version: **New version** → **Deploy**.
