@@ -127,7 +127,7 @@
     <div class="card">
       <div class="instruction-box">
         <h3>First Test Instructions</h3>
-        <p id="instructionMessage">Assigning your study condition...</p>
+        <p id="instructionMessage">Connecting to server and assigning your study condition...</p>
       </div>
 
       <div class="btn-wrapper">
@@ -140,50 +140,55 @@
   <script>
     const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwPD4tACeuLFvmaNdQ46-uiButevGtjh10bW2YjcFzIyv8h6qzINXgHBddDEz_G89bDPQ/exec";
     let currentId = 1;
+    let currentGroup = 'Group 1';
 
-    window.addEventListener('DOMContentLoaded', async () => {
-      let savedId = sessionStorage.getItem('participantId');
-      
-      if (!savedId) {
-        // Fetch next global participant ID & group server-side from Google Apps Script Webhook
-        try {
-          const response = await fetch(GOOGLE_SHEET_WEBHOOK_URL + "?action=getNextId");
-          const json = await response.json();
-          if (json && json.nextParticipantId) {
-            savedId = json.nextParticipantId;
-            sessionStorage.setItem('participantId', savedId);
-            sessionStorage.setItem('participantGroup', json.group);
-          }
-        } catch (err) {
-          console.error("Could not fetch global ID, using timestamp fallback", err);
-        }
+    // JSONP callback function triggered automatically when Google Apps Script responds
+    function handleGlobalId(data) {
+      if (data && data.nextParticipantId) {
+        currentId = data.nextParticipantId;
+        currentGroup = data.group;
+        
+        sessionStorage.setItem('participantId', currentId);
+        sessionStorage.setItem('participantGroup', currentGroup);
 
-        if (!savedId) {
-          savedId = Math.floor(Date.now() / 1000) % 10000;
-          sessionStorage.setItem('participantId', savedId);
-        }
-      } else {
-        savedId = parseInt(savedId, 10);
+        const isGroup1 = (currentGroup === 'Group 1');
+        sessionStorage.setItem('test1Condition', isGroup1 ? 'With Music' : 'Without Music');
+        sessionStorage.setItem('test2Condition', isGroup1 ? 'Without Music' : 'With Music');
+
+        updateDisplay(currentId, currentGroup);
       }
+    }
 
-      currentId = savedId;
-      updateDisplay();
+    window.addEventListener('DOMContentLoaded', () => {
+      let savedId = sessionStorage.getItem('participantId');
+      let savedGroup = sessionStorage.getItem('participantGroup');
+
+      if (savedId && savedGroup) {
+        currentId = parseInt(savedId, 10);
+        currentGroup = savedGroup;
+        updateDisplay(currentId, currentGroup);
+      } else {
+        // Inject script tag for 100% CORS-free JSONP global ID & Group assignment across all devices/networks
+        const script = document.createElement('script');
+        script.src = GOOGLE_SHEET_WEBHOOK_URL + "?prefix=handleGlobalId&t=" + Date.now();
+        document.body.appendChild(script);
+      }
     });
 
-    function updateDisplay() {
+    function updateDisplay(pId, pGroup) {
       const msgElement = document.getElementById('instructionMessage');
-      const isGroup1 = (currentId % 2 !== 0); // Odd ID = Group 1 (With Music), Even ID = Group 2 (Without Music)
+      const isGroup1 = (pGroup === 'Group 1');
 
       if (isGroup1) {
-        msgElement.innerHTML = 'Now you take the first test <strong>WITH MUSIC</strong>. If you are ready to play the specified music with your headphone, press start to start the test.';
+        msgElement.innerHTML = 'Now you take the first test <strong>WITH MUSIC</strong> (Participant #' + pId + '). If you are ready to play the specified music with your headphone, press start to start the test.';
       } else {
-        msgElement.innerHTML = 'Now you take the first test <strong>WITHOUT MUSIC</strong>. Press start to start the test.';
+        msgElement.innerHTML = 'Now you take the first test <strong>WITHOUT MUSIC</strong> (Participant #' + pId + '). Press start to start the test.';
       }
     }
 
     function startFirstTest() {
-      const isGroup1 = (currentId % 2 !== 0);
-      sessionStorage.setItem('participantGroup', isGroup1 ? 'Group 1' : 'Group 2');
+      const isGroup1 = (currentGroup === 'Group 1');
+      sessionStorage.setItem('participantGroup', currentGroup);
       sessionStorage.setItem('test1Condition', isGroup1 ? 'With Music' : 'Without Music');
       sessionStorage.setItem('test2Condition', isGroup1 ? 'Without Music' : 'With Music');
 
