@@ -51,19 +51,59 @@
     .header-box {
       text-align: center;
       margin-bottom: 0.5rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
     }
 
     .header-box h1 {
       font-size: 1.85rem;
       font-weight: 700;
       color: var(--text-main);
-      margin-bottom: 0.5rem;
     }
 
     .header-box p {
       font-size: 1rem;
       color: var(--text-muted);
       line-height: 1.55;
+    }
+
+    .participant-info-banner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.25rem;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 0.85rem 1.25rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    .info-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.95rem;
+      color: #334155;
+    }
+
+    .info-label {
+      font-weight: 600;
+      color: #64748b;
+    }
+
+    .info-value {
+      font-weight: 700;
+      color: #0284c7;
+      background: #f0f9ff;
+      padding: 0.25rem 0.75rem;
+      border-radius: 8px;
+      border: 1px solid #bae6fd;
     }
 
     .pretests-container {
@@ -99,40 +139,39 @@
     }
 
     .card-title {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 600;
       color: #0f172a;
     }
 
     .badge {
-      background: #eff6ff;
-      color: #1d4ed8;
       font-size: 0.75rem;
       font-weight: 600;
+      color: #0284c7;
+      background-color: #e0f2fe;
       padding: 0.25rem 0.6rem;
       border-radius: 9999px;
-      border: 1px solid #bfdbfe;
     }
 
     .instruction-text {
-      font-size: 0.9rem;
-      color: #475569;
-      background: #f8fafc;
-      padding: 0.6rem 0.8rem;
-      border-radius: 6px;
-      border-left: 3px solid #0284c7;
+      font-size: 0.95rem;
+      color: #334155;
+      line-height: 1.5;
+      background-color: #f8fafc;
+      padding: 0.75rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--accent-primary);
     }
 
     .link-box {
       font-size: 0.9rem;
-      color: var(--text-main);
+      color: #475569;
     }
 
     .link-box a {
       color: var(--link-color);
       font-weight: 600;
       text-decoration: underline;
-      text-underline-offset: 2px;
       transition: color 0.15s ease;
     }
 
@@ -143,39 +182,38 @@
     .input-group {
       display: flex;
       flex-direction: column;
-      gap: 0.35rem;
+      gap: 0.4rem;
+      margin-top: 0.25rem;
     }
 
     .input-group label {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: 600;
-      color: #334155;
+      color: #1e293b;
     }
 
     .input-group input {
-      width: 100%;
-      padding: 0.6rem 0.75rem;
-      font-size: 0.95rem;
-      font-family: inherit;
+      padding: 0.75rem 1rem;
       border: 1px solid #cbd5e1;
       border-radius: 8px;
+      font-size: 1rem;
       outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
 
     .input-group input:focus {
-      border-color: #0284c7;
+      border-color: var(--accent-primary);
       box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
     }
 
     .bfi-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 0.85rem;
-      margin-top: 0.25rem;
+      gap: 0.75rem;
+      margin-top: 0.35rem;
       background: #f8fafc;
       padding: 1rem;
-      border-radius: 10px;
+      border-radius: 8px;
       border: 1px dashed #cbd5e1;
     }
 
@@ -219,6 +257,19 @@
   <div class="container">
     <div class="header-box">
       <h1>Participant Pretest Scores</h1>
+      
+      <!-- Participant Info & Group Banner -->
+      <div class="participant-info-banner" id="participantBanner">
+        <div class="info-badge">
+          <span class="info-label">👤 Participant ID:</span>
+          <span class="info-value" id="dispParticipantId">Assigning...</span>
+        </div>
+        <div class="info-badge">
+          <span class="info-label">🎲 Assigned Group:</span>
+          <span class="info-value" id="dispParticipantGroup">Assigning...</span>
+        </div>
+      </div>
+
       <p>Please enter your scores for each of the pretests below. If you have not completed a pretest yet, click the provided link to complete it before proceeding.</p>
     </div>
 
@@ -310,12 +361,61 @@
   </div>
 
   <script>
+    const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwPD4tACeuLFvmaNdQ46-uiButevGtjh10bW2YjcFzIyv8h6qzINXgHBddDEz_G89bDPQ/exec";
+
+    // Global callback when Google Apps Script responds via JSONP
+    function handleGlobalIdIndex(data) {
+      if (data && data.nextParticipantId) {
+        sessionStorage.setItem('participantId', data.nextParticipantId);
+        sessionStorage.setItem('participantGroup', data.group);
+
+        const isGroup1 = (data.group === 'Group 1');
+        sessionStorage.setItem('test1Condition', isGroup1 ? 'With Music' : 'Without Music');
+        sessionStorage.setItem('test2Condition', isGroup1 ? 'Without Music' : 'With Music');
+
+        updateHeaderBanner(data.nextParticipantId, data.group);
+      }
+    }
+
+    function updateHeaderBanner(pId, pGroup) {
+      const idEl = document.getElementById('dispParticipantId');
+      const groupEl = document.getElementById('dispParticipantGroup');
+      if (idEl) idEl.textContent = pId ? ('#' + pId) : 'Pending';
+      if (groupEl) {
+        const cond = (pGroup === 'Group 1') ? ' (With Music First)' : ' (Without Music First)';
+        groupEl.textContent = pGroup + cond;
+      }
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
-      // Check if URL has ?reset=true or ?reset=1 to reset participant ID counter back to 1
       if (window.location.search.includes('reset=')) {
-        localStorage.removeItem('lastParticipantId');
         sessionStorage.clear();
       }
+
+      // 1. Check existing session storage
+      let savedId = sessionStorage.getItem('participantId');
+      let savedGroup = sessionStorage.getItem('participantGroup');
+
+      if (!savedGroup) {
+        // Toggle Group 1 / Group 2 instantly on client side
+        let lastGroup = localStorage.getItem('lastAssignedGroupToggle') || 'Group 2';
+        savedGroup = (lastGroup === 'Group 1') ? 'Group 2' : 'Group 1';
+        localStorage.setItem('lastAssignedGroupToggle', savedGroup);
+        sessionStorage.setItem('participantGroup', savedGroup);
+
+        const isGroup1 = (savedGroup === 'Group 1');
+        sessionStorage.setItem('test1Condition', isGroup1 ? 'With Music' : 'Without Music');
+        sessionStorage.setItem('test2Condition', isGroup1 ? 'Without Music' : 'With Music');
+      }
+
+      updateHeaderBanner(savedId, savedGroup);
+
+      // 2. Fetch official global server ID via JSONP
+      try {
+        const script = document.createElement('script');
+        script.src = GOOGLE_SHEET_WEBHOOK_URL + "?prefix=handleGlobalIdIndex&t=" + Date.now();
+        document.body.appendChild(script);
+      } catch (e) {}
 
       // Restore saved scores if returning to pretest page in same session
       const corsiVal = sessionStorage.getItem('pretest_corsi');
