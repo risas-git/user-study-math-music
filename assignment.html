@@ -127,7 +127,7 @@
     <div class="card">
       <div class="instruction-box">
         <h3>First Test Instructions</h3>
-        <p id="instructionMessage">Connecting to server and assigning your study condition...</p>
+        <p id="instructionMessage">Loading instructions...</p>
       </div>
 
       <div class="btn-wrapper">
@@ -139,7 +139,7 @@
 
   <script>
     const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwPD4tACeuLFvmaNdQ46-uiButevGtjh10bW2YjcFzIyv8h6qzINXgHBddDEz_G89bDPQ/exec";
-    let currentId = 1;
+    let currentId = null;
     let currentGroup = 'Group 1';
 
     // JSONP callback function triggered automatically when Google Apps Script responds
@@ -155,7 +155,7 @@
         sessionStorage.setItem('test1Condition', isGroup1 ? 'With Music' : 'Without Music');
         sessionStorage.setItem('test2Condition', isGroup1 ? 'Without Music' : 'With Music');
 
-        updateDisplay(currentId, currentGroup);
+        updateDisplay();
       }
     }
 
@@ -166,23 +166,38 @@
       if (savedId && savedGroup) {
         currentId = parseInt(savedId, 10);
         currentGroup = savedGroup;
-        updateDisplay(currentId, currentGroup);
+        updateDisplay();
       } else {
-        // Inject script tag for 100% CORS-free JSONP global ID & Group assignment across all devices/networks
-        const script = document.createElement('script');
-        script.src = GOOGLE_SHEET_WEBHOOK_URL + "?prefix=handleGlobalId&t=" + Date.now();
-        document.body.appendChild(script);
+        // Toggle Group 1 / Group 2 immediately so instructions are displayed instantly
+        let lastGroup = localStorage.getItem('lastAssignedGroupToggle') || 'Group 2';
+        currentGroup = (lastGroup === 'Group 1') ? 'Group 2' : 'Group 1';
+        localStorage.setItem('lastAssignedGroupToggle', currentGroup);
+        sessionStorage.setItem('participantGroup', currentGroup);
+
+        const isGroup1 = (currentGroup === 'Group 1');
+        sessionStorage.setItem('test1Condition', isGroup1 ? 'With Music' : 'Without Music');
+        sessionStorage.setItem('test2Condition', isGroup1 ? 'Without Music' : 'With Music');
+
+        updateDisplay();
+
+        // Fetch official server ID via JSONP
+        try {
+          const script = document.createElement('script');
+          script.src = GOOGLE_SHEET_WEBHOOK_URL + "?prefix=handleGlobalId&t=" + Date.now();
+          document.body.appendChild(script);
+        } catch (e) {}
       }
     });
 
-    function updateDisplay(pId, pGroup) {
+    function updateDisplay() {
       const msgElement = document.getElementById('instructionMessage');
-      const isGroup1 = (pGroup === 'Group 1');
+      const isGroup1 = (currentGroup === 'Group 1');
+      const idLabel = currentId ? ` (Participant #${currentId})` : '';
 
       if (isGroup1) {
-        msgElement.innerHTML = 'Now you take the first test <strong>WITH MUSIC</strong> (Participant #' + pId + '). If you are ready to play the specified music with your headphone, press start to start the test.';
+        msgElement.innerHTML = 'Now you take the first test <strong>WITH MUSIC</strong>' + idLabel + '. If you are ready to play the specified music with your headphone, press start to start the test.';
       } else {
-        msgElement.innerHTML = 'Now you take the first test <strong>WITHOUT MUSIC</strong> (Participant #' + pId + '). Press start to start the test.';
+        msgElement.innerHTML = 'Now you take the first test <strong>WITHOUT MUSIC</strong>' + idLabel + '. Press start to start the test.';
       }
     }
 

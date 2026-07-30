@@ -24,7 +24,40 @@ function doGet(e) {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = ss.getActiveSheet();
 
-  // 1. Handle Global Participant ID & Group Assignment request
+  // 1. JSONP Global ID & Group Assignment endpoint
+  if (e && e.parameter && e.parameter.prefix) {
+    var props = PropertiesService.getScriptProperties();
+    var lastAssigned = parseInt(props.getProperty('LAST_ASSIGNED_ID'), 10);
+    
+    if (isNaN(lastAssigned) || lastAssigned <= 0) {
+      var lastRow = sheet.getLastRow();
+      var maxId = 0;
+      for (var r = lastRow; r >= 2; r--) {
+        var val = parseInt(sheet.getRange(r, 2).getValue(), 10);
+        if (!isNaN(val) && val > maxId && val < 10000) {
+          maxId = val;
+          break;
+        }
+      }
+      lastAssigned = maxId > 0 ? maxId : 35;
+    }
+    
+    var nextId = lastAssigned + 1;
+    props.setProperty('LAST_ASSIGNED_ID', nextId.toString());
+    
+    var group = (nextId % 2 !== 0) ? "Group 1" : "Group 2";
+    
+    var resultObj = {
+      status: "success",
+      nextParticipantId: nextId,
+      group: group
+    };
+    
+    return ContentService.createTextOutput(e.parameter.prefix + "(" + JSON.stringify(resultObj) + ");")
+      .setMimeType(ContentService.MimeType.JAVASCRIPT);
+  }
+
+  // 2. Direct GET endpoint for API call
   if (e && e.parameter && e.parameter.action === 'getNextId') {
     var props = PropertiesService.getScriptProperties();
     var lastAssigned = parseInt(props.getProperty('LAST_ASSIGNED_ID'), 10);
@@ -34,16 +67,16 @@ function doGet(e) {
       var maxId = 0;
       for (var r = lastRow; r >= 2; r--) {
         var val = parseInt(sheet.getRange(r, 2).getValue(), 10);
-        if (!isNaN(val) && val > maxId) {
+        if (!isNaN(val) && val > maxId && val < 10000) {
           maxId = val;
+          break;
         }
       }
-      lastAssigned = maxId > 0 ? maxId : 35; // Default to 35 if 35 was last recorded
+      lastAssigned = maxId > 0 ? maxId : 35;
     }
     
     var nextId = lastAssigned + 1;
     props.setProperty('LAST_ASSIGNED_ID', nextId.toString());
-    
     var group = (nextId % 2 !== 0) ? "Group 1" : "Group 2";
     
     return ContentService.createTextOutput(JSON.stringify({
@@ -53,7 +86,7 @@ function doGet(e) {
     })).setMimeType(ContentService.MimeType.JSON);
   }
 
-  // 2. Default HTML landing page when URL is opened in browser
+  // 3. Default HTML landing page when URL is opened in browser
   return HtmlService.createHtmlOutput(
     "<div style='font-family: Arial, sans-serif; padding: 30px; text-align: center;'>" +
     "<h2 style='color: #0284c7;'>✅ Math & Music User Study Database Active</h2>" +
@@ -70,23 +103,35 @@ function doPost(e) {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     var data = {};
 
-    // 1. Parse JSON body
     if (e && e.postData && e.postData.contents) {
-      try {
-        data = JSON.parse(e.postData.contents);
-      } catch (jsonErr) {}
+      try { data = JSON.parse(e.postData.contents); } catch (jsonErr) {}
     }
-    
-    // 2. Fallback to URL parameters
     if (!data || !data.participantId) {
       if (e && e.parameter && Object.keys(e.parameter).length > 0) {
         data = e.parameter;
       }
     }
     
+    // SERVER-SIDE AUTO INCREMENT FALLBACK IF CLIENT ID IS MISSING OR DEFAULT 1
+    var lastRow = sheet.getLastRow();
+    var maxId = 0;
+    for (var r = lastRow; r >= 2; r--) {
+      var val = parseInt(sheet.getRange(r, 2).getValue(), 10);
+      if (!isNaN(val) && val > maxId && val < 10000) {
+        maxId = val;
+        break;
+      }
+    }
+    var nextId = (maxId > 0) ? (maxId + 1) : 36;
+    
+    var pId = parseInt(data.participantId, 10);
+    if (isNaN(pId) || pId <= 10) {
+      data.participantId = nextId.toString();
+    }
+    
     sheet.appendRow([
       data.timestamp || new Date().toISOString(),
-      data.participantId || "",
+      data.participantId,
       data.group || "",
       data.pretest_corsi || "",
       data.pretest_bfi || "",
@@ -106,9 +151,8 @@ function doPost(e) {
       data.test2_mental_effort || ""
     ]);
     
-    return ContentService.createTextOutput(JSON.stringify({result: "success"}))
+    return ContentService.createTextOutput(JSON.stringify({result: "success", assignedId: data.participantId}))
       .setMimeType(ContentService.MimeType.JSON);
-      
   } catch (err) {
     return ContentService.createTextOutput(JSON.stringify({result: "error", error: err.toString()}))
       .setMimeType(ContentService.MimeType.JSON);
