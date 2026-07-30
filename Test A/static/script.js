@@ -379,7 +379,52 @@ function showNextQuestionDiv(nextDivId, currentDivId) {
   if (currentDiv) currentDiv.style.display = 'none';
 
   const nextDiv = document.getElementById(nextDivId);
-  if (nextDiv) nextDiv.style.display = 'block';
+  if (nextDiv) {
+    // 1. Uncheck ALL radio buttons so NO answer is pre-selected
+    const radios = nextDiv.querySelectorAll('input[type="radio"]');
+    radios.forEach(radio => radio.checked = false);
+
+    // 2. Clear previous result message
+    const msg = nextDiv.querySelector('p[id^="resultMessage_"]');
+    if (msg) msg.innerHTML = '';
+
+    // 3. Reset Check & Submit button to enabled
+    const checkBtn = nextDiv.querySelector('button[onclick*="checkAnswer"]');
+    if (checkBtn) checkBtn.disabled = false;
+
+    // 4. Reset Next Question button to disabled
+    const nextBtn = nextDiv.querySelector('button[id^="btn_next_"]');
+    if (nextBtn) nextBtn.disabled = true;
+
+    // 5. Freshly shuffle option positions
+    const radiosArr = Array.from(radios);
+    if (radiosArr.length >= 2) {
+      const optionGroups = radiosArr.map(radio => {
+        const label = nextDiv.querySelector(`label[for="${radio.id}"]`);
+        let br = label ? label.nextElementSibling : null;
+        if (br && br.tagName && br.tagName.toLowerCase() !== 'br') br = null;
+        return { input: radio, label: label, br: br };
+      });
+
+      for (let i = optionGroups.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [optionGroups[i], optionGroups[j]] = [optionGroups[j], optionGroups[i]];
+      }
+
+      const refNode = msg || nextDiv.querySelector('button');
+      optionGroups.forEach(grp => {
+        if (grp.input && refNode) nextDiv.insertBefore(grp.input, refNode);
+        if (grp.label && refNode) nextDiv.insertBefore(grp.label, refNode);
+        if (grp.br && refNode) nextDiv.insertBefore(grp.br, refNode);
+      });
+    }
+
+    nextDiv.style.display = 'block';
+
+    if (window.MathJax && MathJax.Hub) {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
 }
 
 function openPage(pagePath) {
