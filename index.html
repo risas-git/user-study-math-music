@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -207,6 +206,12 @@
       box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
     }
 
+    .range-hint {
+      font-size: 0.8rem;
+      color: #64748b;
+      font-weight: normal;
+    }
+
     .bfi-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -253,31 +258,29 @@
     }
   </style>
 </head>
-
 <body>
 
   <div class="container">
     <div class="header-box">
       <h1>Participant Pretest Scores</h1>
-
+      
       <!-- Participant Info & Group Banner -->
       <div class="participant-info-banner" id="participantBanner">
         <div class="info-badge">
-          <span class="info-label"> Participant ID:</span>
+          <span class="info-label">👤 Participant ID:</span>
           <span class="info-value" id="dispParticipantId">Assigning...</span>
         </div>
         <div class="info-badge">
-          <span class="info-label"> Assigned Group:</span>
+          <span class="info-label">🎲 Assigned Group:</span>
           <span class="info-value" id="dispParticipantGroup">Assigning...</span>
         </div>
       </div>
 
-      <p>Please enter your scores for each of the pretests below. If you have not completed a pretest yet, click the
-        provided link to complete it before proceeding.</p>
+      <p>Please enter your scores for each of the pretests below. If you have not completed a pretest yet, click the provided link to complete it before proceeding.</p>
     </div>
 
     <div class="pretests-container">
-
+      
       <!-- Pretest 1: Working Memory -->
       <div class="pretest-card">
         <div class="card-header">
@@ -288,13 +291,12 @@
           💡 Instructions: Click <strong>"Run the demo"</strong> on the test page.
         </div>
         <div class="link-box">
-          If you haven't done it yet before, then do it from here:
-          <a href="https://www.psytoolkit.org/experiment-library/backward_corsi.html" target="_blank"
-            rel="noopener noreferrer">Take Working Memory Capacity Test ↗</a>
+          If you haven't done it yet before, then do it from here: 
+          <a href="https://www.psytoolkit.org/experiment-library/backward_corsi.html" target="_blank" rel="noopener noreferrer">Take Working Memory Capacity Test ↗</a>
         </div>
         <div class="input-group">
-          <label for="score_corsi">Enter the score for Working Memory Capacity Test:</label>
-          <input type="text" id="score_corsi" placeholder="Enter your score" />
+          <label for="score_corsi">Enter score for Working Memory Capacity <span class="range-hint">(Valid range: 1 to 9)</span>:</label>
+          <input type="text" id="score_corsi" placeholder="Score: 1 - 9" />
         </div>
       </div>
 
@@ -308,33 +310,32 @@
           💡 Instructions: Select <strong>Big Five Inventory, BFI-2-XS</strong> on the test page.
         </div>
         <div class="link-box">
-          If you haven't done it yet before, then do it from here:
-          <a href="https://psytests.org/big5/bfiSen.html" target="_blank" rel="noopener noreferrer">Take Personality
-            Traits Assessment ↗</a>
+          If you haven't done it yet before, then do it from here: 
+          <a href="https://psytests.org/big5/bfiSen.html" target="_blank" rel="noopener noreferrer">Take Personality Traits Assessment ↗</a>
         </div>
         <div style="font-weight: 600; font-size: 0.9rem; color: #334155; margin-top: 0.25rem;">
-          Enter your 5 BFI-2 Personality Trait scores (Scale 1.0 - 5.0):
+          Enter your 5 BFI-2 Personality Trait scores <span class="range-hint" style="font-weight: normal;">(Valid scale: 1.0 to 5.0 for each)</span>:
         </div>
         <div class="bfi-grid">
           <div class="input-group">
             <label for="score_bfi_extraversion">1. Extraversion:</label>
-            <input type="text" id="score_bfi_extraversion" />
+            <input type="text" id="score_bfi_extraversion" placeholder="1.0 - 5.0" />
           </div>
           <div class="input-group">
             <label for="score_bfi_agreeableness">2. Agreeableness:</label>
-            <input type="text" id="score_bfi_agreeableness" />
+            <input type="text" id="score_bfi_agreeableness" placeholder="1.0 - 5.0" />
           </div>
           <div class="input-group">
             <label for="score_bfi_conscientiousness">3. Conscientiousness:</label>
-            <input type="text" id="score_bfi_conscientiousness" />
+            <input type="text" id="score_bfi_conscientiousness" placeholder="1.0 - 5.0" />
           </div>
           <div class="input-group">
             <label for="score_bfi_neuroticism">4. Negative Emotionality:</label>
-            <input type="text" id="score_bfi_neuroticism" />
+            <input type="text" id="score_bfi_neuroticism" placeholder="1.0 - 5.0" />
           </div>
           <div class="input-group">
             <label for="score_bfi_openness">5. Open-Mindedness:</label>
-            <input type="text" id="score_bfi_openness" />
+            <input type="text" id="score_bfi_openness" placeholder="1.0 - 5.0" />
           </div>
         </div>
       </div>
@@ -349,13 +350,12 @@
           💡 Instructions: Click <strong>"Run the demo"</strong> on the survey page.
         </div>
         <div class="link-box">
-          If you haven't done it yet before, then do it from here:
-          <a href="https://www.psytoolkit.org/survey-library/math-anxiety-amas.html" target="_blank"
-            rel="noopener noreferrer">Take Math Anxiety Scale ↗</a>
+          If you haven't done it yet before, then do it from here: 
+          <a href="https://www.psytoolkit.org/survey-library/math-anxiety-amas.html" target="_blank" rel="noopener noreferrer">Take Math Anxiety Scale ↗</a>
         </div>
         <div class="input-group">
-          <label for="score_amas">Enter the score for Math Anxiety Scale:</label>
-          <input type="text" id="score_amas" placeholder="Enter your score" />
+          <label for="score_amas">Enter score for Math Anxiety Scale <span class="range-hint">(Valid range: 9 to 45)</span>:</label>
+          <input type="text" id="score_amas" placeholder="Score: 9 - 45" />
         </div>
       </div>
 
@@ -421,7 +421,7 @@
         const script = document.createElement('script');
         script.src = GOOGLE_SHEET_WEBHOOK_URL + "?prefix=handleGlobalIdIndex&t=" + Date.now();
         document.body.appendChild(script);
-      } catch (e) { }
+      } catch (e) {}
 
       // Restore saved scores if returning to pretest page in same session
       const corsiVal = sessionStorage.getItem('pretest_corsi');
@@ -439,8 +439,98 @@
     });
 
     function goToNextStep() {
-      const corsiVal = document.getElementById('score_corsi').value.trim();
-      const amasVal = document.getElementById('score_amas').value.trim();
+      // Clear previous error styles & messages
+      const existingErrorBox = document.getElementById('validationErrorBox');
+      if (existingErrorBox) existingErrorBox.remove();
+
+      const allInputs = document.querySelectorAll('.input-group input');
+      allInputs.forEach(inp => {
+        inp.style.borderColor = '#cbd5e1';
+        inp.style.boxShadow = 'none';
+      });
+
+      const errorList = [];
+
+      // Rule 1: Working Memory Capacity (0 < x <= 9)
+      const corsiInp = document.getElementById('score_corsi');
+      const corsiVal = corsiInp.value.trim();
+      const corsiNum = parseFloat(corsiVal);
+      if (!corsiVal || isNaN(corsiNum) || corsiNum <= 0 || corsiNum > 9) {
+        errorList.push("Working Memory Capacity score must be a number greater than 0 and ≤ 9 (0 < x ≤ 9).");
+        corsiInp.style.borderColor = '#ef4444';
+        corsiInp.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.2)';
+      }
+
+      // Rule 2: Personality Traits BFI-2 (Scale 1.0 to 5.0 for each of the 5 fields)
+      const bfiFields = [
+        { id: 'score_bfi_extraversion', name: 'Extraversion' },
+        { id: 'score_bfi_agreeableness', name: 'Agreeableness' },
+        { id: 'score_bfi_conscientiousness', name: 'Conscientiousness' },
+        { id: 'score_bfi_neuroticism', name: 'Negative Emotionality' },
+        { id: 'score_bfi_openness', name: 'Open-Mindedness' }
+      ];
+
+      let bfiErrorDetected = false;
+      bfiFields.forEach(field => {
+        const inp = document.getElementById(field.id);
+        const val = inp.value.trim();
+        const num = parseFloat(val);
+        if (!val || isNaN(num) || num < 1.0 || num > 5.0) {
+          bfiErrorDetected = true;
+          inp.style.borderColor = '#ef4444';
+          inp.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.2)';
+        }
+      });
+
+      if (bfiErrorDetected) {
+        errorList.push("All 5 Personality Trait (BFI-2) scores must be numbers between 1.0 and 5.0.");
+      }
+
+      // Rule 3: Math Anxiety Scale AMAS (9 <= x <= 45)
+      const amasInp = document.getElementById('score_amas');
+      const amasVal = amasInp.value.trim();
+      const amasNum = parseFloat(amasVal);
+      if (!amasVal || isNaN(amasNum) || amasNum < 9 || amasNum > 45) {
+        errorList.push("Math Anxiety Scale (AMAS) score must be a number between 9 and 45.");
+        amasInp.style.borderColor = '#ef4444';
+        amasInp.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.2)';
+      }
+
+      // If validation fails, render error banner and STOP navigation
+      if (errorList.length > 0) {
+        const actionSection = document.querySelector('.action-section');
+        const errDiv = document.createElement('div');
+        errDiv.id = 'validationErrorBox';
+        errDiv.style.cssText = `
+          width: 100%;
+          max-width: 680px;
+          background-color: #fef2f2;
+          border: 1px solid #fca5a5;
+          border-left: 5px solid #ef4444;
+          border-radius: 10px;
+          padding: 1rem 1.25rem;
+          color: #991b1b;
+          font-size: 0.95rem;
+          text-align: left;
+          margin-bottom: 0.85rem;
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        `;
+
+        let errHtml = '<strong style="font-size: 1rem; display: block; margin-bottom: 0.4rem; color: #7f1d1d;">⚠️ Please fix the highlighted score entries before proceeding:</strong><ul style="padding-left: 1.25rem; margin: 0; line-height: 1.6;">';
+        errorList.forEach(msg => {
+          errHtml += `<li>${msg}</li>`;
+        });
+        errHtml += '</ul>';
+        errDiv.innerHTML = errHtml;
+
+        actionSection.insertBefore(errDiv, actionSection.firstChild);
+        errDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return; // STOP EXECUTION
+      }
+
+      // Validation passed cleanly! Save scores to sessionStorage
+      sessionStorage.setItem('pretest_corsi', corsiVal);
+      sessionStorage.setItem('pretest_amas', amasVal);
 
       const extraversion = document.getElementById('score_bfi_extraversion').value.trim();
       const agreeableness = document.getElementById('score_bfi_agreeableness').value.trim();
@@ -448,22 +538,17 @@
       const neuroticism = document.getElementById('score_bfi_neuroticism').value.trim();
       const openness = document.getElementById('score_bfi_openness').value.trim();
 
-      sessionStorage.setItem('pretest_corsi', corsiVal || 'Not provided');
-      sessionStorage.setItem('pretest_amas', amasVal || 'Not provided');
+      sessionStorage.setItem('pretest_bfi_extraversion', extraversion);
+      sessionStorage.setItem('pretest_bfi_agreeableness', agreeableness);
+      sessionStorage.setItem('pretest_bfi_conscientiousness', conscientiousness);
+      sessionStorage.setItem('pretest_bfi_neuroticism', neuroticism);
+      sessionStorage.setItem('pretest_bfi_openness', openness);
 
-      sessionStorage.setItem('pretest_bfi_extraversion', extraversion || 'N/A');
-      sessionStorage.setItem('pretest_bfi_agreeableness', agreeableness || 'N/A');
-      sessionStorage.setItem('pretest_bfi_conscientiousness', conscientiousness || 'N/A');
-      sessionStorage.setItem('pretest_bfi_neuroticism', neuroticism || 'N/A');
-      sessionStorage.setItem('pretest_bfi_openness', openness || 'N/A');
-
-      // Combined summary string for pretest_bfi
-      const bfiCombined = `Extraversion: ${extraversion || 'N/A'}, Agreeableness: ${agreeableness || 'N/A'}, Conscientiousness: ${conscientiousness || 'N/A'}, Negative Emotionality: ${neuroticism || 'N/A'}, Open-Mindedness: ${openness || 'N/A'}`;
+      const bfiCombined = `Extraversion: ${extraversion}, Agreeableness: ${agreeableness}, Conscientiousness: ${conscientiousness}, Negative Emotionality: ${neuroticism}, Open-Mindedness: ${openness}`;
       sessionStorage.setItem('pretest_bfi', bfiCombined);
 
       window.location.href = './assignment.html';
     }
   </script>
 </body>
-
 </html>
