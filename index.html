@@ -373,13 +373,13 @@
     function handleGlobalIdIndex(data) {
       if (data && data.nextParticipantId) {
         sessionStorage.setItem('participantId', data.nextParticipantId);
-        sessionStorage.setItem('participantGroup', data.group);
+        const assignedGroup = 'Group 2'; // Fixed to Group 2 per protocol requirement
+        sessionStorage.setItem('participantGroup', assignedGroup);
 
-        const isGroup1 = (data.group === 'Group 1');
-        sessionStorage.setItem('test1Condition', isGroup1 ? 'With Music' : 'Without Music');
-        sessionStorage.setItem('test2Condition', isGroup1 ? 'Without Music' : 'With Music');
+        sessionStorage.setItem('test1Condition', 'Without Music');
+        sessionStorage.setItem('test2Condition', 'With Music');
 
-        updateHeaderBanner(data.nextParticipantId, data.group);
+        updateHeaderBanner(data.nextParticipantId, assignedGroup);
       }
     }
 
@@ -388,8 +388,7 @@
       const groupEl = document.getElementById('dispParticipantGroup');
       if (idEl) idEl.textContent = pId ? ('#' + pId) : 'Pending';
       if (groupEl) {
-        const cond = (pGroup === 'Group 1') ? ' (With Music First)' : ' (Without Music First)';
-        groupEl.textContent = pGroup + cond;
+        groupEl.textContent = 'Group 2 (Without Music First)';
       }
     }
 
@@ -400,19 +399,10 @@
 
       // 1. Check existing session storage
       let savedId = sessionStorage.getItem('participantId');
-      let savedGroup = sessionStorage.getItem('participantGroup');
-
-      if (!savedGroup) {
-        // Toggle Group 1 / Group 2 instantly on client side
-        let lastGroup = localStorage.getItem('lastAssignedGroupToggle') || 'Group 2';
-        savedGroup = (lastGroup === 'Group 1') ? 'Group 2' : 'Group 1';
-        localStorage.setItem('lastAssignedGroupToggle', savedGroup);
-        sessionStorage.setItem('participantGroup', savedGroup);
-
-        const isGroup1 = (savedGroup === 'Group 1');
-        sessionStorage.setItem('test1Condition', isGroup1 ? 'With Music' : 'Without Music');
-        sessionStorage.setItem('test2Condition', isGroup1 ? 'Without Music' : 'With Music');
-      }
+      let savedGroup = 'Group 2'; // Always Group 2
+      sessionStorage.setItem('participantGroup', savedGroup);
+      sessionStorage.setItem('test1Condition', 'Without Music');
+      sessionStorage.setItem('test2Condition', 'With Music');
 
       updateHeaderBanner(savedId, savedGroup);
 

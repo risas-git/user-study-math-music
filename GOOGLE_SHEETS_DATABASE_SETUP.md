@@ -45,7 +45,7 @@ function doGet(e) {
     var nextId = lastAssigned + 1;
     props.setProperty('LAST_ASSIGNED_ID', nextId.toString());
     
-    var group = (nextId % 2 !== 0) ? "Group 1" : "Group 2";
+    var group = "Group 2";
     
     var resultObj = {
       status: "success",
@@ -77,7 +77,7 @@ function doGet(e) {
     
     var nextId = lastAssigned + 1;
     props.setProperty('LAST_ASSIGNED_ID', nextId.toString());
-    var group = (nextId % 2 !== 0) ? "Group 1" : "Group 2";
+    var group = "Group 2";
     
     return ContentService.createTextOutput(JSON.stringify({
       status: "success",

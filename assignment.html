@@ -140,20 +140,19 @@
   <script>
     const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwPD4tACeuLFvmaNdQ46-uiButevGtjh10bW2YjcFzIyv8h6qzINXgHBddDEz_G89bDPQ/exec";
     let currentId = null;
-    let currentGroup = 'Group 1';
+    let currentGroup = 'Group 2';
 
     // JSONP callback function triggered automatically when Google Apps Script responds
     function handleGlobalId(data) {
       if (data && data.nextParticipantId) {
         currentId = data.nextParticipantId;
-        currentGroup = data.group;
+        currentGroup = 'Group 2'; // Fixed to Group 2
         
         sessionStorage.setItem('participantId', currentId);
         sessionStorage.setItem('participantGroup', currentGroup);
 
-        const isGroup1 = (currentGroup === 'Group 1');
-        sessionStorage.setItem('test1Condition', isGroup1 ? 'With Music' : 'Without Music');
-        sessionStorage.setItem('test2Condition', isGroup1 ? 'Without Music' : 'With Music');
+        sessionStorage.setItem('test1Condition', 'Without Music');
+        sessionStorage.setItem('test2Condition', 'With Music');
 
         updateDisplay();
       }
@@ -161,51 +160,37 @@
 
     window.addEventListener('DOMContentLoaded', () => {
       let savedId = sessionStorage.getItem('participantId');
-      let savedGroup = sessionStorage.getItem('participantGroup');
+      currentGroup = 'Group 2';
 
-      if (savedId && savedGroup) {
+      if (savedId) {
         currentId = parseInt(savedId, 10);
-        currentGroup = savedGroup;
-        updateDisplay();
-      } else {
-        // Toggle Group 1 / Group 2 immediately so instructions are displayed instantly
-        let lastGroup = localStorage.getItem('lastAssignedGroupToggle') || 'Group 2';
-        currentGroup = (lastGroup === 'Group 1') ? 'Group 2' : 'Group 1';
-        localStorage.setItem('lastAssignedGroupToggle', currentGroup);
-        sessionStorage.setItem('participantGroup', currentGroup);
-
-        const isGroup1 = (currentGroup === 'Group 1');
-        sessionStorage.setItem('test1Condition', isGroup1 ? 'With Music' : 'Without Music');
-        sessionStorage.setItem('test2Condition', isGroup1 ? 'Without Music' : 'With Music');
-
-        updateDisplay();
-
-        // Fetch official server ID via JSONP
-        try {
-          const script = document.createElement('script');
-          script.src = GOOGLE_SHEET_WEBHOOK_URL + "?prefix=handleGlobalId&t=" + Date.now();
-          document.body.appendChild(script);
-        } catch (e) {}
       }
+
+      sessionStorage.setItem('participantGroup', currentGroup);
+      sessionStorage.setItem('test1Condition', 'Without Music');
+      sessionStorage.setItem('test2Condition', 'With Music');
+
+      updateDisplay();
+
+      // Fetch official server ID via JSONP
+      try {
+        const script = document.createElement('script');
+        script.src = GOOGLE_SHEET_WEBHOOK_URL + "?prefix=handleGlobalId&t=" + Date.now();
+        document.body.appendChild(script);
+      } catch (e) {}
     });
 
     function updateDisplay() {
       const msgElement = document.getElementById('instructionMessage');
-      const isGroup1 = (currentGroup === 'Group 1');
       const idLabel = currentId ? ` (Participant #${currentId})` : '';
 
-      if (isGroup1) {
-        msgElement.innerHTML = 'Now you take the first test <strong>WITH MUSIC</strong>' + idLabel + '. If you are ready to play the specified music with your headphone, press start to start the test.';
-      } else {
-        msgElement.innerHTML = 'Now you take the first test <strong>WITHOUT MUSIC</strong>' + idLabel + '. Press start to start the test.';
-      }
+      msgElement.innerHTML = 'Now you take the first test <strong>WITHOUT MUSIC</strong>' + idLabel + '. Press start to start the test.';
     }
 
     function startFirstTest() {
-      const isGroup1 = (currentGroup === 'Group 1');
-      sessionStorage.setItem('participantGroup', currentGroup);
-      sessionStorage.setItem('test1Condition', isGroup1 ? 'With Music' : 'Without Music');
-      sessionStorage.setItem('test2Condition', isGroup1 ? 'Without Music' : 'With Music');
+      sessionStorage.setItem('participantGroup', 'Group 2');
+      sessionStorage.setItem('test1Condition', 'Without Music');
+      sessionStorage.setItem('test2Condition', 'With Music');
 
       // Start timing for Test 1
       sessionStorage.setItem('testStartTime', Date.now());

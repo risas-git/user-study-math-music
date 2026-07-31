@@ -314,18 +314,18 @@
 
     window.addEventListener('DOMContentLoaded', () => {
       const pId = sessionStorage.getItem('participantId') || '1';
-      const isGroup1 = (parseInt(pId, 10) % 2 !== 0);
+      const assignedGroup = sessionStorage.getItem('participantGroup') || 'Group 2';
 
       studyData = {
         timestamp: new Date().toISOString(),
         participantId: pId,
-        group: isGroup1 ? 'Group 1' : 'Group 2',
-        test1_condition: sessionStorage.getItem('test1Condition') || (isGroup1 ? 'With Music' : 'Without Music'),
+        group: assignedGroup,
+        test1_condition: sessionStorage.getItem('test1Condition') || 'Without Music',
         test1_time: sessionStorage.getItem('test1TimeFormatted') || '00:00:00',
         test1_mistakes: sessionStorage.getItem('test1Mistakes') || '0',
         test1_mastery: (sessionStorage.getItem('test1MasteryScore') || '50') + '%',
         test1_mental_effort: sessionStorage.getItem('paasScale_Test1') || '5. neither low nor high mental effort',
-        test2_condition: sessionStorage.getItem('test2Condition') || (isGroup1 ? 'Without Music' : 'With Music'),
+        test2_condition: sessionStorage.getItem('test2Condition') || 'With Music',
         test2_time: sessionStorage.getItem('test2TimeFormatted') || '00:00:00',
         test2_mistakes: sessionStorage.getItem('test2Mistakes') || '0',
         test2_mastery: (sessionStorage.getItem('test2MasteryScore') || '50') + '%',
