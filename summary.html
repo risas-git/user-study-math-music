@@ -242,18 +242,18 @@
   <div class="container">
     <div class="card">
       <div class="header-box">
-        <h1>Thank You for Your Participation! 🎉</h1>
+        <h1>Thank You for Your Participation!</h1>
         <p>Thank you so much for your time!</p>
       </div>
 
       <!-- Top Syncing Status Banner -->
       <div id="syncStatusBanner" class="sync-banner syncing">
         <div class="sync-title">
-          <span id="syncIcon">⏳</span>
+          <span id="syncIcon"></span>
           <span id="syncStateText">Syncing...</span>
         </div>
         <div class="sync-warning" id="syncWarningText">
-          ⚠️ Please wait until the syncing is completed!
+          Please wait until the syncing is completed!
         </div>
       </div>
 
@@ -263,12 +263,12 @@
           Your result is automatically saved, but just in case, please download the result CSV and send it to me at <a
             href="mailto:risa.hirata@uni-bielefeld.de">risa.hirata@uni-bielefeld.de</a>
         </p>
-        <button onclick="downloadCSV()" class="btn-download">📥 Download Result CSV</button>
+        <button onclick="downloadCSV()" class="btn-download">Download Result CSV</button>
       </div>
 
       <!-- Summary of Study Data (Result Info) -->
       <div class="summary-box">
-        <h3>📋 Summary of Study Data (Adaptive ITS Mode)</h3>
+        <h3>Summary of Study Data (Adaptive ITS Mode)</h3>
 
         <div class="summary-section">
           <h4>Test 1 (Test A)</h4>
@@ -412,7 +412,7 @@
       }).then(() => {
         if (banner) {
           banner.className = 'sync-banner complete';
-          syncIcon.textContent = '✅';
+          syncIcon.textContent = '';
           syncStateText.textContent = 'Syncing complete!';
           syncWarningText.textContent = '✓ Your result has been automatically saved to the database.';
         }
@@ -420,7 +420,7 @@
         console.error(err);
         if (banner) {
           banner.className = 'sync-banner complete';
-          syncIcon.textContent = '✅';
+          syncIcon.textContent = '';
           syncStateText.textContent = 'Syncing complete!';
           syncWarningText.textContent = '✓ Response saved locally.';
         }

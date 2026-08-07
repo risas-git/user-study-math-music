@@ -6,7 +6,7 @@
 
 ---
 
-## 🟦 TEST A (Phase 1)
+## TEST A (Phase 1)
 
 ### 1. Module 1: Mixed Operations & Rational Expressions (12 Adaptive Questions)
 
@@ -152,7 +152,7 @@
 
 ---
 
-## 🟪 TEST B (Phase 2 - Isomorphic Parallel Pair)
+## TEST B (Phase 2 - Isomorphic Parallel Pair)
 
 ### 1. Module 1: Mixed Operations & Rational Expressions (12 Isomorphic Questions)
 

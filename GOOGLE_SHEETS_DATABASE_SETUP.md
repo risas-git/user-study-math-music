@@ -89,11 +89,11 @@ function doGet(e) {
   // 3. Default HTML landing page when URL is opened in browser
   return HtmlService.createHtmlOutput(
     "<div style='font-family: Arial, sans-serif; padding: 30px; text-align: center;'>" +
-    "<h2 style='color: #0284c7;'>✅ Math & Music User Study Database Active</h2>" +
+    "<h2 style='color: #0284c7;'>Math & Music User Study Database Active</h2>" +
     "<p style='color: #334155; font-size: 15px;'>This Webhook automatically receives real-time participant results.</p>" +
     "<div style='margin-top: 25px;'>" +
     "<a href='" + ss.getUrl() + "' target='_blank' style='background: #16a34a; color: white; padding: 12px 24px; font-weight: bold; border-radius: 8px; text-decoration: none; display: inline-block;'>" +
-    "📊 Open Google Sheets Database Document ➔</a>" +
+    "Open Google Sheets Database Document ➔</a>" +
     "</div></div>"
   );
 }
